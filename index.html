@@ -56,24 +56,38 @@
         footer { text-align: center; padding: 20px; background: #fcf9f2; font-size: 0.8rem; }
     </style>
 </head>
-<body>
-    <nav>
-        <div class="logo">社團法人台灣華德福親子共學協會</div>
-        <button class="menu-toggle" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
+<body class="text-stone-800 font-sans antialiased selection:bg-sage-500 selection:text-white relative bg-stone-50">
 
-        <div class="nav-links" id="navLinks">
-            <a href="#">首頁</a>
-            <a href="#">最新消息</a>
-            <a href="#">協會緣起</a>
-            <a href="#">服務項目</a>
-            <a href="#">活動報名</a>
-            <a href="#">聯絡我們</a>
+    <!-- 頂部導覽列 -->
+    <nav class="fixed w-full z-50 bg-stone-50/80 backdrop-blur-md border-b border-stone-100 h-20 flex items-center transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8 w-full flex items-center justify-between">
+            <a href="#" onclick="navigateTo('home'); return false;" class="flex items-center gap-3">
+                <span class="font-medium text-xl tracking-widest text-stone-800">社團法人台灣華德福親子共學協會</span>
+            </a>
+            <div class="hidden md:flex space-x-6 lg:space-x-8">
+                <a href="#" onclick="navigateTo('story'); return false;" class="text-stone-600 hover:text-sage-600 transition-colors text-sm font-medium">首頁</a>
+                <a href="#" onclick="navigateTo('profile'); return false;" class="text-stone-600 hover:text-sage-600 transition-colors text-sm font-medium">緣起</a>
+                <a href="#" onclick="navigateTo('environment'); return false;" class="text-stone-600 hover:text-sage-600 transition-colors text-sm font-medium">最新消息</a>
+                <a href="#" onclick="navigateTo('services'); return false;" class="text-stone-600 hover:text-sage-600 transition-colors text-sm font-medium">服務項目</a>
+                <a href="#" onclick="navigateTo('knowledge'); return false;" class="text-stone-600 hover:text-sage-600 transition-colors text-sm font-medium">活動報名</a>
+                <a href="#" onclick="navigateTo('faq'); return false;" class="text-stone-600 hover:text-sage-600 transition-colors text-sm font-medium">聯絡我們</a>
+                <a href="#" onclick="navigateTo('booking'); return false;" class="text-stone-600 hover:text-sage-600 transition-colors text-sm font-medium">支持我們</a>
+            </div>
+            <button id="mobile-menu-btn" class="md:hidden text-stone-800 text-2xl focus:outline-none"><i class="fa-solid fa-bars"></i></button>
         </div>
     </nav>
+
+    <!-- 手機選單 -->
+    <div id="mobile-menu" class="fixed inset-0 bg-stone-50/95 backdrop-blur-xl z-[60] hidden flex-col items-center justify-center space-y-8 opacity-0 transition-opacity duration-300 overflow-y-auto py-10">
+        <button id="close-menu-btn" class="absolute top-6 right-6 text-stone-800 text-4xl"><i class="fa-solid fa-xmark"></i></button>
+        <a href="#" onclick="navigateTo('story'); return false;" class="mobile-link text-2xl font-medium tracking-widest text-stone-800">首頁</a>
+        <a href="#" onclick="navigateTo('profile'); return false;" class="mobile-link text-2xl font-medium tracking-widest text-stone-800">緣起</a>
+        <a href="#" onclick="navigateTo('environment'); return false;" class="mobile-link text-2xl font-medium tracking-widest text-stone-800">最新消息</a>
+        <a href="#" onclick="navigateTo('services'); return false;" class="mobile-link text-2xl font-medium tracking-widest text-stone-800">服務項目</a>
+        <a href="#" onclick="navigateTo('knowledge'); return false;" class="mobile-link text-2xl font-medium tracking-widest text-stone-800">活動報名</a>
+        <a href="#" onclick="navigateTo('faq'); return false;" class="mobile-link text-2xl font-medium tracking-widest text-stone-800">聯絡我們</a>
+        <a href="#" onclick="navigateTo('booking'); return false;" class="mobile-link text-2xl font-medium tracking-widest text-stone-800">支持我們</a>
+            </div>
 
     <header class="hero">
         <div class="text-content">
