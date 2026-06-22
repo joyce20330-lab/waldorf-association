@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>活動報名 - 社團法人台灣華德福親子共學協會</title>
+    <style>
+        body { margin: 0; font-family: "Helvetica Neue", Arial, "Microsoft JhengHei", sans-serif; background-color: #fcf9f2; color: #5d4e43; line-height: 1.8; display: flex; flex-direction: column; min-height: 100vh; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; background: #fcf9f2; border-bottom: 1px solid #e5e0dc; }
+        .logo { font-weight: 500; font-size: 1.1rem; }
+        .nav-links { display: flex; gap: 25px; }
+        .nav-links a { text-decoration: none; color: #5d4e43; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: #d97746; }
+
+        .hero { background-image: url('彩虹底圖.jfif'); background-size: cover; background-position: center; padding: 60px 20px; text-align: center; }
+        
+        .container { max-width: 1000px; margin: 60px auto; padding: 0 20px; }
+        
+        /* 活動卡片網格佈局 */
+        .event-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        
+        .event-card { background: white; border-radius: 16px; padding: 30px; border: 1px solid #e5e0dc; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.3s; display: flex; flex-direction: column; }
+        .event-card:hover { transform: translateY(-5px); }
+        
+        .event-title { font-size: 1.4rem; color: #d97746; margin-bottom: 10px; font-weight: bold; }
+        .event-date { font-weight: bold; color: #8A7B6F; margin-bottom: 15px; }
+        .event-desc { font-size: 0.95rem; color: #5d4e43; margin-bottom: 25px; flex-grow: 1; }
+        
+        .btn { display: inline-block; background: #d97746; color: white; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; text-align: center; }
+        .btn:hover { background: #b86238; }
+
+        @media (max-width: 768px) { .container { margin: 30px auto; } }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo"><a href="index.html" style="text-decoration: none; color: inherit;">社團法人台灣華德福親子共學協會</a></div>
+        <div class="nav-links">
+            <a href="index.html">首頁</a>
+            <a href="about.html">協會緣起</a>
+            <a href="events.html" class="active">活動報名</a>
+            <a href="contact.html">聯絡我們</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1 style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">精彩活動報名</h1>
+    </div>
+
+    <div class="container">
+        <div class="event-grid">
+            
+            <!-- 活動卡片 1：夏令時光活動營 -->
+            <div class="event-card">
+                <div class="event-title">夏令時光活動營</div>
+                <div class="event-date">日期：07/07 - 07/11</div>
+                <div class="event-desc">
+                    炎炎夏日，潺潺流水。帶領小一至小四的孩子，體驗戶外煮食、照顧植物、安農溪畔健走與新寮瀑布戲水，感受地水火風的連結。
+                </div>
+                <a href="https://forms.gle/FvFUKQkhYBW96x336" target="_blank" class="btn">立即報名</a>
+            </div>
+
+            <!-- 活動卡片 2：(未來新增活動請複製這整塊 div) -->
+            <div class="event-card">
+                <div class="event-title">即將推出</div>
+                <div class="event-date">日期：敬請期待</div>
+                <div class="event-desc">
+                    我們正在籌備更多精彩的親子共學與節慶活動，請隨時關注官網的最新消息！
+                </div>
+                <a href="#" class="btn" style="background: #ccc; cursor: not-allowed;">敬請期待</a>
+            </div>
+
+            <!-- 活動卡片 3：(未來新增活動請複製這整塊 div) -->
+            <div class="event-card">
+                <div class="event-title">即將推出</div>
+                <div class="event-date">日期：敬請期待</div>
+                <div class="event-desc">
+                    協會致力於提供多元的治療教育課程與社群支持，歡迎您與我們一同成長。
+                </div>
+                <a href="#" class="btn" style="background: #ccc; cursor: not-allowed;">敬請期待</a>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
