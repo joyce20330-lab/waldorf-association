@@ -4,53 +4,102 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>服務項目 - 社團法人台灣華德福親子共學協會</title>
+    
+    <!-- 引入 Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // 設定品牌專屬色系 (與全站保持一致)
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: '#fcf9f2',      // 溫暖背景色
+                            text: '#5d4e43',    // 主要文字深棕色
+                            accent: '#d97746',  // 橘棕色強調色
+                            border: '#e5e0dc',  // 邊框線條色
+                            light: '#8A7B6F'    // 次要文字色
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Helvetica Neue"', 'Arial', '"Microsoft JhengHei"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        body { margin: 0; font-family: "Helvetica Neue", Arial, "Microsoft JhengHei", sans-serif; background-color: #fcf9f2; color: #5d4e43; line-height: 1.6; }
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; background: #fcf9f2; border-bottom: 1px solid #e5e0dc; }
-        .logo { font-weight: 500; font-size: 1.1rem; }
-        .nav-links { display: flex; gap: 20px; }
-        .nav-links a { text-decoration: none; color: #5d4e43; font-weight: 500; }
-        .nav-links a:hover, .nav-links a.active { color: #d97746; }
-
-        .hero { padding: 60px 20px; text-align: center; background: rgba(255,255,255,0.5); }
-        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
-
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
         
-        .service-card { background: white; border-radius: 16px; padding: 25px; border: 1px solid #e5e0dc; box-shadow: 0 4px 10px rgba(0,0,0,0.03); transition: transform 0.3s; display: flex; flex-direction: column; }
-        .service-card:hover { transform: translateY(-5px); }
-        
-        .service-img { width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 20px; background-color: #f0f0f0; }
-        .service-title { font-size: 1.25rem; color: #d97746; font-weight: bold; margin-bottom: 5px; }
-        .service-meta { font-size: 0.9rem; color: #8A7B6F; margin-bottom: 15px; font-style: italic; }
-        .service-desc { font-size: 0.95rem; color: #5d4e43; margin-bottom: 15px; flex-grow: 1; }
-        
-        ul { padding-left: 20px; color: #5d4e43; font-size: 0.9rem; }
-        li { margin-bottom: 5px; }
-        li a { color: #d97746; text-decoration: none; font-weight: bold; }
-        li a:hover { text-decoration: underline; }
+        /* 漸層背景圖 */
+       .hero-bg {
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), url('彩虹底圖.jfif') center/cover no-repeat;
+        }
 
-        footer { text-align: center; padding: 40px; background: #fcf9f2; color: #8A7B6F; font-size: 0.85rem; }
+        /* 手機版選單的展開動畫 */
+        #mobile-menu {
+            transition: all 0.3s ease-in-out;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+        }
+        #mobile-menu.open {
+            max-height: 400px;
+            opacity: 1;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
     </style>
 </head>
-<body>
+<body class="bg-brand-bg text-brand-text min-h-screen flex flex-col font-sans">
 
-    <nav>
-        <div class="logo"><a href="index.html" style="text-decoration: none; color: inherit;">台灣華德福親子共學協會</a></div>
-        <div class="nav-links">
-            <a href="index.html">首頁</a>
-            <a href="news.html">最新消息</a>
-            <a href="about.html">協會緣起</a>
-            <a href="services.html" class="active">服務項目</a>
-            <a href="events.html">活動報名</a>
-            <a href="contact.html">聯絡我們</a>
+    <!-- 導覽列 -->
+    <nav class="flex justify-between items-center px-6 md:px-[8%] py-5 border-b border-brand-border bg-brand-bg sticky top-0 z-50 shadow-sm">
+        <div class="font-medium text-lg tracking-wide text-brand-text hover:text-brand-accent transition-colors">
+            <a href="index.html">社團法人台灣華德福親子共學協會</a>
         </div>
+        
+        <!-- 桌機版導覽列 -->
+        <div class="hidden md:flex gap-8 items-center">
+            <a href="index.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">首頁</a>
+            <a href="news.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">最新消息</a>
+            <a href="about.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">協會緣起</a>
+            <a href="services.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">服務項目</a>
+            <a href="events.html" class="text-sm font-medium text-brand-accent transition-colors">活動報名</a>
+            <a href="contact.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">聯絡我們</a>
+        </div>
+
+        <!-- 手機版漢堡選單按鈕 -->
+        <button id="menu-btn" class="md:hidden flex flex-col gap-[5px] p-2 focus:outline-none" aria-label="Toggle Menu">
+            <span class="w-6 h-[2px] bg-brand-text block transition-transform duration-300 origin-center"></span>
+            <span class="w-6 h-[2px] bg-brand-text block transition-opacity duration-300"></span>
+            <span class="w-6 h-[2px] bg-brand-text block transition-transform duration-300 origin-center"></span>
+        </button>
     </nav>
 
-    <div class="hero">
-        <h1>共學．共享．共好．共有</h1>
-        <p>推廣0-99歲的親子共同學習課程。</p>
+    <!-- 手機版下拉選單 -->
+    <div id="mobile-menu" class="md:hidden bg-brand-bg border-b border-brand-border absolute w-full z-40 top-[73px] shadow-lg flex flex-col items-center gap-4">
+        <a href="index.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">首頁</a>
+        <a href="news.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">最新消息</a>
+        <a href="about.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">協會緣起</a>
+        <a href="services.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">服務項目</a>
+        <a href="events.html" class="w-full text-center py-2 text-brand-accent font-medium">活動報名</a>
+        <a href="contact.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">聯絡我們</a>
     </div>
+
+    <!-- 頁面標題區塊 -->
+    <header class="hero-bg py-20 px-6 flex justify-center items-center shadow-inner">
+        <div class="text-center">
+            <h1 class="text-3xl md:text-5xl font-bold text-white drop-shadow-md mb-4 tracking-wider">
+            共學．共享．共好．共有
+            </h1>
+<!-- 桌機顯示為一行 (nowrap)，小螢幕則會自動換行 (md:whitespace-nowrap) -->
+<p class="text-white/90 text-sm md:text-base drop-shadow-sm md:whitespace-nowrap">
+    推廣0-99歲的親子共同學習課程。。
+</div>
 
     <div class="container">
         <div class="services-grid">
