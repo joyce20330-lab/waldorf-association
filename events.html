@@ -3,40 +3,258 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>活動報名 - 社團法人台灣華德福親子共學協會</title>
+    <title>聯絡我們 - 社團法人台灣華德福親子共學協會</title>
     <style>
-        body { margin: 0; font-family: "Helvetica Neue", Arial, "Microsoft JhengHei", sans-serif; background-color: #fcf9f2; color: #5d4e43; line-height: 1.8; display: flex; flex-direction: column; min-height: 100vh; }
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; background: #fcf9f2; border-bottom: 1px solid #e5e0dc; }
-        .logo { font-weight: 500; font-size: 1.1rem; }
-        .nav-links { display: flex; gap: 25px; }
-        .nav-links a { text-decoration: none; color: #5d4e43; font-weight: 500; transition: color 0.3s; }
-        .nav-links a:hover, .nav-links a.active { color: #d97746; }
+        /* 共用基礎樣式 */
+        body {
+            margin: 0;
+            font-family: "Helvetica Neue", Arial, "Microsoft JhengHei", sans-serif;
+            background-color: #fcf9f2; 
+            color: #5d4e43;
+            line-height: 1.8;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-        .hero { background-image: url('彩虹底圖.jfif'); background-size: cover; background-position: center; padding: 60px 20px; text-align: center; }
-        
-        .container { max-width: 1000px; margin: 60px auto; padding: 0 20px; }
-        
-        /* 活動卡片網格佈局 */
-        .event-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        
-        .event-card { background: white; border-radius: 16px; padding: 30px; border: 1px solid #e5e0dc; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.3s; display: flex; flex-direction: column; }
-        .event-card:hover { transform: translateY(-5px); }
-        
-        .event-title { font-size: 1.4rem; color: #d97746; margin-bottom: 10px; font-weight: bold; }
-        .event-date { font-weight: bold; color: #8A7B6F; margin-bottom: 15px; }
-        .event-desc { font-size: 0.95rem; color: #5d4e43; margin-bottom: 25px; flex-grow: 1; }
-        
-        .btn { display: inline-block; background: #d97746; color: white; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; text-align: center; }
-        .btn:hover { background: #b86238; }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: #fcf9f2; 
+            border-bottom: 1px solid #e5e0dc;
+            position: relative;
+        }
 
-        @media (max-width: 768px) { .container { margin: 30px auto; } }
+        .logo { 
+            font-weight: 500; 
+            font-size: 1.1rem; 
+            color: #5d4e43;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px; 
+        }
+
+        .nav-links a { 
+            text-decoration: none; 
+            color: #5d4e43; 
+            font-size: 0.9rem; 
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover, .nav-links a.active { 
+            color: #d97746; /* 滑鼠移過去或所在頁面變成溫暖的橘棕色 */
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            border: none;
+            background: none;
+            padding: 5px;
+        }
+        
+        .menu-toggle span {
+            width: 25px;
+            height: 2px;
+            background-color: #5d4e43;
+            margin: 2.5px 0;
+        }
+
+        /* 聯絡我們專屬版面設計 */
+        .contact-hero {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-image: url('彩虹底圖.jfif'); 
+            background-size: cover;
+            background-position: center;
+            padding: 60px 20px;
+        }
+
+        .contact-container {
+            max-width: 900px;
+            width: 100%;
+            background: rgba(252, 249, 242, 0.95); 
+            padding: 40px 50px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+
+        /* 網格佈局：電腦版左右兩欄，手機版單欄 */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #5d4e43;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #e5e0dc;
+            padding-bottom: 12px;
+        }
+
+        .section-title svg {
+            width: 24px;
+            height: 24px;
+            stroke: #d97746; /* 溫暖的橘棕色圖示 */
+        }
+
+        /* 聯絡資訊列表樣式 */
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .info-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+
+        .info-list .main-title {
+            font-weight: bold;
+            font-size: 1.15rem;
+            margin-bottom: 5px;
+        }
+
+        .info-list svg {
+            width: 20px;
+            height: 20px;
+            stroke: #8A7B6F;
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+
+        .info-list a {
+            color: #5d4e43;
+            text-decoration: none;
+            border-bottom: 1px dashed #8A7B6F;
+            transition: all 0.3s;
+        }
+
+        .info-list a:hover {
+            color: #d97746;
+            border-color: #d97746;
+        }
+
+        /* Google Map 容器 */
+        .map-container {
+            margin-top: 25px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #e5e0dc;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.03);
+        }
+
+        /* 捐款區塊樣式 */
+        .donate-card {
+            background: #fdfaf6;
+            padding: 0;
+            border-radius: 12px;
+            height: 100%;
+        }
+
+        .donate-text {
+            color: #7a6859;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+
+        .bank-details {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #e5e0dc;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .bank-details p {
+            margin: 8px 0;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .bank-details .label {
+            color: #8A7B6F;
+            width: 60px;
+            font-size: 0.95rem;
+        }
+
+        .bank-details .account-number {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #d97746;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #e5e0dc;
+            letter-spacing: 1px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #fcf9f2;
+            font-size: 0.85rem;
+            color: #8A7B6F;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: flex; }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: #fcf9f2;
+                padding: 20px 0;
+                gap: 15px;
+                text-align: center;
+                border-bottom: 1px solid #e5e0dc;
+                z-index: 1000;
+            }
+            .nav-links.active { display: flex; }
+            .contact-container { padding: 30px 20px; }
+            .contact-grid { grid-template-columns: 1fr; gap: 40px; } /* 手機版變為單欄上下排列 */
+        }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo"><a href="index.html" style="text-decoration: none; color: inherit;">社團法人台灣華德福親子共學協會</a></div>
-        <div class="nav-links">
+        <div class="logo">
+            <a href="index.html" style="text-decoration: none; color: inherit;">社團法人台灣華德福親子共學協會</a>
+        </div>
+        
+        <button class="menu-toggle" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div class="nav-links" id="navLinks">
             <a href="index.html">首頁</a>
             <a href="#">最新消息</a>
             <a href="about.html">協會緣起</a>
