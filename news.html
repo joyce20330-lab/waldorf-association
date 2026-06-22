@@ -3,303 +3,222 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>聯絡我們 - 社團法人台灣華德福親子共學協會</title>
-    <style>
-        /* 共用基礎樣式 */
-        body {
-            margin: 0;
-            font-family: "Helvetica Neue", Arial, "Microsoft JhengHei", sans-serif;
-            background-color: #fcf9f2; 
-            color: #5d4e43;
-            line-height: 1.8;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 8%;
-            background: #fcf9f2; 
-            border-bottom: 1px solid #e5e0dc;
-            position: relative;
-        }
-
-        .logo { 
-            font-weight: 500; 
-            font-size: 1.1rem; 
-            color: #5d4e43;
-            letter-spacing: 0.5px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 25px; 
-        }
-
-        .nav-links a { 
-            text-decoration: none; 
-            color: #5d4e43; 
-            font-size: 0.9rem; 
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-        
-        .nav-links a:hover, .nav-links a.active { 
-            color: #d97746; /* 滑鼠移過去或所在頁面變成溫暖的橘棕色 */
-        }
-
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            border: none;
-            background: none;
-            padding: 5px;
-        }
-        
-        .menu-toggle span {
-            width: 25px;
-            height: 2px;
-            background-color: #5d4e43;
-            margin: 2.5px 0;
-        }
-
-        /* 聯絡我們專屬版面設計 */
-        .contact-hero {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-image: url('彩虹底圖.jfif'); 
-            background-size: cover;
-            background-position: center;
-            padding: 60px 20px;
-        }
-
-        .contact-container {
-            max-width: 900px;
-            width: 100%;
-            background: rgba(252, 249, 242, 0.95); 
-            padding: 40px 50px;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            box-sizing: border-box;
-            margin-bottom: 20px;
-        }
-
-        /* 網格佈局：電腦版左右兩欄，手機版單欄 */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-        }
-
-        .section-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.4rem;
-            font-weight: bold;
-            color: #5d4e43;
-            margin-bottom: 25px;
-            border-bottom: 2px solid #e5e0dc;
-            padding-bottom: 12px;
-        }
-
-        .section-title svg {
-            width: 24px;
-            height: 24px;
-            stroke: #d97746; /* 溫暖的橘棕色圖示 */
-        }
-
-        /* 聯絡資訊列表樣式 */
-        .info-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .info-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 15px;
-            font-size: 1.05rem;
-        }
-
-        .info-list .main-title {
-            font-weight: bold;
-            font-size: 1.15rem;
-            margin-bottom: 5px;
-        }
-
-        .info-list svg {
-            width: 20px;
-            height: 20px;
-            stroke: #8A7B6F;
-            margin-top: 4px;
-            flex-shrink: 0;
-        }
-
-        .info-list a {
-            color: #5d4e43;
-            text-decoration: none;
-            border-bottom: 1px dashed #8A7B6F;
-            transition: all 0.3s;
-        }
-
-        .info-list a:hover {
-            color: #d97746;
-            border-color: #d97746;
-        }
-
-        /* Google Map 容器 */
-        .map-container {
-            margin-top: 25px;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid #e5e0dc;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.03);
-        }
-
-        /* 捐款區塊樣式 */
-        .donate-card {
-            background: #fdfaf6;
-            padding: 0;
-            border-radius: 12px;
-            height: 100%;
-        }
-
-        .donate-text {
-            color: #7a6859;
-            line-height: 1.8;
-            margin-bottom: 25px;
-            text-align: justify;
-        }
-
-        .bank-details {
-            background: #ffffff;
-            padding: 25px;
-            border-radius: 10px;
-            border: 1px solid #e5e0dc;
-            box-shadow: inset 0 2px 5px rgba(0,0,0,0.02);
-        }
-
-        .bank-details p {
-            margin: 8px 0;
-            font-size: 1.05rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .bank-details .label {
-            color: #8A7B6F;
-            width: 60px;
-            font-size: 0.95rem;
-        }
-
-        .bank-details .account-number {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: #d97746;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px dashed #e5e0dc;
-            letter-spacing: 1px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: #fcf9f2;
-            font-size: 0.85rem;
-            color: #8A7B6F;
-        }
-
-        @media (max-width: 768px) {
-            .menu-toggle { display: flex; }
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: #fcf9f2;
-                padding: 20px 0;
-                gap: 15px;
-                text-align: center;
-                border-bottom: 1px solid #e5e0dc;
-                z-index: 1000;
+    <title>最新消息與活動 - 社團法人台灣華德福親子共學協會</title>
+    
+    <!-- 引入 Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // 設定品牌專屬色系
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: '#fcf9f2',      // 溫暖背景色
+                            text: '#5d4e43',    // 主要文字深棕色
+                            accent: '#d97746',  // 橘棕色強調色
+                            border: '#e5e0dc',  // 邊框線條色
+                            light: '#8A7B6F'    // 次要文字色
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Helvetica Neue"', 'Arial', '"Microsoft JhengHei"', 'sans-serif'],
+                    }
+                }
             }
-            .nav-links.active { display: flex; }
-            .contact-container { padding: 30px 20px; }
-            .contact-grid { grid-template-columns: 1fr; gap: 40px; } /* 手機版變為單欄上下排列 */
+        }
+    </script>
+    <style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* 漸層背景圖替代原有的彩虹底圖 */
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(217,119,70,0.8) 0%, rgba(93,78,67,0.8) 100%), url('https://placehold.co/1920x400/fcf9f2/5d4e43?text=Waldorf+Education') center/cover;
+        }
+
+        /* 手機版選單的展開動畫 */
+        #mobile-menu {
+            transition: all 0.3s ease-in-out;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+        }
+        #mobile-menu.open {
+            max-height: 400px;
+            opacity: 1;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
         }
     </style>
 </head>
-<body>
+<body class="bg-brand-bg text-brand-text min-h-screen flex flex-col font-sans">
 
-    <nav>
-        <div class="logo">
-            <a href="index.html" style="text-decoration: none; color: inherit;">社團法人台灣華德福親子共學協會</a>
+    <nav class="flex justify-between items-center px-6 md:px-[8%] py-5 border-b border-brand-border bg-brand-bg sticky top-0 z-50 shadow-sm">
+        <div class="font-medium text-lg tracking-wide text-brand-text hover:text-brand-accent transition-colors">
+            <a href="index.html">社團法人台灣華德福親子共學協會</a>
         </div>
         
-        <button class="menu-toggle" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-
-        <div class="nav-links" id="navLinks">
-            <a href="index.html">首頁</a>
-            <a href="news.html">最新消息</a>
-            <a href="about.html">協會緣起</a>
-            <a href="#">服務項目</a>
-            <a href="events.html">活動報名</a>
-            <a href="contact.html">聯絡我們</a>
+        <!-- 桌機版導覽列 -->
+        <div class="hidden md:flex gap-8 items-center">
+            <a href="index.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">首頁</a>
+            <a href="news.html" class="text-sm font-medium text-brand-accent transition-colors">最新消息</a>
+            <a href="about.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">協會緣起</a>
+            <a href="#" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">服務項目</a>
+            <a href="events.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">活動報名</a>
+            <a href="contact.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">聯絡我們</a>
         </div>
+
+        <!-- 手機版漢堡選單按鈕 -->
+        <button id="menu-btn" class="md:hidden flex flex-col gap-[5px] p-2 focus:outline-none" aria-label="Toggle Menu">
+            <span class="w-6 h-[2px] bg-brand-text block transition-transform duration-300 origin-center"></span>
+            <span class="w-6 h-[2px] bg-brand-text block transition-opacity duration-300"></span>
+            <span class="w-6 h-[2px] bg-brand-text block transition-transform duration-300 origin-center"></span>
+        </button>
     </nav>
 
-    <header class="hero">
-        <h1 style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">最新消息與活動</h1>
+    <div id="mobile-menu" class="md:hidden bg-brand-bg border-b border-brand-border absolute w-full z-40 top-[73px] shadow-lg flex flex-col items-center gap-4">
+        <a href="index.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">首頁</a>
+        <a href="news.html" class="w-full text-center py-2 text-brand-accent font-medium">最新消息</a>
+        <a href="about.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">協會緣起</a>
+        <a href="#" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">服務項目</a>
+        <a href="events.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">活動報名</a>
+        <a href="contact.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">聯絡我們</a>
+    </div>
+
+    <header class="hero-bg py-20 px-6 flex justify-center items-center shadow-inner">
+        <div class="text-center">
+            <h1 class="text-3xl md:text-5xl font-bold text-white drop-shadow-md mb-4 tracking-wider">
+                最新消息與活動
+            </h1>
+            <p class="text-white/90 text-sm md:text-base drop-shadow-sm">
+                掌握協會最新動態、課程資訊與精采活動回顧
+            </p>
+        </div>
     </header>
 
-    <section class="news-section">
-        <div class="news-list">
+    <main class="flex-1 flex justify-center py-12 px-4 sm:px-6">
+        <div class="max-w-4xl w-full flex flex-col gap-5">
+            
             <!-- 1. 秋季讀書會 -->
-            <div class="news-item">
-                <span class="tag event">活動</span>
-                <a href="contact.html" class="news-title">秋季治療教育讀書會開放報名中！</a>
-                
-            </div>
-            <!-- 2. 夏令營 -->
-            <div class="news-item">
-                <span class="tag event">活動</span>
-                <a href="https://forms.gle/FvFUKQkhYBW96x336" target="_blank" class="news-title">夏令時光活動營，報名最後倒數！</a>
-                
-            </div>
-            <!-- 3. 十二感官 -->
-            <div class="news-item">
-                <span class="tag event">活動</span>
-                <a href="events.html" class="news-title">十二感官相關課程開放報名中！</a>
-                
-            </div>
-            <!-- 4. 音樂會分享 -->
-            <div class="news-item">
-                <span class="tag news">分享</span>
-                <a href="https://www.facebook.com/share/p/18sEZhCMpv/" target="_blank" class="news-title">《草地音樂會》精彩花絮，感謝大家的參與！</a>
-                
-            </div>
-        </div>
-    </section>
+            <a href="contact.html" class="group bg-white rounded-xl p-5 md:p-6 shadow-sm border border-brand-border hover:shadow-md hover:border-brand-accent/50 transition-all duration-300 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
+                <div class="flex-shrink-0">
+                    <span class="inline-block bg-brand-accent/10 text-brand-accent px-4 py-1.5 rounded-full text-sm font-bold tracking-wide">
+                        活動報名
+                    </span>
+                </div>
+                <div class="flex-1">
+                    <h2 class="text-xl font-bold text-brand-text group-hover:text-brand-accent transition-colors mb-2">
+                        秋季治療教育讀書會開放報名中！
+                    </h2>
+                    <p class="text-brand-light text-sm line-clamp-2">
+                        邀請您一同探索華德福治療教育的奧秘，透過共讀與討論，深化對孩子發展的理解與支持...
+                    </p>
+                </div>
+                <div class="hidden sm:flex text-brand-accent">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </div>
+            </a>
 
-    <footer>
-        <p>Copyright © 2026 台灣華德福親子共學協會</p>
+            <!-- 2. 夏令營 -->
+            <a href="https://forms.gle/FvFUKQkhYBW96x336" target="_blank" class="group bg-white rounded-xl p-5 md:p-6 shadow-sm border border-brand-border hover:shadow-md hover:border-brand-accent/50 transition-all duration-300 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
+                <div class="flex-shrink-0">
+                    <span class="inline-block bg-brand-accent/10 text-brand-accent px-4 py-1.5 rounded-full text-sm font-bold tracking-wide">
+                        活動倒數
+                    </span>
+                </div>
+                <div class="flex-1">
+                    <h2 class="text-xl font-bold text-brand-text group-hover:text-brand-accent transition-colors mb-2">
+                        夏令時光活動營，報名最後倒數！
+                    </h2>
+                    <p class="text-brand-light text-sm line-clamp-2">
+                        豐富的自然探索、藝術手作與團體遊戲，讓孩子在夏日陽光下健康成長，名額有限，敬請把握機會填寫表單！
+                    </p>
+                </div>
+                <div class="hidden sm:flex text-brand-accent">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                </div>
+            </a>
+
+            <!-- 3. 十二感官 -->
+            <a href="events.html" class="group bg-white rounded-xl p-5 md:p-6 shadow-sm border border-brand-border hover:shadow-md hover:border-brand-accent/50 transition-all duration-300 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
+                <div class="flex-shrink-0">
+                    <span class="inline-block bg-brand-accent/10 text-brand-accent px-4 py-1.5 rounded-full text-sm font-bold tracking-wide">
+                        課程資訊
+                    </span>
+                </div>
+                <div class="flex-1">
+                    <h2 class="text-xl font-bold text-brand-text group-hover:text-brand-accent transition-colors mb-2">
+                        十二感官相關課程開放報名中！
+                    </h2>
+                    <p class="text-brand-light text-sm line-clamp-2">
+                        深入了解十二感官如何形塑孩子的世界觀與學習能力，提供父母實用的陪伴指南與觀察技巧...
+                    </p>
+                </div>
+                <div class="hidden sm:flex text-brand-accent">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </div>
+            </a>
+
+            <!-- 4. 音樂會分享 -->
+            <a href="https://www.facebook.com/share/p/18sEZhCMpv/" target="_blank" class="group bg-white rounded-xl p-5 md:p-6 shadow-sm border border-brand-border hover:shadow-md hover:border-brand-text/30 transition-all duration-300 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
+                <div class="flex-shrink-0">
+                    <span class="inline-block bg-brand-text/10 text-brand-text px-4 py-1.5 rounded-full text-sm font-bold tracking-wide">
+                        活動分享
+                    </span>
+                </div>
+                <div class="flex-1">
+                    <h2 class="text-xl font-bold text-brand-text group-hover:text-brand-accent transition-colors mb-2">
+                        《草地音樂會》精彩花絮，感謝大家的參與！
+                    </h2>
+                    <p class="text-brand-light text-sm line-clamp-2">
+                        美好的微風、動人的音符與孩子們的笑聲交織成難忘的午後。點擊前往官方 Facebook 粉絲專頁查看完整活動照片與影音紀錄。
+                    </p>
+                </div>
+                <div class="hidden sm:flex text-brand-text group-hover:text-brand-accent">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                </div>
+            </a>
+
+        </div>
+    </main>
+
+    <footer class="bg-brand-bg py-6 text-center border-t border-brand-border">
+        <p class="text-brand-light text-sm">
+            Copyright © 2026 社團法人台灣華德福親子共學協會. All rights reserved.
+        </p>
     </footer>
 
+    <script>
+        // 處理手機版導覽列的展開與收合
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const spans = menuBtn.querySelectorAll('span');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+            
+            // 漢堡選單動畫效果 (變成 X)
+            if (mobileMenu.classList.contains('open')) {
+                spans[0].style.transform = 'translateY(7px) rotate(45deg)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'translateY(-7px) rotate(-45deg)';
+            } else {
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
