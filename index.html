@@ -22,7 +22,7 @@
             align-items: center;
             padding: 20px 8%;
             background: #fcf9f2; 
-            border-bottom: 1px solid #dcd3ca;
+            border-bottom: 1px solid #e5e0dc;
         }
 
         .logo { 
@@ -37,14 +37,15 @@
             gap: 25px; 
         }
 
+        /* Applying coffee color to nav links as requested */
         .nav-links a { 
             text-decoration: none; 
             color: #5d4e43; 
             font-size: 0.9rem; 
-            font-weight: 400;
-            transition: opacity 0.3s;
+            font-weight: 500;
+            transition: color 0.3s ease;
         }
-        .nav-links a:hover { opacity: 0.6; }
+        .nav-links a:hover { color: #8A7B6F; }
 
         .hero {
             flex: 1;
@@ -54,33 +55,29 @@
             align-items: center;
             text-align: center;
             background: linear-gradient(180deg, #ffede1 0%, #d6eaff 50%, #e0ffe6 100%);
-            padding: 60px 20px;
+            padding: 80px 20px;
         }
 
-        h1 { font-size: 2.5rem; margin-bottom: 30px; letter-spacing: 2px; }
+        h1 { font-size: 2.2rem; margin-bottom: 30px; letter-spacing: 1px; color: #5d4e43; }
 
         .text-content {
-            max-width: 700px;
+            max-width: 650px;
             font-size: 1.1rem;
             margin-bottom: 40px;
-        }
-
-        .highlight {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-top: 20px;
         }
 
         footer {
             text-align: center;
             padding: 20px;
-            background: #dcd3ca;
+            background: #fcf9f2;
             font-size: 0.85rem;
+            color: #8A7B6F;
         }
 
         @media (max-width: 768px) {
             nav { flex-direction: column; gap: 15px; }
-            h1 { font-size: 1.8rem; }
+            .nav-links { gap: 15px; }
+            h1 { font-size: 1.6rem; }
         }
     </style>
 </head>
@@ -100,24 +97,23 @@
 
     <header class="hero">
         <div class="text-content">
-            <p>心靈的期盼正在萌芽
-            <p>意志的行動日漸茁壯
-            <p>生命的果實即將成熟
-            <p>我感知我的命運
-            <p>我的命運找到我
-            <p>我感知我的守護星
-            <p>我的守護星照耀我
-            <p>我感知人生的目標
-            <p>他們先後淬鍊我
-            <p>我的心靈與這大千世界合一
-            <p>生命的光輝日驅明亮
-            <p>面對挑戰更加艱難
-            <p>內心也隨之豐饒<br>
+            <p>心靈的期盼正在萌芽<br>
+            意志的行動日漸茁壯<br>
+            生命的果實即將成熟<br>
+            我感知我的命運<br>
+            我的命運找到我<br>
+            我感知我的守護星<br>
+            我的守護星照耀我<br>
+            我感知人生的目標<br>
+            他們先後淬鍊我<br>
+            我的心靈與這大千世界合一<br>
+            生命的光輝日驅明亮<br>
+            面對挑戰更加艱難<br>
+            內心也隨之豐饒</p>
         </div>
         
-        <div class="poem-footer mt-12 text-sm text-[#8A7B6F]">
+        <div class="poem-footer text-sm" style="color: #8A7B6F;">
             <p>~ 魯道夫史代納 (Rudolf Steiner)~</p>
-            <p>譯者：詹雅智 • 羅葉</p>
         </div>
     </header>
 
