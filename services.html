@@ -4,320 +4,197 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>服務項目 - 社團法人台灣華德福親子共學協會</title>
-    
-    <!-- 引入 Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        // 設定品牌專屬色系 (與全站保持一致)
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            bg: '#fcf9f2',      // 溫暖背景色
-                            text: '#5d4e43',    // 主要文字深棕色
-                            accent: '#d97746',  // 橘棕色強調色
-                            border: '#e5e0dc',  // 邊框線條色
-                            light: '#8A7B6F'    // 次要文字色
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['"Helvetica Neue"', 'Arial', '"Microsoft JhengHei"', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
     <style>
-        body {
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        
-        /* 漸層背景圖 (套用您指定的彩虹底圖設定) */
-        .hero-bg {
-            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), url('彩虹底圖.jfif') center/cover no-repeat;
-        }
+        body { margin: 0; font-family: "Helvetica Neue", Arial, "Microsoft JhengHei", sans-serif; background-color: #fcf9f2; color: #5d4e43; line-height: 1.6; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; background: #fcf9f2; border-bottom: 1px solid #e5e0dc; }
+        .logo { font-weight: 500; font-size: 1.1rem; }
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a { text-decoration: none; color: #5d4e43; font-weight: 500; }
+        .nav-links a:hover, .nav-links a.active { color: #d97746; }
 
-        /* 手機版選單的展開動畫 */
-        #mobile-menu {
-            transition: all 0.3s ease-in-out;
-            max-height: 0;
-            overflow: hidden;
-            opacity: 0;
-        }
-        #mobile-menu.open {
-            max-height: 400px;
-            opacity: 1;
-            padding-top: 1rem;
-            padding-bottom: 1rem;
-        }
+        .hero { padding: 60px 20px; text-align: center; background: rgba(255,255,255,0.5); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        
+        .service-card { background: white; border-radius: 16px; padding: 25px; border: 1px solid #e5e0dc; box-shadow: 0 4px 10px rgba(0,0,0,0.03); transition: transform 0.3s; display: flex; flex-direction: column; }
+        .service-card:hover { transform: translateY(-5px); }
+        
+        .service-img { width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 20px; background-color: #f0f0f0; }
+        .service-title { font-size: 1.25rem; color: #d97746; font-weight: bold; margin-bottom: 5px; }
+        .service-meta { font-size: 0.9rem; color: #8A7B6F; margin-bottom: 15px; font-style: italic; }
+        .service-desc { font-size: 0.95rem; color: #5d4e43; margin-bottom: 15px; flex-grow: 1; }
+        
+        ul { padding-left: 20px; color: #5d4e43; font-size: 0.9rem; }
+        li { margin-bottom: 5px; }
+        li a { color: #d97746; text-decoration: none; font-weight: bold; }
+        li a:hover { text-decoration: underline; }
+
+        footer { text-align: center; padding: 40px; background: #fcf9f2; color: #8A7B6F; font-size: 0.85rem; }
     </style>
 </head>
-<body class="bg-brand-bg text-brand-text min-h-screen flex flex-col font-sans">
+<body>
 
-    <!-- 導覽列 -->
-    <nav class="flex justify-between items-center px-6 md:px-[8%] py-5 border-b border-brand-border bg-brand-bg sticky top-0 z-50 shadow-sm">
-        <div class="font-medium text-lg tracking-wide text-brand-text hover:text-brand-accent transition-colors">
-            <a href="index.html">社團法人台灣華德福親子共學協會</a>
+    <nav>
+        <div class="logo"><a href="index.html" style="text-decoration: none; color: inherit;">台灣華德福親子共學協會</a></div>
+        <div class="nav-links">
+            <a href="index.html">首頁</a>
+            <a href="news.html">最新消息</a>
+            <a href="about.html">協會緣起</a>
+            <a href="services.html" class="active">服務項目</a>
+            <a href="events.html">活動報名</a>
+            <a href="contact.html">聯絡我們</a>
         </div>
-        
-        <!-- 桌機版導覽列 -->
-        <div class="hidden md:flex gap-8 items-center">
-            <a href="index.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">首頁</a>
-            <a href="news.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">最新消息</a>
-            <a href="about.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">協會緣起</a>
-            <a href="services.html" class="text-sm font-medium text-brand-accent transition-colors">服務項目</a>
-            <a href="events.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">活動報名</a>
-            <a href="contact.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">聯絡我們</a>
-        </div>
-
-        <!-- 手機版漢堡選單按鈕 -->
-        <button id="menu-btn" class="md:hidden flex flex-col gap-[5px] p-2 focus:outline-none" aria-label="Toggle Menu">
-            <span class="w-6 h-[2px] bg-brand-text block transition-transform duration-300 origin-center"></span>
-            <span class="w-6 h-[2px] bg-brand-text block transition-opacity duration-300"></span>
-            <span class="w-6 h-[2px] bg-brand-text block transition-transform duration-300 origin-center"></span>
-        </button>
     </nav>
 
-    <!-- 手機版下拉選單 -->
-    <div id="mobile-menu" class="md:hidden bg-brand-bg border-b border-brand-border absolute w-full z-40 top-[73px] shadow-lg flex flex-col items-center gap-4">
-        <a href="index.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">首頁</a>
-        <a href="news.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">最新消息</a>
-        <a href="about.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">協會緣起</a>
-        <a href="services.html" class="w-full text-center py-2 text-brand-accent font-medium">服務項目</a>
-        <a href="events.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">活動報名</a>
-        <a href="contact.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">聯絡我們</a>
+    <div class="hero">
+        <h1>共學．共享．共好．共有</h1>
+        <p>推廣0-99歲的親子共同學習課程。</p>
     </div>
 
-    <!-- 頁面標題區塊 -->
-    <header class="hero-bg py-20 px-6 flex justify-center items-center shadow-inner">
-        <div class="text-center">
-            <h1 class="text-3xl md:text-5xl font-bold text-white drop-shadow-md mb-4 tracking-wider">
-                共學．共享．共好．共有
-            </h1>
-            <p class="text-white/90 text-sm md:text-base drop-shadow-sm max-w-xl mx-auto">
-                推廣0-99歲的親子共同學習課程。
-            </p>
-        </div>
-    </header>
-
-    <!-- 服務項目列表區塊 -->
-    <main class="flex-1 w-full max-w-7xl mx-auto py-16 px-6">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+    <div class="container">
+        <div class="services-grid">
             
             <!-- 1. 親子共學 -->
-            <div class="bg-white rounded-2xl shadow-sm border border-brand-border overflow-hidden flex flex-col hover:shadow-xl hover:border-brand-accent/40 transition-all duration-300 transform hover:-translate-y-1">
-                <img src="https://placehold.co/400x200/eee/999?text=Image" alt="親子共學" class="w-full h-48 object-cover">
-                <div class="p-6 flex-1 flex flex-col">
-                    <h2 class="text-xl font-bold text-brand-accent mb-1">親子共學</h2>
-                    <p class="text-brand-text text-sm leading-relaxed mb-4 flex-1">
-                        在大人溫柔規律的愛護陪伴下，讓孩子在包容中穩定扎根，安穩體驗生命最初的平凡幸福。
-                    </p>
-                    <ul class="text-sm text-brand-text space-y-1.5 list-disc list-inside">
-                        <li>0-2歲 寶寶班（籌備中）</li>
-                        <li><a href="contact.html" class="text-brand-accent font-bold hover:underline">2-3歲 幼幼班</a></li>
-                        <li><a href="contact.html" class="text-brand-accent font-bold hover:underline">3-6歲 幼兒班</a></li>
-                        <li>畢業典禮</li>
-                    </ul>
-                </div>
+            <div class="service-card">
+                <img src="https://drive.google.com/uc?export=view&id=1sO986RnR_HXJ7yvnzQXrPwIqhikRCEPb" class="service-img" alt="親子共學">
+                <div class="service-title">親子共學</div>
+                <p class="service-desc">在大人溫柔規律的愛護陪伴下，讓孩子在包容中穩定扎根，安穩體驗生命最初的平凡幸福。</p>
+                <ul>
+                    <li>0-2歲 寶寶班（籌備中）</li>
+                    <li><a href="contact.html">2-3歲 幼幼班</a></li>
+                    <li><a href="contact.html">3-6歲 幼兒班</a></li>
+                    <li>畢業典禮</li>
+                </ul>
             </div>
 
             <!-- 2. 自學陪伴 -->
-            <div class="bg-white rounded-2xl shadow-sm border border-brand-border overflow-hidden flex flex-col hover:shadow-xl hover:border-brand-accent/40 transition-all duration-300 transform hover:-translate-y-1">
-                <img src="https://placehold.co/400x200/eee/999?text=Image" alt="自學陪伴" class="w-full h-48 object-cover">
-                <div class="p-6 flex-1 flex flex-col">
-                    <h2 class="text-xl font-bold text-brand-accent mb-1">自學陪伴</h2>
-                    <p class="text-brand-text text-sm leading-relaxed mb-4 flex-1">
-                        給予家庭全然的信任與希望，陪伴0-12歲的孩子在天地間踏實探索，看見獨一無二的生命奇蹟。
-                    </p>
-                    <ul class="text-sm text-brand-text space-y-1.5 list-disc list-inside">
-                        <li>0-12歲 自學支持與陪伴</li>
-                    </ul>
-                </div>
+            <div class="service-card">
+                <img src="https://drive.google.com/uc?export=view&id=1YPazlKhDy6xrljY9hNF7Oc2_8wISTZdl" class="service-img" alt="自學陪伴">
+                <div class="service-title">自學陪伴</div>
+                <p class="service-desc">給予家庭全然的信任與希望，陪伴0-12歲的孩子在天地間踏實探索，看見獨一無二的生命奇蹟。</p>
+                <ul>
+                    <li>0-12歲 自學支持與陪伴</li>
+                </ul>
             </div>
 
             <!-- 3. 生活藝術課程 -->
-            <div class="bg-white rounded-2xl shadow-sm border border-brand-border overflow-hidden flex flex-col hover:shadow-xl hover:border-brand-accent/40 transition-all duration-300 transform hover:-translate-y-1">
-                <img src="https://placehold.co/400x200/eee/999?text=Image" alt="生活藝術課程" class="w-full h-48 object-cover">
-                <div class="p-6 flex-1 flex flex-col">
-                    <h2 class="text-xl font-bold text-brand-accent mb-1">生活藝術課程</h2>
-                    <p class="text-brand-text text-sm leading-relaxed mb-4 flex-1">
-                        透過藝術、手作與講座的呼吸流動，陪伴大人與孩子在自然節奏中安定，找回內在靈魂的和諧。
-                    </p>
-                    <ul class="text-sm text-brand-text space-y-1.5 list-disc list-inside">
-                        <li>生活藝術相關講座/線上課程</li>
-                        <li>華德福教育體驗營</li>
-                        <li>季節營隊</li>
-                    </ul>
-                </div>
+            <div class="service-card">
+                <img src="https://drive.google.com/uc?export=view&id=1linAtzojvszg-_0M0TE7AAyX6SLufbfh" class="service-img" alt="生活藝術課程">
+                <div class="service-title">生活藝術課程</div>
+                <p class="service-desc">透過藝術、手作與講座的呼吸流動，陪伴大人與孩子在自然節奏中安定，找回內在靈魂的和諧。</p>
+                <ul>
+                    <li>生活藝術相關講座/線上課程</li>
+                    <li>華德福教育體驗營</li>
+                    <li>季節營隊</li>
+                </ul>
             </div>
 
             <!-- 4. 療育團隊 -->
-            <div class="bg-white rounded-2xl shadow-sm border border-brand-border overflow-hidden flex flex-col hover:shadow-xl hover:border-brand-accent/40 transition-all duration-300 transform hover:-translate-y-1">
-                <img src="https://placehold.co/400x200/eee/999?text=Image" alt="療育團隊" class="w-full h-48 object-cover">
-                <div class="p-6 flex-1 flex flex-col">
-                    <h2 class="text-xl font-bold text-brand-accent mb-1">療育團隊</h2>
-                    <p class="text-brand-text text-sm leading-relaxed mb-4 flex-1">
-                        帶著深層的承載、理解與轉化力量，看見孩子發展的結節，陪伴受挫的身心走向重生。
-                    </p>
-                    <ul class="text-sm text-brand-text space-y-1.5 list-disc list-inside">
-                        <li>兒童研討（含兒童觀察）</li>
-                        <li>治療教育 / 校醫諮詢</li>
-                        <li>輔正教育</li>
-                        <li>藝術療育場域</li>
-                    </ul>
-                </div>
+            <div class="service-card">
+                <img src="https://drive.google.com/uc?export=view&id=1bdB7AL7hAqZ2WwfofsbTikZzNYR64DMm" class="service-img" alt="療育團隊">
+                <div class="service-title">療育團隊</div>
+                <p class="service-desc">帶著深層的承載、理解與轉化力量，看見孩子發展的結節，陪伴受挫的身心走向重生。</p>
+                <ul>
+                    <li>兒童研討（含兒童觀察）</li>
+                    <li>治療教育 / 校醫諮詢</li>
+                    <li>輔正教育</li>
+                    <li>藝術療育場域</li>
+                </ul>
             </div>
 
             <!-- 5. 專業課程推廣 -->
-            <div class="bg-white rounded-2xl shadow-sm border border-brand-border overflow-hidden flex flex-col hover:shadow-xl hover:border-brand-accent/40 transition-all duration-300 transform hover:-translate-y-1">
-                <img src="https://placehold.co/400x200/eee/999?text=Image" alt="專業課程推廣" class="w-full h-48 object-cover">
-                <div class="p-6 flex-1 flex flex-col">
-                    <h2 class="text-xl font-bold text-brand-accent mb-1">專業課程推廣</h2>
-                    <p class="text-brand-text text-sm leading-relaxed mb-4 flex-1">
-                        透過嚴謹的宇宙與生命史規律學習，在神聖的幾何秩序中建立清明意識，沉澱內在信念。
-                    </p>
-                    <ul class="text-sm text-brand-text space-y-1.5 list-disc list-inside">
-                        <li>十二感官工作坊</li>
-                        <li>星智學與生命史系列</li>
-                        <li>園藝治療 / 工作坊</li>
-                    </ul>
-                </div>
+            <div class="service-card">
+                <img src="https://drive.google.com/uc?export=view&id=1xMj5u95X0VakFYWR8xmpfrSmlrzpz1F1" class="service-img" alt="專業課程推廣">
+                <div class="service-title">專業課程推廣</div>
+                <p class="service-desc">透過嚴謹的宇宙與生命史規律學習，在神聖的幾何秩序中建立清明意識，沉澱內在信念。</p>
+                <ul>
+                    <li>十二感官工作坊</li>
+                    <li>星智學與生命史系列</li>
+                    <li>園藝治療 / 工作坊</li>
+                </ul>
             </div>
 
             <!-- 6. 友善市集 -->
-            <div class="bg-white rounded-2xl shadow-sm border border-brand-border overflow-hidden flex flex-col hover:shadow-xl hover:border-brand-accent/40 transition-all duration-300 transform hover:-translate-y-1">
-                <img src="https://placehold.co/400x200/eee/999?text=Image" alt="友善市集" class="w-full h-48 object-cover">
-                <div class="p-6 flex-1 flex flex-col">
-                    <h2 class="text-xl font-bold text-brand-accent mb-1">友善市集</h2>
-                    <p class="text-brand-text text-sm leading-relaxed mb-4 flex-1">
-                        帶著走入常民人群的蓬勃生命力，打破同溫層，在喧囂的社區市集裡隨遇而安地散播共好種子。
-                    </p>
-                    <ul class="text-sm text-brand-text space-y-1.5 list-disc list-inside">
-                        <li>公部門補助款計畫</li>
-                        <li>市集擺攤與社區連結</li>
-                    </ul>
-                </div>
+            <div class="service-card">
+                <img src="https://drive.google.com/uc?export=view&id=1K-qFQCgK0H26B4VxiTI7p3YyNAUqKtJj" class="service-img" alt="友善市集">
+                <div class="service-title">友善市集</div>
+                <p class="service-desc">帶著走入常民人群的蓬勃生命力，打破同溫層，在喧囂的社區市集裡隨遇而安地散播共好種子。</p>
+                <ul>
+                    <li>公部門補助款計畫</li>
+                    <li>市集擺攤與社區連結</li>
+                </ul>
             </div>
 
             <!-- 7. 工坊 -->
-            <div class="bg-white rounded-2xl shadow-sm border border-brand-border overflow-hidden flex flex-col hover:shadow-xl hover:border-brand-accent/40 transition-all duration-300 transform hover:-translate-y-1">
-                <img src="https://placehold.co/400x200/eee/999?text=Image" alt="工坊" class="w-full h-48 object-cover">
-                <div class="p-6 flex-1 flex flex-col">
-                    <h2 class="text-xl font-bold text-brand-accent mb-1">工坊</h2>
-                    <p class="text-brand-text text-sm leading-relaxed mb-4 flex-1">
-                        透過指尖的專注、意志力與溫度，將愛封存於手作物質中，讓人帶走不忘初心的記憶。
-                    </p>
-                    <ul class="text-sm text-brand-text space-y-1.5 list-disc list-inside">
-                        <li>獨家商品開發</li>
-                        <li>蠟燭工坊 / 手作工坊</li>
-                    </ul>
-                </div>
+            <div class="service-card">
+                <img src="https://drive.google.com/uc?export=view&id=1xuRjSfTyEMObjL4KzS9oJU2PQx-oXhNz" class="service-img" alt="工坊">
+                <div class="service-title">工坊</div>
+                <p class="service-desc">透過指尖的專注、意志力與溫度，將愛封存於手作物質中，讓人帶走不忘初心的記憶。</p>
+                <ul>
+                    <li>獨家商品開發</li>
+                    <li>蠟燭工坊 / 手作工坊</li>
+                </ul>
             </div>
 
-            <!-- 8. 印刷出版 -->
-            <div class="bg-white rounded-2xl shadow-sm border border-brand-border overflow-hidden flex flex-col hover:shadow-xl hover:border-brand-accent/40 transition-all duration-300 transform hover:-translate-y-1">
-                <img src="https://placehold.co/400x200/eee/999?text=Image" alt="印刷出版" class="w-full h-48 object-cover">
-                <div class="p-6 flex-1 flex flex-col">
-                    <h2 class="text-xl font-bold text-brand-accent mb-1">印刷出版</h2>
-                    <p class="text-brand-text text-sm leading-relaxed mb-4 flex-1">
-                        將老師們珍貴的實踐智慧化為沉穩長青的紙本作品，經得起時間考驗，永久陪伴後來的家庭。
-                    </p>
-                    <ul class="text-sm text-brand-text space-y-1.5 list-disc list-inside">
-                        <li>華德福與人智學相關書籍</li>
-                        <li>教學作品整理</li>
-                    </ul>
-                </div>
+            <!-- 8. 人智學相關印刷品 -->
+            <div class="service-card">
+                <img src="https://drive.google.com/uc?export=view&id=1BoHfH2MnC-MU3BgNhm0t3wkm6NE53g1S" class="service-img" alt="人智學印刷品">
+                <div class="service-title">印刷出版</div>
+                <p class="service-desc">將老師們珍貴的實踐智慧化為沉穩長青的紙本作品，經得起時間考驗，永久陪伴後來的家庭。</p>
+                <ul>
+                    <li>華德福與人智學相關書籍</li>
+                    <li>教學作品整理</li>
+                </ul>
             </div>
 
-            <!-- 9. 家長共學 -->
-            <div class="bg-white rounded-2xl shadow-sm border border-brand-border overflow-hidden flex flex-col hover:shadow-xl hover:border-brand-accent/40 transition-all duration-300 transform hover:-translate-y-1">
-                <img src="https://placehold.co/400x200/eee/999?text=Image" alt="家長共學課程" class="w-full h-48 object-cover">
-                <div class="p-6 flex-1 flex flex-col">
-                    <h2 class="text-xl font-bold text-brand-accent mb-1">家長共學</h2>
-                    <p class="text-brand-text text-sm leading-relaxed mb-4 flex-1">
-                        大人的自我修行與覺醒，在育兒的紅塵俗事中透過內省穩定身心靈，成為孩子最清明的身教環境。
-                    </p>
-                    <ul class="text-sm text-brand-text space-y-1.5 list-disc list-inside">
-                        <li>家長身、心、靈工作坊</li>
-                    </ul>
-                </div>
+            <!-- 9. 家長共學課程 -->
+            <div class="service-card">
+                <img src="https://drive.google.com/uc?export=view&id=1Gszw29Sv--51UhyYO12W5-YoTyHH36fE" class="service-img" alt="家長共學課程">
+                <div class="service-title">家長共學</div>
+                <p class="service-desc">大人的自我修行與覺醒，在育兒的紅塵俗事中透過內省穩定身心靈，成為孩子最清明的身教環境。</p>
+                <ul>
+                    <li>家長身、心、靈工作坊</li>
+                </ul>
             </div>
 
             <!-- 10. 讀書會 -->
-            <div class="bg-white rounded-2xl shadow-sm border border-brand-border overflow-hidden flex flex-col hover:shadow-xl hover:border-brand-accent/40 transition-all duration-300 transform hover:-translate-y-1">
-                <img src="https://placehold.co/400x200/eee/999?text=Image" alt="讀書會" class="w-full h-48 object-cover">
-                <div class="p-6 flex-1 flex flex-col">
-                    <h2 class="text-xl font-bold text-brand-accent mb-1">讀書會</h2>
-                    <p class="text-brand-text text-sm leading-relaxed mb-4 flex-1">
-                        在共同陪伴的溫床中，溫柔咀嚼育兒卡關與陪伴青少年的苦澀，內化並體會苦盡甘來的智慧甘甜。
-                    </p>
-                    <ul class="text-sm text-brand-text space-y-1.5 list-disc list-inside">
-                        <li>治療教育12講讀書會</li>
-                        <li>青少年陪伴讀書會</li>
-                    </ul>
-                </div>
+            <div class="service-card">
+                <img src="https://drive.google.com/uc?export=view&id=1hD0cfrvxb_v8oOP9AYvXZ9E4EU3O4Uum" class="service-img" alt="讀書會">
+                <div class="service-title">讀書會</div>
+                <p class="service-desc">在共同陪伴的溫床中，溫柔咀嚼育兒卡關與陪伴青少年的苦澀，內化並體會苦盡甘來的智慧甘甜。</p>
+                <ul>
+                    <li>治療教育12講讀書會</li>
+                    <li>青少年陪伴讀書會</li>
+                </ul>
             </div>
 
             <!-- 11. 四季節慶活動 -->
-            <div class="bg-white rounded-2xl shadow-sm border border-brand-border overflow-hidden flex flex-col hover:shadow-xl hover:border-brand-accent/40 transition-all duration-300 transform hover:-translate-y-1">
-                <img src="https://placehold.co/400x200/eee/999?text=Image" alt="四季節慶活動" class="w-full h-48 object-cover">
-                <div class="p-6 flex-1 flex flex-col">
-                    <h2 class="text-xl font-bold text-brand-accent mb-1">四季節慶</h2>
-                    <p class="text-brand-text text-sm leading-relaxed mb-4 flex-1">
-                        順應大自然的呼吸與節氣轉換，透過季節的儀式感，讓孩子將宇宙的韻律深深吸入靈魂。
-                    </p>
-                    <ul class="text-sm text-brand-text space-y-1.5 list-disc list-inside">
-                        <li>春夏秋冬四季節慶典儀式</li>
-                    </ul>
-                </div>
+            <div class="service-card">
+                <img src="https://drive.google.com/uc?export=view&id=1h-2wwOEv8YH3qyrm_MQskIYEocLDDfoX" class="service-img" alt="四季節慶活動">
+                <div class="service-title">四季節慶</div>
+                <p class="service-desc">順應大自然的呼吸與節氣轉換，透過季節的儀式感，讓孩子將宇宙的韻律深深吸入靈魂。</p>
+                <ul>
+                    <li>春夏秋冬四季節慶典儀式</li>
+                </ul>
             </div>
 
-            <!-- 12. 專業交流 -->
-            <div class="bg-white rounded-2xl shadow-sm border border-brand-border overflow-hidden flex flex-col hover:shadow-xl hover:border-brand-accent/40 transition-all duration-300 transform hover:-translate-y-1">
-                <img src="https://placehold.co/400x200/eee/999?text=Image" alt="專業課程交流" class="w-full h-48 object-cover">
-                <div class="p-6 flex-1 flex flex-col">
-                    <h2 class="text-xl font-bold text-brand-accent mb-1">專業交流</h2>
-                    <p class="text-brand-text text-sm leading-relaxed mb-4 flex-1">
-                        跨出基地、對外授課，勇敢且自由地將人智學與共學的慈愛智慧化為種子，隨風在更多土地上落地生根。
-                    </p>
-                    <ul class="text-sm text-brand-text space-y-1.5 list-disc list-inside">
-                        <li>跨校/跨團體專業外派課程</li>
-                    </ul>
-                </div>
+            <!-- 12. 專業課程交流 -->
+            <div class="service-card">
+                <img src="https://drive.google.com/uc?export=view&id=1z4xN2vqZOYYfHCiQuyhFti67ReSA7NX4" class="service-img" alt="專業課程交流">
+                <div class="service-title">專業交流</div>
+                <p class="service-desc">跨出基地、對外授課，勇敢且自由地將人智學與共學的慈愛智慧化為種子，隨風在更多土地上落地生根。</p>
+                <ul>
+                    <li>跨校/跨團體專業外派課程</li>
+                </ul>
             </div>
 
         </div>
-    </main>
+    </div>
 
-    <!-- 頁尾 -->
-    <footer class="bg-brand-bg py-8 text-center border-t border-brand-border mt-auto">
-        <p class="text-brand-light text-sm">
-            Copyright © 2026 社團法人台灣華德福親子共學協會. All rights reserved.
-        </p>
+    <footer>
+        <p>Copyright © 2026 台灣華德福親子共學協會</p>
     </footer>
 
-    <script>
-        // 處理手機版導覽列的展開與收合
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const spans = menuBtn.querySelectorAll('span');
-
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('open');
-            
-            // 漢堡選單動畫效果 (變成 X)
-            if (mobileMenu.classList.contains('open')) {
-                spans[0].style.transform = 'translateY(7px) rotate(45deg)';
-                spans[1].style.opacity = '0';
-                spans[2].style.transform = 'translateY(-7px) rotate(-45deg)';
-            } else {
-                spans[0].style.transform = 'none';
-                spans[1].style.opacity = '1';
-                spans[2].style.transform = 'none';
-            }
-        });
-    </script>
 </body>
 </html>
