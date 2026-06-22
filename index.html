@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>台灣華德福親子共學協會</title>
+    <title>社團法人台灣華德福親子共學協會</title>
     <style>
         body {
             margin: 0;
             font-family: "Helvetica Neue", Arial, "Microsoft JhengHei", sans-serif;
-            background-color: #5d4e43; 
+            background-color: #fcf9f2; 
             color: #5d4e43;
             line-height: 1.8;
             display: flex;
@@ -16,26 +16,55 @@
             min-height: 100vh;
         }
 
-        /* 導航列：咖啡色文字，精簡樣式 */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 8%;
-            background: #fcf9f2;
-            border-bottom: 1px solid #dcd3ca;
+            background: #fcf9f2; 
+            border-bottom: 1px solid #e5e0dc;
+            position: relative; /* 為了讓手機版選單可以絕對定位 */
         }
 
-        .logo { font-weight: bold; font-size: 1.1rem; color: #5d4e43; }
+        .logo { 
+            font-weight: 500; 
+            font-size: 1.1rem; 
+            color: #5d4e43;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px; 
+        }
+
+        /* Applying coffee color to nav links as requested */
         .nav-links a { 
-            margin-left: 20px; 
             text-decoration: none; 
-            color: #5d4e43; /* 咖啡色文字 */
-            font-size: 0.9rem; /* 縮小文字 */
-            transition: opacity 0.3s;
+            color: #5d4e43; 
+            font-size: 0.9rem; 
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover { color: #8A7B6F; }
+
+        /* 手機版折疊按鈕樣式 (預設隱藏，只有手機版顯示) */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            border: none;
+            background: none;
+            padding: 5px;
+        }
+        
+        .menu-toggle span {
+            width: 25px;
+            height: 2px;
+            background-color: #5d4e43;
+            margin: 2.5px 0;
         }
 
-        /* 主視覺區塊：設定為彩虹背景圖 */
         .hero {
             flex: 1;
             display: flex;
@@ -43,23 +72,68 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            /* 讀取本地圖片檔案 */
-            background-image: url('彩虹底圖.jfif'); 
-            background-size: cover;
-            background-position: center;
-            padding: 100px 20px;
+            background: linear-gradient(180deg, #ffede1 0%, #d6eaff 50%, #e0ffe6 100%);
+            padding: 80px 20px;
         }
 
-        h1 { font-size: 2.2rem; margin-bottom: 30px; color: #5d4e43; }
-        .text-content { max-width: 700px; font-size: 1rem; }
+        h1 { font-size: 2.2rem; margin-bottom: 30px; letter-spacing: 1px; color: #5d4e43; }
 
-        footer { text-align: center; padding: 20px; background: #fcf9f2; font-size: 0.8rem; }
+        .text-content {
+            max-width: 650px;
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #fcf9f2;
+            font-size: 0.85rem;
+            color: #8A7B6F;
+        }
+
+        /* 手機版的 CSS 設定 */
+        @media (max-width: 768px) {
+            /* 顯示漢堡按鈕 */
+            .menu-toggle { display: flex; }
+            
+            /* 將原本的導航列隱藏，並改為垂直排列 */
+            .nav-links {
+                display: none; /* 預設隱藏 */
+                flex-direction: column;
+                position: absolute;
+                top: 100%; /* 顯示在 nav 的正下方 */
+                left: 0;
+                width: 100%;
+                background: #fcf9f2;
+                padding: 20px 0;
+                gap: 15px;
+                text-align: center;
+                border-bottom: 1px solid #e5e0dc;
+                z-index: 1000;
+            }
+            
+            /* 當加上 active class 時，顯示選單 */
+            .nav-links.active { display: flex; }
+            
+            h1 { font-size: 1.6rem; }
+        }
     </style>
 </head>
 <body>
+
     <nav>
         <div class="logo">社團法人台灣華德福親子共學協會</div>
-        <div class="nav-links">
+        
+        <!-- 手機版選單按鈕 -->
+        <button class="menu-toggle" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- 加上 id="navLinks" 讓 JavaScript 可以控制它 -->
+        <div class="nav-links" id="navLinks">
             <a href="#">首頁</a>
             <a href="#">最新消息</a>
             <a href="#">協會緣起</a>
@@ -68,6 +142,7 @@
             <a href="#">聯絡我們</a>
         </div>
     </nav>
+
     <header class="hero">
         <div class="text-content">
             <p>心靈的期盼正在萌芽<br>
@@ -86,17 +161,21 @@
         </div>
         
         <div class="poem-footer text-sm" style="color: #8A7B6F;">
-            <p>~ 魯道夫史代納 (Rudolf Steiner) ~</p>
-            <p>譯者：詹雅智 • 羅葉</p>
+            <p>~ 魯道夫史代納 (Rudolf Steiner)~</p>
         </div>
     </header>
 
     <footer>
-        <p>Copyright © 2026 社團法人台灣華德福親子共學協會</p>
+        <p>Copyright © 2026 台灣華德福親子共學協會</p>
     </footer>
 
-</body>
-</html>
+    <!-- 加入 JavaScript 控制展開/收合 -->
+    <script>
+        function toggleMenu() {
+            var navLinks = document.getElementById("navLinks");
+            navLinks.classList.toggle("active");
+        }
+    </script>
 
 </body>
 </html>
