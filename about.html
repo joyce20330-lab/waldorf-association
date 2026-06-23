@@ -6,37 +6,38 @@
     <title>協會緣起與團隊 - 社團法人台灣華德福親子共學協會</title>
     <style>
         body { margin: 0; font-family: "Helvetica Neue", Arial, "Microsoft JhengHei", sans-serif; background-color: #fcf9f2; color: #5d4e43; line-height: 1.8; display: flex; flex-direction: column; min-height: 100vh; }
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; background: #fcf9f2; border-bottom: 1px solid #e5e0dc; }
-        .logo { font-weight: 500; font-size: 1.1rem; color: #5d4e43; }
+        
+        /* 導航列與手機選單樣式 */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; background: #fcf9f2; border-bottom: 1px solid #e5e0dc; position: relative; }
+        .logo { font-weight: 500; font-size: 1.1rem; }
         .nav-links { display: flex; gap: 25px; }
         .nav-links a { text-decoration: none; color: #5d4e43; font-size: 0.9rem; font-weight: 500; }
         .nav-links a:hover, .nav-links a.active { color: #d97746; }
+        @media (max-width: 768px) {
+            .menu-toggle { display: block !important; }
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: #fcf9f2; padding: 20px 0; gap: 15px; text-align: center; border-bottom: 1px solid #e5e0dc; z-index: 1000; }
+            .nav-links.active { display: flex; }
+        }
 
-        .about-hero { padding: 60px 20px; background-image: url('彩虹底圖.jfif'); background-size: cover; background-position: center; }
+        .about-hero { padding: 60px 20px; background-image: url('彩虹底圖.jfif'); background-size: cover; background-position: center; flex: 1; }
         .about-container { max-width: 900px; margin: 40px auto; background: rgba(255, 255, 255, 0.95); padding: 50px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-
-        /* 原有文字區塊樣式 */
-        .section-block { margin-bottom: 40px; }
-        .section-title { font-size: 1.2rem; font-weight: bold; color: #d97746; margin-bottom: 15px; border-left: 4px solid #d97746; padding-left: 15px; }
-        .content-text { margin-bottom: 20px; text-align: justify; }
-
-        /* 團隊區塊 */
-        .team-section { margin-top: 80px; border-top: 2px solid #e5e0dc; padding-top: 40px; }
+        .section-title { font-size: 1.1rem; font-weight: bold; color: #d97746; margin: 20px 0 10px; border-left: 4px solid #d97746; padding-left: 15px; }
+        
         .team-container { display: flex; flex-direction: column; gap: 30px; margin-top: 30px; }
-        .member-card { background: #fff; padding: 30px; border-radius: 12px; border: 1px solid #e5e0dc; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
-        .member-name { font-size: 1.5rem; font-weight: bold; color: #d97746; margin-bottom: 15px; border-bottom: 2px solid #fcf9f2; padding-bottom: 10px; }
+        .member-card { background: #fff; padding: 30px; border-radius: 12px; border: 1px solid #e5e0dc; }
+        .member-name { font-size: 1.4rem; font-weight: bold; color: #d97746; margin-bottom: 15px; border-bottom: 2px solid #fcf9f2; padding-bottom: 10px; }
         .info-title { font-weight: bold; color: #5d4e43; margin-top: 15px; font-size: 1rem; }
         .info-list { font-size: 0.95rem; color: #4a4a4a; margin-top: 5px; padding-left: 20px; }
 
-        footer { text-align: center; padding: 20px; background: #fcf9f2; font-size: 0.85rem; color: #8A7B6F; margin-top: auto; }
-        @media (max-width: 768px) { .about-container { padding: 20px; } }
+        footer { text-align: center; padding: 20px; background: #fcf9f2; font-size: 0.85rem; color: #8A7B6F; }
     </style>
 </head>
 <body>
 
     <nav>
         <div class="logo"><a href="index.html" style="text-decoration: none; color: inherit;">社團法人台灣華德福親子共學協會</a></div>
-        <div class="nav-links">
+        <button class="menu-toggle" onclick="toggleMenu()" style="display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer;">☰</button>
+        <div class="nav-links" id="navLinks">
             <a href="index.html">首頁</a>
             <a href="news.html">最新消息</a>
             <a href="about.html" class="active">協會緣起</a>
@@ -50,34 +51,24 @@
         <div class="about-container">
             <h2 style="text-align: center; margin-bottom: 40px;">從自然中，看見成長的療育力</h2>
             
-            <!-- 原有緣起文字 -->
-            <div class="section-block">
-                <div class="section-title">【緣起：一段自然啟發的旅程】</div>
-                <p class="content-text">2013 年，曉霓老師於美國加州全戶外華德福幼兒園實習，親見大自然如何療癒孩子、激發免疫力與生命力。受《失落山林的孩子》啟發，決心將這份自然教育的種子帶回台灣。</p>
-            </div>
+            <div class="section-title">【緣起：一段自然啟發的旅程】</div>
+            <p>2013 年，曉霓老師於美國加州全戶外華德福幼兒園實習，親見大自然如何療癒孩子、激發免疫力與生命力。受《失落山林的孩子》啟發，決心將這份自然教育的種子帶回台灣。</p>
 
-            <div class="section-block">
-                <div class="section-title">【耕耘：社群的力量】</div>
-                <p class="content-text">2020 年，曉霓老師與荷月老師共同創立「社團法人台灣華德福親子共學協會」。我們致力於營造四季更迭的學習環境，從柚子園到安農溪畔，透過照顧土地、季節節慶與農作手作，與家長孩子共築生活的節奏。</p>
-            </div>
+            <div class="section-title">【耕耘：社群的力量】</div>
+            <p>2020 年，曉霓老師與荷月老師共同創立「社團法人台灣華德福親子共學協會」。我們致力於營造四季更迭的學習環境，從柚子園到安農溪畔，透過照顧土地、季節節慶與農作手作，與家長孩子共築生活的節奏。</p>
 
-            <div class="section-block">
-                <div class="section-title">【我們的服務與支持】</div>
-                <p class="content-text">我們不僅是共學園，更是支持身心靈成長的溫暖後盾：</p>
-                <ul class="content-text">
-                    <li>多元課程：涵蓋治療教育讀書會、書畫課、十二感官、園藝治療、星智學及各類工作坊。</li>
-                    <li>社群連結：每季舉辦大型節慶，廣邀在地社群參與。</li>
-                </ul>
-                <!-- 這裡加上置中樣式 -->
-                <h2 style="text-align: center; color: #5d4e43; font-size: 1.5rem; margin-top: 30px;">~共學．共享．共好．共有~</h2>
-            </div>
+            <div class="section-title">【我們的服務與支持】</div>
+            <p>我們不僅是共學園，更是支持身心靈成長的溫暖後盾：</p>
+            <ul>
+                <li>多元課程：涵蓋治療教育讀書會、書畫課、十二感官、園藝治療、星智學及各類工作坊。</li>
+                <li>社群連結：每季舉辦大型節慶，廣邀在地社群參與。</li>
+            </ul>
+            <h2 style="text-align: center; color: #5d4e43; font-size: 1.5rem; margin-top: 30px;">~共學．共享．共好．共有~</h2>
 
-            <!-- 新增的團隊介紹 -->
             <div class="team-section">
-                <h2 style="text-align: center;">核心團隊介紹</h2>
+                <h2 style="text-align: center; margin-top: 50px;">核心團隊介紹</h2>
                 <div class="team-container">
                     
-                    <!-- 陳曉霓 -->
                     <div class="member-card">
                         <div class="member-name">陳曉霓 老師</div>
                         <div class="info-title">現任</div>
@@ -86,7 +77,7 @@
                             <li>親子共學園協同帶領</li>
                             <li>親職教養諮詢 / 治療教育讀書會帶領</li>
                         </ul>
-                        <div class="info-title">學經歷</div>
+                        <div class="info-title">專業背景</div>
                         <ul class="info-list">
                             <li>台灣四年制治療教育學程認證</li>
                             <li>美國 Rudolf Steiner College 華德福師訓</li>
@@ -95,7 +86,6 @@
                         </ul>
                     </div>
 
-                    <!-- 張荷月 -->
                     <div class="member-card">
                         <div class="member-name">張荷月 老師</div>
                         <div class="info-title">現任</div>
@@ -112,7 +102,6 @@
                         </ul>
                     </div>
 
-                    <!-- 志懋醫師 -->
                     <div class="member-card">
                         <div class="member-name">李志懋 醫師</div>
                         <div class="info-title">專業領域</div>
@@ -121,9 +110,7 @@
                             <li>療育顧問</li>
                             <li>跨領域健康協作</li>
                         </ul>
-                        </p>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -133,5 +120,10 @@
         <p>Copyright © 2026 台灣華德福親子共學協會</p>
     </footer>
 
+    <script>
+        function toggleMenu() {
+            document.getElementById("navLinks").classList.toggle("active");
+        }
+    </script>
 </body>
 </html>
