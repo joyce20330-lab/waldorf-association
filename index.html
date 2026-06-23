@@ -21,14 +21,18 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 20px 8%;
-    /* 將原本的背景色改成背景圖片 */
+    /* 改用 contain，保證圖片完整不裁切 */
     background-image: url('images/協會logo.jpg');
-    background-size: cover; /* 讓圖片填滿整個導覽列 */
-    background-position: center;
+    background-size: contain; 
+    background-repeat: no-repeat;
+    background-position: left center;
     border-bottom: 1px solid #e5e0dc;
     position: sticky;
     top: 0;
     z-index: 50;
+    
+    /* 重要：給予左側 Logo 足夠的空間，才不會壓到右邊的文字 */
+    padding-left: 300px; /* 請根據您的圖片實際寬度調整這個數字 */
 }
 
         }
