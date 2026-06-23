@@ -5,36 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>協會緣起與團隊 - 社團法人台灣華德福親子共學協會</title>
     <style>
-        body { margin: 0; font-family: "Helvetica Neue", Arial, "Microsoft JhengHei", sans-serif; background-color: #fcf9f2; color: #5d4e43; line-height: 1.6; }
-        
-        /* 導航列基礎 */
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background: #fcf9f2; border-bottom: 1px solid #e5e0dc; position: relative; }
-        .logo { font-weight: bold; font-size: 1.1rem; }
-        
-        /* 選單預設樣式 (桌機版) */
-        .nav-links { display: flex; gap: 20px; }
-        .nav-links a { text-decoration: none; color: #5d4e43; font-weight: 500; font-size: 0.95rem; }
-        .menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; }
-
-        /* 手機版響應式設定 */
-        @media (max-width: 768px) {
-            .menu-toggle { display: block; }
-            .nav-links { 
-                display: none; 
-                flex-direction: column; 
-                position: absolute; 
-                top: 100%; 
-                left: 0; 
-                width: 100%; 
-                background: #fcf9f2; 
-                padding: 20px 0; 
-                text-align: center; 
-                border-bottom: 1px solid #e5e0dc; 
-                z-index: 1000;
-                gap: 15px;
-            }
-            .nav-links.active { display: flex; }
+        /* 共用基礎樣式 */
+        body {
+            margin: 0;
+            font-family: "Helvetica Neue", Arial, "Microsoft JhengHei", sans-serif;
+            background-color: #fcf9f2; 
+            color: #5d4e43;
+            line-height: 1.8;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: #fcf9f2; 
+            border-bottom: 1px solid #e5e0dc;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .logo { 
+            font-weight: 500; 
+            font-size: 1.1rem; 
+            color: #5d4e43;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px; 
+        }
+
+        .nav-links a { 
+            text-decoration: none; 
+            color: #5d4e43; 
+            font-size: 0.9rem; 
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover, .nav-links a.active { 
+            color: #d97746; /* 滑鼠移過去或所在頁面變成溫暖的橘棕色 */
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            border: none;
+            background: none;
+            padding: 5px;
+        }
+        
+        .menu-toggle span {
+            width: 25px;
+            height: 2px;
+            background-color: #5d4e43;
+            margin: 2.5px 0;
+        }
+
 
         /* 內容區 */
         .about-hero { padding: 40px 15px; background-image: url('彩虹底圖.jfif'); background-size: cover; background-position: center; min-height: 100vh; }
