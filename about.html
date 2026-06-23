@@ -50,9 +50,10 @@
         }
         
         .nav-links a:hover, .nav-links a.active { 
-            color: #d97746; /* 滑鼠移過去或所在頁面變成溫暖的橘棕色 */
+            color: #d97746;
         }
 
+        /* 漢堡按鈕樣式 */
         .menu-toggle {
             display: none;
             flex-direction: column;
@@ -69,24 +70,42 @@
             margin: 2.5px 0;
         }
 
+        /* 手機版選單邏輯 */
+        @media (max-width: 768px) {
+            .menu-toggle { display: flex; }
+            .nav-links {
+                display: none; /* 預設隱藏 */
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: #fcf9f2;
+                padding: 20px 0;
+                gap: 15px;
+                text-align: center;
+                border-bottom: 1px solid #e5e0dc;
+                z-index: 1000;
+            }
+            .nav-links.active { display: flex; } /* 顯示選單 */
+        }
 
         /* 內容區 */
         .about-hero { padding: 40px 15px; background-image: url('彩虹底圖.jfif'); background-size: cover; background-position: center; min-height: 100vh; }
         .about-container { max-width: 800px; margin: 20px auto; background: rgba(255, 255, 255, 0.95); padding: 25px; border-radius: 12px; }
         .section-title { font-size: 1.2rem; font-weight: bold; color: #d97746; margin: 25px 0 10px; border-left: 4px solid #d97746; padding-left: 10px; }
         
-        /* 卡片與列表修正 */
         .member-card { background: #fff; padding: 20px; border-radius: 10px; margin-bottom: 20px; border: 1px solid #e5e0dc; }
         .member-name { font-size: 1.25rem; color: #d97746; font-weight: bold; margin-bottom: 10px; }
         
-        /* 強制規範列表內文字顏色與大小，避免繼承連結樣式 */
         .info-list { padding-left: 20px; color: #5d4e43; font-size: 1rem; }
         .info-list li { margin-bottom: 5px; }
+        .info-title { font-weight: bold; margin-top: 10px; color: #8A7B6F; }
     </style>
 </head>
 <body>
 
-<nav>
+    <nav>
         <div class="logo">
             <a href="index.html" style="text-decoration: none; color: inherit;">社團法人台灣華德福親子共學協會</a>
         </div>
@@ -100,11 +119,10 @@
         <div class="nav-links" id="navLinks">
             <a href="index.html">首頁</a>
             <a href="news.html">最新消息</a>
-            <a href="about.html">協會緣起</a>
+            <a href="about.html" class="active">協會緣起</a>
             <a href="services.html">服務項目</a>
             <a href="events.html">活動報名</a>
-            <!-- 在聯絡我們加上 active class，標示目前所在頁面 -->
-            <a href="contact.html" class="active">聯絡我們</a>
+            <a href="contact.html">聯絡我們</a>
         </div>
     </nav>
 
