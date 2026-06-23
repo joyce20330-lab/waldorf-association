@@ -3,161 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>社團法人台灣華德福親子共學協會</title>
+    <title>協會緣起與團隊 - 社團法人台灣華德福親子共學協會</title>
     <style>
-        body {
-            margin: 0;
-            font-family: "Helvetica Neue", Arial, "Microsoft JhengHei", sans-serif;
-            background-color: #fcf9f2; 
-            color: #5d4e43;
-            line-height: 1.8;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 8%;
-    /* 將原本的背景色改成背景圖片 */
-    background-image: url('images/協會logo.jpg');
-    background-size: 300px auto; /* 寬度固定200px，高度自動按比例縮放 */
-    background-repeat: no-repeat; /* 避免圖片重複平鋪 */
-    background-position: left center; /* 將圖片放在左邊 */
-    
-    border-bottom: 1px solid #e5e0dc;
-    position: sticky;
-    top: 0;
-    z-index: 50;
-}
-
-        }
-
-        .logo { 
-            font-weight: 500; 
-            font-size: 1.1rem; 
-            color: #5d4e43;
-            letter-spacing: 0.5px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 25px; 
-        }
-
-        /* Applying coffee color to nav links as requested */
-        .nav-links a { 
-            text-decoration: none; 
-            color: #5d4e43; 
-            font-size: 0.9rem; 
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-        .nav-links a:hover { color: #8A7B6F; }
-
-        /* 手機版折疊按鈕樣式 (預設隱藏，只有手機版顯示) */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            border: none;
-            background: none;
-            padding: 5px;
-        }
+        body { margin: 0; font-family: "Helvetica Neue", Arial, "Microsoft JhengHei", sans-serif; background-color: #fcf9f2; color: #5d4e43; line-height: 1.6; }
         
-        .menu-toggle span {
-            width: 25px;
-            height: 2px;
-            background-color: #5d4e43;
-            margin: 2.5px 0;
-        }
+        /* 導航列基礎 */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background: #fcf9f2; border-bottom: 1px solid #e5e0dc; position: relative; }
+        .logo { font-weight: bold; font-size: 1.1rem; }
+        
+        /* 選單預設樣式 (桌機版) */
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a { text-decoration: none; color: #5d4e43; font-weight: 500; font-size: 0.95rem; }
+        .menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; }
 
-        .hero {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background-image: url('彩虹底圖.jfif'); 
-            background-size: cover;
-            background-position: center;
-            padding: 80px 20px;
-        }
-
-        h1 { font-size: 2.2rem; margin-bottom: 30px; letter-spacing: 1px; color: #5d4e43; }
-
-        .text-content {
-            max-width: 650px;
-            font-size: 1.1rem;
-            margin-bottom: 40px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: #fcf9f2;
-            font-size: 0.85rem;
-            color: #8A7B6F;
-        }
-
-        /* 手機版的 CSS 設定 */
+        /* 手機版響應式設定 */
         @media (max-width: 768px) {
-            /* 顯示漢堡按鈕 */
-            .menu-toggle { display: flex; }
-            
-            /* 將原本的導航列隱藏，並改為垂直排列 */
-            .nav-links {
-                display: none; /* 預設隱藏 */
-                flex-direction: column;
-                position: absolute;
-                top: 100%; /* 顯示在 nav 的正下方 */
-                left: 0;
-                width: 100%;
-                background: #fcf9f2;
-                padding: 20px 0;
-                gap: 15px;
-                text-align: center;
-                border-bottom: 1px solid #e5e0dc;
+            .menu-toggle { display: block; }
+            .nav-links { 
+                display: none; 
+                flex-direction: column; 
+                position: absolute; 
+                top: 100%; 
+                left: 0; 
+                width: 100%; 
+                background: #fcf9f2; 
+                padding: 20px 0; 
+                text-align: center; 
+                border-bottom: 1px solid #e5e0dc; 
                 z-index: 1000;
+                gap: 15px;
             }
-            
-            /* 當加上 active class 時，顯示選單 */
             .nav-links.active { display: flex; }
-            
-            h1 { font-size: 1.6rem; }
         }
+
+        /* 內容區 */
+        .about-hero { padding: 40px 15px; background-image: url('彩虹底圖.jfif'); background-size: cover; background-position: center; min-height: 100vh; }
+        .about-container { max-width: 800px; margin: 20px auto; background: rgba(255, 255, 255, 0.95); padding: 25px; border-radius: 12px; }
+        .section-title { font-size: 1.2rem; font-weight: bold; color: #d97746; margin: 25px 0 10px; border-left: 4px solid #d97746; padding-left: 10px; }
+        
+        /* 卡片與列表修正 */
+        .member-card { background: #fff; padding: 20px; border-radius: 10px; margin-bottom: 20px; border: 1px solid #e5e0dc; }
+        .member-name { font-size: 1.25rem; color: #d97746; font-weight: bold; margin-bottom: 10px; }
+        
+        /* 強制規範列表內文字顏色與大小，避免繼承連結樣式 */
+        .info-list { padding-left: 20px; color: #5d4e43; font-size: 1rem; }
+        .info-list li { margin-bottom: 5px; }
     </style>
 </head>
 <body>
 
     <nav>
-        <!-- 將 Logo 加上連結，點擊也能回到首頁 -->
-       <div class="logo">
-    <a href="index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px;">
-                <!-- 協會名稱 -->
-        社團法人台灣華德福親子共學協會
-    </a>
-</div>
+        <div class="logo">
+            <a href="index.html" style="text-decoration: none; color: inherit;">社團法人台灣華德福親子共學協會</a>
+        </div>
         
-        <!-- 手機版選單按鈕 -->
         <button class="menu-toggle" onclick="toggleMenu()">
             <span></span>
             <span></span>
             <span></span>
         </button>
 
-        <!-- 加上 id="navLinks" 讓 JavaScript 可以控制它 -->
         <div class="nav-links" id="navLinks">
             <a href="index.html">首頁</a>
             <a href="news.html">最新消息</a>
             <a href="about.html">協會緣起</a>
             <a href="services.html">服務項目</a>
             <a href="events.html">活動報名</a>
-            <a href="contact.html">聯絡我們</a>
-
+            <!-- 在聯絡我們加上 active class，標示目前所在頁面 -->
+            <a href="contact.html" class="active">聯絡我們</a>
         </div>
     </nav>
 
