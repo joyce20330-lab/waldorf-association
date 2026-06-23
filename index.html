@@ -16,19 +16,22 @@
             min-height: 100vh;
         }
 
-<nav class="flex justify-between items-center px-6 md:px-[8%] py-5 border-b border-brand-border bg-brand-bg sticky top-0 z-50 shadow-sm">
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    /* 將原本的背景色改成背景圖片 */
+    background-image: url('images/協會logo.jpg');
+    background-size: 200px auto; /* 寬度固定200px，高度自動按比例縮放 */
+    background-repeat: no-repeat; /* 避免圖片重複平鋪 */
+    background-position: left center; /* 將圖片放在左邊 */
     
-    <!-- 改用 <img> 標籤放 Logo -->
-    <a href="index.html">
-        <img src="images/協會logo.jpg" class="h-12 w-auto" alt="協會Logo">
-    </a>
-    
-    <!-- 導覽列選單區塊 -->
-    <div class="hidden md:flex gap-8 items-center">
-        <!-- 您的導覽選單連結 -->
-    </div>
-
-</nav>
+    border-bottom: 1px solid #e5e0dc;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
 
         }
 
