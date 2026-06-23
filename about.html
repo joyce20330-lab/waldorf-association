@@ -3,173 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>協會緣起 - 社團法人台灣華德福親子共學協會</title>
+    <title>協會緣起與團隊 - 社團法人台灣華德福親子共學協會</title>
     <style>
-        /* 共用基礎樣式 */
-        body {
-            margin: 0;
-            font-family: "Helvetica Neue", Arial, "Microsoft JhengHei", sans-serif;
-            background-color: #fcf9f2; 
-            color: #5d4e43;
-            line-height: 1.8;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+        body { margin: 0; font-family: "Helvetica Neue", Arial, "Microsoft JhengHei", sans-serif; background-color: #fcf9f2; color: #5d4e43; line-height: 1.8; display: flex; flex-direction: column; min-height: 100vh; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; background: #fcf9f2; border-bottom: 1px solid #e5e0dc; }
+        .logo { font-weight: 500; font-size: 1.1rem; color: #5d4e43; }
+        .nav-links { display: flex; gap: 25px; }
+        .nav-links a { text-decoration: none; color: #5d4e43; font-size: 0.9rem; font-weight: 500; }
+        .nav-links a:hover, .nav-links a.active { color: #d97746; }
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 8%;
-            background: #fcf9f2; 
-            border-bottom: 1px solid #e5e0dc;
-            position: sticky;
-            top: 0;
-            z-index: 50;
-        }
+        .about-hero { padding: 60px 20px; background-image: url('彩虹底圖.jfif'); background-size: cover; background-position: center; }
+        .about-container { max-width: 900px; margin: 40px auto; background: rgba(255, 255, 255, 0.95); padding: 50px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
 
-        .logo { 
-            font-weight: 500; 
-            font-size: 1.1rem; 
-            color: #5d4e43;
-            letter-spacing: 0.5px;
-        }
+        /* 原有文字區塊樣式 */
+        .section-block { margin-bottom: 40px; }
+        .section-title { font-size: 1.2rem; font-weight: bold; color: #d97746; margin-bottom: 15px; border-left: 4px solid #d97746; padding-left: 15px; }
+        .content-text { margin-bottom: 20px; text-align: justify; }
 
-        .nav-links {
-            display: flex;
-            gap: 25px; 
-        }
+        /* 團隊區塊 */
+        .team-section { margin-top: 80px; border-top: 2px solid #e5e0dc; padding-top: 40px; }
+        .team-container { display: flex; flex-direction: column; gap: 30px; margin-top: 30px; }
+        .member-card { background: #fff; padding: 30px; border-radius: 12px; border: 1px solid #e5e0dc; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
+        .member-name { font-size: 1.5rem; font-weight: bold; color: #d97746; margin-bottom: 15px; border-bottom: 2px solid #fcf9f2; padding-bottom: 10px; }
+        .info-title { font-weight: bold; color: #5d4e43; margin-top: 15px; font-size: 1rem; }
+        .info-list { font-size: 0.95rem; color: #4a4a4a; margin-top: 5px; padding-left: 20px; }
 
-        .nav-links a { 
-            text-decoration: none; 
-            color: #5d4e43; 
-            font-size: 0.9rem; 
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-        .nav-links a:hover { color: #8A7B6F; }
-
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            border: none;
-            background: none;
-            padding: 5px;
-        }
-        
-        .menu-toggle span {
-            width: 25px;
-            height: 2px;
-            background-color: #5d4e43;
-            margin: 2.5px 0;
-        }
-
-        /* 協會緣起專屬版面設計 */
-        .about-hero {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            /* 延續彩虹背景 */
-            background-image: url('彩虹底圖.jfif'); 
-            background-size: cover;
-            background-position: center;
-            padding: 60px 20px;
-        }
-
-        /* 文字內容區塊加上半透明底色，避免被背景圖干擾閱讀 */
-        .about-container {
-            max-width: 800px;
-            width: 100%;
-            background: rgba(252, 249, 242, 0.92); 
-            padding: 50px;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            box-sizing: border-box;
-            margin-bottom: 20px;
-        }
-
-        .about-container h2 {
-            font-size: 1.8rem;
-            color: #5d4e43;
-            text-align: center;
-            margin-bottom: 40px;
-            letter-spacing: 1px;
-        }
-
-        .about-container h3 {
-            font-size: 1.2rem;
-            color: #7a6859;
-            border-left: 4px solid #dcd3ca;
-            padding-left: 15px;
-            margin-top: 35px;
-            margin-bottom: 15px;
-        }
-
-        .about-container p {
-            font-size: 1.05rem;
-            margin-bottom: 20px;
-            text-align: justify;
-        }
-
-        .about-container ul {
-            padding-left: 20px;
-            font-size: 1.05rem;
-        }
-
-        .about-container li {
-            margin-bottom: 15px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: #fcf9f2;
-            font-size: 0.85rem;
-            color: #8A7B6F;
-        }
-
-        @media (max-width: 768px) {
-            .menu-toggle { display: flex; }
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: #fcf9f2;
-                padding: 20px 0;
-                gap: 15px;
-                text-align: center;
-                border-bottom: 1px solid #e5e0dc;
-                z-index: 1000;
-            }
-            .nav-links.active { display: flex; }
-            .about-container { padding: 30px 20px; }
-            .about-container h2 { font-size: 1.4rem; }
-        }
+        footer { text-align: center; padding: 20px; background: #fcf9f2; font-size: 0.85rem; color: #8A7B6F; margin-top: auto; }
+        @media (max-width: 768px) { .about-container { padding: 20px; } }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">
-            <a href="index.html" style="text-decoration: none; color: inherit;">社團法人台灣華德福親子共學協會</a>
-        </div>
-        
-        <button class="menu-toggle" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-
-        <div class="nav-links" id="navLinks">
+        <div class="logo"><a href="index.html" style="text-decoration: none; color: inherit;">社團法人台灣華德福親子共學協會</a></div>
+        <div class="nav-links">
             <a href="index.html">首頁</a>
-            <a href="news.html">最新消息</a>
-            <a href="about.html">協會緣起</a>
+            <a href="about.html" class="active">協會緣起</a>
             <a href="services.html">服務項目</a>
             <a href="events.html">活動報名</a>
             <a href="contact.html">聯絡我們</a>
@@ -178,20 +47,34 @@
 
     <main class="about-hero">
         <div class="about-container">
-            <h2>從自然中，看見成長的療育力</h2>        
-            <h3>【緣起：一段自然啟發的旅程】</h3>
-            <p>2013 年，曉霓老師於美國加州全戶外華德福幼兒園實習，親見大自然如何療癒孩子、激發免疫力與生命力。受《失落山林的孩子》啟發，決心將這份自然教育的種子帶回台灣。</p>
+            <h2 style="text-align: center; margin-bottom: 40px;">從自然中，看見成長的療癒力</h2>
+            
+            <!-- 原有緣起文字 -->
+            <div class="section-block">
+                <div class="section-title">【緣起：一段自然啟發的旅程】</div>
+                <p class="content-text">2013 年，曉霓老師於美國加州全戶外華德福幼兒園實習，親見大自然如何療癒孩子、激發免疫力與生命力。受《失落山林的孩子》啟發，決心將這份自然教育的種子帶回台灣。</p>
+            </div>
 
-            <h3>【耕耘：社群的力量】</h3>
-            <p>2020 年，曉霓老師與荷月老師共同創立「社團法人台灣華德福親子共學協會」。我們致力於營造四季更迭的學習環境，從柚子園到安農溪畔，透過照顧土地、季節節慶與農作手作，與家長孩子共築生活的節奏。</p>
+            <div class="section-block">
+                <div class="section-title">【耕耘：社群的力量】</div>
+                <p class="content-text">2020 年，曉霓老師與荷月老師共同創立「社團法人台灣華德福親子共學協會」。我們致力於營造四季更迭的學習環境，從柚子園到安農溪畔，透過照顧土地、季節節慶與農作手作，與家長孩子共築生活的節奏。</p>
+            </div>
 
-            <h3>【我們的服務與支持】</h3>
-            <p>我們不僅是共學園，更是支持身心靈成長的溫暖後盾：</p>
-            <ul>
-                <li><strong>多元課程：</strong>涵蓋治療教育讀書會、書畫課、十二感官、園藝治療、星智學及各類工作坊。</li>
-                <li><strong>社群連結：</strong>每季舉辦大型節慶，廣邀在地社群參與。</li>
-                <li><strong>療育支持團隊：                   
- <!-- 陳曉霓 -->
+            <div class="section-block">
+                <div class="section-title">【我們的服務與支持】</div>
+                <p class="content-text">我們不僅是共學園，更是支持身心靈成長的溫暖後盾：</p>
+                <ul class="content-text">
+                    <li>多元課程：涵蓋治療教育讀書會、書畫課、十二感官、園藝治療、星智學及各類工作坊。</li>
+                    <li>社群連結：每季舉辦大型節慶，廣邀在地社群參與。</li>
+                </ul>
+            </div>
+
+            <!-- 新增的團隊介紹 -->
+            <div class="team-section">
+                <h2 style="text-align: center;">核心團隊介紹</h2>
+                <div class="team-container">
+                    
+                    <!-- 陳曉霓 -->
                     <div class="member-card">
                         <div class="member-name">陳曉霓 老師</div>
                         <div class="info-title">現任</div>
@@ -235,8 +118,6 @@
                             <li>療育顧問</li>
                             <li>跨領域健康協作</li>
                         </ul>
-                        <p style="font-size: 0.85rem; color: #666; margin-top: 15px;">
-                            結合醫學背景與人智學教育觀點，為協會提供深度的健康指導與療育諮詢建議。
                         </p>
                     </div>
             <h2>~共學．共享．共好．共有~</h2>    
