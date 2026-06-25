@@ -143,9 +143,9 @@ nav {
         </div>
     </nav>
 
-    <!-- Facebook 懸浮按鈕 -->
-    <a href="https://www.facebook.com/profile.php?id=100076069210460" target="_blank" class="fb-float-btn" title="前往粉絲專頁">
-        <svg width="30" height="30" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    <!-- Facebook 懸浮按鈕 (統一固定在右下角) -->
+    <a href="https://www.facebook.com/profile.php?id=100076069210460" target="_blank" class="fixed bottom-8 right-8 z-[100] bg-[#1877f2] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
+        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
     </a>
 
     <header class="hero">
@@ -187,8 +187,8 @@ nav {
                 </p>
             </div>
             <!-- Google Maps 嵌入 -->
-            <div style="border-radius: 12px; overflow: hidden; height: 300px;">
-               <iframe src="https://maps.google.com/maps?q=宜蘭縣三星鄉安農九路560號&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+              <div class="h-64 w-full rounded-xl overflow-hidden">
+              <iframe src="https://maps.google.com/maps?q=宜蘭縣三星鄉安農九路560號&t=&z=15&ie=UTF8&iwloc=&output=embed"width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
 </iframe>
             </div>
         </div>
