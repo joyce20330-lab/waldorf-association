@@ -15,24 +15,27 @@
             flex-direction: column;
             min-height: 100vh;
         }
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 8%;
-    background-color: #fcf9f2; 
-    border-bottom: 1px solid #e5e0dc;
-    position: sticky;
-    top: 0;
-    z-index: 50;
-}
+
+        /* 導覽列 */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background-color: #fcf9f2; 
+            border-bottom: 1px solid #e5e0dc;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
+
         .logo a { font-weight: 500; font-size: 1.1rem; color: #5d4e43; text-decoration: none; }
+
         .nav-links { display: flex; gap: 25px; }
         .nav-links a { text-decoration: none; color: #5d4e43; font-size: 0.9rem; font-weight: 500; transition: color 0.3s ease; }
         .nav-links a:hover { color: #8A7B6F; }
 
-        /* 手機版折疊按鈕樣式 (預設隱藏，只有手機版顯示) */
+        /* 手機版折疊按鈕 */
         .menu-toggle {
             display: none;
             flex-direction: column;
@@ -41,12 +44,11 @@ nav {
             background: none;
             padding: 5px;
         }
-      .menu-toggle span {
-            width: 25px;
-            height: 2px;
-            background-color: #5d4e43;
-            margin: 2.5px 0;
+        .menu-toggle span {
+            width: 25px; height: 2px; background-color: #5d4e43; margin: 2.5px 0;
         }
+
+        /* 英雄區 (帶彩虹底圖) */
         .hero {
             flex: 1;
             display: flex;
@@ -59,20 +61,17 @@ nav {
             background-position: center;
             padding: 80px 20px;
         }
-        h1 { font-size: 2.2rem; margin-bottom: 30px; letter-spacing: 1px; color: #5d4e43; }
+
         .text-content {
             max-width: 650px;
             font-size: 1.1rem;
             margin-bottom: 40px;
-        }
-        footer {
-            text-align: center;
+            background: rgba(255, 255, 255, 0.6);
             padding: 20px;
-            background: #fcf9f2;
-            font-size: 0.85rem;
-            color: #8A7B6F;
+            border-radius: 15px;
+        }
 
-        /* 懸浮臉書按鈕樣式 */
+        /* 臉書浮動按鈕 */
         .fb-float-btn {
             position: fixed;
             bottom: 30px;
@@ -85,23 +84,22 @@ nav {
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            z-index: 100;
-            text-decoration: none;
-            transition: transform 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 2000;
+            transition: transform 0.3s;
         }
         .fb-float-btn:hover { transform: scale(1.1); }
 
-        /* 手機版的 CSS 設定 */
+        footer { text-align: center; padding: 20px; background: #fcf9f2; font-size: 0.85rem; color: #8A7B6F; }
+
+        /* 手機版 RWD 設定 */
         @media (max-width: 768px) {
-            /* 顯示漢堡按鈕 */
             .menu-toggle { display: flex; }
-            /* 將原本的導航列隱藏，並改為垂直排列 */
             .nav-links {
-                display: none; /* 預設隱藏 */
+                display: none;
                 flex-direction: column;
                 position: absolute;
-                top: 100%; /* 顯示在 nav 的正下方 */
+                top: 100%;
                 left: 0;
                 width: 100%;
                 background: #fcf9f2;
@@ -109,30 +107,21 @@ nav {
                 gap: 15px;
                 text-align: center;
                 border-bottom: 1px solid #e5e0dc;
-                z-index: 1000;
             }
-            /* 當加上 active class 時，顯示選單 */
             .nav-links.active { display: flex; }
-            h1 { font-size: 1.6rem; }
+            .contact-grid { grid-template-columns: 1fr !important; }
         }
     </style>
 </head>
 <body>
+
     <nav>
-        <!-- 將 Logo 加上連結，點擊也能回到首頁 -->
-       <div class="logo">
-    <a href="index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px;">
-                <!-- 協會名稱 -->
-        社團法人台灣華德福親子共學協會
-    </a>
-</div>
-        <!-- 手機版選單按鈕 -->
+        <div class="logo">
+            <a href="index.html">社團法人台灣華德福親子共學協會</a>
+        </div>
         <button class="menu-toggle" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span></span><span></span><span></span>
         </button>
-        <!-- 加上 id="navLinks" 讓 JavaScript 可以控制它 -->
         <div class="nav-links" id="navLinks">
             <a href="index.html">首頁</a>
             <a href="news.html">最新消息</a>
@@ -143,9 +132,9 @@ nav {
         </div>
     </nav>
 
-    <!-- Facebook 懸浮按鈕 (統一固定在右下角) -->
-    <a href="https://www.facebook.com/profile.php?id=100076069210460" target="_blank" class="fixed bottom-8 right-8 z-[100] bg-[#1877f2] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
-        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    <!-- Facebook 浮動按鈕 -->
+    <a href="https://www.facebook.com/profile.php?id=100076069210460" target="_blank" class="fb-float-btn">
+        <svg width="30" height="30" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
     </a>
 
     <header class="hero">
@@ -185,11 +174,9 @@ nav {
                     週一至週五：09:00 - 17:00<br>
                     週六至週日：視情況回覆訊息
                 </p>
-            </div>
-            <!-- Google Maps 嵌入 -->
-              <div class="h-64 w-full rounded-xl overflow-hidden">
-              <iframe src="https://maps.google.com/maps?q=宜蘭縣三星鄉安農九路560號&t=&z=15&ie=UTF8&iwloc=&output=embed"width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
-</iframe>
+           </div>
+            <div style="height: 300px; width: 100%; border-radius: 12px; overflow: hidden;">
+                <iframe src="https://maps.google.com/maps?q=宜蘭縣三星鄉安農九路560號&output=embed" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
     </section>
