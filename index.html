@@ -21,10 +21,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 20px 8%;
-    
-    /* 移除背景圖片，回復原本的背景色 */
-    background-color: #fcf9f2; 
-    
+    background-color: #fcf9f2;     
     border-bottom: 1px solid #e5e0dc;
     position: sticky;
     top: 0;
@@ -32,100 +29,46 @@ nav {
 }
 
         }
+        .logo a { font-weight: 500; font-size: 1.1rem; color: #5d4e43; text-decoration: none; }
 
-        .logo { 
-            font-weight: 500; 
-            font-size: 1.1rem; 
-            color: #5d4e43;
-            letter-spacing: 0.5px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 25px; 
-        }
-
-        /* Applying coffee color to nav links as requested */
-        .nav-links a { 
-            text-decoration: none; 
-            color: #5d4e43; 
-            font-size: 0.9rem; 
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
+        .nav-links { display: flex; gap: 25px; }
+        .nav-links a { text-decoration: none; color: #5d4e43; font-size: 0.9rem; font-weight: 500; transition: color 0.3s ease; }
         .nav-links a:hover { color: #8A7B6F; }
 
-        /* 手機版折疊按鈕樣式 (預設隱藏，只有手機版顯示) */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            border: none;
-            background: none;
-            padding: 5px;
-        }
-        
-        .menu-toggle span {
-            width: 25px;
-            height: 2px;
-            background-color: #5d4e43;
-            margin: 2.5px 0;
-        }
+        .menu-toggle { display: none; flex-direction: column; cursor: pointer; border: none; background: none; padding: 5px; }
+        .menu-toggle span { width: 25px; height: 2px; background-color: #5d4e43; margin: 2.5px 0; }
 
-        .hero {
-            flex: 1;
+        .hero { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 80px 20px; }
+        h1 { font-size: 2.2rem; margin-bottom: 30px; color: #5d4e43; }
+        .text-content { max-width: 650px; font-size: 1.1rem; margin-bottom: 40px; }
+
+        footer { text-align: center; padding: 20px; background: #fcf9f2; font-size: 0.85rem; color: #8A7B6F; }
+
+        /* 懸浮臉書按鈕樣式 */
+        .fb-float-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #1877f2;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            background-image: url('彩虹底圖.jfif'); 
-            background-size: cover;
-            background-position: center;
-            padding: 80px 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 100;
+            text-decoration: none;
+            transition: transform 0.3s ease;
         }
+        .fb-float-btn:hover { transform: scale(1.1); }
 
-        h1 { font-size: 2.2rem; margin-bottom: 30px; letter-spacing: 1px; color: #5d4e43; }
-
-        .text-content {
-            max-width: 650px;
-            font-size: 1.1rem;
-            margin-bottom: 40px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: #fcf9f2;
-            font-size: 0.85rem;
-            color: #8A7B6F;
-        }
-
-        /* 手機版的 CSS 設定 */
         @media (max-width: 768px) {
-            /* 顯示漢堡按鈕 */
             .menu-toggle { display: flex; }
-            
-            /* 將原本的導航列隱藏，並改為垂直排列 */
-            .nav-links {
-                display: none; /* 預設隱藏 */
-                flex-direction: column;
-                position: absolute;
-                top: 100%; /* 顯示在 nav 的正下方 */
-                left: 0;
-                width: 100%;
-                background: #fcf9f2;
-                padding: 20px 0;
-                gap: 15px;
-                text-align: center;
-                border-bottom: 1px solid #e5e0dc;
-                z-index: 1000;
-            }
-            
-            /* 當加上 active class 時，顯示選單 */
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: #fcf9f2; padding: 20px 0; gap: 15px; text-align: center; border-bottom: 1px solid #e5e0dc; }
             .nav-links.active { display: flex; }
-            
-            h1 { font-size: 1.6rem; }
+            .contact-grid { grid-template-columns: 1fr !important; }
         }
     </style>
 </head>
@@ -182,15 +125,29 @@ nav {
         </div>
     </header>
 
-<!-- 社群追蹤區塊 -->
-<section style="text-align: center; padding: 60px 20px; background: #fdfaf6;">
-    <h3 style="color: #5d4e43; margin-bottom: 15px;">關注我們的動態</h3>
-    <p style="color: #8A7B6F; margin-bottom: 25px;">歡迎追蹤我們的 Facebook 粉絲專頁，隨時接收最新活動與園區生活花絮。</p>
-    <a href="https://www.facebook.com/profile.php?id=100076069210460"target="_blank" 
-       style="display: inline-block; background: #d97746; color: white; padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: background 0.3s;">
-       前往 Facebook 粉絲專頁
-    </a>
-</section>
+
+    <!-- 聯絡資訊與地圖區塊 -->
+    <section style="background-color: #fdfaf6; padding: 60px 20px; border-top: 1px solid #e5e0dc;">
+        <div class="contact-grid" style="max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; text-align: left;">
+            <div>
+                <h3 style="color: #5d4e43; margin-bottom: 15px;">聯絡資訊</h3>
+                <p style="color: #5d4e43; line-height: 2;">
+                    <strong>聯絡人：</strong>張荷月<br>
+                    <strong>電話：</strong><a href="tel:0981276790" style="color: #d97746; text-decoration: none;">0981-276-790</a><br>
+                    <strong>地址：</strong>宜蘭縣三星鄉安農九路560號
+                </p>
+                <h3 style="color: #5d4e43; margin-top: 25px; margin-bottom: 15px;">服務時間</h3>
+                <p style="color: #5d4e43; line-height: 2;">
+                    週一至週五：09:00 - 17:00<br>
+                    週六至週日：視情況回覆訊息
+                </p>
+            </div>
+            <!-- Google Maps 嵌入 -->
+            <div style="border-radius: 12px; overflow: hidden; height: 300px;">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3618.358763520148!2d121.73468907604618!3d24.693356857187974!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3467e411516e89f7%3A0x6a053c8c7f99965d!2zMjY25aSn6Z5576L5LiJ5p2_6YyA5a6J5YWJ5LqU6LevNTYw6 আমাকে!5e0!3m2!1szh-TW!2stw!4v1719293444444!5m2!1szh-TW!2stw" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
 
     <footer>
         <p>Copyright © 2026 社團法人台灣華德福親子共學協會</p>
@@ -198,10 +155,8 @@ nav {
 
     <script>
         function toggleMenu() {
-            var navLinks = document.getElementById("navLinks");
-            navLinks.classList.toggle("active");
+            document.getElementById("navLinks").classList.toggle("active");
         }
     </script>
-
 </body>
 </html>
