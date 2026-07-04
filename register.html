@@ -7,35 +7,25 @@
         body { font-family: "Microsoft JhengHei", sans-serif; background-color: #fdfaf5; padding: 40px; }
         .container { max-width: 600px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
         
-        /* 新增：返回按鈕的樣式設計 */
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
-            color: #8A7B6F; /* 使用柔和的副主色 */
-            text-decoration: none;
-            font-size: 0.95em;
-            font-weight: bold;
-            margin-bottom: 20px;
-            transition: color 0.2s ease;
-        }
-        .back-btn:hover {
-            color: #d97746; /* 懸停時切換為亮眼橘色 */
-        }
-        .back-btn-icon {
-            margin-right: 5px;
-            font-size: 1.1em;
-        }
-
         h1 { color: #2b706c; text-align: center; margin-bottom: 30px; }
         .form-group { margin-bottom: 20px; }
         label { display: block; margin-bottom: 8px; font-weight: bold; }
-        input[type="text"], input[type="tel"], input[type="email"], select { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+        
+        /* 所有輸入框的基本樣式 */
+        input[type="text"], input[type="tel"], input[type="email"], select { 
+            width: 100%; 
+            padding: 12px; 
+            border: 1px solid #ccc; 
+            border-radius: 5px; 
+            box-sizing: border-box; 
+        }
+        
         .checkbox-group { display: flex; flex-direction: column; gap: 10px; padding: 15px; background: #f9f9f9; border: 1px solid #ddd; border-radius: 5px; }
         
         /* 收費標準與溫馨提醒的外觀設計 */
         .notice-section {
-            background-color: rgba(43, 112, 108, 0.05); /* 使用協會藍綠色的極淡透明背景 */
-            border: 1px dashed #2b706c; /* 藍綠色虛線外框 */
+            background-color: rgba(43, 112, 108, 0.05); 
+            border: 1px dashed #2b706c; 
             padding: 25px;
             border-radius: 10px;
             margin-top: 30px;
@@ -74,21 +64,59 @@
         .agree-label {
             display: inline;
             font-size: 1em;
-            color: #e44d26; /* 使用亮眼的紅色提醒家長勾選 */
+            color: #e44d26; 
             font-weight: bold;
             cursor: pointer;
         }
 
-        .submit-btn { background-color: #2b706c; color: white; padding: 15px; border: none; border-radius: 5px; cursor: pointer; width: 100%; font-size: 1.2em; margin-top: 10px; }
+        /* 按鈕區塊：讓兩個按鈕並排 */
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        /* 送出報名按鈕 */
+        .submit-btn { 
+            background-color: #2b706c; 
+            color: white; 
+            padding: 15px; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            flex: 2; /* 讓送出按鈕寬一點 */
+            font-size: 1.2em; 
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
         .submit-btn:hover { background-color: #1e4e4a; }
+
+        /* 新增：實體返回按鈕樣式 */
+        .back-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: transparent;
+            color: #d97746; /* 使用協會品牌橘色 */
+            border: 2px solid #d97746;
+            border-radius: 5px;
+            padding: 15px;
+            text-decoration: none;
+            flex: 1; /* 讓返回按鈕佔據剩餘空間 */
+            font-size: 1.1em;
+            font-weight: bold;
+            text-align: center;
+            box-sizing: border-box;
+            transition: all 0.2s ease;
+        }
+        .back-btn:hover {
+            background-color: #d97746;
+            color: white; /* 懸停時變實心橘底白字 */
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <a href="intro.html" class="back-btn">
-            <span class="back-btn-icon">←</span> 返回課後班介紹
-        </a>
-
         <h1>星禾課後照顧班 - 2026秋季報名表單</h1>
         <form id="registrationForm">
             <div class="form-group">
@@ -159,28 +187,36 @@
                 </div>
             </div>
 
-            <button type="submit" class="submit-btn">送出報名</button>
+            <div class="btn-group">
+                <a href="intro.html" class="back-btn">返回介紹</a>
+                <button type="submit" class="submit-btn">送出報名</button>
+            </div>
         </form>
     </div>
 
     <script>
         document.getElementById('registrationForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+            // HTML5 的 required 會先阻擋空白欄位，這裡做更嚴格的特定驗證
             
-            // 1. 驗證時段是否勾選
+            // 1. 驗證複選的時段是否有勾選
             const checkedSessions = document.querySelectorAll('input[name="session"]:checked');
             if (checkedSessions.length === 0) {
-                alert('請至少勾選一個時段！');
+                e.preventDefault(); // 阻擋表單送出
+                alert('請至少勾選一個參加的課後班時段！');
                 return;
             }
 
-            // 2. 驗證家長是否勾選同意事項
+            // 2. 驗證家長同意核取方塊是否勾選
             const agreeNotice = document.getElementById('agreeNotice');
             if (!agreeNotice.checked) {
+                e.preventDefault(); // 阻擋表單送出
                 alert('請勾選同意收費標準與溫馨提醒事項！');
                 return;
             }
 
+            // 如果欄位都檢查完成，才執行預設送出（或您未來的 Google 表單連動）
+            // 目前先以 alert 提示測試
+            e.preventDefault(); 
             alert('感謝您的報名！我們已收到您的資訊，將由老師與您聯繫。');
         });
     </script>
