@@ -9,8 +9,56 @@
         h1 { color: #2b706c; text-align: center; margin-bottom: 30px; }
         .form-group { margin-bottom: 20px; }
         label { display: block; margin-bottom: 8px; font-weight: bold; }
-        input, select { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+        input[type="text"], input[type="tel"], input[type="email"], select { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
         .checkbox-group { display: flex; flex-direction: column; gap: 10px; padding: 15px; background: #f9f9f9; border: 1px solid #ddd; border-radius: 5px; }
+        
+        /* 新增：收費標準與溫馨提醒的外觀設計 */
+        .notice-section {
+            background-color: rgba(43, 112, 108, 0.05); /* 使用協會藍綠色的極淡透明背景 */
+            border: 1px dashed #2b706c; /* 藍綠色虛線外框 */
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 30px;
+            margin-bottom: 25px;
+        }
+        .notice-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #2b706c;
+            margin-bottom: 15px;
+        }
+        .notice-content p {
+            font-size: 0.95em;
+            line-height: 1.6;
+            margin: 0 0 10px 0;
+            color: #444;
+        }
+        .notice-content p:last-child { margin-bottom: 0; }
+        
+        /* 勾選區塊 */
+        .agree-group {
+            display: flex;
+            align-items: flex-start;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px dashed rgba(43, 112, 108, 0.3);
+        }
+        input[type="checkbox"]#agreeNotice {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            margin-right: 10px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .agree-label {
+            display: inline;
+            font-size: 1em;
+            color: #e44d26; /* 使用亮眼的紅色提醒家長勾選 */
+            font-weight: bold;
+            cursor: pointer;
+        }
+
         .submit-btn { background-color: #2b706c; color: white; padding: 15px; border: none; border-radius: 5px; cursor: pointer; width: 100%; font-size: 1.2em; margin-top: 10px; }
         .submit-btn:hover { background-color: #1e4e4a; }
     </style>
@@ -69,6 +117,24 @@
                 <label for="line">LINE ID</label>
                 <input type="text" id="line" name="line" placeholder="請提供LINE ID讓老師加入，以利收到最新訊息" required>
             </div>
+
+            <div class="notice-section">
+                <div class="notice-title">🌻 收費標準與溫馨提醒</div>
+                <div class="notice-content">
+                    <p><strong>• 全程參加：</strong> 每週一至週五皆參與，10週費用共 17,500 元（最划算，含點心及材料費）。</p>
+                    <p><strong>• 每週參加 3 天（含）以上：</strong> 依單次 400 元計費（10週總計 = 勾選天數 × 400 × 10）。</p>
+                    <p><strong>• 每週單次/單天體驗：</strong> 依單次 450 元計費（10週總計 = 勾選天數 × 450 × 10）。</p>
+                    <p><strong>• 注意事項：</strong> 費用皆包含點心與材料費。因課程材料與師資已提前準備，病假、事假及國定假日期間恕不扣除或退費。課程內容會因天氣彈性調整（好天氣先散步，雨天在室內休息聽故事）。</p>
+                    <p><strong>• 課後時間：</strong> 星期一至星期五</p>
+                    <p><strong>• 接送時間：</strong> 13:30 幸運草中庭接孩子，建議最晚 17:30 接孩子回家。</p>
+                </div>
+                
+                <div class="agree-group">
+                    <input type="checkbox" id="agreeNotice" name="agreeNotice" value="已詳細閱讀並同意" required>
+                    <label for="agreeNotice" class="agree-label">我已詳細閱讀並同意上述收費標準、退費規範與接送時間</label>
+                </div>
+            </div>
+
             <button type="submit" class="submit-btn">送出報名</button>
         </form>
     </div>
@@ -76,11 +142,21 @@
     <script>
         document.getElementById('registrationForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            
+            // 1. 驗證時段是否勾選
             const checkedSessions = document.querySelectorAll('input[name="session"]:checked');
             if (checkedSessions.length === 0) {
                 alert('請至少勾選一個時段！');
                 return;
             }
+
+            // 2. 驗證家長是否勾選同意事項
+            const agreeNotice = document.getElementById('agreeNotice');
+            if (!agreeNotice.checked) {
+                alert('請勾選同意收費標準與溫馨提醒事項！');
+                return;
+            }
+
             alert('感謝您的報名！我們已收到您的資訊，將由老師與您聯繫。');
         });
     </script>
