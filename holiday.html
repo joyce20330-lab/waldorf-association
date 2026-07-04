@@ -291,30 +291,42 @@
             });
         });
 
-        // 智慧暑期學費計算核心
-        function calculateFee() {
-            const checkedCount = document.querySelectorAll('input[name="session"]:checked').length;
-            if (checkedCount === 0) {
-                feeDisplay.textContent = "0";
-                feeHiddenInput.value = "0";
-                return;
-            }
+// 智慧暑期學費計算核心（已加入第一週 4 天比例減免機制）
+function calculateFee() {
+    // 取得所有被勾選的週次
+    const checkedBoxes = document.querySelectorAll('input[name="session"]:checked');
+    if (checkedBoxes.length === 0) {
+        feeDisplay.textContent = "0";
+        feeHiddenInput.value = "0";
+        return;
+    }
 
-            // 1. 決定基礎單週價格
-            let isOld = document.querySelector('input[name="isOldStudent"]:checked').value === "yes";
-            let basePricePerWeek = isOld ? 5000 : 6000;
+    // 1. 決定基礎單週價格
+    let isOld = document.querySelector('input[name="isOldStudent"]:checked').value === "yes";
+    let basePricePerWeek = isOld ? 5000 : 6000;
 
-            // 2. 判定手足折扣優惠
-            let isSecondChild = document.querySelector('input[name="siblingStatus"]:checked').value === "second";
-            let discountRate = isSecondChild ? 0.8 : 1.0;
+    // 2. 判定手足折扣優惠（第二位打 8 折）
+    let isSecondChild = document.querySelector('input[name="siblingStatus"]:checked').value === "second";
+    let discountRate = isSecondChild ? 0.8 : 1.0;
 
-            // 3. 總計計算
-            let totalFee = checkedCount * basePricePerWeek * discountRate;
-
-            feeDisplay.textContent = Math.round(totalFee).toLocaleString();
-            feeHiddenInput.value = Math.round(totalFee);
+    // 3. 核心：遍歷每個被勾選的項目，依據天數加總
+    let totalFee = 0;
+    checkedBoxes.forEach(cb => {
+        if (cb.value.includes("第一週")) {
+            // 第一週只有 4 天，費用乘以 0.8 (4/5)
+            totalFee += basePricePerWeek * 0.8;
+        } else {
+            // 其他週皆為標準 5 天，收足全額
+            totalFee += basePricePerWeek;
         }
+    });
 
+    // 4. 最後乘上手足折扣，並四捨五入輸出
+    let finalFee = totalFee * discountRate;
+
+    feeDisplay.textContent = Math.round(finalFee).toLocaleString();
+    feeHiddenInput.value = Math.round(finalFee);
+}
         // 綁定所有會引發學費變動的點選事件
         checkboxes.forEach(cb => cb.addEventListener('change', calculateFee));
         oldStudentRadios.forEach(r => r.addEventListener('change', calculateFee));
