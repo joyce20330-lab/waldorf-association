@@ -220,8 +220,7 @@
         </form>
     </div>
 
-    <script>
-        // 自動學費計算邏輯
+<script>
         const checkboxes = document.querySelectorAll('input[name="session"]');
         const feeDisplay = document.getElementById('feeAmountDisplay');
         const feeHiddenInput = document.getElementById('calculatedFee');
@@ -229,46 +228,63 @@
         function calculateFee() {
             const checkedCount = document.querySelectorAll('input[name="session"]:checked').length;
             let totalFee = 0;
-
-            if (checkedCount === 5) {
-                totalFee = 17500; // 全程特惠價
-            } else if (checkedCount >= 3) {
-                totalFee = checkedCount * 400 * 10; // 3-4天，單次400元計
-            } else if (checkedCount > 0) {
-                totalFee = checkedCount * 450 * 10; // 1-2天，單次450元計
-            }
-
-            // 更新畫面上千分位格式的金額，並把純數字存入隱藏輸入框傳給試算表
+            if (checkedCount === 5) { totalFee = 17500; } 
+            else if (checkedCount >= 3) { totalFee = checkedCount * 400 * 10; } 
+            else if (checkedCount > 0) { totalFee = checkedCount * 450 * 10; }
             feeDisplay.textContent = totalFee.toLocaleString();
             feeHiddenInput.value = totalFee;
         }
-
-        // 監聽每一個勾選方塊的狀態切換
         checkboxes.forEach(cb => cb.addEventListener('change', calculateFee));
 
-        // 表單強制必填與勾選驗證
         document.getElementById('registrationForm').addEventListener('submit', function(e) {
-            
-            // 1. 驗證時段是否至少勾選一項
+            e.preventDefault(); 
+
             const checkedSessions = document.querySelectorAll('input[name="session"]:checked');
             if (checkedSessions.length === 0) {
-                e.preventDefault();
                 alert('請至少勾選一個參加的課後班時段！');
                 return;
             }
 
-            // 2. 驗證溫馨提醒是否勾選同意
             const agreeNotice = document.getElementById('agreeNotice');
             if (!agreeNotice.checked) {
-                e.preventDefault();
                 alert('請勾選同意收費標準與溫馨提醒事項！');
                 return;
             }
 
-            // 其他輸入框因為有 required 屬性，若空白瀏覽器會自動跳出提示，不需額外寫程式碼
-            
-            e.preventDefault(); 
-            alert('感謝您的報名！計算學費為 NT$ ' + Number(feeHiddenInput.value).toLocaleString() + ' 元，我們已收到您的資訊。');
+            const submitBtn = document.querySelector('.submit-btn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = '資料傳輸中，請稍候...';
+
+            const formData = new FormData(this);
+            let sessionsArray = [];
+            checkedSessions.forEach(cb => sessionsArray.push(cb.value));
+            formData.set('session', sessionsArray.join(', '));
+
+            // ✨ 請將下方雙引號內的網址，更換成您從 Google Apps Script 複製來的最新 URL 網址
+            const backendUrl = "https://script.google.com/macros/s/AKfycbyxxtuQNQXVFfjvLN_5AvzEFKbe9_njWfiy8tVoynyVKCyJBkfAHgwxxzhK5pvSCPS6aw/exec";
+
+            fetch(backendUrl, {
+                method: 'POST',
+                body: new URLSearchParams(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.result === 'success') {
+                    alert('🎉 報名成功！系統已將精美確認信發送至您的電子信箱，請至信箱（包含垃圾信件匣）查收，老師稍後也會與您聯絡。');
+                    document.getElementById('registrationForm').reset(); 
+                    calculateFee(); 
+                } else {
+                    alert('報名系統忙碌中，請稍後再試。錯誤訊息: ' + data.error);
+                }
+            })
+            .catch(error => {
+                alert('網路連線似乎有點不穩定，請重新嘗試送出。');
+                console.error('Error:', error);
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.textContent = '送出報名';
+            });
         });
     </script>
 </body>
