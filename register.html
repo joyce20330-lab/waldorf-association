@@ -11,18 +11,33 @@
         .form-group { margin-bottom: 20px; }
         label { display: block; margin-bottom: 8px; font-weight: bold; }
         
-        /* 所有輸入框的基本樣式 */
+        /* 輸入框基礎樣式 */
         input[type="text"], input[type="tel"], input[type="email"], select { 
-            width: 100%; 
-            padding: 12px; 
-            border: 1px solid #ccc; 
-            border-radius: 5px; 
-            box-sizing: border-box; 
+            width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; 
         }
         
         .checkbox-group { display: flex; flex-direction: column; gap: 10px; padding: 15px; background: #f9f9f9; border: 1px solid #ddd; border-radius: 5px; }
         
-        /* 收費標準與溫馨提醒的外觀設計 */
+        /* ✨ 新增：頁面即時學費計算顯示盒 */
+        .fee-display-box {
+            margin-top: 15px;
+            padding: 18px 20px;
+            background-color: rgba(217, 119, 70, 0.08); /* 淡淡的品牌橘色背景 */
+            border-left: 5px solid #d97746; /* 醒目的品牌橘色邊條 */
+            border-radius: 6px;
+            font-weight: bold;
+            color: #5d4e43;
+            font-size: 1.1em;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);
+        }
+        .fee-amount { 
+            color: #d97746; 
+            font-size: 1.4em; 
+            margin: 0 4px;
+            text-decoration: underline;
+        }
+
+        /* 收費標準與溫馨提醒 */
         .notice-section {
             background-color: rgba(43, 112, 108, 0.05); 
             border: 1px dashed #2b706c; 
@@ -45,7 +60,7 @@
         }
         .notice-content p:last-child { margin-bottom: 0; }
         
-        /* 勾選區塊 */
+        /* 同意規範勾選區 */
         .agree-group {
             display: flex;
             align-items: flex-start;
@@ -69,14 +84,13 @@
             cursor: pointer;
         }
 
-        /* 按鈕區塊：讓兩個按鈕並排 */
+        /* 按鈕群組排版 */
         .btn-group {
             display: flex;
             gap: 15px;
             margin-top: 20px;
         }
 
-        /* 送出報名按鈕 */
         .submit-btn { 
             background-color: #2b706c; 
             color: white; 
@@ -84,25 +98,24 @@
             border: none; 
             border-radius: 5px; 
             cursor: pointer; 
-            flex: 2; /* 讓送出按鈕寬一點 */
+            flex: 2; 
             font-size: 1.2em; 
             font-weight: bold;
             transition: background-color 0.2s;
         }
         .submit-btn:hover { background-color: #1e4e4a; }
 
-        /* 新增：實體返回按鈕樣式 */
         .back-btn {
             display: flex;
             align-items: center;
             justify-content: center;
             background-color: transparent;
-            color: #d97746; /* 使用協會品牌橘色 */
+            color: #d97746; 
             border: 2px solid #d97746;
             border-radius: 5px;
             padding: 15px;
             text-decoration: none;
-            flex: 1; /* 讓返回按鈕佔據剩餘空間 */
+            flex: 1; 
             font-size: 1.1em;
             font-weight: bold;
             text-align: center;
@@ -111,7 +124,7 @@
         }
         .back-btn:hover {
             background-color: #d97746;
-            color: white; /* 懸停時變實心橘底白字 */
+            color: white; 
         }
     </style>
 </head>
@@ -119,10 +132,12 @@
     <div class="container">
         <h1>星禾課後照顧班 - 2026秋季報名表單</h1>
         <form id="registrationForm">
+            
             <div class="form-group">
                 <label for="studentName">孩子姓名</label>
                 <input type="text" id="studentName" name="studentName" required>
             </div>
+            
             <div class="form-group">
                 <label for="gender">性別</label>
                 <select id="gender" name="gender" required>
@@ -131,6 +146,7 @@
                     <option value="female">女</option>
                 </select>
             </div>
+            
             <div class="form-group">
                 <label for="grade">年級</label>
                 <select id="grade" name="grade" required>
@@ -143,28 +159,38 @@
                     <option value="2C">二年C班</option>
                 </select>
             </div>
+            
             <div class="form-group">
                 <label>勾選參加的課後班時段 (可複選)</label>
                 <div class="checkbox-group">
-                    <label><input type="checkbox" name="session" value="1"> 星期一 / 聽故事</label>
-                    <label><input type="checkbox" name="session" value="2"> 星期二 / 烘焙</label>
-                    <label><input type="checkbox" name="session" value="3"> 星期三 / 健走</label>
-                    <label><input type="checkbox" name="session" value="4"> 星期四 / 手工</label>
-                    <label><input type="checkbox" name="session" value="5"> 星期五 / 遊戲</label>
+                    <label><input type="checkbox" name="session" value="週一(聽故事)"> 星期一 / 聽故事</label>
+                    <label><input type="checkbox" name="session" value="週二(烘焙)"> 星期二 / 烘焙</label>
+                    <label><input type="checkbox" name="session" value="週三(健走)"> 星期三 / 健走</label>
+                    <label><input type="checkbox" name="session" value="週四(手工)"> 星期四 / 手工</label>
+                    <label><input type="checkbox" name="session" value="週五(遊戲)"> 星期五 / 遊戲</label>
                 </div>
+                
+                <div class="fee-display-box">
+                    您的預估應繳學費 (10週總計)：NT$ <span id="feeAmountDisplay" class="fee-amount">0</span> 元
+                </div>
+                <input type="hidden" id="calculatedFee" name="calculatedFee" value="0">
             </div>
+            
             <div class="form-group">
                 <label for="parentsName">家長姓名</label>
                 <input type="text" id="parentsName" name="parentsName" required>
             </div>
+            
             <div class="form-group">
                 <label for="parentTel">聯絡電話</label>
                 <input type="tel" id="parentTel" name="parentTel" placeholder="0981276790" required>
             </div>
+            
             <div class="form-group">
                 <label for="email">電子信箱</label>
                 <input type="email" id="email" name="email" placeholder="請填上平常使用的信箱，以利收到最新訊息" required>
             </div>
+            
             <div class="form-group">
                 <label for="line">LINE ID</label>
                 <input type="text" id="line" name="line" placeholder="請提供LINE ID讓老師加入，以利收到最新訊息" required>
@@ -195,29 +221,54 @@
     </div>
 
     <script>
+        // 自動學費計算邏輯
+        const checkboxes = document.querySelectorAll('input[name="session"]');
+        const feeDisplay = document.getElementById('feeAmountDisplay');
+        const feeHiddenInput = document.getElementById('calculatedFee');
+
+        function calculateFee() {
+            const checkedCount = document.querySelectorAll('input[name="session"]:checked').length;
+            let totalFee = 0;
+
+            if (checkedCount === 5) {
+                totalFee = 17500; // 全程特惠價
+            } else if (checkedCount >= 3) {
+                totalFee = checkedCount * 400 * 10; // 3-4天，單次400元計
+            } else if (checkedCount > 0) {
+                totalFee = checkedCount * 450 * 10; // 1-2天，單次450元計
+            }
+
+            // 更新畫面上千分位格式的金額，並把純數字存入隱藏輸入框傳給試算表
+            feeDisplay.textContent = totalFee.toLocaleString();
+            feeHiddenInput.value = totalFee;
+        }
+
+        // 監聽每一個勾選方塊的狀態切換
+        checkboxes.forEach(cb => cb.addEventListener('change', calculateFee));
+
+        // 表單強制必填與勾選驗證
         document.getElementById('registrationForm').addEventListener('submit', function(e) {
-            // HTML5 的 required 會先阻擋空白欄位，這裡做更嚴格的特定驗證
             
-            // 1. 驗證複選的時段是否有勾選
+            // 1. 驗證時段是否至少勾選一項
             const checkedSessions = document.querySelectorAll('input[name="session"]:checked');
             if (checkedSessions.length === 0) {
-                e.preventDefault(); // 阻擋表單送出
+                e.preventDefault();
                 alert('請至少勾選一個參加的課後班時段！');
                 return;
             }
 
-            // 2. 驗證家長同意核取方塊是否勾選
+            // 2. 驗證溫馨提醒是否勾選同意
             const agreeNotice = document.getElementById('agreeNotice');
             if (!agreeNotice.checked) {
-                e.preventDefault(); // 阻擋表單送出
+                e.preventDefault();
                 alert('請勾選同意收費標準與溫馨提醒事項！');
                 return;
             }
 
-            // 如果欄位都檢查完成，才執行預設送出（或您未來的 Google 表單連動）
-            // 目前先以 alert 提示測試
+            // 其他輸入框因為有 required 屬性，若空白瀏覽器會自動跳出提示，不需額外寫程式碼
+            
             e.preventDefault(); 
-            alert('感謝您的報名！我們已收到您的資訊，將由老師與您聯繫。');
+            alert('感謝您的報名！計算學費為 NT$ ' + Number(feeHiddenInput.value).toLocaleString() + ' 元，我們已收到您的資訊。');
         });
     </script>
 </body>
