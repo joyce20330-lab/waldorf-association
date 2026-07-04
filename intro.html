@@ -1,68 +1,107 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>星禾課後照顧班 - 報名首頁 - 社團法人 台灣華德福親子共學協會</title>
+    <title>精彩活動報名 - 社團法人台灣華德福親子共學協會</title>
+    
+    <!-- 引入 Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // 設定品牌專屬色系 (與全站保持一致)
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: '#fcf9f2',      // 溫暖背景色
+                            text: '#5d4e43',    // 主要文字深棕色
+                            accent: '#d97746',  // 橘棕色強調色
+                            border: '#e5e0dc',  // 邊框線條色
+                            light: '#8A7B6F'    // 次要文字色
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Helvetica Neue"', 'Arial', '"Microsoft JhengHei"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <style>
         body {
-            font-family: "Microsoft JhengHei", "Heiti TC", sans-serif;
-            background-color: url('彩虹底圖.jfif');
-            color: #333;
-            margin: 0;
-            padding: 20px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* 漸層背景圖 */
+       .hero-bg {
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), url('彩虹底圖.jfif') center/cover no-repeat;
         }
 
-        .container {
-            max-width: 960px;
-            margin: 0 auto;
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        /* 手機版選單的展開動畫 */
+        #mobile-menu {
+            transition: all 0.3s ease-in-out;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
         }
-
-        header { text-align: center; margin-bottom: 50px; }
-        
-        .logo-symbol { font-size: 4em; color: #fca13f; }
-        .logo-text h1 { color: #2b706c; font-size: 2.2em; margin: 0; }
-        .program-title { color: #333; font-size: 3em; margin: 40px 0; font-weight: bold; }
-
-        h2 { color: #2b706c; font-size: 2.5em; border-bottom: 2px solid #2b706c; padding-bottom: 10px; margin-top: 60px; }
-
-        /* 老師介紹區塊樣式 */
-        .teacher-info { background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); text-align: left; }
-        .teacher-header { display: flex; align-items: center; gap: 20px; margin-bottom: 20px; }
-        .teacher-photo { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; background: #ddd; display: flex; align-items: center; justify-content: center; }
-        .teacher-name { font-size: 2em; font-weight: bold; }
-        .bio-section { margin-bottom: 20px; }
-        .bio-section h3 { color: #2b706c; margin-bottom: 10px; border-left: 4px solid #2b706c; padding-left: 10px; }
-
-        .intro-grid { display: grid; gap: 40px; margin-bottom: 60px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-        .card { text-align: center; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        
-        .form-section { background-color: #fff; padding: 40px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .form-group { margin-bottom: 20px; }
-        label { display: block; font-size: 1.2em; margin-bottom: 8px; font-weight: bold; }
-        input, select, textarea { width: 100%; padding: 12px; font-size: 1em; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
-
-        .submit-btn { background-color: #2b706c; color: white; font-size: 1.4em; padding: 15px; border: none; border-radius: 5px; cursor: pointer; width: 100%; }
-        .submit-btn:hover { background-color: #1e4e4a; }
-
-        footer { text-align: center; margin-top: 60px; padding-top: 30px; border-top: 2px solid #ccc; }
-        .core-philosophy { font-size: 2em; font-weight: bold; color: #2b706c; margin-bottom: 15px; }
+        #mobile-menu.open {
+            max-height: 400px;
+            opacity: 1;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
     </style>
 </head>
-<body>
+<body class="bg-brand-bg text-brand-text min-h-screen flex flex-col font-sans">
 
-    <div class="container">
-        <header>
-            <span class="logo-symbol">∞</span>
-            <div class="logo-text">
-                <h1>社團法人 台灣華德福親子共學協會</h1>
-            </div>
-            <h1 class="program-title">星禾課後照顧班</h1>
-        </header>
+    <!-- 導覽列 -->
+    <nav class="flex justify-between items-center px-6 md:px-[8%] py-5 border-b border-brand-border bg-brand-bg sticky top-0 z-50 shadow-sm">
+        <div class="font-medium text-lg tracking-wide text-brand-text hover:text-brand-accent transition-colors">
+            <a href="index.html">社團法人台灣華德福親子共學協會</a>
+        </div>
+        
+        <!-- 桌機版導覽列 -->
+        <div class="hidden md:flex gap-8 items-center">
+            <a href="index.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">首頁</a>
+            <a href="news.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">最新消息</a>
+            <a href="about.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">協會緣起</a>
+            <a href="services.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">服務項目</a>
+            <a href="events.html" class="text-sm font-medium text-brand-accent transition-colors">活動報名</a>
+            <a href="contact.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">聯絡我們</a>
+        </div>
+
+        <!-- 手機版漢堡選單按鈕 -->
+        <button id="menu-btn" class="md:hidden flex flex-col gap-[5px] p-2 focus:outline-none" aria-label="Toggle Menu">
+            <span class="w-6 h-[2px] bg-brand-text block transition-transform duration-300 origin-center"></span>
+            <span class="w-6 h-[2px] bg-brand-text block transition-opacity duration-300"></span>
+            <span class="w-6 h-[2px] bg-brand-text block transition-transform duration-300 origin-center"></span>
+        </button>
+    </nav>
+
+    <!-- 手機版下拉選單 -->
+    <div id="mobile-menu" class="md:hidden bg-brand-bg border-b border-brand-border absolute w-full z-40 top-[73px] shadow-lg flex flex-col items-center gap-4">
+        <a href="index.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">首頁</a>
+        <a href="news.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">最新消息</a>
+        <a href="about.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">協會緣起</a>
+        <a href="services.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">服務項目</a>
+        <a href="events.html" class="w-full text-center py-2 text-brand-accent font-medium">活動報名</a>
+        <a href="contact.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">聯絡我們</a>
+    </div>
+
+    <!-- 頁面標題區塊 -->
+    <header class="hero-bg py-20 px-6 flex justify-center items-center shadow-inner">
+        <div class="text-center">
+            <h1 class="text-3xl md:text-5xl font-bold text-white drop-shadow-md mb-4 tracking-wider">
+                精彩活動報名
+            </h1>
+<!-- 桌機顯示為一行 (nowrap)，小螢幕則會自動換行 (md:whitespace-nowrap) -->
+<p class="text-white/90 text-sm md:text-base drop-shadow-sm md:whitespace-nowrap">
+    歡迎參與我們為孩子與家長精心策劃的各項活動與課程，一同在華德福的氛圍中學習與成長。
+       </p>
+        </div>
+    </header>
 
         <h2>老師介紹</h2>
         <div class="teacher-info">
