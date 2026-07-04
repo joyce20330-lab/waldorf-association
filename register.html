@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>星禾課後照顧班 - 線上報名</title>
+    <style>
+        body { font-family: "Microsoft JhengHei", sans-serif; background-color: #fdfaf5; padding: 40px; }
+        .container { max-width: 600px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        h1 { color: #2b706c; text-align: center; margin-bottom: 30px; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: bold; }
+        input, select { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+        .checkbox-group { display: flex; flex-direction: column; gap: 10px; padding: 15px; background: #f9f9f9; border: 1px solid #ddd; border-radius: 5px; }
+        .submit-btn { background-color: #2b706c; color: white; padding: 15px; border: none; border-radius: 5px; cursor: pointer; width: 100%; font-size: 1.2em; margin-top: 10px; }
+        .submit-btn:hover { background-color: #1e4e4a; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>星禾課後照顧班 - 報名表單</h1>
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="studentName">孩子姓名</label>
+                <input type="text" id="studentName" name="studentName" required>
+            </div>
+            <div class="form-group">
+                <label for="gender">性別</label>
+                <select id="gender" name="gender" required>
+                    <option value="">請選擇性別</option>
+                    <option value="male">男</option>
+                    <option value="female">女</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="grade">年級</label>
+                <select id="grade" name="grade" required>
+                    <option value="">請選擇年級</option>
+                    <option value="1A">一年A班</option>
+                    <option value="1B">一年B班</option>
+                    <option value="1C">一年C班</option>
+                    <option value="2A">二年A班</option>
+                    <option value="2B">二年B班</option>
+                    <option value="2C">二年C班</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>勾選參加的課後班時段 (可複選)</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="session" value="1"> 星期一 / 聽故事</label>
+                    <label><input type="checkbox" name="session" value="2"> 星期二 / 烘焙</label>
+                    <label><input type="checkbox" name="session" value="3"> 星期三 / 健走</label>
+                    <label><input type="checkbox" name="session" value="4"> 星期四 / 手工</label>
+                    <label><input type="checkbox" name="session" value="5"> 星期五 / 遊戲</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="parentsName">家長姓名</label>
+                <input type="text" id="parentsName" name="parentsName" required>
+            </div>
+            <div class="form-group">
+                <label for="parentTel">聯絡電話</label>
+                <input type="tel" id="parentTel" name="parentTel" placeholder="0981276790" required>
+            </div>
+            <div class="form-group">
+                <label for="email">電子信箱</label>
+                <input type="email" id="email" name="email" placeholder="請填上平常使用的信箱，以利收到最新訊息" required>
+            </div>
+            <div class="form-group">
+                <label for="line">LINE ID</label>
+                <input type="text" id="line" name="line" placeholder="請提供LINE ID讓老師加入，以利收到最新訊息" required>
+            </div>
+            <button type="submit" class="submit-btn">送出報名</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const checkedSessions = document.querySelectorAll('input[name="session"]:checked');
+            if (checkedSessions.length === 0) {
+                alert('請至少勾選一個時段！');
+                return;
+            }
+            alert('感謝您的報名！我們已收到您的資訊，將由老師與您聯繫。');
+        });
+    </script>
+</body>
+</html>
