@@ -51,17 +51,6 @@
             opacity: 1;
             padding-top: 1rem;
             padding-bottom: 1rem;
-.link-list {
-        list-style: none; /* 移除原本的圓點 */
-    }
-    .link-list a {
-        color: #d97706; /* 設定成您要的橘色 */
-        text-decoration: none; /* 移除底線 */
-        font-weight: bold;
-    }
-    .link-list a:hover {
-        color: #b45309; /* 滑鼠移上去變成深橘色 */
-        text-decoration: underline;
         }
     </style>
 </head>
@@ -130,9 +119,11 @@
                         <li><a href="contact.html" class="text-brand-accent font-bold hover:underline">2-3歲 幼幼班</a></li>
                         <li><a href="contact.html" class="text-brand-accent font-bold hover:underline">3-6歲 混齡班</a></li>
                         <li>共學畢業典禮</li>
-<li class="link-list">
-    <a href="intro.html">星禾課後照顧班</a> /
-    <a href="register.html">報名連結</a>
+<li class="flex items-center gap-2">
+    <span>星禾課後照顧班：</span>
+    <a href="intro.html" class="text-brand-accent font-bold hover:underline">介紹</a> 
+    <span class="text-brand-light">/</span> 
+    <a href="register.html" class="text-brand-accent font-bold hover:underline">報名連結</a>
 </li>
                     </ul>
                 </div>
