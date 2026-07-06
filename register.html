@@ -1,103 +1,163 @@
-<script>
-        // ✨ 請確保此處的後端 API 網址與您 Google Apps Script 部署的一致
-        const backendUrl = "https://script.google.com/macros/s/AKfycbyxxtuQNQXVFfjvLN_5AvzEFKbe9_njWfiy8tVoynyVKCyJBkfAHgwxxzhK5pvSCPS6aw/exec";
-
-        const checkboxes = document.querySelectorAll('input[name="session"]');
-        const feeDisplay = document.getElementById('feeAmountDisplay');
-        const feeHiddenInput = document.getElementById('calculatedFee');
-        const regForm = document.getElementById('registrationForm');
-        const loadingStatus = document.getElementById('loadingStatus');
-        const fullMessageBlock = document.getElementById('fullMessageBlock');
-
-        // 頁面加載時先向後台檢查人數狀態
-        window.addEventListener('DOMContentLoaded', () => {
-            fetch(backendUrl + '?action=checkStatus')
-            .then(response => response.json())
-            .then(data => {
-                loadingStatus.style.display = 'none';
-                if (data.status === 'full') {
-                    fullMessageBlock.style.display = 'block';
-                } else {
-                    regForm.style.display = 'block';
-                }
-            })
-            .catch(error => {
-                console.error('Error checking status:', error);
-                loadingStatus.textContent = '系統檢查名額失敗，請重新整理網頁。';
-            });
-        });
-
-        function calculateFee() {
-            const checkedCount = document.querySelectorAll('input[name="session"]:checked').length;
-            let totalFee = 0;
-            if (checkedCount === 5) { totalFee = 17500; } 
-            else if (checkedCount >= 3) { totalFee = checkedCount * 400 * 10; } 
-            else if (checkedCount > 0) { totalFee = checkedCount * 450 * 10; }
-            feeDisplay.textContent = totalFee.toLocaleString();
-            feeHiddenInput.value = totalFee;
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星禾課後照顧班 - 線上報名</title>
+    <style>
+        body { font-family: "Microsoft JhengHei", sans-serif; background-color: #fdfaf5; padding: 40px; }
+        .container { max-width: 600px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        
+        h1 { color: #2b706c; text-align: center; margin-bottom: 30px; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: bold; }
+        
+        input[type="text"], input[type="tel"], input[type="email"], select { 
+            width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; 
         }
-        checkboxes.forEach(cb => cb.addEventListener('change', calculateFee));
+        
+        .checkbox-group { display: flex; flex-direction: column; gap: 10px; padding: 15px; background: #f9f9f9; border: 1px solid #ddd; border-radius: 5px; }
+        
+        .fee-display-box {
+            margin-top: 15px;
+            padding: 18px 20px;
+            background-color: rgba(217, 119, 70, 0.08); 
+            border-left: 5px solid #d97746; 
+            border-radius: 6px;
+            font-weight: bold;
+            color: #5d4e43;
+            font-size: 1.1em;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);
+        }
+        .fee-amount { 
+            color: #d97746; 
+            font-size: 1.4em; 
+            margin: 0 4px;
+            text-decoration: underline;
+        }
 
-        regForm.addEventListener('submit', function(e) {
-            e.preventDefault(); 
+        .notice-section {
+            background-color: rgba(43, 112, 108, 0.05); 
+            border: 1px dashed #2b706c; 
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 30px;
+            margin-bottom: 25px;
+        }
+        .notice-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #2b706c;
+            margin-bottom: 15px;
+        }
+        .notice-content p {
+            font-size: 0.95em;
+            line-height: 1.6;
+            margin: 0 0 10px 0;
+            color: #444;
+        }
+        .notice-content p:last-child { margin-bottom: 0; }
+        
+        .agree-group {
+            display: flex;
+            align-items: flex-start;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px dashed rgba(43, 112, 108, 0.3);
+        }
+        input[type="checkbox"]#agreeNotice {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            margin-right: 10px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .agree-label {
+            display: inline;
+            font-size: 1em;
+            color: #e44d26; 
+            font-weight: bold;
+            cursor: pointer;
+        }
 
-            const checkedSessions = document.querySelectorAll('input[name="session"]:checked');
-            if (checkedSessions.length === 0) {
-                alert('請至少勾選一個參加的課後班時段！');
-                return;
-            }
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
 
-            const agreeNotice = document.getElementById('agreeNotice');
-            if (!agreeNotice.checked) {
-                alert('請勾選同意收費標準與溫馨提醒事項！');
-                return;
-            }
+        .submit-btn { 
+            background-color: #2b706c; 
+            color: white; 
+            padding: 15px; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            flex: 2; 
+            font-size: 1.2em; 
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+        .submit-btn:hover { background-color: #1e4e4a; }
 
-            const submitBtn = document.querySelector('.submit-btn');
-            submitBtn.disabled = true;
-            submitBtn.textContent = '資料傳輸中，請稍候...';
+        .back-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: transparent;
+            color: #d97746; 
+            border: 2px solid #d97746;
+            border-radius: 5px;
+            padding: 15px;
+            text-decoration: none;
+            flex: 1; 
+            font-size: 1.1em;
+            font-weight: bold;
+            text-align: center;
+            box-sizing: border-box;
+            transition: all 0.2s ease;
+        }
+        .back-btn:hover {
+            background-color: #d97746;
+            color: white; 
+        }
 
-            // ✨【核心優化】改用明確的鍵值對抓取欄位值，徹底防止欄位丟失或空白變 undefined
-            let sessionsArray = [];
-            checkedSessions.forEach(cb => sessionsArray.push(cb.value));
+        /* 滿額載入狀態與滿額提示樣式 */
+        #loadingStatus { text-align: center; color: #8A7B6F; padding: 20px; font-size: 1.1em; }
+        .full-message {
+            display: none; text-align: center; padding: 40px 20px; background: #fff5f5;
+            border: 1px solid #ffc9c9; border-radius: 10px; color: #d93838; margin-bottom: 20px;
+        }
+        .full-message h2 { margin-top: 0; font-size: 1.6em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>星禾課後照顧班 - 2026秋季報名表單</h1>
+        
+        <div id="loadingStatus">🌱 正在為您確認班級剩餘名額，請稍候...</div>
 
-            const payload = {
-                studentName: document.getElementById('studentName').value,
-                gender: document.getElementById('gender').value,
-                grade: document.getElementById('grade').value,
-                session: sessionsArray.join(', '),
-                calculatedFee: feeHiddenInput.value,
-                parentsName: document.getElementById('parentsName').value,
-                parentTel: document.getElementById('parentTel').value,
-                email: document.getElementById('email').value,
-                line: document.getElementById('line').value,
-                agreeNotice: agreeNotice.value
-            };
+        <div id="fullMessageBlock" class="full-message">
+            <h2>🌻 謝謝您的關注，本季報名已額滿</h2>
+            <p>目前課後照顧班的 7 位正取名額已登記完畢。</p>
+            <p style="margin-top: 15px; color: #5d4e43;">如有候補需求或最新班級資訊諮詢，歡迎隨時聯絡我們或加入LINE ID：solomon8544。</p>
+            <div style="margin-top: 25px;">
+                <a href="intro.html" class="back-btn" style="display:inline-block; max-width:200px; padding:10px 20px;">返回介紹頁面</a>
+            </div>
+        </div>
 
-            // 使用 URLSearchParams 精確打包確保參數不漏
-            fetch(backendUrl, {
-                method: 'POST',
-                body: new URLSearchParams(payload)
-            })
-            .then(response => response.json())
-            .then(data => {
-                if(data.result === 'success') {
-                    alert('🎉 報名成功！系統已將確認信發送至您的電子信箱，老師稍後也會與您聯絡。');
-                    location.reload(); 
-                } else if(data.result === 'full') {
-                    alert('很抱歉！就在剛剛名額已滿，未能成功遞交，敬請見諒。');
-                    location.reload();
-                } else {
-                    alert('報名系統忙碌中，請稍後再試。錯誤訊息: ' + data.error);
-                }
-            })
-            .catch(error => {
-                alert('網路連線似乎有點不穩定，請重新嘗試送出。');
-                console.error('Error:', error);
-            })
-            .finally(() => {
-                submitBtn.disabled = false;
-                submitBtn.textContent = '送出報名';
-            });
-        });
-    </script>
+        <form id="registrationForm" style="display: none;">
+            
+            <div class="form-group">
+                <label for="studentName">孩子姓名</label>
+                <input type="text" id="studentName" name="studentName" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="gender">性別</label>
+                <select id="gender" name="gender" required>
+                    <option value="">請選擇性別</option>
+                    <option value="男">男</option>
+                    <option value="女">女</option>
+                </select>
