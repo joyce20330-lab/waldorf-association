@@ -304,30 +304,36 @@
             checkedSessions.forEach(cb => sessionsArray.push(cb.value));
             formData.set('session', sessionsArray.join(', '));
 
-            fetch(backendUrl, {
-                method: 'POST',
-                body: new URLSearchParams(formData)
-            })
-            .then(response => response.json())
-            .then(data => {
-                if(data.result === 'success') {
-                    alert('🎉 報名成功！系統已將確認信發送至您的電子信箱，老師稍後也會與您聯絡。');
-                    location.reload(); // 成功後直接刷新，即時確認名額狀態
-                } else if(data.result === 'full') {
-                    alert('很抱歉！就在剛剛名額已滿，未能成功遞交，敬請見諒。');
-                    location.reload();
-                } else {
-                    alert('報名系統忙碌中，請稍後再試。錯誤訊息: ' + data.error);
-                }
-            })
-            .catch(error => {
-                alert('網路連線似乎有點不穩定，請重新嘗試送出。');
-                console.error('Error:', error);
-            })
-            .finally(() => {
-                submitBtn.disabled = false;
-                submitBtn.textContent = '送出報名';
-            });
+const formObject = {};
+formData.forEach((value, key) => {
+    formObject[key] = value;
+});
+
+fetch(backendUrl, {
+    method: 'POST',
+    // 💡 改用純文字發送 JSON，能完美避開 Google Apps Script 的 CORS 跨域封鎖問題
+    body: JSON.stringify(formObject) 
+})
+.then(response => response.json())
+.then(data => {
+    if(data.result === 'success') {
+        alert('🎉 報名成功！系統已將確認信發送至您的電子信箱，老師稍後也會與您聯絡。');
+        location.reload();
+    } else if(data.result === 'full') {
+        alert('很抱歉！就在剛剛名額已滿，未能成功遞交，敬請見諒。');
+        location.reload();
+    } else {
+        alert('報名系統忙碌中，請稍後再試。錯誤訊息: ' + data.error);
+    }
+})
+.catch(error => {
+    alert('網路連線似乎有點不穩定，請重新嘗試送出。');
+    console.error('Error:', error);
+})
+.finally(() => {
+    submitBtn.disabled = false;
+    submitBtn.textContent = '送出報名';
+});
         });
     </script>
 </body>
