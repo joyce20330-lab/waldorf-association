@@ -161,3 +161,183 @@
                     <option value="男">男</option>
                     <option value="女">女</option>
                 </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="grade">年級</label>
+                <select id="grade" name="grade" required>
+                    <option value="">請選擇年級</option>
+                    <option value="一年A班">一年A班</option>
+                    <option value="一年B班">一年B班</option>
+                    <option value="一年C班">一年C班</option>
+                    <option value="二年A班">二年A班</option>
+                    <option value="二年B班">二年B班</option>
+                    <option value="二年C班">二年C班</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>勾選參加的課後班時段 (可複選)</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="session" value="週一(聽故事)"> 星期一 / 聽故事</label>
+                    <label><input type="checkbox" name="session" value="週二(烘焙)"> 星期二 / 烘焙</label>
+                    <label><input type="checkbox" name="session" value="週三(健走)"> 星期三 / 健走</label>
+                    <label><input type="checkbox" name="session" value="週四(手工)"> 星期四 / 手工</label>
+                    <label><input type="checkbox" name="session" value="週五(遊戲)"> 星期五 / 遊戲</label>
+                </div>
+                
+                <div class="fee-display-box">
+                    您的預估應繳學費 (10週總計)：NT$ <span id="feeAmountDisplay" class="fee-amount">0</span> 元
+                </div>
+                <input type="hidden" id="calculatedFee" name="calculatedFee" value="0">
+            </div>
+            
+            <div class="form-group">
+                <label for="parentsName">家長姓名</label>
+                <input type="text" id="parentsName" name="parentsName" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="parentTel">聯絡電話</label>
+                <input type="tel" id="parentTel" name="parentTel" placeholder="0981276790" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">電子信箱</label>
+                <input type="email" id="email" name="email" placeholder="請填上平常使用的信箱，以利收到最新訊息" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="line">LINE ID</label>
+                <input type="text" id="line" name="line" placeholder="請提供LINE ID讓老師加入，以利收到最新訊息" required>
+            </div>
+
+            <div class="notice-section">
+                <div class="notice-title">🌻 收費標準與溫馨提醒</div>
+                <div class="notice-content">
+                    <p><strong>• 全程參加：</strong> 每週一至週五皆參與，10週費用共 17,500 元（最划算，含點心及材料費）。</p>
+                    <p><strong>• 每週參加 3 天（含）以上：</strong> 依單次 400 元計費（10週總計 = 勾選天數 × 400 × 10）。</p>
+                    <p><strong>• 每週單次/單天體驗：</strong> 依單次 450 元計費（10週總計 = 勾選天數 × 450 × 10）。</p>
+                    <p><strong>• 收費時間：</strong> 課後照顧第一週繳納學費。</p>
+                    <p><strong>• 注意事項：</strong> 費用皆包含點心與材料費。因課程材料與師資已提前準備，病假、事假及國定假日期間恕不扣除或退費。課程內容會因天氣彈性調整（好天氣先散步，雨天在室內休息聽故事）。</p>
+                    <p><strong>• 招生對象：</strong> 國小一年級、二年級</p>
+                    <p><strong>• 課後時間：</strong> 星期一至星期五</p>
+                    <p><strong>• 接送時間：</strong> 13:30 幸運草中庭接孩子，建議最晚 17:30 接孩子回家。</p>
+                </div>
+                
+                <div class="agree-group">
+                    <input type="checkbox" id="agreeNotice" name="agreeNotice" value="已詳細閱讀並同意" required>
+                    <label for="agreeNotice" class="agree-label">我已詳細閱讀並同意上述收費標準、退費規範與接送時間</label>
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <a href="intro.html" class="back-btn">返回介紹</a>
+                <button type="submit" class="submit-btn">送出報名</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // ✨ 請確保此處的後端 API 網址與您 Google Apps Script 部署的一致
+        const backendUrl = "https://script.google.com/macros/s/AKfycbyxxtuQNQXVFfjvLN_5AvzEFKbe9_njWfiy8tVoynyVKCyJBkfAHgwxxzhK5pvSCPS6aw/exec";
+
+        const checkboxes = document.querySelectorAll('input[name="session"]');
+        const feeDisplay = document.getElementById('feeAmountDisplay');
+        const feeHiddenInput = document.getElementById('calculatedFee');
+        const regForm = document.getElementById('registrationForm');
+        const loadingStatus = document.getElementById('loadingStatus');
+        const fullMessageBlock = document.getElementById('fullMessageBlock');
+
+        // 頁面加載時先向後台檢查人數狀態
+        window.addEventListener('DOMContentLoaded', () => {
+            fetch(backendUrl + '?action=checkStatus')
+            .then(response => response.json())
+            .then(data => {
+                loadingStatus.style.display = 'none';
+                if (data.status === 'full') {
+                    fullMessageBlock.style.display = 'block';
+                } else {
+                    regForm.style.display = 'block';
+                }
+            })
+            .catch(error => {
+                console.error('Error checking status:', error);
+                loadingStatus.textContent = '系統檢查名額失敗，請重新整理網頁。';
+            });
+        });
+
+        function calculateFee() {
+            const checkedCount = document.querySelectorAll('input[name="session"]:checked').length;
+            let totalFee = 0;
+            if (checkedCount === 5) { totalFee = 17500; } 
+            else if (checkedCount >= 3) { totalFee = checkedCount * 400 * 10; } 
+            else if (checkedCount > 0) { totalFee = checkedCount * 450 * 10; }
+            feeDisplay.textContent = totalFee.toLocaleString();
+            feeHiddenInput.value = totalFee;
+        }
+        checkboxes.forEach(cb => cb.addEventListener('change', calculateFee));
+
+        regForm.addEventListener('submit', function(e) {
+            e.preventDefault(); 
+
+            const checkedSessions = document.querySelectorAll('input[name="session"]:checked');
+            if (checkedSessions.length === 0) {
+                alert('請至少勾選一個參加的課後班時段！');
+                return;
+            }
+
+            const agreeNotice = document.getElementById('agreeNotice');
+            if (!agreeNotice.checked) {
+                alert('請勾選同意收費標準與溫馨提醒事項！');
+                return;
+            }
+
+            const submitBtn = document.querySelector('.submit-btn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = '資料傳輸中，請稍候...';
+
+            let sessionsArray = [];
+            checkedSessions.forEach(cb => sessionsArray.push(cb.value));
+
+            const payload = {
+                studentName: document.getElementById('studentName').value,
+                gender: document.getElementById('gender').value,
+                grade: document.getElementById('grade').value,
+                session: sessionsArray.join(', '),
+                calculatedFee: feeHiddenInput.value,
+                parentsName: document.getElementById('parentsName').value,
+                parentTel: document.getElementById('parentTel').value,
+                email: document.getElementById('email').value,
+                line: document.getElementById('line').value,
+                agreeNotice: agreeNotice.value
+            };
+
+            fetch(backendUrl, {
+                method: 'POST',
+                body: new URLSearchParams(payload)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.result === 'success') {
+                    alert('🎉 報名成功！系統已將確認信發送至您的電子信箱，老師稍後也會與您聯絡。');
+                    location.reload(); 
+                } else if(data.result === 'full') {
+                    alert('很抱歉！就在剛剛名額已滿，未能成功遞交，敬請見諒。');
+                    location.reload();
+                } else {
+                    alert('報名系統忙碌中，請稍後再試。錯誤訊息: ' + data.error);
+                }
+            })
+            .catch(error => {
+                alert('網路連線似乎有點不穩定，請重新嘗試送出。');
+                console.error('Error:', error);
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.textContent = '送出報名';
+            });
+        });
+    </script>
+</body>
+</html>
