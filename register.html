@@ -1,244 +1,4 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>星禾課後照顧班 - 線上報名</title>
-    <style>
-        body { font-family: "Microsoft JhengHei", sans-serif; background-color: #fdfaf5; padding: 40px; }
-        .container { max-width: 600px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        
-        h1 { color: #2b706c; text-align: center; margin-bottom: 30px; }
-        .form-group { margin-bottom: 20px; }
-        label { display: block; margin-bottom: 8px; font-weight: bold; }
-        
-        input[type="text"], input[type="tel"], input[type="email"], select { 
-            width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; 
-        }
-        
-        .checkbox-group { display: flex; flex-direction: column; gap: 10px; padding: 15px; background: #f9f9f9; border: 1px solid #ddd; border-radius: 5px; }
-        
-        .fee-display-box {
-            margin-top: 15px;
-            padding: 18px 20px;
-            background-color: rgba(217, 119, 70, 0.08); 
-            border-left: 5px solid #d97746; 
-            border-radius: 6px;
-            font-weight: bold;
-            color: #5d4e43;
-            font-size: 1.1em;
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);
-        }
-        .fee-amount { 
-            color: #d97746; 
-            font-size: 1.4em; 
-            margin: 0 4px;
-            text-decoration: underline;
-        }
-
-        .notice-section {
-            background-color: rgba(43, 112, 108, 0.05); 
-            border: 1px dashed #2b706c; 
-            padding: 25px;
-            border-radius: 10px;
-            margin-top: 30px;
-            margin-bottom: 25px;
-        }
-        .notice-title {
-            font-size: 1.2em;
-            font-weight: bold;
-            color: #2b706c;
-            margin-bottom: 15px;
-        }
-        .notice-content p {
-            font-size: 0.95em;
-            line-height: 1.6;
-            margin: 0 0 10px 0;
-            color: #444;
-        }
-        .notice-content p:last-child { margin-bottom: 0; }
-        
-        .agree-group {
-            display: flex;
-            align-items: flex-start;
-            margin-top: 20px;
-            padding-top: 15px;
-            border-top: 1px dashed rgba(43, 112, 108, 0.3);
-        }
-        input[type="checkbox"]#agreeNotice {
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-            margin-right: 10px;
-            margin-top: 2px;
-            flex-shrink: 0;
-        }
-        .agree-label {
-            display: inline;
-            font-size: 1em;
-            color: #e44d26; 
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .submit-btn { 
-            background-color: #2b706c; 
-            color: white; 
-            padding: 15px; 
-            border: none; 
-            border-radius: 5px; 
-            cursor: pointer; 
-            flex: 2; 
-            font-size: 1.2em; 
-            font-weight: bold;
-            transition: background-color 0.2s;
-        }
-        .submit-btn:hover { background-color: #1e4e4a; }
-
-        .back-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: transparent;
-            color: #d97746; 
-            border: 2px solid #d97746;
-            border-radius: 5px;
-            padding: 15px;
-            text-decoration: none;
-            flex: 1; 
-            font-size: 1.1em;
-            font-weight: bold;
-            text-align: center;
-            box-sizing: border-box;
-            transition: all 0.2s ease;
-        }
-        .back-btn:hover {
-            background-color: #d97746;
-            color: white; 
-        }
-
-        /* 滿額載入狀態與滿額提示樣式 */
-        #loadingStatus { text-align: center; color: #8A7B6F; padding: 20px; font-size: 1.1em; }
-        .full-message {
-            display: none; text-align: center; padding: 40px 20px; background: #fff5f5;
-            border: 1px solid #ffc9c9; border-radius: 10px; color: #d93838; margin-bottom: 20px;
-        }
-        .full-message h2 { margin-top: 0; font-size: 1.6em; }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>星禾課後照顧班 - 2026秋季報名表單</h1>
-        
-        <div id="loadingStatus">🌱 正在為您確認班級剩餘名額，請稍候...</div>
-
-        <div id="fullMessageBlock" class="full-message">
-            <h2>🌻 謝謝您的關注，本季報名已額滿</h2>
-            <p>目前課後照顧班的 7 位正取名額已登記完畢。</p>
-            <p style="margin-top: 15px; color: #5d4e43;">如有候補需求或最新班級資訊諮詢，歡迎隨時聯絡我們或加入LINE ID：solomon8544。</p>
-            <div style="margin-top: 25px;">
-                <a href="intro.html" class="back-btn" style="display:inline-block; max-width:200px; padding:10px 20px;">返回介紹頁面</a>
-            </div>
-        </div>
-
-        <form id="registrationForm" style="display: none;">
-            
-            <div class="form-group">
-                <label for="studentName">孩子姓名</label>
-                <input type="text" id="studentName" name="studentName" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="gender">性別</label>
-                <select id="gender" name="gender" required>
-                    <option value="">請選擇性別</option>
-                    <option value="男">男</option>
-                    <option value="女">女</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label for="grade">年級</label>
-                <select id="grade" name="grade" required>
-                    <option value="">請選擇年級</option>
-                    <option value="一年A班">一年A班</option>
-                    <option value="一年B班">一年B班</option>
-                    <option value="一年C班">一年C班</option>
-                    <option value="二年A班">二年A班</option>
-                    <option value="二年B班">二年B班</option>
-                    <option value="二年C班">二年C班</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label>勾選參加的課後班時段 (可複選)</label>
-                <div class="checkbox-group">
-                    <label><input type="checkbox" name="session" value="週一(聽故事)"> 星期一 / 聽故事</label>
-                    <label><input type="checkbox" name="session" value="週二(烘焙)"> 星期二 / 烘焙</label>
-                    <label><input type="checkbox" name="session" value="週三(健走)"> 星期三 / 健走</label>
-                    <label><input type="checkbox" name="session" value="週四(手工)"> 星期四 / 手工</label>
-                    <label><input type="checkbox" name="session" value="週五(遊戲)"> 星期五 / 遊戲</label>
-                </div>
-                
-                <div class="fee-display-box">
-                    您的預估應繳學費 (10週總計)：NT$ <span id="feeAmountDisplay" class="fee-amount">0</span> 元
-                </div>
-                <input type="hidden" id="calculatedFee" name="calculatedFee" value="0">
-            </div>
-            
-            <div class="form-group">
-                <label for="parentsName">家長姓名</label>
-                <input type="text" id="parentsName" name="parentsName" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="parentTel">聯絡電話</label>
-                <input type="tel" id="parentTel" name="parentTel" placeholder="0981276790" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="email">電子信箱</label>
-                <input type="email" id="email" name="email" placeholder="請填上平常使用的信箱，以利收到最新訊息" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="line">LINE ID</label>
-                <input type="text" id="line" name="line" placeholder="請提供LINE ID讓老師加入，以利收到最新訊息" required>
-            </div>
-
-            <div class="notice-section">
-                <div class="notice-title">🌻 收費標準與溫馨提醒</div>
-                <div class="notice-content">
-                    <p><strong>• 全程參加：</strong> 每週一至週五皆參與，10週費用共 17,500 元（最划算，含點心及材料費）。</p>
-                    <p><strong>• 每週參加 3 天（含）以上：</strong> 依單次 400 元計費（10週總計 = 勾選天數 × 400 × 10）。</p>
-                    <p><strong>• 每週單次/單天體驗：</strong> 依單次 450 元計費（10週總計 = 勾選天數 × 450 × 10）。</p>
-                    <p><strong>• 收費時間：</strong> 課後照顧第一週繳納學費。</p>
-                    <p><strong>• 注意事項：</strong> 費用皆包含點心與材料費。因課程材料與師資已提前準備，病假、事假及國定假日期間恕不扣除或退費。課程內容會因天氣彈性調整（好天氣先散步，雨天在室內休息聽故事）。</p>
-                    <p><strong>• 招生對象：</strong> 國小一年級、二年級</p>
-                    <p><strong>• 課後時間：</strong> 星期一至星期五</p>
-                    <p><strong>• 接送時間：</strong> 13:30 幸運草中庭接孩子，建議最晚 17:30 接孩子回家。</p>
-                </div>
-                
-                <div class="agree-group">
-                    <input type="checkbox" id="agreeNotice" name="agreeNotice" value="已詳細閱讀並同意" required>
-                    <label for="agreeNotice" class="agree-label">我已詳細閱讀並同意上述收費標準、退費規範與接送時間</label>
-                </div>
-            </div>
-
-            <div class="btn-group">
-                <a href="intro.html" class="back-btn">返回介紹</a>
-                <button type="submit" class="submit-btn">送出報名</button>
-            </div>
-        </form>
-    </div>
-
-    <script>
+<script>
         // ✨ 請確保此處的後端 API 網址與您 Google Apps Script 部署的一致
         const backendUrl = "https://script.google.com/macros/s/AKfycbyxxtuQNQXVFfjvLN_5AvzEFKbe9_njWfiy8tVoynyVKCyJBkfAHgwxxzhK5pvSCPS6aw/exec";
 
@@ -256,10 +16,8 @@
             .then(data => {
                 loadingStatus.style.display = 'none';
                 if (data.status === 'full') {
-                    // 若額滿則顯示滿額提示
                     fullMessageBlock.style.display = 'block';
                 } else {
-                    // 未滿額則顯示表單
                     regForm.style.display = 'block';
                 }
             })
@@ -299,20 +57,33 @@
             submitBtn.disabled = true;
             submitBtn.textContent = '資料傳輸中，請稍候...';
 
-            const formData = new FormData(this);
+            // ✨【核心優化】改用明確的鍵值對抓取欄位值，徹底防止欄位丟失或空白變 undefined
             let sessionsArray = [];
             checkedSessions.forEach(cb => sessionsArray.push(cb.value));
-            formData.set('session', sessionsArray.join(', '));
 
+            const payload = {
+                studentName: document.getElementById('studentName').value,
+                gender: document.getElementById('gender').value,
+                grade: document.getElementById('grade').value,
+                session: sessionsArray.join(', '),
+                calculatedFee: feeHiddenInput.value,
+                parentsName: document.getElementById('parentsName').value,
+                parentTel: document.getElementById('parentTel').value,
+                email: document.getElementById('email').value,
+                line: document.getElementById('line').value,
+                agreeNotice: agreeNotice.value
+            };
+
+            // 使用 URLSearchParams 精確打包確保參數不漏
             fetch(backendUrl, {
                 method: 'POST',
-                body: new URLSearchParams(formData)
+                body: new URLSearchParams(payload)
             })
             .then(response => response.json())
             .then(data => {
                 if(data.result === 'success') {
                     alert('🎉 報名成功！系統已將確認信發送至您的電子信箱，老師稍後也會與您聯絡。');
-                    location.reload(); // 成功後直接刷新，即時確認名額狀態
+                    location.reload(); 
                 } else if(data.result === 'full') {
                     alert('很抱歉！就在剛剛名額已滿，未能成功遞交，敬請見諒。');
                     location.reload();
@@ -330,5 +101,3 @@
             });
         });
     </script>
-</body>
-</html>
