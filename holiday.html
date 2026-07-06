@@ -102,7 +102,7 @@
             font-weight: bold;
             transition: background-color 0.2s;
         }
-        .submit-btn:hover { background-color: #bfa332; background-color: #bc5e2e; }
+        .submit-btn:hover { background-color: #bc5e2e; }
 
         .back-btn {
             display: flex;
@@ -138,10 +138,8 @@
     <div class="container">
         <h1>星禾假期照顧班 - 2026暑假報名表單</h1>
         
-        <!-- 檢查名額的載入中狀態 -->
         <div id="loadingStatus">🌱 正在為您確認假期班剩餘名額，請稍候...</div>
 
-        <!-- 滿額提示區塊 -->
         <div id="fullMessageBlock" class="full-message">
             <h2>🌻 謝謝您的關注，本期假期照顧已額滿</h2>
             <p>目前假期照顧班的 7 位正取名額已登記完畢。</p>
@@ -151,7 +149,6 @@
             </div>
         </div>
 
-        <!-- 報名表單主體 -->
         <form id="registrationForm" style="display: none;">
             
             <div class="form-group">
@@ -182,24 +179,22 @@
                 </select>
             </div>
 
-            <!-- 新身分識別：舊生與兄弟姊妹優惠篩選 -->
             <div class="form-group">
                 <label>是否為舊生？</label>
                 <div class="radio-group-row">
                     <label><input type="radio" name="isOldStudent" value="yes"> 是（享舊生優惠價）</label>
-                    <label><input type="radio" name="isOldStudent" value="no"> 否）</label>
+                    <label><input type="radio" name="isOldStudent" value="no" checked> 否</label>
                 </div>
             </div>
 
             <div class="form-group">
                 <label>是否為多位家庭手足報名？（兄弟姐妹一起）</label>
                 <div class="radio-group-row">
-                    <label><input type="radio" name="siblingStatus" value="first"> 第一位孩子或單獨報名</label>
+                    <label><input type="radio" name="siblingStatus" value="first" checked> 第一位孩子或單獨報名</label>
                     <label><input type="radio" name="siblingStatus" value="second"> 第二位孩子（享8折優惠）</label>
                 </div>
             </div>
             
-            <!-- 週數時間選取區 -->
             <div class="form-group">
                 <label>勾選欲報名的暑假安親週次 (可複選，兩人即開班)</label>
                 <div class="checkbox-group">
@@ -261,7 +256,6 @@
     </div>
 
     <script>
-        // 後端連線 API 網址維持使用您的後端引擎
         const backendUrl = "https://script.google.com/macros/s/AKfycbyznbxrX9GuPT8JP8GdEpOj2RCRMuxMKpW8A4SHR4pR3yNpNGOOImZhKEbiA4RwKSsE/exec";
 
         const checkboxes = document.querySelectorAll('input[name="session"]');
@@ -292,42 +286,40 @@
             });
         });
 
-// 智慧暑期學費計算核心（已加入第一週 4 天比例減免機制）
-function calculateFee() {
-    // 取得所有被勾選的週次
-    const checkedBoxes = document.querySelectorAll('input[name="session"]:checked');
-    if (checkedBoxes.length === 0) {
-        feeDisplay.textContent = "0";
-        feeHiddenInput.value = "0";
-        return;
-    }
+        // ✨ 智慧暑期學費計算核心（優化防呆機制）
+        function calculateFee() {
+            const checkedBoxes = document.querySelectorAll('input[name="session"]:checked');
+            if (checkedBoxes.length === 0) {
+                feeDisplay.textContent = "0";
+                feeHiddenInput.value = "0";
+                return;
+            }
 
-    // 1. 決定基礎單週價格
-    let isOld = document.querySelector('input[name="isOldStudent"]:checked').value === "yes";
-    let basePricePerWeek = isOld ? 5000 : 6000;
+            // 安全取值：若沒選則預設為否
+            const oldRadioChecked = document.querySelector('input[name="isOldStudent"]:checked');
+            let isOld = oldRadioChecked ? (oldRadioChecked.value === "yes") : false;
+            let basePricePerWeek = isOld ? 5000 : 6000;
 
-    // 2. 判定手足折扣優惠（第二位打 8 折）
-    let isSecondChild = document.querySelector('input[name="siblingStatus"]:checked').value === "second";
-    let discountRate = isSecondChild ? 0.8 : 1.0;
+            // 安全取值：若沒選則預設為第一位孩子
+            const siblingRadioChecked = document.querySelector('input[name="siblingStatus"]:checked');
+            let isSecondChild = siblingRadioChecked ? (siblingRadioChecked.value === "second") : false;
+            let discountRate = isSecondChild ? 0.8 : 1.0;
 
-    // 3. 核心：遍歷每個被勾選的項目，依據天數加總
-    let totalFee = 0;
-    checkedBoxes.forEach(cb => {
-        if (cb.value.includes("第一週")) {
-            // 第一週只有 4 天，費用乘以 0.8 (4/5)
-            totalFee += basePricePerWeek * 0.8;
-        } else {
-            // 其他週皆為標準 5 天，收足全額
-            totalFee += basePricePerWeek;
+            let totalFee = 0;
+            checkedBoxes.forEach(cb => {
+                if (cb.value.includes("第一週")) {
+                    totalFee += basePricePerWeek * 0.8;
+                } else {
+                    totalFee += basePricePerWeek;
+                }
+            });
+
+            let finalFee = totalFee * discountRate;
+
+            feeDisplay.textContent = Math.round(finalFee).toLocaleString();
+            feeHiddenInput.value = Math.round(finalFee);
         }
-    });
 
-    // 4. 最後乘上手足折扣，並四捨五入輸出
-    let finalFee = totalFee * discountRate;
-
-    feeDisplay.textContent = Math.round(finalFee).toLocaleString();
-    feeHiddenInput.value = Math.round(finalFee);
-}
         // 綁定所有會引發學費變動的點選事件
         checkboxes.forEach(cb => cb.addEventListener('change', calculateFee));
         oldStudentRadios.forEach(r => r.addEventListener('change', calculateFee));
@@ -350,7 +342,6 @@ function calculateFee() {
             const formData = new FormData(this);
             let sessionsArray = [];
             checkedSessions.forEach(cb => sessionsArray.push(cb.value));
-            formData.set('session', sessionsArray.join(', '));
 
             // 額外備註家長勾選的身份，以便後台閱覽
             let oldStatusText = formData.get('isOldStudent') === 'yes' ? '【舊生】' : '【新生】';
