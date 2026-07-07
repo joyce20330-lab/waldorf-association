@@ -124,11 +124,6 @@
         }
 
         #loadingStatus { text-align: center; color: #8A7B6F; padding: 20px; font-size: 1.1em; }
-        .full-message {
-            display: none; text-align: center; padding: 40px 20px; background: #fff5f5;
-            border: 1px solid #ffc9c9; border-radius: 10px; color: #d93838; margin-bottom: 20px;
-        }
-        .full-message h2 { margin-top: 0; font-size: 1.6em; }
     </style>
 </head>
 <body>
@@ -136,15 +131,6 @@
         <h1>星禾課後照顧班 - 2026秋季報名表單</h1>
         
         <div id="loadingStatus">🌱 正在為您確認班級剩餘名額，請稍候...</div>
-
-        <div id="fullMessageBlock" class="full-message">
-            <h2>🌻 謝謝您的關注，本季報名已額滿</h2>
-            <p>目前課後照顧班的 7 位正取名額已登記完畢。</p>
-            <p style="margin-top: 15px; color: #5d4e43;">如有候補需求或最新班級資訊諮詢，歡迎隨時聯絡我們或加入LINE ID：solomon8544。</p>
-            <div style="margin-top: 25px;">
-                <a href="intro.html" class="back-btn" style="display:inline-block; max-width:200px; padding:10px 20px;">返回介紹頁面</a>
-            </div>
-        </div>
 
         <form id="registrationForm" style="display: none;">
             
@@ -176,13 +162,13 @@
             </div>
             
             <div class="form-group">
-                <label>勾選參加的課後班時段 (可複選)</label>
+                <label>勾選參加的課後班時段 (可複選，已達 7 人上限之時段將無法勾選)</label>
                 <div class="checkbox-group">
-                    <label><input type="checkbox" name="session" value="週一(聽故事)"> 星期一 / 聽故事</label>
-                    <label><input type="checkbox" name="session" value="週二(烘焙)"> 星期二 / 烘焙</label>
-                    <label><input type="checkbox" name="session" value="週三(健走)"> 星期三 / 健走</label>
-                    <label><input type="checkbox" name="session" value="週四(手工)"> 星期四 / 手工</label>
-                    <label><input type="checkbox" name="session" value="週五(遊戲)"> 星期五 / 遊戲</label>
+                    <label id="label-週一"><input type="checkbox" name="session" value="週一(聽故事)"> 星期一 / 聽故事</label>
+                    <label id="label-週二"><input type="checkbox" name="session" value="週二(烘焙)"> 星期二 / 烘焙</label>
+                    <label id="label-週三"><input type="checkbox" name="session" value="週三(健走)"> 星期三 / 健走</label>
+                    <label id="label-週四"><input type="checkbox" name="session" value="週四(手工)"> 星期四 / 手工</label>
+                    <label id="label-週五"><input type="checkbox" name="session" value="週五(遊戲)"> 星期五 / 遊戲</label>
                 </div>
                 
                 <div class="fee-display-box">
@@ -246,19 +232,31 @@
         const feeHiddenInput = document.getElementById('calculatedFee');
         const regForm = document.getElementById('registrationForm');
         const loadingStatus = document.getElementById('loadingStatus');
-        const fullMessageBlock = document.getElementById('fullMessageBlock');
 
-        // 網頁開啟時，向 Google 試算表檢查人數狀態
+        // 網頁開啟時，向 Google 試算表檢查各星期的額滿狀態
         window.addEventListener('DOMContentLoaded', () => {
             fetch(backendUrl + '?action=checkStatus')
             .then(response => response.json())
             .then(data => {
                 loadingStatus.style.display = 'none'; // 隱藏「正在確認名額...」
+                regForm.style.display = 'block';      // 直接秀出表單
                 
-                if (data.status === 'full') {
-                    fullMessageBlock.style.display = 'block'; // 額滿：只顯示純文字提示
-                } else {
-                    regForm.style.display = 'block'; // 有名額：一整套欄位跟按鈕一起跳出來
+                // 檢查是否有客滿的星期陣列 (例如: ["週二", "週四"])
+                if (data.fullDays && data.fullDays.length > 0) {
+                    data.fullDays.forEach(day => {
+                        // 尋找數值 value 包含 "週幾" 的核取方塊
+                        const cb = document.querySelector(`input[value*="${day}"]`);
+                        if (cb) {
+                            cb.disabled = true; // 將它反灰、禁用
+                            
+                            // 取得其父標籤 (label)，在文字後面加上客滿紅色提示
+                            const label = cb.parentElement;
+                            if (label) {
+                                label.style.color = "#999999"; // 文字轉灰
+                                label.innerHTML += " <span style='color: #d93838; font-weight: bold;'>(該日名額已滿)</span>";
+                            }
+                        }
+                    });
                 }
             })
             .catch(error => {
@@ -285,7 +283,7 @@
 
             const checkedSessions = document.querySelectorAll('input[name="session"]:checked');
             if (checkedSessions.length === 0) {
-                alert('請至少勾選一個參加的課後班時段！');
+                alert('請至少勾選一個您想參加的課後班時段！');
                 return;
             }
 
@@ -324,18 +322,19 @@
                 if(data.result === 'success') {
                     alert('🎉 報名成功！系統已將確認信發送至您的電子信箱，老師稍後也會與您聯絡。');
                     location.reload(); 
-                } else if(data.result === 'full') {
-                    alert('很抱歉！就在剛剛名額已滿，未能成功遞交，敬請見諒。');
+                } else if(data.result === 'error' && data.message && data.message.indexOf('已額滿') > -1) {
+                    // 針對單日額滿防衝撞的警告提示
+                    alert(`很抱歉！就在剛剛【${data.message}】，未能成功遞交，請重新選擇其他有空缺的時段。`);
                     location.reload();
                 } else {
-                    alert('報名系統忙碌中，請稍後再試。錯誤訊息: ' + data.error);
+                    alert('報名系統忙碌中，請稍後再試。錯誤訊息: ' + (data.error || data.message));
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = '送出報名';
                 }
             })
             .catch(error => {
                 alert('網路連線似乎有點不穩定，請重新嘗試送出。');
                 console.error('Error:', error);
-            })
-            .finally(() => {
                 submitBtn.disabled = false;
                 submitBtn.textContent = '送出報名';
             });
