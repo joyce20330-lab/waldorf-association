@@ -123,7 +123,6 @@
             color: white; 
         }
 
-        /* 滿額載入狀態與滿額提示樣式 */
         #loadingStatus { text-align: center; color: #8A7B6F; padding: 20px; font-size: 1.1em; }
         .full-message {
             display: none; text-align: center; padding: 40px 20px; background: #fff5f5;
@@ -147,7 +146,7 @@
             </div>
         </div>
 
-        <form id="registrationForm">
+        <form id="registrationForm" style="display: none;">
             
             <div class="form-group">
                 <label for="studentName">孩子姓名</label>
@@ -217,15 +216,14 @@
                 <div class="notice-content">
                     <p><strong>• 招生對象：</strong> 國小一年級、二年級</p>
                     <p><strong>• 課後時間：</strong> 星期一至星期五</p>
-                    <p><strong>• 接送時間：</strong> 13:30 幸運草中庭接孩子。
-                    <p><strong>• 接回時間：</strong> 為了孩子在進小學後也能夠有時間跟父母的家庭生活是有品質的，16:30就可以接孩子回到家，但也體會雙新家庭的辛苦，建議最晚17:30可以前接孩子。</p>
-                </div></div>
-
+                    <p><strong>• 接送時間：</strong> 13:30 幸運草中庭接孩子。</p>
+                    <p><strong>• 接回時間：</strong> 為了孩子在進小學後也能夠有時間跟父母的家庭生活是有品質的，16:30就可以接孩子回到家，但也體會雙薪家庭的辛苦，建議最晚17:30前接孩子。</p>
                     <p><strong>• 全程參加：</strong> 每週一至週五皆參與，10週費用共 17,500 元（最划算，含點心及材料費）。</p>
                     <p><strong>• 每週參加 3 天（含）以上：</strong> 依單次 400 元計費（10週總計 = 勾選天數 × 400 × 10）。</p>
                     <p><strong>• 每週單次/單天體驗：</strong> 依單次 450 元計費（10週總計 = 勾選天數 × 450 × 10）。</p>
                     <p><strong>• 收費時間：</strong> 課後照顧第一週繳納學費。</p>
                     <p><strong>• 注意事項：</strong> 費用皆包含點心與材料費。因課程材料與師資已提前準備，病假、事假及國定假日期間恕不扣除或退費。課程內容會因天氣彈性調整（好天氣先散步，雨天在室內休息聽故事）。</p>
+                </div>
                 
                 <div class="agree-group">
                     <input type="checkbox" id="agreeNotice" name="agreeNotice" value="已詳細閱讀並同意" required>
@@ -233,15 +231,14 @@
                 </div>
             </div>
 
-<div class="btn-group">
-    <a href="intro.html" class="back-btn">返回介紹</a>
-    <button type="submit" class="submit-btn">送出報名</button>
-</div>
+            <div class="btn-group">
+                <a href="intro.html" class="back-btn">返回介紹</a>
+                <button type="submit" class="submit-btn">送出報名</button>
+            </div>
         </form>
     </div>
 
     <script>
-        // ✨ 請確保此處的後端 API 網址與您 Google Apps Script 部署的一致
         const backendUrl = "https://script.google.com/macros/s/AKfycbyxxtuQNQXVFfjvLN_5AvzEFKbe9_njWfiy8tVoynyVKCyJBkfAHgwxxzhK5pvSCPS6aw/exec";
 
         const checkboxes = document.querySelectorAll('input[name="session"]');
@@ -251,16 +248,17 @@
         const loadingStatus = document.getElementById('loadingStatus');
         const fullMessageBlock = document.getElementById('fullMessageBlock');
 
-        // 頁面加載時先向後台檢查人數狀態
+        // 網頁開啟時，向 Google 試算表檢查人數狀態
         window.addEventListener('DOMContentLoaded', () => {
             fetch(backendUrl + '?action=checkStatus')
             .then(response => response.json())
             .then(data => {
-                loadingStatus.style.display = 'none';
+                loadingStatus.style.display = 'none'; // 隱藏「正在確認名額...」
+                
                 if (data.status === 'full') {
-                    fullMessageBlock.style.display = 'block';
+                    fullMessageBlock.style.display = 'block'; // 額滿：只顯示純文字提示
                 } else {
-                    regForm.style.display = 'block';
+                    regForm.style.display = 'block'; // 有名額：一整套欄位跟按鈕一起跳出來
                 }
             })
             .catch(error => {
@@ -269,6 +267,7 @@
             });
         });
 
+        // 學費計算邏輯
         function calculateFee() {
             const checkedCount = document.querySelectorAll('input[name="session"]:checked').length;
             let totalFee = 0;
@@ -280,6 +279,7 @@
         }
         checkboxes.forEach(cb => cb.addEventListener('change', calculateFee));
 
+        // 送出報名資料
         regForm.addEventListener('submit', function(e) {
             e.preventDefault(); 
 
