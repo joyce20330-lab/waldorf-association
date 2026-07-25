@@ -12,11 +12,16 @@
         .form-group { margin-bottom: 20px; }
         label { display: block; margin-bottom: 8px; font-weight: bold; }
         
-        input[type="text"], input[type="tel"], input[type="email"], select { 
+        input[type="text"], input[type="tel"], input[type="email"], select, textarea { 
             width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; 
+            font-family: inherit; font-size: 1em;
         }
         
         .checkbox-group, .radio-group { display: flex; flex-direction: column; gap: 10px; padding: 15px; background: #f9f9f9; border: 1px solid #ddd; border-radius: 5px; }
+        .checkbox-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
+        .checkbox-grid label, .checkbox-group label { display: flex; align-items: center; margin-bottom: 0; cursor: pointer; font-weight: normal; }
+        .checkbox-grid input, .checkbox-group input { margin-right: 8px; width: 18px; height: 18px; cursor: pointer; }
+
         .radio-group-row { display: flex; gap: 20px; background: #f9f9f9; padding: 12px; border: 1px solid #ddd; border-radius: 5px; }
         .radio-group-row label { display: flex; align-items: center; margin-bottom: 0; cursor: pointer; font-weight: normal; }
         .radio-group-row input { margin-right: 6px; width: 18px; height: 18px; }
@@ -102,7 +107,7 @@
             font-weight: bold;
             transition: background-color 0.2s;
         }
-        .submit-btn:hover { background-color: #bfa332; background-color: #bc5e2e; }
+        .submit-btn:hover { background-color: #bc5e2e; }
 
         .back-btn {
             display: flex;
@@ -132,6 +137,8 @@
             border: 1px solid #ffc9c9; border-radius: 10px; color: #d93838; margin-bottom: 20px;
         }
         .full-message h2 { margin-top: 0; font-size: 1.6em; }
+        
+        .sub-note { font-size: 0.85em; color: #777; font-weight: normal; margin-top: 4px; }
     </style>
 </head>
 <body>
@@ -156,7 +163,7 @@
             
             <div class="form-group">
                 <label for="studentName">孩子姓名</label>
-                <input type="text" id="studentName" name="text" required>
+                <input type="text" id="studentName" name="studentName" required>
             </div>
             
             <div class="form-group">
@@ -182,19 +189,40 @@
                 </select>
             </div>
 
+            <!-- 新增：孩子健康狀況與特殊注意事項區塊 -->
+            <div class="form-group">
+                <label>孩子身體/健康狀況（可複選）</label>
+                <div class="checkbox-group">
+                    <div class="checkbox-grid">
+                        <label><input type="checkbox" name="healthCondition" value="無特別狀況"> 健康無特別狀況</label>
+                        <label><input type="checkbox" name="healthCondition" value="G6PD蠶豆症"> G6PD 蠶豆症</label>
+                        <label><input type="checkbox" name="healthCondition" value="先天性心臟病"> 先天性心臟病</label>
+                        <label><input type="checkbox" name="healthCondition" value="癲癇"> 癲癇症狀</label>
+                        <label><input type="checkbox" name="healthCondition" value="氣喘"> 氣喘</label>
+                        <label><input type="checkbox" name="healthCondition" value="食物/藥物過敏"> 食物/藥物過敏</label>
+                        <label><input type="checkbox" id="healthOtherCheck" name="healthCondition" value="其他"> 其他</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="healthDetail">健康與照顧備註說明 <span class="sub-note">（請詳細註明過敏源、飲食禁忌、用藥需求或發作時注意事項）</span></label>
+                <textarea id="healthDetail" name="healthDetail" rows="3" placeholder="如：對海鮮過敏、蠶豆症不可接觸樟腦、發作時應急處理方式...無特別狀況可留空"></textarea>
+            </div>
+
             <!-- 新身分識別：舊生與兄弟姊妹優惠篩選 -->
             <div class="form-group">
                 <label>是否為舊生？</label>
                 <div class="radio-group-row">
                     <label><input type="radio" name="isOldStudent" value="yes"> 是（享舊生優惠價）</label>
-                    <label><input type="radio" name="isOldStudent" value="no"> 否）</label>
+                    <label><input type="radio" name="isOldStudent" value="no" checked> 否</label>
                 </div>
             </div>
 
             <div class="form-group">
                 <label>是否為多位家庭手足報名？（兄弟姐妹一起）</label>
                 <div class="radio-group-row">
-                    <label><input type="radio" name="siblingStatus" value="first"> 第一位孩子或單獨報名</label>
+                    <label><input type="radio" name="siblingStatus" value="first" checked> 第一位孩子或單獨報名</label>
                     <label><input type="radio" name="siblingStatus" value="second"> 第二位孩子（享8折優惠）</label>
                 </div>
             </div>
@@ -292,42 +320,44 @@
             });
         });
 
-// 智慧暑期學費計算核心（已加入第一週 4 天比例減免機制）
-function calculateFee() {
-    // 取得所有被勾選的週次
-    const checkedBoxes = document.querySelectorAll('input[name="session"]:checked');
-    if (checkedBoxes.length === 0) {
-        feeDisplay.textContent = "0";
-        feeHiddenInput.value = "0";
-        return;
-    }
+        // 智慧暑期學費計算核心（已加入第一週 4 天比例減免機制）
+        function calculateFee() {
+            const checkedBoxes = document.querySelectorAll('input[name="session"]:checked');
+            if (checkedBoxes.length === 0) {
+                feeDisplay.textContent = "0";
+                feeHiddenInput.value = "0";
+                return;
+            }
 
-    // 1. 決定基礎單週價格
-    let isOld = document.querySelector('input[name="isOldStudent"]:checked').value === "yes";
-    let basePricePerWeek = isOld ? 5000 : 6000;
+            // 1. 決定基礎單週價格
+            let isOldRadio = document.querySelector('input[name="isOldStudent"]:checked');
+            let isOld = isOldRadio ? isOldRadio.value === "yes" : false;
+            let basePricePerWeek = isOld ? 5000 : 6000;
 
-    // 2. 判定手足折扣優惠（第二位打 8 折）
-    let isSecondChild = document.querySelector('input[name="siblingStatus"]:checked').value === "second";
-    let discountRate = isSecondChild ? 0.8 : 1.0;
+            // 2. 判定手足折扣優惠（第二位打 8 折）
+            let siblingRadio = document.querySelector('input[name="siblingStatus"]:checked');
+            let isSecondChild = siblingRadio ? siblingRadio.value === "second" : false;
+            let discountRate = isSecondChild ? 0.8 : 1.0;
 
-    // 3. 核心：遍歷每個被勾選的項目，依據天數加總
-    let totalFee = 0;
-    checkedBoxes.forEach(cb => {
-        if (cb.value.includes("第一週")) {
-            // 第一週只有 4 天，費用乘以 0.8 (4/5)
-            totalFee += basePricePerWeek * 0.8;
-        } else {
-            // 其他週皆為標準 5 天，收足全額
-            totalFee += basePricePerWeek;
+            // 3. 核心：遍歷每個被勾選的項目，依據天數加總
+            let totalFee = 0;
+            checkedBoxes.forEach(cb => {
+                if (cb.value.includes("第一週")) {
+                    // 第一週只有 4 天，費用乘以 0.8 (4/5)
+                    totalFee += basePricePerWeek * 0.8;
+                } else {
+                    // 其他週皆為標準 5 天，收足全額
+                    totalFee += basePricePerWeek;
+                }
+            });
+
+            // 4. 最後乘上手足折扣，並四捨五入輸出
+            let finalFee = totalFee * discountRate;
+
+            feeDisplay.textContent = Math.round(finalFee).toLocaleString();
+            feeHiddenInput.value = Math.round(finalFee);
         }
-    });
 
-    // 4. 最後乘上手足折扣，並四捨五入輸出
-    let finalFee = totalFee * discountRate;
-
-    feeDisplay.textContent = Math.round(finalFee).toLocaleString();
-    feeHiddenInput.value = Math.round(finalFee);
-}
         // 綁定所有會引發學費變動的點選事件
         checkboxes.forEach(cb => cb.addEventListener('change', calculateFee));
         oldStudentRadios.forEach(r => r.addEventListener('change', calculateFee));
@@ -348,14 +378,22 @@ function calculateFee() {
             submitBtn.textContent = '資料遞交中...';
 
             const formData = new FormData(this);
+            
+            // 處理週次
             let sessionsArray = [];
             checkedSessions.forEach(cb => sessionsArray.push(cb.value));
-            formData.set('session', sessionsArray.join(', '));
 
             // 額外備註家長勾選的身份，以便後台閱覽
             let oldStatusText = formData.get('isOldStudent') === 'yes' ? '【舊生】' : '【新生】';
             let siblingStatusText = formData.get('siblingStatus') === 'second' ? '【手足第二位八折】' : '';
             formData.set('session', oldStatusText + siblingStatusText + " 報名：" + sessionsArray.join(', '));
+
+            // 整合健康狀況勾選項
+            let healthList = [];
+            document.querySelectorAll('input[name="healthCondition"]:checked').forEach(cb => {
+                healthList.push(cb.value);
+            });
+            formData.set('healthSummary', healthList.length > 0 ? healthList.join(', ') : '無特別勾選');
 
             fetch(backendUrl, {
                 method: 'POST',
