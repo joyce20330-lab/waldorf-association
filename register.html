@@ -160,6 +160,12 @@
                     <option value="二年C班">二年C班</option>
                 </select>
             </div>
+
+            <!-- 🆕 新增：身體狀況 / 過敏史 -->
+            <div class="form-group">
+                <label for="healthCondition">特殊健康狀況 / 過敏史</label>
+                <input type="text" id="healthCondition" name="healthCondition" placeholder="如：蠶豆症、心臟病、癲癇、食物過敏等；若無請填「無」" required>
+            </div>
             
             <div class="form-group">
                 <label>勾選參加的工坊時段 (可複選，已達 7 人上限之時段將無法勾選)</label>
@@ -204,7 +210,7 @@
                     <p><strong>• 課後時間：</strong> 星期一至星期五</p>
                     <p><strong>• 接送時間：</strong> 13:30 幸運草中庭接孩子。</p>
                     <p><strong>• 接回時間：</strong> 為了孩子在進小學後也能夠有時間跟父母的家庭生活是有品質的，16:30就可以接孩子回到家，但也體會雙薪家庭的辛苦，建議最晚17:30前接孩子。</p>
-                    <p><strong>• 全程參加：</strong> 每週一至週五皆參與，10週費用共 17,500 元（最划算，含點心及材料費）。</p>
+                    <p><strong>• 全程參加：</strong> 每週一至週五皆參與，10週費用共 17,500 元（最劃算，含點心及材料費）。</p>
                     <p><strong>• 每週參加 3 天（含）以上：</strong> 依單次 400 元計費（10週總計 = 勾選天數 × 400 × 10）。</p>
                     <p><strong>• 每週單次/單天體驗：</strong> 依單次 450 元計費（10週總計 = 勾選天數 × 450 × 10）。</p>
                     <p><strong>• 收費時間：</strong> 參與工坊第一週繳納活動費用。</p>
@@ -241,18 +247,14 @@
                 loadingStatus.style.display = 'none'; // 隱藏「正在確認名額...」
                 regForm.style.display = 'block';      // 直接秀出表單
                 
-                // 檢查是否有客滿的星期陣列 (例如: ["週二", "週四"])
                 if (data.fullDays && data.fullDays.length > 0) {
                     data.fullDays.forEach(day => {
-                        // 尋找數值 value 包含 "週幾" 的核取方塊
                         const cb = document.querySelector(`input[value*="${day}"]`);
                         if (cb) {
-                            cb.disabled = true; // 將它反灰、禁用
-                            
-                            // 取得其父標籤 (label)，在文字後面加上客滿紅色提示
+                            cb.disabled = true; // 禁用
                             const label = cb.parentElement;
                             if (label) {
-                                label.style.color = "#999999"; // 文字轉灰
+                                label.style.color = "#999999";
                                 label.innerHTML += " <span style='color: #d93838; font-weight: bold;'>(該日名額已滿)</span>";
                             }
                         }
@@ -300,10 +302,12 @@
             let sessionsArray = [];
             checkedSessions.forEach(cb => sessionsArray.push(cb.value));
 
+            // 打包傳送資料（包含了 healthCondition 健康狀況）
             const payload = {
                 studentName: document.getElementById('studentName').value,
                 gender: document.getElementById('gender').value,
                 grade: document.getElementById('grade').value,
+                healthCondition: document.getElementById('healthCondition').value, // 👈 傳送健康狀況
                 session: sessionsArray.join(', '),
                 calculatedFee: feeHiddenInput.value,
                 parentsName: document.getElementById('parentsName').value,
@@ -323,7 +327,6 @@
                     alert('🎉 報名成功！系統已將確認信發送至您的電子信箱，老師稍後也會與您聯絡。');
                     location.reload(); 
                 } else if(data.result === 'error' && data.message && data.message.indexOf('已額滿') > -1) {
-                    // 針對單日額滿防衝撞的警告提示
                     alert(`很抱歉！就在剛剛【${data.message}】，未能成功遞交，請重新選擇其他有空缺的時段。`);
                     location.reload();
                 } else {
