@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-TW" class="scroll-smooth">
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>社團法人台灣華德福親子共學協會 | 五芒星星親子共學</title>
+    <title>五芒星星親子共學 - 社團法人台灣華德福親子共學協會</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -12,13 +12,11 @@
                 extend: {
                     colors: {
                         brand: {
-                            bg: '#FAF7F2',        /* 溫柔米白 */
-                            card: '#FFFFFF',
-                            text: '#4A3E3D',      /* 暖深棕 */
-                            light: '#7D6E65',    /* 潤飾灰棕 */
-                            accent: '#D97746',   /* 溫暖暖橘 */
-                            green: '#6B8E23',    /* 大自然橄欖綠 */
-                            border: '#E8E2D9'
+                            bg: '#fcf9f2',
+                            text: '#5d4e43',
+                            accent: '#d97746',
+                            border: '#e5e0dc',
+                            light: '#8A7B6F'
                         }
                     },
                     fontFamily: {
@@ -30,69 +28,54 @@
     </script>
     <style>
         body { -webkit-font-smoothing: antialiased; }
-        .hero-bg { 
-            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.45)), url('安農溪園區背景.jpg') center/cover no-repeat; 
-            background-color: #7A8A76;
-        }
+        .hero-bg { background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), url('彩虹底圖.jfif') center/cover no-repeat; }
         #mobile-menu { transition: all 0.3s ease-in-out; max-height: 0; overflow: hidden; opacity: 0; }
-        #mobile-menu.open { max-height: 500px; opacity: 1; padding-top: 1rem; padding-bottom: 1rem; }
+        #mobile-menu.open { max-height: 400px; opacity: 1; padding-top: 1rem; padding-bottom: 1rem; }
     </style>
 </head>
 <body class="bg-brand-bg text-brand-text min-h-screen flex flex-col font-sans">
-
-    <!-- 頂部 sticky 導覽列 -->
-    <nav class="flex justify-between items-center px-6 md:px-[6%] py-4 border-b border-brand-border bg-brand-bg/95 backdrop-blur-md sticky top-0 z-50 shadow-sm">
-        <div class="font-bold text-base md:text-lg tracking-wide text-brand-text hover:text-brand-accent transition-colors">
-            <a href="#hero">台灣華德福親子共學協會</a>
+    <nav class="flex justify-between items-center px-6 md:px-[8%] py-5 border-b border-brand-border bg-brand-bg sticky top-0 z-50 shadow-sm">
+        <div class="font-medium text-lg tracking-wide text-brand-text hover:text-brand-accent transition-colors">
+            <a href="index.html">社團法人台灣華德福親子共學協會</a>
         </div>
 
-        <!-- 桌上型選單（內部平滑錨點） -->
-        <div class="hidden lg:flex gap-6 items-center text-sm font-medium">
-            <a href="#star-about" class="text-brand-text hover:text-brand-accent transition-colors">3-6歲共學園</a>
-            <a href="#star-admission" class="text-brand-text hover:text-brand-accent transition-colors">招生與班別</a>
-            <a href="#star-schedule" class="text-brand-text hover:text-brand-accent transition-colors">每日節奏</a>
-            <a href="#teachers" class="text-brand-text hover:text-brand-accent transition-colors">師資團隊</a>
-            <a href="#gallery" class="text-brand-text hover:text-brand-accent transition-colors">園區點滴</a>
-            <a href="#contact" class="text-white bg-brand-accent px-4 py-2 rounded-full hover:opacity-90 transition-opacity">預約會談</a>
+        <div class="hidden md:flex gap-8 items-center">
+            <a href="index.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">首頁</a>
+            <a href="news.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">最新消息</a>
+            <a href="about.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">協會緣起</a>
+            <a href="services.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">服務項目</a>
+            <a href="events.html" class="text-sm font-medium text-brand-accent transition-colors">活動報名</a>
+            <a href="contact.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">聯絡我們</a>
         </div>
 
-        <!-- 行動裝置漢堡選單按鈕 -->
-        <button id="menu-btn" class="lg:hidden flex flex-col gap-[5px] p-2 focus:outline-none" aria-label="Toggle Menu">
+        <button id="menu-btn" class="md:hidden flex flex-col gap-[5px] p-2 focus:outline-none" aria-label="Toggle Menu">
             <span id="line1" class="w-6 h-[2px] bg-brand-text block transition-transform duration-300 origin-center"></span>
             <span id="line2" class="w-6 h-[2px] bg-brand-text block transition-opacity duration-300"></span>
             <span id="line3" class="w-6 h-[2px] bg-brand-text block transition-transform duration-300 origin-center"></span>
         </button>
     </nav>
 
-    <!-- 行動裝置選單清單 -->
-    <div id="mobile-menu" class="lg:hidden bg-brand-bg border-b border-brand-border fixed w-full z-40 top-[65px] shadow-lg flex flex-col items-center gap-3 text-sm">
-        <a href="#star-about" class="w-full text-center py-2 text-brand-text font-medium">3-6歲共學園理念</a>
-        <a href="#star-admission" class="w-full text-center py-2 text-brand-text font-medium">招生資訊與班別</a>
-        <a href="#star-schedule" class="w-full text-center py-2 text-brand-text font-medium">每日節奏</a>
-        <a href="#teachers" class="w-full text-center py-2 text-brand-text font-medium">師資團隊</a>
-        <a href="#gallery" class="w-full text-center py-2 text-brand-text font-medium">園區點滴</a>
-        <a href="#contact" class="w-full text-center py-2 text-brand-accent font-bold">預約會談</a>
+    <div id="mobile-menu" class="md:hidden bg-brand-bg border-b border-brand-border absolute w-full z-40 top-[73px] shadow-lg flex flex-col items-center gap-4">
+        <a href="index.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">首頁</a>
+        <a href="news.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">最新消息</a>
+        <a href="about.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">協會緣起</a>
+        <a href="services.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">服務項目</a>
+        <a href="events.html" class="w-full text-center py-2 text-brand-accent font-medium">活動報名</a>
+        <a href="contact.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">聯絡我們</a>
     </div>
 
-    <!-- 1. Hero 區塊 -->
-    <header id="hero" class="hero-bg py-24 md:py-32 px-6 flex justify-center items-center text-center">
-        <div class="max-w-3xl space-y-4">
-            <span class="inline-block bg-white/20 backdrop-blur-md text-white text-xs md:text-sm px-4 py-1.5 rounded-full tracking-widest">
-                社團法人台灣華德福親子共學協會
-            </span>
-            <h1 class="text-3xl md:text-5xl font-bold text-white drop-shadow-md tracking-wider leading-tight">
-                五芒星星親子共學園<br>
+    <header class="hero-bg py-20 px-6 flex justify-center items-center shadow-inner">
+        <div class="text-center max-w-3xl">
+            <h1 class="text-3xl md:text-5xl font-bold text-white drop-shadow-md mb-6 tracking-wider">
+                五芒星興親子共學
             </h1>
-            <p class="text-white/95 text-base md:text-lg drop-shadow-sm leading-relaxed max-w-2xl mx-auto pt-2">
-                在宜蘭安農溪畔，晴耕雨織。<br>
-                我們陪伴家長與孩子一起照顧土地、感受四季，用心建造養育孩子的村莊。
-            </p>
-                </a>
+            <div class="text-white/90 text-sm md:text-base drop-shadow-sm leading-relaxed space-y-2">
+                <p>在宜蘭安農溪畔，晴耕雨織。</p>
+                <p>我們陪伴家長與孩子一起照顧土地、感受四季，用心建造養育孩子的村莊。</p>
             </div>
         </div>
     </header>
 
-    <main class="max-w-5xl mx-auto py-12 px-6 space-y-20">
         
         <!-- ==================== 五芒星星 3-6歲共學園 ==================== -->
         
@@ -109,10 +92,12 @@
                     2020年社團法人台灣華德福親子共學協會創立，我們租了一塊地，開始邀請家長和孩子一起照顧土地、一起生活的美好圖像！
                 </p>
                 <p>
-                    開闊的草原、四季更迭的植物和景色、一起用愛澆灌的菜畦作物、四季循環的節慶和手作⋯⋯我們在宜蘭的安農溪畔覓得一處天地，有緣聚集了一些有志一同的家長和小小孩們一起生活！
+                    開闊的草原、四季更迭的植物和景色、一起用愛澆灌的菜畦作物、四季循環的節慶和手作⋯⋯</p>
+在宜蘭安農溪畔，晴耕雨織。我們在宜蘭的安農溪畔覓得一處天地，有緣聚集了一些有志一同的家長和小小孩們一起生活！
                 </p>
                 <p class="font-medium text-brand-text bg-brand-bg p-5 rounded-xl border-l-4 border-brand-accent">
-                    五芒星星地點坐落於距離羅東運動公園不遠的安農溪畔，是一個全戶外的親子共學園。六年來，我們晴耕雨織，陪伴家長及孩子們一起工作，照顧園區的香草植物及季節性作物……隨著四季更迭分享收成的喜悅，以溫暖陪伴家長及孩子們的身心靈。
+                    五芒星星地點坐落於距離羅東運動公園不遠的安農溪畔，是一個全戶外的親子共學園。</p>
+六年來，我們晴耕雨織，陪伴家長及孩子們一起工作，照顧園區的香草植物及季節性作物……隨著四季更迭分享收成的喜悅，以溫暖陪伴家長及孩子們的身心靈。
                 </p>
                 <p class="text-center pt-2 font-bold text-brand-accent text-lg">
                     「我們就是那個村莊，邀請有相同理念的你們，一起來建造這個村莊！」
@@ -435,7 +420,7 @@
     <!-- 頁尾 -->
     <footer class="bg-brand-text text-white/80 py-8 px-6 text-center text-xs space-y-2 border-t border-brand-border mt-12">
         <p class="font-medium text-white">社團法人台灣華德福親子共學協會</p>
-        <p>五芒星星親子共學園 & 星禾自然生活工坊</p>
+        <p>五芒星星親子共學園</p>
         <p>地址：宜蘭縣三星鄉安農九路 560號</p>
         <p class="pt-2 text-white/50">© 台灣華德福親子共學協會 All Rights Reserved.</p>
     </footer>
