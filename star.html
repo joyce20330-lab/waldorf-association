@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>社團法人台灣華德福親子共學協會 | 五芒星星 & 星禾自然生活工坊</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: '#FAF7F2',        /* 溫柔米白 */
+                            card: '#FFFFFF',
+                            text: '#4A3E3D',      /* 暖深棕 */
+                            light: '#7D6E65',    /* 潤飾灰棕 */
+                            accent: '#D97746',   /* 溫暖暖橘 */
+                            green: '#6B8E23',    /* 大自然橄欖綠 */
+                            border: '#E8E2D9'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Helvetica Neue"', 'Arial', '"Microsoft JhengHei"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { -webkit-font-smoothing: antialiased; }
+        .hero-bg { 
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.45)), url('安農溪園區背景.jpg') center/cover no-repeat; 
+            background-color: #7A8A76;
+        }
+        #mobile-menu { transition: all 0.3s ease-in-out; max-height: 0; overflow: hidden; opacity: 0; }
+        #mobile-menu.open { max-height: 500px; opacity: 1; padding-top: 1rem; padding-bottom: 1rem; }
+    </style>
+</head>
+<body class="bg-brand-bg text-brand-text min-h-screen flex flex-col font-sans">
+
+    <!-- 頂部 sticky 導覽列 -->
+    <nav class="flex justify-between items-center px-6 md:px-[6%] py-4 border-b border-brand-border bg-brand-bg/95 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+        <div class="font-bold text-base md:text-lg tracking-wide text-brand-text hover:text-brand-accent transition-colors">
+            <a href="#hero">台灣華德福親子共學協會</a>
+        </div>
+
+        <!-- 桌上型選單（內部平滑錨點） -->
+        <div class="hidden lg:flex gap-6 items-center text-sm font-medium">
+            <a href="#star-about" class="text-brand-text hover:text-brand-accent transition-colors">3-6歲共學園</a>
+            <a href="#star-admission" class="text-brand-text hover:text-brand-accent transition-colors">招生與班別</a>
+            <a href="#star-schedule" class="text-brand-text hover:text-brand-accent transition-colors">每日節奏</a>
+            <a href="#xinghe" class="text-brand-text hover:text-brand-accent transition-colors">星禾生活工坊</a>
+            <a href="#teachers" class="text-brand-text hover:text-brand-accent transition-colors">師資團隊</a>
+            <a href="#gallery" class="text-brand-text hover:text-brand-accent transition-colors">園區點滴</a>
+            <a href="#contact" class="text-white bg-brand-accent px-4 py-2 rounded-full hover:opacity-90 transition-opacity">預約會談</a>
+        </div>
+
+        <!-- 行動裝置漢堡選單按鈕 -->
+        <button id="menu-btn" class="lg:hidden flex flex-col gap-[5px] p-2 focus:outline-none" aria-label="Toggle Menu">
+            <span id="line1" class="w-6 h-[2px] bg-brand-text block transition-transform duration-300 origin-center"></span>
+            <span id="line2" class="w-6 h-[2px] bg-brand-text block transition-opacity duration-300"></span>
+            <span id="line3" class="w-6 h-[2px] bg-brand-text block transition-transform duration-300 origin-center"></span>
+        </button>
+    </nav>
+
+    <!-- 行動裝置選單清單 -->
+    <div id="mobile-menu" class="lg:hidden bg-brand-bg border-b border-brand-border fixed w-full z-40 top-[65px] shadow-lg flex flex-col items-center gap-3 text-sm">
+        <a href="#star-about" class="w-full text-center py-2 text-brand-text font-medium">3-6歲共學園理念</a>
+        <a href="#star-admission" class="w-full text-center py-2 text-brand-text font-medium">招生資訊與班別</a>
+        <a href="#star-schedule" class="w-full text-center py-2 text-brand-text font-medium">每日節奏</a>
+        <a href="#xinghe" class="w-full text-center py-2 text-brand-text font-medium">星禾自然生活工坊</a>
+        <a href="#teachers" class="w-full text-center py-2 text-brand-text font-medium">師資團隊</a>
+        <a href="#gallery" class="w-full text-center py-2 text-brand-text font-medium">園區點滴</a>
+        <a href="#contact" class="w-full text-center py-2 text-brand-accent font-bold">預約會談</a>
+    </div>
+
+    <!-- 1. Hero 區塊 -->
+    <header id="hero" class="hero-bg py-24 md:py-32 px-6 flex justify-center items-center text-center">
+        <div class="max-w-3xl space-y-4">
+            <span class="inline-block bg-white/20 backdrop-blur-md text-white text-xs md:text-sm px-4 py-1.5 rounded-full tracking-widest">
+                社團法人台灣華德福親子共學協會
+            </span>
+            <h1 class="text-3xl md:text-5xl font-bold text-white drop-shadow-md tracking-wider leading-tight">
+                五芒星星親子共學園<br>
+                <span class="text-2xl md:text-3xl font-normal opacity-90">& 星禾自然生活工坊</span>
+            </h1>
+            <p class="text-white/95 text-base md:text-lg drop-shadow-sm leading-relaxed max-w-2xl mx-auto pt-2">
+                在宜蘭安農溪畔，晴耕雨織。<br>
+                我們陪伴家長與孩子一起照顧土地、感受四季，用心建造養育孩子的村莊。
+            </p>
+            <div class="pt-4 flex flex-wrap justify-center gap-4">
+                <a href="#star-about" class="bg-brand-accent text-white font-bold px-6 py-3 rounded-full shadow-md hover:opacity-90 transition-all text-sm">
+                    探索 3-6 歲共學園
+                </a>
+                <a href="#xinghe" class="bg-white/90 text-brand-text font-bold px-6 py-3 rounded-full shadow-md hover:bg-white transition-all text-sm">
+                    了解星禾生活工坊
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto py-12 px-6 space-y-20">
+        
+        <!-- ==================== 五芒星星 3-6歲共學園 ==================== -->
+        
+        <!-- 2. 共學園理念 -->
+        <section id="star-about" class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-brand-border space-y-6">
+            <div class="text-center max-w-2xl mx-auto">
+                <span class="text-brand-accent text-xs font-bold tracking-widest uppercase">Waldorf Early Childhood</span>
+                <h2 class="text-2xl md:text-3xl font-bold text-brand-green mt-1 mb-3">養育一個孩子，需要一個村莊的力量</h2>
+                <div class="w-12 h-1 bg-brand-accent mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="space-y-4 text-brand-light text-base md:text-lg leading-relaxed">
+                <p>
+                    2020年社團法人台灣華德福親子共學協會創立，我們租了一塊地，開始邀請家長和孩子一起照顧土地、一起生活的美好圖像！
+                </p>
+                <p>
+                    開闊的草原、四季更迭的植物和景色、一起用愛澆灌的菜畦作物、四季循環的節慶和手作⋯⋯我們在宜蘭的安農溪畔覓得一處天地，有緣聚集了一些有志一同的家長和小小孩們一起生活！
+                </p>
+                <p class="font-medium text-brand-text bg-brand-bg p-5 rounded-xl border-l-4 border-brand-accent">
+                    五芒星星地點坐落於距離羅東運動公園不遠的安農溪畔，是一個全戶外的親子共學園。六年來，我們晴耕雨織，陪伴家長及孩子們一起工作，照顧園區的香草植物及季節性作物……隨著四季更迭分享收成的喜悅，以溫暖陪伴家長及孩子們的身心靈。
+                </p>
+                <p class="text-center pt-2 font-bold text-brand-accent text-lg">
+                    「我們就是那個村莊，邀請有相同理念的你們，一起來建造這個村莊！」
+                </p>
+            </div>
+        </section>
+
+        <!-- 3. 招生資訊摘要卡片 -->
+        <section id="star-admission" class="space-y-6">
+            <h2 class="text-2xl font-bold text-brand-text border-l-4 border-brand-green pl-3">3–6歲 招生資訊</h2>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-xl border border-brand-border shadow-sm">
+                    <div class="text-brand-accent font-bold text-xs tracking-wider uppercase mb-1">Target</div>
+                    <h3 class="text-lg font-bold mb-2">⭐ 招生對象</h3>
+                    <p class="text-brand-light text-sm leading-relaxed">3～6 歲幼兒及家長<br><span class="text-xs text-brand-accent font-medium">（依狀況招收 10–12 組家庭）</span></p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl border border-brand-border shadow-sm">
+                    <div class="text-brand-accent font-bold text-xs tracking-wider uppercase mb-1">Season</div>
+                    <h3 class="text-lg font-bold mb-2">⭐ 報名機制</h3>
+                    <p class="text-brand-light text-sm leading-relaxed">春夏秋冬分開招生報名<br>完成面談後即可討論加入時間</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl border border-brand-border shadow-sm">
+                    <div class="text-brand-accent font-bold text-xs tracking-wider uppercase mb-1">Location</div>
+                    <h3 class="text-lg font-bold mb-2">⭐ 共學地點</h3>
+                    <p class="text-brand-light text-sm leading-relaxed">
+                        五芒星星親子共學園<br>
+                        <span class="text-xs">宜蘭縣三星鄉安農九路 560 號</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- 共學班別 -->
+            <div class="grid md:grid-cols-2 gap-6 pt-4">
+                <!-- 星二親子共學工作班 -->
+                <div class="bg-white p-8 rounded-2xl border-2 border-brand-accent/30 shadow-sm relative overflow-hidden flex flex-col justify-between">
+                    <div class="absolute top-0 right-0 bg-brand-accent text-white text-xs font-bold px-4 py-1 rounded-bl-xl">
+                        親子同行
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-brand-accent mb-1">🌟 星二親子共學工作班</h3>
+                        <div class="text-sm font-semibold text-brand-light mb-4">時段：08:40 - 11:40</div>
+                        <p class="text-brand-text text-sm leading-relaxed mb-4">
+                            家長與孩子一同參與並陪伴成長。內容包含：
+                        </p>
+                        <ul class="list-disc list-inside text-sm text-brand-light space-y-1.5">
+                            <li>晨圈與輪胎橋律動</li>
+                            <li>園藝與照顧土地</li>
+                            <li>節慶手工與慶生會</li>
+                            <li>偶劇故事時間</li>
+                            <li>家長專業分享</li>
+                            <li>荷月老師藝術課程</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 星五家長清心班 -->
+                <div class="bg-white p-8 rounded-2xl border-2 border-brand-green/30 shadow-sm relative overflow-hidden flex flex-col justify-between">
+                    <div class="absolute top-0 right-0 bg-brand-green text-white text-xs font-bold px-4 py-1 rounded-bl-xl">
+                        幼兒獨立
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-brand-green mb-1">✨ 星五家長清心班</h3>
+                        <div class="text-sm font-semibold text-brand-light mb-4">時段：08:40 - 11:40</div>
+                        <p class="text-brand-text text-sm leading-relaxed mb-4">
+                            年滿 3.5 歲的孩子在熟悉團體後，可選擇獨立留在共學園，中午放學時間再由家長接回。
+                        </p>
+                        <ul class="list-disc list-inside text-sm text-brand-light space-y-1.5">
+                            <li>戶外晨圈與律動</li>
+                            <li>園藝與照顧土地</li>
+                            <li>節慶手工</li>
+                            <li>戶外自由遊戲 / 沙坑時光</li>
+                            <li>偶劇故事時間</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. 每日節奏 -->
+        <section id="star-schedule" class="bg-white p-8 rounded-2xl shadow-sm border border-brand-border">
+            <h2 class="text-2xl font-bold text-brand-text mb-6 text-center">一日節奏 ( Rhythm of the Day )</h2>
+            <div class="max-w-2xl mx-auto space-y-2.5">
+                <div class="flex items-center p-3 bg-brand-bg rounded-xl border border-brand-border/60"><span class="font-bold text-brand-accent w-32 shrink-0">08:40 - 09:00</span><span class="text-sm text-brand-text">一起照顧園區環境</span></div>
+                <div class="flex items-center p-3 bg-brand-bg rounded-xl border border-brand-border/60"><span class="font-bold text-brand-accent w-32 shrink-0">09:00 - 09:30</span><span class="text-sm text-brand-text">晨圈和輪胎橋</span></div>
+                <div class="flex items-center p-3 bg-brand-bg rounded-xl border border-brand-border/60"><span class="font-bold text-brand-accent w-32 shrink-0">09:30 - 10:30</span><span class="text-sm text-brand-text">工作 / 課程時間<span class="text-xs text-brand-light">（項目視季節而定）</span></span></div>
+                <div class="flex items-center p-3 bg-brand-bg rounded-xl border border-brand-border/60"><span class="font-bold text-brand-accent w-32 shrink-0">10:30 - 10:40</span><span class="text-sm text-brand-text">收拾工具 / 如廁</span></div>
+                <div class="flex items-center p-3 bg-brand-bg rounded-xl border border-brand-border/60"><span class="font-bold text-brand-accent w-32 shrink-0">10:40 - 11:00</span><span class="text-sm text-brand-text">偶劇故事時間</span></div>
+                <div class="flex items-center p-3 bg-brand-bg rounded-xl border border-brand-border/60"><span class="font-bold text-brand-accent w-32 shrink-0">11:00 - 11:10</span><span class="text-sm text-brand-text">午餐 / 點心準備時間</span></div>
+                <div class="flex items-center p-3 bg-brand-bg rounded-xl border border-brand-border/60"><span class="font-bold text-brand-accent w-32 shrink-0">11:10 - 11:40</span><span class="text-sm text-brand-text">午餐 / 點心時間</span></div>
+                <div class="flex items-center p-3 bg-brand-accent/10 rounded-xl border border-brand-accent/30 font-bold"><span class="text-brand-accent w-32 shrink-0">11:40</span><span class="text-sm text-brand-text">結束圈（歡喜賦歸）</span></div>
+            </div>
+        </section>
+
+        <!-- ==================== 星禾自然生活工坊 ==================== -->
+
+        <!-- 5. 星禾自然生活工坊介紹 -->
+        <section id="xinghe" class="space-y-6">
+            <div class="border-l-4 border-brand-accent pl-3">
+                <h2 class="text-2xl font-bold text-brand-text">星禾自然生活工坊</h2>
+                <p class="text-xs text-brand-light pt-1">陪伴孩子走進自然，散步、觀察、遊戲，在慢慢步調中沉澱與消化</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- 特色 1 -->
+                <div class="bg-white rounded-xl shadow-sm border border-brand-border overflow-hidden flex flex-col">
+                    <div class="w-full h-44 bg-gray-100 flex items-center justify-center text-gray-400">
+                        <img src="故事照片.jpg" alt="故事與手作藝術" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentNode.innerHTML='<span class=\'text-xs p-4 text-center text-gray-400\'>[故事與手作照片]</span>'">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold mb-2 text-brand-accent text-base">故事與手作藝術</h3>
+                        <p class="text-xs md:text-sm leading-relaxed text-brand-light">透過聽故事開啟想像力與感官體驗；書畫與手工引導孩子將內在情感透過指尖凝聚成型，逐步鍛鍊心靈的意志力與創造力。</p>
+                    </div>
+                </div>
+
+                <!-- 特色 2 -->
+                <div class="bg-white rounded-xl shadow-sm border border-brand-border overflow-hidden flex flex-col">
+                    <div class="w-full h-44 bg-gray-100 flex items-center justify-center text-gray-400">
+                        <img src="烘焙照片.jpg" alt="飲食與生活烘焙" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentNode.innerHTML='<span class=\'text-xs p-4 text-center text-gray-400\'>[飲食與生活烘焙照片]</span>'">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold mb-2 text-brand-accent text-base">飲食與生活烘焙</h3>
+                        <p class="text-xs md:text-sm leading-relaxed text-brand-light">孩子親手揉麵、感受食材在四季中的質地變化，體驗從土地到餐桌的勞動喜悅，在動手做的過程中學會分享與感恩。</p>
+                    </div>
+                </div>
+
+                <!-- 特色 3 -->
+                <div class="bg-white rounded-xl shadow-sm border border-brand-border overflow-hidden flex flex-col">
+                    <div class="w-full h-44 bg-gray-100 flex items-center justify-center text-gray-400">
+                        <img src="探索照片.jpg" alt="大自然在地探索" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentNode.innerHTML='<span class=\'text-xs p-4 text-center text-gray-400\'>[大自然在地探索照片]</span>'">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold mb-2 text-brand-accent text-base">大自然在地探索</h3>
+                        <p class="text-xs md:text-sm leading-relaxed text-brand-light">走出教室，深入茶園與社區健走，讓孩子肢體舒展於冬山的土地與陽光下，鍛鍊粗大動作與感官平衡，長出健康與自信。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 師資團隊 ==================== -->
+
+        <!-- 6. 師資介紹 -->
+        <section id="teachers" class="space-y-6">
+            <div class="text-center">
+                <h2 class="text-2xl md:text-3xl font-bold text-brand-text mb-1">陪伴團隊 ( Faculty )</h2>
+                <p class="text-sm text-brand-light">用專業與愛，溫暖陪伴家長與孩子的身心靈</p>
+            </div>
+
+            <div class="space-y-6">
+                <!-- 陳曉霓 老師 -->
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-brand-border flex flex-col md:flex-row gap-6 items-start">
+                    <div class="w-24 h-24 bg-brand-bg rounded-full flex items-center justify-center text-brand-light shrink-0 mx-auto md:mx-0 border-2 border-brand-accent/30">
+                        <span class="font-bold text-lg">曉霓 老師</span>
+                    </div>
+                    <div class="space-y-3 flex-1">
+                        <h3 class="text-xl font-bold text-brand-accent text-center md:text-left">陳曉霓 老師</h3>
+                        <p class="text-xs md:text-sm italic text-brand-light bg-brand-bg p-3 rounded-lg">
+                            「熱愛和孩子一起工作，陪伴家長在教養的過程不孤單。」
+                        </p>
+                        <div class="grid md:grid-cols-2 gap-4 text-xs md:text-sm text-brand-light">
+                            <div>
+                                <h4 class="font-bold text-brand-text mb-1">現任</h4>
+                                <ul class="list-disc list-inside space-y-1">
+                                    <li>Extra Lesson 支持教育輔正教育老師</li>
+                                    <li>親職教養諮詢</li>
+                                    <li>治療教育讀書會帶領人</li>
+                                    <li>社團法人台灣華德福親子共學協會理事長</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-text mb-1">學經歷</h4>
+                                <ul class="list-disc list-inside space-y-1">
+                                    <li>宜蘭慈心華德福幼兒園六年主帶經驗</li>
+                                    <li>空間動力 Spatial Dynamics 二階培訓</li>
+                                    <li>台灣四年制治療教育與社會治療學程認證</li>
+                                    <li>美國 Golden Valley 華德福戶外幼兒園一年實習</li>
+                                    <li>美國 Steiner College Remedial Program 輔正教育認證</li>
+                                    <li>美國 Steiner College 華德福幼教師訓認證</li>
+                                    <li>人智學教育基金會華德福教育師訓</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 丁旋 老師 -->
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-brand-border flex flex-col md:flex-row gap-6 items-start">
+                    <div class="w-24 h-24 bg-brand-bg rounded-full flex items-center justify-center text-brand-light shrink-0 mx-auto md:mx-0 border-2 border-brand-accent/30">
+                        <span class="font-bold text-lg">丁旋 老師</span>
+                    </div>
+                    <div class="space-y-3 flex-1">
+                        <h3 class="text-xl font-bold text-brand-accent text-center md:text-left">丁旋 老師</h3>
+                        <p class="text-xs md:text-sm italic text-brand-light bg-brand-bg p-3 rounded-lg">
+                            「喜歡自然，喜歡散步，喜歡園藝。」
+                        </p>
+                        <div class="grid md:grid-cols-2 gap-4 text-xs md:text-sm text-brand-light">
+                            <div>
+                                <h4 class="font-bold text-brand-text mb-1">現任</h4>
+                                <ul class="list-disc list-inside space-y-1">
+                                    <li>五芒星星親子共學園帶領老師 (2020 ~)</li>
+                                    <li>星禾自然生活工坊照顧老師 (2022 ~)</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-text mb-1">專業背景與經歷</h4>
+                                <ul class="list-disc list-inside space-y-1">
+                                    <li>宜蘭慈心華德福幼兒園 14 年教學經驗</li>
+                                    <li>多年華德福幼兒園及共學主帶經驗</li>
+                                    <li>三年制台灣人智學生命史研修</li>
+                                    <li>五年 IPMT 國際學士後人智醫學研習</li>
+                                    <li>三年慈心華德福師訓</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 張荷月 老師 -->
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-brand-border flex flex-col md:flex-row gap-6 items-start">
+                    <div class="w-24 h-24 bg-brand-bg rounded-full flex items-center justify-center text-brand-light shrink-0 mx-auto md:mx-0 border-2 border-brand-accent/30">
+                        <span class="font-bold text-lg">荷月 老師</span>
+                    </div>
+                    <div class="space-y-3 flex-1">
+                        <h3 class="text-xl font-bold text-brand-accent text-center md:text-left">張荷月 藝術老師</h3>
+                        <p class="text-xs md:text-sm text-brand-light">
+                            資深藝術工作者，創作跨域悠遊於繪畫、設計、空間設計規劃、佈置，親子藝術教育、藝術陪伴療育課程與體驗工作坊。
+                        </p>
+                        <div class="grid md:grid-cols-2 gap-4 text-xs md:text-sm text-brand-light">
+                            <div>
+                                <h4 class="font-bold text-brand-text mb-1">現任</h4>
+                                <ul class="list-disc list-inside space-y-1">
+                                    <li>社團法人台灣華德福親子共學協會常務理事</li>
+                                    <li>五芒星星親子共學藝術老師</li>
+                                    <li>若為自由有限公司藝術總監</li>
+                                    <li>帶領虹光漆工作坊與施作（作品見於各華德福學校）</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-text mb-1">進修資歷</h4>
+                                <ul class="list-disc list-inside space-y-1">
+                                    <li>人智學教育基金會華德福教育師訓三年課程</li>
+                                    <li>IPMT 五年學程</li>
+                                    <li>台灣四年制治療教育與社會治療學程結業</li>
+                                    <li>Iris Sullivan 老師藝術鍛鍊三年課程</li>
+                                    <li>台灣人智學藝術治療課程修業中</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==================== 11類主題生活相簿 ==================== -->
+
+        <!-- 7. 園區相簿 -->
+        <section id="gallery" class="space-y-6">
+            <div class="text-center">
+                <h2 class="text-2xl md:text-3xl font-bold text-brand-text mb-1">生活點滴 ( Gallery )</h2>
+                <p class="text-sm text-brand-light">在四季更迭中，記錄孩子的專注、喜悅與成長</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-xl shadow-sm border border-brand-border overflow-hidden">
+                    <div class="w-full h-40 bg-gray-100 flex items-center justify-center text-gray-400 overflow-hidden">
+                        <img src="風雨無阻.jpg" alt="風雨無阻培養孩子的意志力" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentNode.innerHTML='<span class=\'text-xs p-4 text-center text-gray-400\'>1. 風雨無阻培養孩子的意志力</span>'">
+                    </div>
+                    <div class="p-3"><h3 class="font-bold text-brand-accent text-xs md:text-sm">1. 風雨無阻培養孩子的意志力</h3></div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm border border-brand-border overflow-hidden">
+                    <div class="w-full h-40 bg-gray-100 flex items-center justify-center text-gray-400 overflow-hidden">
+                        <img src="晨圈.jpg" alt="晨圈" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentNode.innerHTML='<span class=\'text-xs p-4 text-center text-gray-400\'>2. 晨圈律動</span>'">
+                    </div>
+                    <div class="p-3"><h3 class="font-bold text-brand-accent text-xs md:text-sm">2. 晨圈</h3></div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm border border-brand-border overflow-hidden">
+                    <div class="w-full h-40 bg-gray-100 flex items-center justify-center text-gray-400 overflow-hidden">
+                        <img src="生日手工.jpg" alt="季節性及生日手工" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentNode.innerHTML='<span class=\'text-xs p-4 text-center text-gray-400\'>3. 季節性及生日手工</span>'">
+                    </div>
+                    <div class="p-3"><h3 class="font-bold text-brand-accent text-xs md:text-sm">3. 季節性及生日手工</h3></div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm border border-brand-border overflow-hidden">
+                    <div class="w-full h-40 bg-gray-100 flex items-center justify-center text-gray-400 overflow-hidden">
+                        <img src="種菜.jpg" alt="種菜囉" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentNode.innerHTML='<span class=\'text-xs p-4 text-center text-gray-400\'>4. 種菜囉</span>'">
+                    </div>
+                    <div class="p-3"><h3 class="font-bold text-brand-accent text-xs md:text-sm">4. 種菜囉</h3></div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm border border-brand-border overflow-hidden">
+                    <div class="w-full h-40 bg-gray-100 flex items-center justify-center text-gray-400 overflow-hidden">
+                        <img src="園藝工作.jpg" alt="園藝工作" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentNode.innerHTML='<span class=\'text-xs p-4 text-center text-gray-400\'>5. 園藝工作</span>'">
+                    </div>
+                    <div class="p-3"><h3 class="font-bold text-brand-accent text-xs md:text-sm">5. 園藝工作</h3></div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm border border-brand-border overflow-hidden">
+                    <div class="w-full h-40 bg-gray-100 flex items-center justify-center text-gray-400 overflow-hidden">
+                        <img src="花園一隅.jpg" alt="花園一隅" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentNode.innerHTML='<span class=\'text-xs p-4 text-center text-gray-400\'>6. 花園一隅</span>'">
+                    </div>
+                    <div class="p-3"><h3 class="font-bold text-brand-accent text-xs md:text-sm">6. 花園一隅</h3></div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm border border-brand-border overflow-hidden">
+                    <div class="w-full h-40 bg-gray-100 flex items-center justify-center text-gray-400 overflow-hidden">
+                        <img src="農作收成.jpg" alt="農作收成" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentNode.innerHTML='<span class=\'text-xs p-4 text-center text-gray-400\'>7. 農作收成</span>'">
+                    </div>
+                    <div class="p-3"><h3 class="font-bold text-brand-accent text-xs md:text-sm">7. 農作收成</h3></div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm border border-brand-border overflow-hidden">
+                    <div class="w-full h-40 bg-gray-100 flex items-center justify-center text-gray-400 overflow-hidden">
+                        <img src="收成秋葵.jpg" alt="收成秋葵" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentNode.innerHTML='<span class=\'text-xs p-4 text-center text-gray-400\'>8. 收成秋葵</span>'">
+                    </div>
+                    <div class="p-3"><h3 class="font-bold text-brand-accent text-xs md:text-sm">8. 收成秋葵</h3></div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm border border-brand-border overflow-hidden">
+                    <div class="w-full h-40 bg-gray-100 flex items-center justify-center text-gray-400 overflow-hidden">
+                        <img src="沙坑時光.jpg" alt="自由遊戲 -- 沙坑時光" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentNode.innerHTML='<span class=\'text-xs p-4 text-center text-gray-400\'>9. 自由遊戲 -- 沙坑時光</span>'">
+                    </div>
+                    <div class="p-3"><h3 class="font-bold text-brand-accent text-xs md:text-sm">9. 自由遊戲 -- 沙坑時光</h3></div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm border border-brand-border overflow-hidden">
+                    <div class="w-full h-40 bg-gray-100 flex items-center justify-center text-gray-400 overflow-hidden">
+                        <img src="偶劇故事.jpg" alt="偶劇故事" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentNode.innerHTML='<span class=\'text-xs p-4 text-center text-gray-400\'>10. 偶劇故事</span>'">
+                    </div>
+                    <div class="p-3"><h3 class="font-bold text-brand-accent text-xs md:text-sm">10. 偶劇故事</h3></div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm border border-brand-border overflow-hidden sm:col-span-2 md:col-span-2">
+                    <div class="w-full h-40 bg-gray-100 flex items-center justify-center text-gray-400 overflow-hidden">
+                        <img src="燭光花園.jpg" alt="冬季節慶活動-燭光花園" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentNode.innerHTML='<span class=\'text-xs p-4 text-center text-gray-400\'>11. 冬季節慶活動 - 燭光花園</span>'">
+                    </div>
+                    <div class="p-3"><h3 class="font-bold text-brand-accent text-xs md:text-sm">11. 冬季節慶活動 - 燭光花園</h3></div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 8. 預約親師會談 / 聯絡我們卡片 -->
+        <section id="contact" class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-brand-border text-center space-y-6">
+            <h3 class="text-2xl font-bold text-brand-text">準備好加入我們的村莊了嗎？</h3>
+            <p class="text-brand-light text-sm max-w-xl mx-auto leading-relaxed">
+                入學前可以先約時間進行親師會談，讓我們彼此互相了解，再共同決定最適合孩子的入學時間。
+            </p>
+            <div class="pt-2 flex flex-wrap justify-center gap-4">
+                <a href="https://forms.gle/" target="_blank" class="inline-block bg-brand-accent text-white text-sm md:text-base px-8 py-3.5 rounded-full font-bold hover:opacity-90 transition-all shadow-md">
+                    預約親師會談 / 報名諮詢
+                </a>
+            </div>
+            <div class="text-xs text-brand-light pt-2">
+                📍 地點：宜蘭縣三星鄉安農九路 560 號（五芒星星親子共學園 / 台灣華德福親子共學協會）
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 頁尾 -->
+    <footer class="bg-brand-text text-white/80 py-8 px-6 text-center text-xs space-y-2 border-t border-brand-border mt-12">
+        <p class="font-medium text-white">社團法人台灣華德福親子共學協會</p>
+        <p>五芒星星親子共學園 & 星禾自然生活工坊</p>
+        <p>地址：宜蘭縣三星鄉安農九路 560號</p>
+        <p class="pt-2 text-white/50">© 台灣華德福親子共學協會 All Rights Reserved.</p>
+    </footer>
+
+    <!-- 行動選單開關 JS -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const line1 = document.getElementById('line1');
+        const line2 = document.getElementById('line2');
+        const line3 = document.getElementById('line3');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+            if (mobileMenu.classList.contains('open')) {
+                line1.style.transform = 'translateY(7px) rotate(45deg)';
+                line2.style.opacity = '0';
+                line3.style.transform = 'translateY(-7px) rotate(-45deg)';
+            } else {
+                line1.style.transform = 'none';
+                line2.style.opacity = '1';
+                line3.style.transform = 'none';
+            }
+        });
+
+        const menuLinks = mobileMenu.querySelectorAll('a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                line1.style.transform = 'none';
+                line2.style.opacity = '1';
+                line3.style.transform = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
