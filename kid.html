@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>五芒星星親子共學 幼幼班秋季班 - 社團法人台灣華德福親子共學協會</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: '#fcf9f2',
+                            text: '#5d4e43',
+                            accent: '#d97746',
+                            green: '#5b8266',
+                            border: '#e5e0dc',
+                            light: '#8A7B6F'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Helvetica Neue"', 'Arial', '"Microsoft JhengHei"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { -webkit-font-smoothing: antialiased; }
+        .hero-bg { background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.45)), url('彩虹底圖.jfif') center/cover no-repeat; }
+        #mobile-menu { transition: all 0.3s ease-in-out; max-height: 0; overflow: hidden; opacity: 0; }
+        #mobile-menu.open { max-height: 400px; opacity: 1; padding-top: 1rem; padding-bottom: 1rem; }
+    </style>
+</head>
+<body class="bg-brand-bg text-brand-text min-h-screen flex flex-col font-sans">
+    
+    <!-- 導覽列 -->
+    <nav class="flex justify-between items-center px-6 md:px-[8%] py-5 border-b border-brand-border bg-brand-bg sticky top-0 z-50 shadow-sm">
+        <div class="font-medium text-lg tracking-wide text-brand-text hover:text-brand-accent transition-colors">
+            <a href="index.html">社團法人台灣華德福親子共學協會</a>
+        </div>
+
+        <div class="hidden md:flex gap-8 items-center">
+            <a href="index.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">首頁</a>
+            <a href="news.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">最新消息</a>
+            <a href="about.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">協會緣起</a>
+            <a href="services.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">服務項目</a>
+            <a href="events.html" class="text-sm font-medium text-brand-accent transition-colors">活動報名</a>
+            <a href="contact.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">聯絡我們</a>
+        </div>
+
+        <button id="menu-btn" class="md:hidden flex flex-col gap-[5px] p-2 focus:outline-none" aria-label="Toggle Menu">
+            <span id="line1" class="w-6 h-[2px] bg-brand-text block transition-transform duration-300 origin-center"></span>
+            <span id="line2" class="w-6 h-[2px] bg-brand-text block transition-opacity duration-300"></span>
+            <span id="line3" class="w-6 h-[2px] bg-brand-text block transition-transform duration-300 origin-center"></span>
+        </button>
+    </nav>
+
+    <!-- 手機版選單 -->
+    <div id="mobile-menu" class="md:hidden bg-brand-bg border-b border-brand-border absolute w-full z-40 top-[73px] shadow-lg flex flex-col items-center gap-4">
+        <a href="index.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">首頁</a>
+        <a href="news.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">最新消息</a>
+        <a href="about.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">協會緣起</a>
+        <a href="services.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">服務項目</a>
+        <a href="events.html" class="w-full text-center py-2 text-brand-accent font-medium">活動報名</a>
+        <a href="contact.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">聯絡我們</a>
+    </div>
+
+    <!-- 首頁橫幅 Header -->
+    <header class="hero-bg py-20 px-6 flex justify-center items-center shadow-inner">
+        <div class="text-center max-w-3xl">
+            <span class="inline-block bg-brand-accent/80 text-white text-xs md:text-sm px-4 py-1 rounded-full mb-3 tracking-widest uppercase">Waldorf Early Childhood</span>
+            <h1 class="text-3xl md:text-5xl font-bold text-white drop-shadow-md mb-6 tracking-wider">
+                五芒星星親子共學 幼幼班
+            </h1>
+            <div class="text-white/90 text-sm md:text-base drop-shadow-sm leading-relaxed space-y-2 italic">
+                <p>「秋精靈來訪，秋風吹，吹到樹梢葉子沙沙響，</p>
+                <p>敲醒樹上楊桃換穿黃衣裳，敲醒枝條上的樹葡萄⋯⋯」</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要內容區塊 -->
+    <main class="max-w-6xl mx-auto px-6 py-12 space-y-12 flex-1 w-full">
+        
+        <!-- 共學園理念 -->
+        <section id="star-about" class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-brand-border space-y-6">
+            <div class="text-center max-w-2xl mx-auto">
+                <h2 class="text-2xl md:text-3xl font-bold text-brand-green mt-1 mb-3">在安農溪畔，感受自然與慢生活的節奏</h2>
+                <div class="w-12 h-1 bg-brand-accent mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="space-y-4 text-brand-light text-base md:text-lg leading-relaxed">
+                <p>
+                    五芒星星親子共學園坐落於距離宜蘭縣羅東運動公園不遠的安農溪畔，是一個全戶外的親子共學園，由「社團法人台灣華德福親子共學協會」所支持。近五年來，我們帶領家長及孩子一起工作，照顧園區的香草植物及季節性作物⋯⋯隨著四季更迭分享收成的喜悅，以溫暖陪伴家長及孩子身心靈的成長。
+                </p>
+                <p class="font-medium text-brand-text bg-brand-bg p-5 rounded-xl border-l-4 border-brand-accent leading-loose">
+                    親子幼幼班是從教室內的自由遊戲、歌謠，到戶外的照顧菜園、觀察植物，孩子開心地在百香果棚下穿過來穿過去，漸漸熟悉慢生活裡的節奏及自然元素的滋潤；而大人也慢慢地可以在一旁做手工並關照、陪伴遊戲中的孩子。
+                </p>
+                <p>
+                    秋季，我們會帶小小孩栽種植物，也有大人的簡單手工；我們也會邀請護理師來分享寶寶按摩，讓父母能夠將這些帶回家，在家跟孩子一起工作。
+                </p>
+            </div>
+        </section>
+
+        <!-- 招生資訊卡片 -->
+        <section id="star-admission" class="space-y-6">
+            <h2 class="text-2xl font-bold text-brand-text border-l-4 border-brand-green pl-3">秋季班 招生資訊</h2>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- 招生對象 -->
+                <div class="bg-white p-6 rounded-xl border border-brand-border shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="text-brand-accent font-bold text-xs tracking-wider uppercase mb-1">Target</div>
+                        <h3 class="text-lg font-bold mb-2">⭐ 招生對象</h3>
+                        <p class="text-brand-light text-sm leading-relaxed">
+                            1歲半～3歲幼兒及家長<br>
+                            <span class="text-xs text-brand-accent font-bold mt-1 inline-block">（小班溫馨共學，僅收 5 組家庭）</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 上課時間 -->
+                <div class="bg-white p-6 rounded-xl border border-brand-border shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="text-brand-accent font-bold text-xs tracking-wider uppercase mb-1">Schedule</div>
+                        <h3 class="text-lg font-bold mb-2">⭐ 時間與時段</h3>
+                        <p class="text-brand-light text-sm leading-relaxed">
+                            <span class="font-semibold text-brand-text">每週一</span><br>
+                            上午 09:00 ～ 10:30
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 共學地點 -->
+                <div class="bg-white p-6 rounded-xl border border-brand-border shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="text-brand-accent font-bold text-xs tracking-wider uppercase mb-1">Location</div>
+                        <h3 class="text-lg font-bold mb-2">⭐ 共學地點</h3>
+                        <p class="text-brand-light text-sm leading-relaxed">
+                            五芒星星親子共學園<br>
+                            <span class="text-xs">宜蘭縣三星鄉安農九路 560 號</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 會員專屬優惠與溫馨提醒 -->
+            <div class="bg-white p-6 md:p-8 rounded-2xl border-2 border-brand-accent/30 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-brand-accent flex items-center gap-2">
+                    <span>🌿</span> 幼幼班家庭獨享禮遇與備品提醒
+                </h3>
+                <div class="grid md:grid-cols-2 gap-6 text-sm text-brand-light leading-relaxed">
+                    <div class="bg-brand-bg p-4 rounded-xl border border-brand-border">
+                        <h4 class="font-bold text-brand-text mb-1">🎁 協會會員專屬優惠</h4>
+                        <p>參與五芒星星親子共學幼幼班之家庭，凡報名參與本協會辦理之各項課程與工作坊，皆享有<span class="font-bold text-brand-accent">專屬優惠</span>；各項節慶活動可<span class="font-bold text-brand-accent">免費參加</span>。</p>
+                    </div>
+                    <div class="bg-brand-bg p-4 rounded-xl border border-brand-border">
+                        <h4 class="font-bold text-brand-text mb-1">🍎 點心與茶飲準備</h4>
+                        <p>請為孩子自備水果點心；園區現場亦會貼心準備當令香草花草茶，供大家溫暖享用。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 師資介紹 -->
+        <section id="teachers" class="space-y-6">
+            <div class="text-center">
+                <h2 class="text-2xl md:text-3xl font-bold text-brand-text mb-1">陪伴團隊 ( Faculty )</h2>
+                <p class="text-sm text-brand-light">用溫暖與專業，陪伴家長與孩子踏實走過成長之路</p>
+            </div>
+
+            <div class="space-y-6">
+                <!-- 主帶老師：丁旋 老師 -->
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border-2 border-brand-green/30 flex flex-col md:flex-row gap-6 items-start relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-brand-green text-white text-xs font-bold px-4 py-1 rounded-bl-xl">
+                        主帶老師
+                    </div>
+                    <div class="w-24 h-24 bg-brand-bg rounded-full flex items-center justify-center text-brand-light shrink-0 mx-auto md:mx-0 border-2 border-brand-green/50">
+                        <span class="font-bold text-lg">丁旋 老師</span>
+                    </div>
+                    <div class="space-y-3 flex-1">
+                        <h3 class="text-xl font-bold text-brand-green text-center md:text-left">丁旋 老師</h3>
+                        <p class="text-xs md:text-sm italic text-brand-light bg-brand-bg p-3 rounded-lg">
+                            「喜歡演偶戲，喜歡自然，喜歡散步，喜歡園藝。」
+                        </p>
+                        <div class="text-xs md:text-sm text-brand-light space-y-2">
+                            <h4 class="font-bold text-brand-text">專業背景與經歷：</h4>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>多年華德福幼兒園及共學主帶經驗</li>
+                                <li>宜蘭慈心華德福幼兒園 14 年教學經驗</li>
+                                <li>三年制台灣人智學生命史研修</li>
+                                <li>五年 IPMT 國際學士後人智醫學研習</li>
+                                <li>三年慈心華德福師訓</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 共同備課教師群 -->
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-brand-border space-y-4">
+                    <h3 class="text-lg font-bold text-brand-accent border-b border-brand-border pb-2">✨ 共同備課教師群</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <!-- 陳曉霓 老師 -->
+                        <div class="space-y-2 bg-brand-bg p-4 rounded-xl">
+                            <h4 class="font-bold text-brand-text text-base">陳曉霓 老師</h4>
+                            <p class="text-xs text-brand-light">社團法人台灣華德福親子共學協會理事長</p>
+                            <ul class="list-disc list-inside text-xs text-brand-light space-y-1 pt-1">
+                                <li>Extra Lesson 支持教育輔正教育老師</li>
+                                <li>宜蘭慈心華德福幼兒園六年主帶經驗</li>
+                                <li>美國 Golden Valley 華德福戶外幼兒園實習</li>
+                            </ul>
+                        </div>
+
+                        <!-- 張荷月 老師 -->
+                        <div class="space-y-2 bg-brand-bg p-4 rounded-xl">
+                            <h4 class="font-bold text-brand-text text-base">張荷月 藝術老師</h4>
+                            <p class="text-xs text-brand-light">資深藝術工作者 / 五芒星星藝術老師</p>
+                            <ul class="list-disc list-inside text-xs text-brand-light space-y-1 pt-1">
+                                <li>社團法人台灣華德福親子共學協會常務理事</li>
+                                <li>若為自由有限公司藝術總監</li>
+                                <li>IPMT 五年學程 / 台灣人智學藝術治療課程修業中</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 生活點滴相簿 -->
+        <section id="gallery" class="space-y-6">
+            <div class="text-center">
+                <h2 class="text-2xl md:text-3xl font-bold text-brand-text mb-1">園區點滴 ( Gallery )</h2>
+                <p class="text-sm text-brand-light">在自然與季節交替間，記錄孩子的專注與喜悅</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-xl shadow-sm border border-brand-border overflow-hidden">
+                    <div class="w-full h-40 bg-gray-100 flex items-center justify-center text-gray-400 overflow-hidden">
+                        <img src="種菜.jpg" alt="照顧菜園" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentNode.innerHTML='<span class=\'text-xs p-4 text-center text-gray-400\'>照顧菜園與觀察植物</span>'">
+                    </div>
+                    <div class="p-3"><h3 class="font-bold text-brand-accent text-xs md:text-sm">照顧菜園與觀察植物</h3></div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm border border-brand-border overflow-hidden">
+                    <div class="w-full h-40 bg-gray-100 flex items-center justify-center text-gray-400 overflow-hidden">
+                        <img src="晨圈.jpg" alt="晨圈與歌謠" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentNode.innerHTML='<span class=\'text-xs p-4 text-center text-gray-400\'>晨圈律動與歌謠</span>'">
+                    </div>
+                    <div class="p-3"><h3 class="font-bold text-brand-accent text-xs md:text-sm">晨圈律動與歌謠</h3></div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm border border-brand-border overflow-hidden">
+                    <div class="w-full h-40 bg-gray-100 flex items-center justify-center text-gray-400 overflow-hidden">
+                        <img src="生日手工.jpg" alt="大人的簡單手工" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentNode.innerHTML='<span class=\'text-xs p-4 text-center text-gray-400\'>大人的簡單手工時光</span>'">
+                    </div>
+                    <div class="p-3"><h3 class="font-bold text-brand-accent text-xs md:text-sm">大人的簡單手工時光</h3></div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm border border-brand-border overflow-hidden">
+                    <div class="w-full h-40 bg-gray-100 flex items-center justify-center text-gray-400 overflow-hidden">
+                        <img src="沙坑時光.jpg" alt="自由遊戲" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentNode.innerHTML='<span class=\'text-xs p-4 text-center text-gray-400\'>自由遊戲時間</span>'">
+                    </div>
+                    <div class="p-3"><h3 class="font-bold text-brand-accent text-xs md:text-sm">自由遊戲時間</h3></div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm border border-brand-border overflow-hidden">
+                    <div class="w-full h-40 bg-gray-100 flex items-center justify-center text-gray-400 overflow-hidden">
+                        <img src="偶劇故事.jpg" alt="偶劇故事時間" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentNode.innerHTML='<span class=\'text-xs p-4 text-center text-gray-400\'>偶劇故事時間</span>'">
+                    </div>
+                    <div class="p-3"><h3 class="font-bold text-brand-accent text-xs md:text-sm">偶劇故事時間</h3></div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm border border-brand-border overflow-hidden">
+                    <div class="w-full h-40 bg-gray-100 flex items-center justify-center text-gray-400 overflow-hidden">
+                        <img src="農作收成.jpg" alt="分享四季收成" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentNode.innerHTML='<span class=\'text-xs p-4 text-center text-gray-400\'>分享四季收成的喜悅</span>'">
+                    </div>
+                    <div class="p-3"><h3 class="font-bold text-brand-accent text-xs md:text-sm">分享四季收成的喜悅</h3></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 報名諮詢與聯絡我們 -->
+        <section id="contact" class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-brand-border text-center space-y-6">
+            <h3 class="text-2xl font-bold text-brand-text">準備好與孩子一起感受秋天的美好了嗎？</h3>
+            <p class="text-brand-light text-sm max-w-xl mx-auto leading-relaxed">
+                歡迎報名秋季幼幼班，名額有限（僅收 5 組家庭），有任何疑問歡迎隨時與我們聯絡！
+            </p>
+
+            <div class="pt-2 flex flex-wrap justify-center gap-4">
+                <a href="https://forms.gle/" target="_blank" class="inline-block bg-brand-accent text-white text-sm md:text-base px-8 py-3.5 rounded-full font-bold hover:opacity-90 transition-all shadow-md">
+                    線上報名 / 預約諮詢
+                </a>
+            </div>
+
+            <div class="bg-brand-bg p-6 rounded-xl border border-brand-border max-w-md mx-auto text-left text-xs md:text-sm text-brand-light space-y-2 mt-4">
+                <div class="font-bold text-brand-text mb-2 text-center text-base">聯絡資訊</div>
+                <p>📍 <span class="font-semibold text-brand-text">共學地點：</span>宜蘭縣三星鄉安農九路 560 號</p>
+                <p>👤 <span class="font-semibold text-brand-text">聯絡人：</span>丁旋 老師</p>
+                <p>📞 <span class="font-semibold text-brand-text">電話：</span><a href="tel:0953247240" class="hover:text-brand-accent">0953-247-240</a></p>
+                <p>✉️ <span class="font-semibold text-brand-text">E-Mail：</span><a href="mailto:anthroposophia88@gmail.com" class="hover:text-brand-accent">anthroposophia88@gmail.com</a></p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 頁尾 Footer -->
+    <footer class="bg-brand-text text-white/80 py-8 px-6 text-center text-xs space-y-2 border-t border-brand-border mt-12">
+        <p class="font-medium text-white">社團法人台灣華德福親子共學協會</p>
+        <p>五芒星星親子共學園</p>
+        <p>地址：宜蘭縣三星鄉安農九路 560號｜聯絡電話：0953-247-240</p>
+        <p class="pt-2 text-white/50">© 台灣華德福親子共學協會 All Rights Reserved.</p>
+    </footer>
+
+    <!-- 行動選單開關 JS -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const line1 = document.getElementById('line1');
+        const line2 = document.getElementById('line2');
+        const line3 = document.getElementById('line3');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+            if (mobileMenu.classList.contains('open')) {
+                line1.style.transform = 'translateY(7px) rotate(45deg)';
+                line2.style.opacity = '0';
+                line3.style.transform = 'translateY(-7px) rotate(-45deg)';
+            } else {
+                line1.style.transform = 'none';
+                line2.style.opacity = '1';
+                line3.style.transform = 'none';
+            }
+        });
+
+        const menuLinks = mobileMenu.querySelectorAll('a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                line1.style.transform = 'none';
+                line2.style.opacity = '1';
+                line3.style.transform = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
