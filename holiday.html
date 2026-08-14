@@ -143,7 +143,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>星禾假期生活工坊 - 2026暑假報名表單</h1>
+        <h1>星禾假期生活工坊 - 2026秋假報名表單</h1>
         
         <!-- 檢查名額的載入中狀態 -->
         <div id="loadingStatus">🌱 正在為您確認假期工坊剩餘名額，請稍候...</div>
@@ -189,7 +189,7 @@
                 </select>
             </div>
 
-            <!-- 新增：孩子健康狀況與特殊注意事項區塊 -->
+            <!-- 孩子健康狀況與特殊注意事項區塊 -->
             <div class="form-group">
                 <label>孩子身體/健康狀況（可複選）</label>
                 <div class="checkbox-group">
@@ -210,7 +210,7 @@
                 <textarea id="healthDetail" name="healthDetail" rows="3" placeholder="如：對海鮮過敏、蠶豆症不可接觸樟腦、發作時應急處理方式...無特別狀況可留空"></textarea>
             </div>
 
-            <!-- 新身分識別：舊生與兄弟姊妹優惠篩選 -->
+            <!-- 身分識別：舊生與兄弟姊妹優惠篩選 -->
             <div class="form-group">
                 <label>是否為舊生？</label>
                 <div class="radio-group-row">
@@ -229,12 +229,9 @@
             
             <!-- 週數時間選取區 -->
             <div class="form-group">
-                <label>勾選欲報名的暑假工坊週次 (可複選，兩人即開班)</label>
+                <label>報名的秋假工坊週次 (可複選，兩人即開班)</label>
                 <div class="checkbox-group">
-                    <label><input type="checkbox" name="session" value="第一週(7/7-7/10)"> 第一週：7/7（二） - 7/10（五）</label>
-                    <label><input type="checkbox" name="session" value="第二週(7/13-7/17)"> 第二週：7/13（一） - 7/17（五）</label>
-                    <label><input type="checkbox" name="session" value="第三週(7/20-7/24)"> 第三週：7/20（一） - 7/24（五）</label>
-                    <label><input type="checkbox" name="session" value="第四週(8/10-8/14)"> 第四週：8/10（一） - 8/14（五）</label>
+                    <label><input type="checkbox" name="session" value="第一週(10/27-30)"> 第一週：10/27（二） - 10/30（五）</label>
                 </div>
                 
                 <div class="fee-display-box">
@@ -266,13 +263,13 @@
             <div class="notice-section">
                 <div class="notice-title">🌻 假期生活工坊收費與溫馨提醒</div>
                 <div class="notice-content">
-                    <p><strong>• 服務時間：</strong> 全天星期一到星期五（時間 8:00 - 17:00），每週時段達 <strong>兩人（含）以上</strong> 即開班陪伴。</p>
+                    <p><strong>• 服務時間：</strong> 全天星期二到星期五（時間 8:00 - 17:00）。</p>
                     <p><strong>• 開班標準：</strong> 每週時段達 <strong>兩人（含）以上</strong> 即開班陪伴。</p>
-                    <p><strong>• 常態收費：</strong> 6,000 元 / 1人 / 1週。</p>
-                    <p><strong>• 舊生優惠：</strong> 享優惠價 5,000 元 / 1人 / 1週。</p>
+                    <p><strong>• 常態收費：</strong> 4,800 元 / 1人 / 1週。</p>
+                    <p><strong>• 舊生優惠：</strong> 享優惠價 3,840 元 / 1人 / 1週。</p>
                     <p><strong>• 手足同來：</strong> 兄弟姐妹同行報名時，第二位孩子可享有 <strong>8 折優惠</strong>。</p>
                     <p><strong>• 收費時間：</strong> 參與工坊第一週繳納活動費用。</p>
-                    <p><strong>• 注意事項：</strong> 費用皆包含每日餐食與材料費。因課程材料與師資已提前準備，病假，事假及國定假日不扣除學費。課程內容會因天氣彈性調整。名額僅限 7 人，額滿即關閉報名。</p>
+                    <p><strong>• 注意事項：</strong> 費用皆包含每日餐食與材料費。因課程材料與師資已提前準備，病假、事假及國定假日不扣除學費。課程內容會因天氣彈性調整。名額僅限 7 人，額滿即關閉報名。</p>
                 </div>
                 
                 <div class="agree-group">
@@ -289,7 +286,6 @@
     </div>
 
     <script>
-        // 後端連線 API 網址維持使用您的後端引擎
         const backendUrl = "https://script.google.com/macros/s/AKfycbyznbxrX9GuPT8JP8GdEpOj2RCRMuxMKpW8A4SHR4pR3yNpNGOOImZhKEbiA4RwKSsE/exec";
 
         const checkboxes = document.querySelectorAll('input[name="session"]');
@@ -320,7 +316,7 @@
             });
         });
 
-        // 智慧暑期學費計算核心（已加入第一週 4 天比例減免機制）
+        // 學費計算邏輯
         function calculateFee() {
             const checkedBoxes = document.querySelectorAll('input[name="session"]:checked');
             if (checkedBoxes.length === 0) {
@@ -329,41 +325,29 @@
                 return;
             }
 
-            // 1. 決定基礎單週價格
+            // 1. 基礎定價：舊生 3,840 / 新生 4,800
             let isOldRadio = document.querySelector('input[name="isOldStudent"]:checked');
             let isOld = isOldRadio ? isOldRadio.value === "yes" : false;
-            let basePricePerWeek = isOld ? 5000 : 6000;
+            let pricePerWeek = isOld ? 3840 : 4800;
 
-            // 2. 判定手足折扣優惠（第二位打 8 折）
+            // 2. 手足折扣：第二位孩子享 8 折
             let siblingRadio = document.querySelector('input[name="siblingStatus"]:checked');
             let isSecondChild = siblingRadio ? siblingRadio.value === "second" : false;
             let discountRate = isSecondChild ? 0.8 : 1.0;
 
-            // 3. 核心：遍歷每個被勾選的項目，依據天數加總
-            let totalFee = 0;
-            checkedBoxes.forEach(cb => {
-                if (cb.value.includes("第一週")) {
-                    // 第一週只有 4 天，費用乘以 0.8 (4/5)
-                    totalFee += basePricePerWeek * 0.8;
-                } else {
-                    // 其他週皆為標準 5 天，收足全額
-                    totalFee += basePricePerWeek;
-                }
-            });
+            // 3. 週數加總與折扣計算
+            let totalFee = checkedBoxes.length * pricePerWeek * discountRate;
 
-            // 4. 最後乘上手足折扣，並四捨五入輸出
-            let finalFee = totalFee * discountRate;
-
-            feeDisplay.textContent = Math.round(finalFee).toLocaleString();
-            feeHiddenInput.value = Math.round(finalFee);
+            feeDisplay.textContent = Math.round(totalFee).toLocaleString();
+            feeHiddenInput.value = Math.round(totalFee);
         }
 
-        // 綁定所有會引發學費變動的點選事件
+        // 綁定計算事件
         checkboxes.forEach(cb => cb.addEventListener('change', calculateFee));
         oldStudentRadios.forEach(r => r.addEventListener('change', calculateFee));
         siblingRadios.forEach(r => r.addEventListener('change', calculateFee));
 
-        // 表單拋接送出
+        // 表單送出
         regForm.addEventListener('submit', function(e) {
             e.preventDefault(); 
 
@@ -379,11 +363,10 @@
 
             const formData = new FormData(this);
             
-            // 處理週次
+            // 處理週次標籤
             let sessionsArray = [];
             checkedSessions.forEach(cb => sessionsArray.push(cb.value));
 
-            // 額外備註家長勾選的身份，以便後台閱覽
             let oldStatusText = formData.get('isOldStudent') === 'yes' ? '【舊生】' : '【新生】';
             let siblingStatusText = formData.get('siblingStatus') === 'second' ? '【手足第二位八折】' : '';
             formData.set('session', oldStatusText + siblingStatusText + " 報名：" + sessionsArray.join(', '));
@@ -402,7 +385,7 @@
             .then(response => response.json())
             .then(data => {
                 if(data.result === 'success') {
-                    alert('🎉 暑期假期照顧班報名成功！系統已將明細函發送至信箱。');
+                    alert('🎉 秋假生活工坊報名成功！系統已將明細函發送至信箱。');
                     location.reload(); 
                 } else if(data.result === 'full') {
                     alert('很抱歉！假期班正取名額已在剛才額滿。');
