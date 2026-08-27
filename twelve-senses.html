@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>十二感官工作坊 - 社團法人台灣華德福親子共學協會</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: '#fcf9f2',
+                            text: '#5d4e43',
+                            accent: '#d97746',
+                            green: '#5b8266',
+                            border: '#e5e0dc',
+                            light: '#8A7B6F'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Helvetica Neue"', 'Arial', '"Microsoft JhengHei"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { -webkit-font-smoothing: antialiased; }
+        .hero-bg { background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), url('彩虹底圖.jfif') center/cover no-repeat; }
+        #mobile-menu { transition: all 0.3s ease-in-out; max-height: 0; overflow: hidden; opacity: 0; }
+        #mobile-menu.open { max-height: 400px; opacity: 1; padding-top: 1rem; padding-bottom: 1rem; }
+    </style>
+</head>
+<body class="bg-brand-bg text-brand-text min-h-screen flex flex-col font-sans">
+    
+    <!-- 導覽列 -->
+    <nav class="flex justify-between items-center px-6 md:px-[8%] py-5 border-b border-brand-border bg-brand-bg sticky top-0 z-50 shadow-sm">
+        <div class="font-medium text-lg tracking-wide text-brand-text hover:text-brand-accent transition-colors">
+            <a href="index.html">社團法人台灣華德福親子共學協會</a>
+        </div>
+
+        <div class="hidden md:flex gap-8 items-center">
+            <a href="index.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">首頁</a>
+            <a href="news.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">最新消息</a>
+            <a href="about.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">協會緣起</a>
+            <a href="services.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">服務項目</a>
+            <a href="events.html" class="text-sm font-medium text-brand-accent font-bold transition-colors">活動報名</a>
+            <a href="contact.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">聯絡我們</a>
+        </div>
+
+        <button id="menu-btn" class="md:hidden flex flex-col gap-[5px] p-2 focus:outline-none" aria-label="Toggle Menu">
+            <span id="line1" class="w-6 h-[2px] bg-brand-text block transition-transform duration-300 origin-center"></span>
+            <span id="line2" class="w-6 h-[2px] bg-brand-text block transition-opacity duration-300"></span>
+            <span id="line3" class="w-6 h-[2px] bg-brand-text block transition-transform duration-300 origin-center"></span>
+        </button>
+    </nav>
+
+    <!-- 手機版選單 -->
+    <div id="mobile-menu" class="md:hidden bg-brand-bg border-b border-brand-border absolute w-full z-40 top-[73px] shadow-lg flex flex-col items-center gap-4">
+        <a href="index.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">首頁</a>
+        <a href="news.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">最新消息</a>
+        <a href="about.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">協會緣起</a>
+        <a href="services.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">服務項目</a>
+        <a href="events.html" class="w-full text-center py-2 text-brand-accent font-bold">活動報名</a>
+        <a href="contact.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">聯絡我們</a>
+    </div>
+
+    <!-- 首頁橫幅 Header -->
+    <header class="hero-bg py-20 px-6 flex justify-center items-center shadow-inner">
+        <div class="text-center max-w-3xl">
+            <h1 class="text-3xl md:text-5xl font-bold text-white drop-shadow-md mb-6 tracking-wider">
+                十二感官工作坊
+            </h1>
+            <div class="text-white/90 text-sm md:text-base drop-shadow-sm leading-relaxed space-y-2">
+                <p>後疫情時代來臨，很多狀態加速變化，特別是AI世代的來臨，已勢不可擋！</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要內容區塊 -->
+    <main class="max-w-6xl mx-auto px-6 py-12 space-y-12 flex-1 w-full">
+        
+        <!-- 1. 共學園理念 -->
+        <section id="star-about" class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-brand-border space-y-6">
+            <div class="text-center max-w-2xl mx-auto">
+                <span class="text-brand-accent text-xs font-bold tracking-widest uppercase">Waldorf Early Childhood</span>
+                <h2 class="text-2xl md:text-3xl font-bold text-brand-green mt-1 mb-3">一起來體驗十二感官的運作</h2>
+                <div class="w-12 h-1 bg-brand-accent mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="space-y-4 text-brand-light text-base md:text-lg leading-relaxed">
+                <p>
+                    真實的感官經驗和道德感，在此時更顯得特別珍貴，特別是對幼小的孩子或小學的孩子而言，在沒有足夠的真實感官經驗累積之前，就被迫餵養大量的虛擬印象，這對他們的消化作用帶來了沉重的負擔及傷害，並弱化了消化系統，導致一些固著行為的產生。
+                </p>
+                <p>
+                    有五種感官是我們熟知的，然而華德福教育中，共提及十二種感官。就像人身上有十二個對外的門戶，透過這些門戶，我們得以和世界連結，進入世界，並和他人溝通。
+                </p>
+                <p class="font-medium text-brand-text bg-brand-bg p-5 rounded-xl border-l-4 border-brand-accent">
+                    邀請大人們一起來認識十二感官，一起來體驗十二感官的運作，並運用藝術鍛鍊更深入了解十二感官。
+                </p>
+                <p class="text-center pt-2 font-bold text-brand-accent text-lg">
+                    我們將因此更清楚守護孩子感官的重要性。知道前後的因果關係後，將會更有意志力去執行保護十二感官的方法！課程中，也會進一步介紹如何協助感官印象已受到干擾的協助方法！
+                </p>
+            </div>
+        </section>
+
+        <!-- 2. 招生資訊摘要卡片 -->
+        <section id="star-admission" class="space-y-6">
+            <h2 class="text-2xl font-bold text-brand-text border-l-4 border-brand-green pl-3">報名資訊</h2>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-xl border border-brand-border shadow-sm flex flex-col">
+                    <div class="text-brand-accent font-bold text-xs tracking-wider uppercase mb-1">Target</div>
+                    <h3 class="text-lg font-bold mb-3">⭐ 適合對象</h3>
+                    <ul class="text-brand-light text-sm leading-relaxed space-y-2 list-disc list-inside">
+                        <li>想要更了解十二感官進而更了解自己</li>
+                        <li>想要更了解十二感官，進而可以更了解身邊的配偶、家人或同事，維持良好互動</li>
+                        <li>想要更了解十二感官，進而知道如何守護孩子的感官</li>
+                        <li>想要協助感官太過敏銳或太無感的孩子</li>
+                        <li>想要了解大人或孩子感官失調時的具體協助方法</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl border border-brand-border shadow-sm flex flex-col">
+                    <div class="text-brand-accent font-bold text-xs tracking-wider uppercase mb-1">Credit</div>
+                    <h3 class="text-lg font-bold mb-3">⭐ 學分機制</h3>
+                    <p class="text-brand-light text-sm leading-relaxed">
+                        本課程可以抵 <strong>CESTT 第三屆台灣四年制治療教育與社會治療學程</strong> 的缺課時數。
+                    </p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl border border-brand-border shadow-sm flex flex-col">
+                    <div class="text-brand-accent font-bold text-xs tracking-wider uppercase mb-1">Location</div>
+                    <h3 class="text-lg font-bold mb-3">⭐ 上課地點</h3>
+                    <p class="text-brand-light text-sm leading-relaxed">
+                        <strong class="text-brand-text">五芒星星親子共學園</strong><br>
+                        <span class="text-xs text-brand-light mt-1 block">宜蘭縣三星鄉安農九路 560 號</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 課程節奏 -->
+        <section id="star-schedule" class="bg-white p-8 rounded-2xl shadow-sm border border-brand-border">
+            <h2 class="text-2xl font-bold text-brand-text mb-6 text-center">課程節奏 ( Rhythm of the Day )</h2>
+            <div class="max-w-2xl mx-auto space-y-2.5">
+                <div class="flex items-center p-3 bg-brand-bg rounded-xl border border-brand-border/60"><span class="font-bold text-brand-accent w-32 shrink-0">09:00 - 10:30</span><span class="text-sm text-brand-text">認識感官</span></div>
+                <div class="flex items-center p-3 bg-brand-bg rounded-xl border border-brand-border/60"><span class="font-bold text-brand-accent w-32 shrink-0">10:30 - 11:00</span><span class="text-sm text-brand-text">茶敘</span></div>
+                <div class="flex items-center p-3 bg-brand-bg rounded-xl border border-brand-border/60"><span class="font-bold text-brand-accent w-32 shrink-0">11:00 - 12:30</span><span class="text-sm text-brand-text">藝術活動</span></div>
+                <div class="flex items-center p-3 bg-brand-bg rounded-xl border border-brand-border/60"><span class="font-bold text-brand-accent w-32 shrink-0">12:30 - 14:00</span><span class="text-sm text-brand-text">午餐</span></div>
+                <div class="flex items-center p-3 bg-brand-bg rounded-xl border border-brand-border/60"><span class="font-bold text-brand-accent w-32 shrink-0">14:00 - 15:30</span><span class="text-sm text-brand-text">感官體驗 / 協助感官失調之療育性活動</span></div>                
+                <div class="flex items-center p-3 bg-brand-bg rounded-xl border border-brand-border/60"><span class="font-bold text-brand-accent w-32 shrink-0">15:30 - 16:00</span><span class="text-sm text-brand-text">茶敘</span></div>
+                <div class="flex items-center p-3 bg-brand-bg rounded-xl border border-brand-border/60"><span class="font-bold text-brand-accent w-32 shrink-0">16:00 - 16:30</span><span class="text-sm text-brand-text">對話時間</span></div>
+                <div class="flex items-center p-3 bg-brand-accent/10 rounded-xl border border-brand-accent/30 font-bold"><span class="text-brand-accent w-32 shrink-0">16:30</span><span class="text-sm text-brand-text">歡喜賦歸</span></div>
+            </div>
+        </section>
+
+        <!-- 4. 師資介紹 -->
+        <section id="teachers" class="space-y-6">
+            <div class="text-center">
+                <h2 class="text-2xl md:text-3xl font-bold text-brand-text mb-1">師資團隊</h2>
+                <p class="text-sm text-brand-light">用專業與愛，溫暖陪伴家長與孩子的身心靈</p>
+            </div>
+
+            <div class="space-y-6">
+                <!-- 陳曉霓 老師 -->
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-brand-border flex flex-col md:flex-row gap-6 items-start">
+                    <div class="w-24 h-24 bg-brand-bg rounded-full flex items-center justify-center text-brand-light shrink-0 mx-auto md:mx-0 border-2 border-brand-accent/30">
+                        <span class="font-bold text-lg">曉霓 老師</span>
+                    </div>
+                    <div class="space-y-3 flex-1">
+                        <h3 class="text-xl font-bold text-brand-accent text-center md:text-left">陳曉霓 老師</h3>
+                        <p class="text-xs md:text-sm italic text-brand-light bg-brand-bg p-3 rounded-lg">
+                            「熱愛和孩子一起工作，陪伴家長在教養的過程不孤單。」
+                        </p>
+                        <div class="grid md:grid-cols-2 gap-4 text-xs md:text-sm text-brand-light">
+                            <div>
+                                <h4 class="font-bold text-brand-text mb-1">現任</h4>
+                                <ul class="list-disc list-inside space-y-1">
+                                    <li>Extra Lesson 支持教育輔正教育老師</li>
+                                    <li>親職教養諮詢</li>
+                                    <li>治療教育讀書會帶領人</li>
+                                    <li>社團法人台灣華德福親子共學協會理事長</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-text mb-1">專業背景與經歷</h4>
+                                <ul class="list-disc list-inside space-y-1">
+                                    <li>宜蘭慈心華德福幼兒園六年主帶經驗</li>
+                                    <li>空間動力 Spatial Dynamics 二階培訓</li>
+                                    <li>台灣四年制治療教育與社會治療學程認證</li>
+                                    <li>美國 Golden Valley 華德福戶外幼兒園一年實習</li>
+                                    <li>美國 Steiner College Remedial Program 輔正教育認證</li>
+                                    <li>美國 Steiner College 華德福幼教師訓認證</li>
+                                    <li>人智學教育基金會華德福教育師訓</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 張荷月 老師 -->
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-brand-border flex flex-col md:flex-row gap-6 items-start">
+                    <div class="w-24 h-24 bg-brand-bg rounded-full flex items-center justify-center text-brand-light shrink-0 mx-auto md:mx-0 border-2 border-brand-accent/30">
+                        <span class="font-bold text-lg">荷月 老師</span>
+                    </div>
+                    <div class="space-y-3 flex-1">
+                        <h3 class="text-xl font-bold text-brand-accent text-center md:text-left">張荷月 藝術老師</h3>
+                        <p class="text-xs md:text-sm text-brand-light">
+                            資深藝術工作者，創作跨域悠遊於繪畫、設計、空間設計規劃、佈置，親子藝術教育、藝術陪伴療育課程與體驗工作坊。
+                        </p>
+                        <div class="grid md:grid-cols-2 gap-4 text-xs md:text-sm text-brand-light">
+                            <div>
+                                <h4 class="font-bold text-brand-text mb-1">現任</h4>
+                                <ul class="list-disc list-inside space-y-1">
+                                    <li>社團法人台灣華德福親子共學協會常務理事</li>
+                                    <li>五芒星星親子共學藝術老師</li>
+                                    <li>若為自由有限公司藝術總監</li>
+                                    <li>帶領虹光漆工作坊與施作（作品見於各華德福學校）</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-text mb-1">專業背景與經歷</h4>
+                                <ul class="list-disc list-inside space-y-1">
+                                    <li>人智學教育基金會華德福教育師訓三年課程</li>
+                                    <li>IPMT 五年學程</li>
+                                    <li>台灣四年制治療教育與社會治療學程結業</li>
+                                    <li>Iris Sullivan 老師藝術鍛鍊三年課程</li>
+                                    <li>台灣人智學藝術治療課程修業中</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 李志懋醫師 特邀講師 -->
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-brand-border flex flex-col md:flex-row gap-6 items-start">
+                    <div class="w-24 h-24 bg-brand-bg rounded-full flex items-center justify-center text-brand-light shrink-0 mx-auto md:mx-0 border-2 border-brand-accent/30">
+                        <span class="font-bold text-lg">李志懋 醫師</span>
+                    </div>
+                    <div class="space-y-3 flex-1">
+                        <h3 class="text-xl font-bold text-brand-accent text-center md:text-left">李志懋 醫師（特邀講師）</h3>
+                        <p class="text-xs md:text-sm text-brand-light leading-relaxed">
+                            長期從事音樂、戲劇與表演藝術相關工作，並持續探索人與人之間透過故事、歌唱及身體表達所產生的連結。近年參與一人一故事劇場（Playback Theatre）訓練與演出，關注傾聽、即興創作及社群互動，希望透過藝術創造真誠對話與彼此理解的空間。
+                        </p>
+                        <div class="bg-brand-bg p-4 rounded-xl border border-brand-border/80 text-xs md:text-sm text-brand-light space-y-1">
+                            <h4 class="font-bold text-brand-text">【一人一故事劇場簡介】</h4>
+                            <p class="leading-relaxed">
+                                一人一故事劇場（Playback Theatre）是一種互動式即興劇場形式，由觀眾分享真實的生命故事、感受或經驗，演員與樂師即時以戲劇、肢體、音樂及象徵性的表演方式重新呈現。其核心精神在於傾聽、尊重與見證，讓每個人的故事都能被看見，也讓參與者透過彼此的生命經驗產生連結與共鳴。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 5. 線上報名 CTA 按鈕 -->
+        <div class="pt-4 flex justify-center">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSe3JUTZVmVxSuyPiXzFIAee3MQDtxbJ7w9z14jZWtX0ebneIA/viewform" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="inline-block bg-[#D97736] hover:bg-[#C26325] text-white text-base md:text-lg px-10 py-4 rounded-full font-bold transition-all shadow-md hover:shadow-lg">
+                立即線上報名
+            </a>
+        </div>
+
+    </main>
+
+    <!-- 頁尾 Footer -->
+    <footer class="bg-brand-text text-white/80 py-8 px-6 text-center text-xs space-y-2 border-t border-brand-border mt-12">
+        <p class="font-medium text-white">社團法人台灣華德福親子共學協會</p>
+        <p>五芒星星親子共學園</p>
+        <p>地址：宜蘭縣三星鄉安農九路 560 號</p>
+        <p class="pt-2 text-white/50">© 台灣華德福親子共學協會 All Rights Reserved.</p>
+    </footer>
+
+    <!-- 行動選單開關 JS -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const line1 = document.getElementById('line1');
+        const line2 = document.getElementById('line2');
+        const line3 = document.getElementById('line3');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+            if (mobileMenu.classList.contains('open')) {
+                line1.style.transform = 'translateY(7px) rotate(45deg)';
+                line2.style.opacity = '0';
+                line3.style.transform = 'translateY(-7px) rotate(-45deg)';
+            } else {
+                line1.style.transform = 'none';
+                line2.style.opacity = '1';
+                line3.style.transform = 'none';
+            }
+        });
+
+        const menuLinks = mobileMenu.querySelectorAll('a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                line1.style.transform = 'none';
+                line2.style.opacity = '1';
+                line3.style.transform = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
