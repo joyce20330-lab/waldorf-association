@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>十二感官工作坊 - 線上報名</title>
+    <style>
+        body { font-family: "Microsoft JhengHei", "PingFang TC", sans-serif; background-color: #fdfaf5; padding: 40px 20px; color: #333; line-height: 1.6; }
+        .container { max-width: 680px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); }
+        
+        h1 { color: #5d4e43; text-align: center; margin-bottom: 25px; font-size: 1.6em; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: bold; color: #5d4e43; }
+        
+        input[type="text"], input[type="tel"], input[type="email"], select { 
+            width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; font-size: 1em;
+            font-family: inherit;
+        }
+
+        /* 課程與訂餐列表 */
+        .session-list { display: flex; flex-direction: column; gap: 10px; }
+        .session-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            background: #fdfbf7;
+            border: 1px solid #e2d9cd;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        .session-item:hover { border-color: #d97746; background: #fffdfa; }
+        .session-item.disabled { background: #f5f5f5; border-color: #e5e5e5; color: #999; cursor: not-allowed; }
+        
+        .session-main { display: flex; align-items: center; gap: 10px; flex: 1; cursor: pointer; }
+        .session-item.disabled .session-main { cursor: not-allowed; }
+        .session-main input[type="checkbox"] { width: 18px; height: 18px; cursor: pointer; }
+        
+        .lunch-option {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85em;
+            color: #5b8266;
+            background: #eef5f0;
+            padding: 4px 10px;
+            border-radius: 20px;
+            border: 1px solid #c9e2d0;
+            cursor: pointer;
+            user-select: none;
+        }
+        .lunch-option input[type="checkbox"] { width: 15px; height: 15px; cursor: pointer; }
+        .lunch-option.disabled { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
+
+        .discount-badge {
+            display: inline-block;
+            background: #d97746;
+            color: white;
+            font-size: 0.75em;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-left: 6px;
+            font-weight: normal;
+        }
+
+        .fee-display-box {
+            margin-top: 20px;
+            padding: 16px 20px;
+            background-color: rgba(217, 119, 70, 0.08); 
+            border-left: 5px solid #d97746; 
+            border-radius: 6px;
+            font-weight: bold;
+            color: #5d4e43;
+            font-size: 1.05em;
+        }
+        .fee-amount { 
+            color: #d97746; 
+            font-size: 1.4em; 
+            margin: 0 4px;
+            text-decoration: underline;
+        }
+        .fee-breakdown { font-size: 0.85em; color: #8A7B6F; margin-top: 4px; font-weight: normal; }
+
+        .notice-section {
+            background-color: rgba(91, 130, 102, 0.05); 
+            border: 1px dashed #5b8266; 
+            padding: 22px;
+            border-radius: 10px;
+            margin-top: 30px;
+            margin-bottom: 25px;
+        }
+        .notice-title { font-size: 1.15em; font-weight: bold; color: #5b8266; margin-bottom: 12px; }
+        .notice-content p { font-size: 0.9em; line-height: 1.6; margin: 0 0 10px 0; color: #555; }
+        
+        .agree-group {
+            display: flex;
+            align-items: flex-start;
+            margin-top: 15px;
+            padding-top: 12px;
+            border-top: 1px dashed rgba(91, 130, 102, 0.3);
+        }
+        .agree-group input[type="checkbox"] { width: 18px; height: 18px; cursor: pointer; margin-right: 10px; margin-top: 3px; flex-shrink: 0; }
+        .agree-label { display: inline; font-size: 0.95em; color: #d97746; font-weight: bold; cursor: pointer; }
+
+        .btn-group { display: flex; gap: 15px; margin-top: 25px; }
+        .submit-btn { 
+            background-color: #d97746; color: white; padding: 14px; border: none; border-radius: 6px; 
+            cursor: pointer; flex: 2; font-size: 1.15em; font-weight: bold; transition: background-color 0.2s; 
+        }
+        .submit-btn:hover { background-color: #c26325; }
+
+        .back-btn {
+            display: flex; align-items: center; justify-content: center; background-color: transparent; 
+            color: #8A7B6F; border: 1.5px solid #8A7B6F; border-radius: 6px; padding: 14px; 
+            text-decoration: none; flex: 1; font-size: 1.05em; font-weight: bold; text-align: center;
+        }
+        .back-btn:hover { background-color: #8A7B6F; color: white; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>十二感官工作坊 - 線上報名</h1>
+
+        <form id="registrationForm">
+            
+            <div class="form-group">
+                <label for="studentName">學員姓名 *</label>
+                <input type="text" id="studentName" name="studentName" placeholder="請填寫中文全名" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="parentTel">聯絡電話 *</label>
+                <input type="tel" id="parentTel" name="parentTel" placeholder="如：0981276790" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">電子信箱 *</label>
+                <input type="email" id="email" name="email" placeholder="接收確認信與行前通知" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="line">LINE ID *</label>
+                <input type="text" id="line" name="line" placeholder="方便對帳與課前聯繫" required>
+            </div>
+
+            <!-- 身分類別 -->
+            <div class="form-group">
+                <label for="memberType">報名身分類別 *</label>
+                <select id="memberType" name="memberType" required>
+                    <option value="general">一般學員（單堂 $2,700 / 滿 5 堂優惠 $12,500）</option>
+                    <option value="member">專屬特惠身分（協會會員本人／共學家長，單堂 $2,500 / 滿 5 堂優惠 $11,850）</option>
+                </select>
+            </div>
+
+            <!-- 12 堂課程與訂餐勾選清單 -->
+            <div class="form-group">
+                <label>選擇報名堂數與午餐需求 *</label>
+                <p style="font-size: 0.85em; color: #8A7B6F; margin-top: -4px; margin-bottom: 10px;">
+                    ✨ 任意選滿 5 堂自動套用合報優惠價！午餐每餐 NT$ 250（自由加購）。
+                </p>
+
+                <div class="session-list">
+                    
+                    <!-- 第 1-4 堂 -->
+                    <div class="session-item disabled">
+                        <label class="session-main">
+                            <input type="checkbox" disabled>
+                            <span>第 1 堂：觸覺 ＋ 生命覺（已圓滿結束）</span>
+                        </label>
+                    </div>
+
+                    <div class="session-item disabled">
+                        <label class="session-main">
+                            <input type="checkbox" disabled>
+                            <span>第 2 堂：移動覺 ＋ 平衡覺（已圓滿結束）</span>
+                        </label>
+                    </div>
+
+                    <div class="session-item disabled">
+                        <label class="session-main">
+                            <input type="checkbox" disabled>
+                            <span>第 3 堂：嗅覺 ＋ 味覺 ＋ 視覺 ＋ 溫暖覺（已圓滿結束）</span>
+                        </label>
+                    </div>
+
+                    <div class="session-item disabled">
+                        <label class="session-main">
+                            <input type="checkbox" disabled>
+                            <span>第 4 堂：聽覺 ＋ 語言覺（已圓滿結束）</span>
+                        </label>
+                    </div>
+
+                    <!-- 第 5 堂（開放中） -->
+                    <div class="session-item">
+                        <label class="session-main">
+                            <input type="checkbox" class="session-cb" value="第5堂 09/05 思想覺+人我覺" data-title="第5堂 思想覺+人我覺">
+                            <span><strong>第 5 堂：09/05 (六) 思想覺 ＋ 人我覺</strong> <span class="discount-badge">開放中</span></span>
+                        </label>
+                        <label class="lunch-option disabled">
+                            <input type="checkbox" class="lunch-cb" value="09/05 午餐" disabled>
+                            <span>加訂午餐 (+$250)</span>
+                        </label>
+                    </div>
+
+                    <!-- 第 6 ~ 12 堂（籌備中） -->
+                    <div class="session-item disabled">
+                        <label class="session-main">
+                            <input type="checkbox" disabled>
+                            <span>第 6 堂：感官主題 6（日期籌備中）</span>
+                        </label>
+                        <span style="font-size: 0.8em; color: #999;">即將公布</span>
+                    </div>
+
+                    <div class="session-item disabled">
+                        <label class="session-main">
+                            <input type="checkbox" disabled>
+                            <span>第 7 堂：感官主題 7（日期籌備中）</span>
+                        </label>
+                        <span style="font-size: 0.8em; color: #999;">即將公布</span>
+                    </div>
+
+                    <div class="session-item disabled">
+                        <label class="session-main">
+                            <input type="checkbox" disabled>
+                            <span>第 8 堂：感官主題 8（日期籌備中）</span>
+                        </label>
+                        <span style="font-size: 0.8em; color: #999;">即將公布</span>
+                    </div>
+
+                    <div class="session-item disabled">
+                        <label class="session-main">
+                            <input type="checkbox" disabled>
+                            <span>第 9 堂：感官主題 9（日期籌備中）</span>
+                        </label>
+                        <span style="font-size: 0.8em; color: #999;">即將公布</span>
+                    </div>
+
+                    <div class="session-item disabled">
+                        <label class="session-main">
+                            <input type="checkbox" disabled>
+                            <span>第 10 堂：感官主題 10（日期籌備中）</span>
+                        </label>
+                        <span style="font-size: 0.8em; color: #999;">即將公布</span>
+                    </div>
+
+                    <div class="session-item disabled">
+                        <label class="session-main">
+                            <input type="checkbox" disabled>
+                            <span>第 11 堂：感官主題 11（日期籌備中）</span>
+                        </label>
+                        <span style="font-size: 0.8em; color: #999;">即將公布</span>
+                    </div>
+
+                    <div class="session-item disabled">
+                        <label class="session-main">
+                            <input type="checkbox" disabled>
+                            <span>第 12 堂：感官主題 12（日期籌備中）</span>
+                        </label>
+                        <span style="font-size: 0.8em; color: #999;">即將公布</span>
+                    </div>
+
+                </div>
+
+                <!-- 費用即時試算區 -->
+                <div class="fee-display-box">
+                    預估應繳總費用：NT$ <span id="feeAmountDisplay" class="fee-amount">0</span> 元
+                    <div id="feeBreakdown" class="fee-breakdown">已選擇 0 堂課程，0 份午餐</div>
+                </div>
+                <input type="hidden" id="calculatedFee" name="calculatedFee" value="0">
+            </div>
+
+            <!-- 匯款後五碼 -->
+            <div class="form-group">
+                <label for="transferCode">匯款帳號後五碼 *</label>
+                <input type="text" id="transferCode" name="transferCode" placeholder="請填寫匯款後五碼" required>
+            </div>    
+
+            <!-- 收據開立 -->
+            <div class="form-group">
+                <label for="receiptOption">收據開立需求 *</label>
+                <select id="receiptOption" name="receiptOption" required>
+                    <option value="">請選擇</option>
+                    <option value="我需要開收據，現場領取">我需要開收據，現場領取</option>
+                    <option value="我不需要開收據">我不需要開收據</option>
+                </select>
+            </div>
+
+            <!-- 備註/飲食需求 -->
+            <div class="form-group">
+                <label for="userMessage">飲食禁忌 / 特殊需求備註</label>
+                <input type="text" id="userMessage" name="userMessage" placeholder="如：全素、蛋奶素、對特定食物過敏等（無則免填）">
+            </div>
+
+            <!-- 提醒事項與同意規範 -->
+            <div class="notice-section">
+                <div class="notice-title">🌻 收費標準、退費規範與注意事項</div>
+                <div class="notice-content">
+                    <p><strong>• 招生對象：</strong> 成人</p>
+                    <p><strong>• 課程時間：</strong> 09:00 - 16:30</p>
+                    <p><strong>• 上課地點：</strong> 宜蘭縣三星鄉安農九路560號</p>
+                    <p><strong>• 收費方式：</strong> 單堂報名每堂 $2,700 元；報名5堂優惠價共 $12,500；本協會會員本人/現任五芒星星親子共學家長 單堂$2,500元/ 五堂優惠價 $11,850元</p>
+                    <p><strong>• 收費時間：</strong> 填寫報名表單時希請同時匯款以利完成報名動作。匯款帳號:戶名: 張荷月<br>國泰世華(銀行代碼013) 宜蘭分行<br>帳號:  126-50-617086-2</p>
+                    
+                    <p><strong>• 退費標準：</strong><br>
+                    報名後因個人因素不克參加活動需辦理退費者，請先加入LINE官方帳號告知，以確認收到該學員取消報名申請退費之日期為退費計算節點 。<br>
+                    開課四星期前(含) , 應退還報名總費用80%。<br>
+                    開課兩星期前(含) , 應退還報名總費用50%。<br>
+                    開課前５日 (含) 與開課後，所收取之 報名總費用得全數不予退還。<br>
+                    若遇天災等不可抗力因素造成活動無法舉行時，將另行通知。<br>
+                    退費金額將匯入指定之銀行（郵局）帳號，匯款之手續費亦由申請人負擔。</p>
+
+                    <p><strong>• 個人資料保護：</strong><br>
+                    承辦本次活動，向您取得之個人資料包含姓名、電話及電子郵件等，目的用於活動聯繫通知以及相關作業之處理與日後相關活動信息之發送。<br>
+                    本平台謹遵守個人資料保護法之規定處理及利用前述個人資料，並盡妥善管理及保護之責。</p>
+                    
+                    <div class="agree-group" style="margin-top: 5px; margin-bottom: 15px; border-top: none; padding-top: 0;">
+                        <input type="checkbox" id="agreePrivacy" name="agreePrivacy" value="我理解並同意" required>
+                        <label for="agreePrivacy" class="agree-label" style="color: #444; font-weight: bold;">( ) 我理解並同意個人資料保護條款 *</label>
+                    </div>
+
+                    <p><strong>• 肖像權：</strong><br>
+                    課程中所拍攝之個人及團體影像，將提供於文宣品、粉專及活動紀錄中使用。</p>
+                    
+                    <div class="agree-group" style="margin-top: 5px; border-top: none; padding-top: 0;">
+                        <input type="checkbox" id="agreePortrait" name="agreePortrait" value="我理解並同意" required>
+                        <label for="agreePortrait" class="agree-label" style="color: #444; font-weight: bold;">( ) 我理解並同意肖像權授權 *</label>
+                    </div>
+                </div>
+                
+                <div class="agree-group">
+                    <input type="checkbox" id="agreeNotice" name="agreeNotice" value="已詳細閱讀並同意" required>
+                    <label for="agreeNotice" class="agree-label">我已詳細閱讀並同意上述收費標準、退費規範與注意事項 *</label>
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <a href="twelve-senses.html" class="back-btn">返回介紹</a>
+                <button type="submit" class="submit-btn">送出報名</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const backendUrl = "https://script.google.com/macros/s/AKfycbwss4rJj0xor-2Fb3L3SJ3KmpmKeq_GfJzTvnAV8BIs7Rqr_VzaJXDxwvygpwnkcbWEjA/exec";
+
+        const memberTypeSelect = document.getElementById('memberType');
+        const sessionCbs = document.querySelectorAll('.session-cb');
+        const feeDisplay = document.getElementById('feeAmountDisplay');
+        const feeBreakdown = document.getElementById('feeBreakdown');
+        const feeHiddenInput = document.getElementById('calculatedFee');
+        const regForm = document.getElementById('registrationForm');
+
+        const LUNCH_PRICE = 250; // 餐費設為 250 元
+
+        // 監聽課程勾選與連動午餐按鈕
+        sessionCbs.forEach(cb => {
+            cb.addEventListener('change', function() {
+                const parentItem = cb.closest('.session-item');
+                const lunchOption = parentItem.querySelector('.lunch-option');
+                const lunchCb = parentItem.querySelector('.lunch-cb');
+
+                if (lunchOption && lunchCb) {
+                    if (cb.checked) {
+                        lunchOption.classList.remove('disabled');
+                        lunchCb.disabled = false;
+                    } else {
+                        lunchOption.classList.add('disabled');
+                        lunchCb.disabled = true;
+                        lunchCb.checked = false; // 取消課程時連帶取消午餐
+                    }
+                }
+                calculateTotal();
+            });
+        });
+
+        // 監聽午餐勾選與身分變更
+        document.querySelectorAll('.lunch-cb').forEach(lcb => {
+            lcb.addEventListener('change', calculateTotal);
+        });
+        memberTypeSelect.addEventListener('change', calculateTotal);
+
+        // 計算學費與午餐總金額
+        function calculateTotal() {
+            const isMember = memberTypeSelect.value === 'member';
+            const selectedSessions = Array.from(sessionCbs).filter(cb => cb.checked);
+            const selectedLunches = Array.from(document.querySelectorAll('.lunch-cb:checked'));
+
+            const sessionCount = selectedSessions.length;
+            const lunchCount = selectedLunches.length;
+
+            let courseFee = 0;
+            if (sessionCount === 0) {
+                courseFee = 0;
+            } else if (sessionCount >= 5) {
+                // 滿 5 堂套用優惠價
+                const base5Price = isMember ? 11850 : 12500;
+                const extraSinglePrice = isMember ? 2370 : 2500; // 超過 5 堂每堂加收金額
+                courseFee = base5Price + (sessionCount - 5) * extraSinglePrice;
+            } else {
+                // 未滿 5 堂按單堂計算
+                const singlePrice = isMember ? 2500 : 2700;
+                courseFee = sessionCount * singlePrice;
+            }
+
+            const lunchFee = lunchCount * LUNCH_PRICE;
+            const total = courseFee + lunchFee;
+
+            feeDisplay.textContent = total.toLocaleString();
+            feeHiddenInput.value = total;
+            
+            let statusText = `已選擇 ${sessionCount} 堂課程 (NT$ ${courseFee.toLocaleString()})`;
+            if (lunchCount > 0) {
+                statusText += ` ＋ ${lunchCount} 份午餐 (NT$ ${lunchFee.toLocaleString()})`;
+            }
+            if (sessionCount >= 5) {
+                statusText += ` ✨ 已享 5 堂合報特惠！`;
+            }
+            feeBreakdown.textContent = statusText;
+        }
+
+        // 送出表單
+        regForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const selectedSessions = Array.from(sessionCbs).filter(cb => cb.checked);
+            if (selectedSessions.length === 0) {
+                alert('請至少勾選一門您要報名的課程！');
+                return;
+            }
+
+            const agreePrivacy = document.getElementById('agreePrivacy');
+            const agreePortrait = document.getElementById('agreePortrait');
+            const agreeNotice = document.getElementById('agreeNotice');
+
+            if (!agreePrivacy.checked || !agreePortrait.checked || !agreeNotice.checked) {
+                alert('請確認已勾選同意個人資料保護條款、肖像權授權以及退費注意事項！');
+                return;
+            }
+
+            const submitBtn = document.querySelector('.submit-btn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = '資料傳輸中，請稍候...';
+
+            // 整理選中的課程與午餐明細
+            const sessionDetails = selectedSessions.map(cb => {
+                const parentItem = cb.closest('.session-item');
+                const hasLunch = parentItem.querySelector('.lunch-cb:checked') ? '（加訂午餐）' : '（不訂餐）';
+                return cb.value + hasLunch;
+            });
+
+            const payload = {
+                studentName: document.getElementById('studentName').value,
+                parentTel: document.getElementById('parentTel').value,
+                email: document.getElementById('email').value,
+                line: document.getElementById('line').value,
+                memberType: memberTypeSelect.options[memberTypeSelect.selectedIndex].text,
+                session: sessionDetails.join(' | '),
+                calculatedFee: feeHiddenInput.value,
+                transferCode: document.getElementById('transferCode').value,
+                receiptOption: document.getElementById('receiptOption').value,
+                userMessage: document.getElementById('userMessage').value,
+                agreePrivacy: agreePrivacy.value,
+                agreePortrait: agreePortrait.value,
+                agreeNotice: agreeNotice.value
+            };
+
+            fetch(backendUrl, {
+                method: 'POST',
+                body: new URLSearchParams(payload)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.result === 'success') {
+                    alert('🎉 報名成功！系統已收到您的報名資料，請記得完成匯款以利對帳。');
+                    location.reload(); 
+                } else {
+                    alert('報名資料已送出！如需確認請直接透過 LINE 官方帳號與我們聯繫。');
+                    location.reload();
+                }
+            })
+            .catch(error => {
+                alert('報名送出完成！如有對帳疑問歡迎隨時透過 LINE 聯繫。');
+                submitBtn.disabled = false;
+                submitBtn.textContent = '送出報名';
+            });
+        });
+    </script>
+</body>
+</html>
