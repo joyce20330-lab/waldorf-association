@@ -411,12 +411,12 @@
             feeBreakdown.textContent = statusText;
         }
 
-        // 送出表單
+// 送出表單（修正堂數與午餐分離送出）
         regForm.addEventListener('submit', function(e) {
             e.preventDefault();
 
-            const selectedSessions = Array.from(sessionCbs).filter(cb => cb.checked);
-            if (selectedSessions.length === 0) {
+            const selectedSessionCbs = Array.from(sessionCbs).filter(cb => cb.checked);
+            if (selectedSessionCbs.length === 0) {
                 alert('請至少勾選一門您要報名的課程！');
                 return;
             }
@@ -434,11 +434,17 @@
             submitBtn.disabled = true;
             submitBtn.textContent = '資料傳輸中，請稍候...';
 
-            // 整理選中的課程與午餐明細
-            const sessionDetails = selectedSessions.map(cb => {
+            // 1. 純課程名稱（不再黏上「加訂午餐」）
+            const sessionList = selectedSessionCbs.map(cb => cb.value);
+
+            // 2. 獨立收集訂餐資訊
+            const lunchList = [];
+            selectedSessionCbs.forEach(cb => {
                 const parentItem = cb.closest('.session-item');
-                const hasLunch = parentItem.querySelector('.lunch-cb:checked') ? '（加訂午餐）' : '（不訂餐）';
-                return cb.value + hasLunch;
+                const lunchCb = parentItem.querySelector('.lunch-cb:checked');
+                if (lunchCb) {
+                    lunchList.push(lunchCb.value);
+                }
             });
 
             const payload = {
@@ -447,11 +453,12 @@
                 email: document.getElementById('email').value,
                 line: document.getElementById('line').value,
                 memberType: memberTypeSelect.options[memberTypeSelect.selectedIndex].text,
-                session: sessionDetails.join(' | '),
+                session: sessionList.join(', '), // G 欄：純堂數名稱
+                lunchOrder: lunchList.length > 0 ? lunchList.join(', ') : '不訂餐', // H 欄：獨立訂餐明細
                 calculatedFee: feeHiddenInput.value,
                 transferCode: document.getElementById('transferCode').value,
                 receiptOption: document.getElementById('receiptOption').value,
-                userMessage: document.getElementById('userMessage').value,
+                userMessage: document.getElementById('userMessage').value || '無',
                 agreePrivacy: agreePrivacy.value,
                 agreePortrait: agreePortrait.value,
                 agreeNotice: agreeNotice.value
