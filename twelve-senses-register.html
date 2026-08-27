@@ -333,8 +333,8 @@
         </form>
     </div>
 
-    <script>
-        const backendUrl = "https://script.google.com/macros/s/AKfycbwrKSi4CY04WaGtOWFXDFSPRRgbcJanxxgjGEJcW19jU_t2iU3q1nU68Bh1Ps7hlkqblA/exec";
+<script>
+        const backendUrl = "https://script.google.com/macros/s/AKfycbwss4rJj0xor-2Fb3L3SJ3KmpmKeq_GfJzTvnAV8BIs7Rqr_VzaJXDxwvygpwnkcbWEjA/exec";
 
         const memberTypeSelect = document.getElementById('memberType');
         const sessionCbs = document.querySelectorAll('.session-cb');
@@ -343,7 +343,7 @@
         const feeHiddenInput = document.getElementById('calculatedFee');
         const regForm = document.getElementById('registrationForm');
 
-        const LUNCH_PRICE = 250; // 餐費設為 250 元
+        const LUNCH_PRICE = 250;
 
         // 監聽課程勾選與連動午餐按鈕
         sessionCbs.forEach(cb => {
@@ -359,7 +359,7 @@
                     } else {
                         lunchOption.classList.add('disabled');
                         lunchCb.disabled = true;
-                        lunchCb.checked = false; // 取消課程時連帶取消午餐
+                        lunchCb.checked = false;
                     }
                 }
                 calculateTotal();
@@ -372,10 +372,9 @@
         });
         memberTypeSelect.addEventListener('change', calculateTotal);
 
-        // 計算學費與午餐總金額
         function calculateTotal() {
             const isMember = memberTypeSelect.value === 'member';
-            const selectedSessions = Array.from(sessionCbs).filter(cb => cb.checked);
+            const selectedSessions = Array.from(document.querySelectorAll('.session-cb:checked'));
             const selectedLunches = Array.from(document.querySelectorAll('.lunch-cb:checked'));
 
             const sessionCount = selectedSessions.length;
@@ -385,12 +384,10 @@
             if (sessionCount === 0) {
                 courseFee = 0;
             } else if (sessionCount >= 5) {
-                // 滿 5 堂套用優惠價
                 const base5Price = isMember ? 11850 : 12500;
-                const extraSinglePrice = isMember ? 2370 : 2500; // 超過 5 堂每堂加收金額
+                const extraSinglePrice = isMember ? 2370 : 2500;
                 courseFee = base5Price + (sessionCount - 5) * extraSinglePrice;
             } else {
-                // 未滿 5 堂按單堂計算
                 const singlePrice = isMember ? 2500 : 2700;
                 courseFee = sessionCount * singlePrice;
             }
@@ -411,12 +408,12 @@
             feeBreakdown.textContent = statusText;
         }
 
-// 送出表單（修正堂數與午餐分離送出）
+        // 送出表單（徹底分離課程與午餐）
         regForm.addEventListener('submit', function(e) {
             e.preventDefault();
 
-            const selectedSessionCbs = Array.from(sessionCbs).filter(cb => cb.checked);
-            if (selectedSessionCbs.length === 0) {
+            const checkedSessionCbs = Array.from(document.querySelectorAll('.session-cb:checked'));
+            if (checkedSessionCbs.length === 0) {
                 alert('請至少勾選一門您要報名的課程！');
                 return;
             }
@@ -434,16 +431,16 @@
             submitBtn.disabled = true;
             submitBtn.textContent = '資料傳輸中，請稍候...';
 
-            // 1. 純課程名稱（不再黏上「加訂午餐」）
-            const sessionList = selectedSessionCbs.map(cb => cb.value);
+            // 1. 純課程名稱
+            const cleanSessions = checkedSessionCbs.map(cb => cb.value.trim());
 
-            // 2. 獨立收集訂餐資訊
-            const lunchList = [];
-            selectedSessionCbs.forEach(cb => {
-                const parentItem = cb.closest('.session-item');
-                const lunchCb = parentItem.querySelector('.lunch-cb:checked');
-                if (lunchCb) {
-                    lunchList.push(lunchCb.value);
+            // 2. 獨立收集有被勾選的午餐
+            const cleanLunches = [];
+            checkedSessionCbs.forEach(cb => {
+                const parent = cb.closest('.session-item');
+                const lunchInput = parent ? parent.querySelector('.lunch-cb') : null;
+                if (lunchInput && lunchInput.checked) {
+                    cleanLunches.push(lunchInput.value.trim());
                 }
             });
 
@@ -453,8 +450,8 @@
                 email: document.getElementById('email').value,
                 line: document.getElementById('line').value,
                 memberType: memberTypeSelect.options[memberTypeSelect.selectedIndex].text,
-                session: sessionList.join(', '), // G 欄：純堂數名稱
-                lunchOrder: lunchList.length > 0 ? lunchList.join(', ') : '不訂餐', // H 欄：獨立訂餐明細
+                session: cleanSessions.join(', '), // 只放純課程
+                lunchOrder: cleanLunches.length > 0 ? cleanLunches.join(', ') : '不訂餐', // 只放純午餐
                 calculatedFee: feeHiddenInput.value,
                 transferCode: document.getElementById('transferCode').value,
                 receiptOption: document.getElementById('receiptOption').value,
