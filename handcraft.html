@@ -1,84 +1,240 @@
-<!-- 手工藝術課程介紹 -->
-<section id="autumn-craft" class="space-y-8 my-12">
-    <!-- 標題區塊 -->
-    <div class="text-center">
-        <span class="inline-block bg-[#eaf2e3] text-[#557b3e] px-3 py-1 rounded-full text-xs font-bold tracking-wide mb-2">五芒星星共學園</span>
-        <h2 class="text-2xl md:text-3xl font-bold text-brand-text mb-2">生活藝術 ~ 秋天的手工課</h2>
-        <p class="text-sm text-brand-light">在秋涼的安農溪畔，用雙手為孩子編織或縫製美好的回憶</p>
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生活藝術~秋天的手工課 - 五芒星星親子共學 - 社團法人台灣華德福親子共學協會</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: '#fcf9f2',
+                            text: '#5d4e43',
+                            accent: '#d97746',
+                            green: '#5b8266',
+                            border: '#e5e0dc',
+                            light: '#8A7B6F'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Helvetica Neue"', 'Arial', '"Microsoft JhengHei"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { -webkit-font-smoothing: antialiased; }
+        .hero-bg { background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), url('彩虹底圖.jfif') center/cover no-repeat; }
+        #mobile-menu { transition: all 0.3s ease-in-out; max-height: 0; overflow: hidden; opacity: 0; }
+        #mobile-menu.open { max-height: 400px; opacity: 1; padding-top: 1rem; padding-bottom: 1rem; }
+    </style>
+</head>
+<body class="bg-brand-bg text-brand-text min-h-screen flex flex-col font-sans">
+    
+    <!-- 導覽列 -->
+    <nav class="flex justify-between items-center px-6 md:px-[8%] py-5 border-b border-brand-border bg-brand-bg sticky top-0 z-50 shadow-sm">
+        <div class="font-medium text-lg tracking-wide text-brand-text hover:text-brand-accent transition-colors">
+            <a href="index.html">社團法人台灣華德福親子共學協會</a>
+        </div>
+
+        <div class="hidden md:flex gap-8 items-center">
+            <a href="index.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">首頁</a>
+            <a href="news.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">最新消息</a>
+            <a href="about.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">協會緣起</a>
+            <a href="services.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">服務項目</a>
+            <a href="events.html" class="text-sm font-medium text-brand-accent transition-colors">活動報名</a>
+            <a href="contact.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">聯絡我們</a>
+        </div>
+
+        <button id="menu-btn" class="md:hidden flex flex-col gap-[5px] p-2 focus:outline-none" aria-label="Toggle Menu">
+            <span id="line1" class="w-6 h-[2px] bg-brand-text block transition-transform duration-300 origin-center"></span>
+            <span id="line2" class="w-6 h-[2px] bg-brand-text block transition-opacity duration-300"></span>
+            <span id="line3" class="w-6 h-[2px] bg-brand-text block transition-transform duration-300 origin-center"></span>
+        </button>
+    </nav>
+
+    <!-- 手機版選單 -->
+    <div id="mobile-menu" class="md:hidden bg-brand-bg border-b border-brand-border absolute w-full z-40 top-[73px] shadow-lg flex flex-col items-center gap-4">
+        <a href="index.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">首頁</a>
+        <a href="news.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">最新消息</a>
+        <a href="about.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">協會緣起</a>
+        <a href="services.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">服務項目</a>
+        <a href="events.html" class="w-full text-center py-2 text-brand-accent font-medium">活動報名</a>
+        <a href="contact.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">聯絡我們</a>
     </div>
 
-    <!-- 內容主要卡片 -->
-    <div class="bg-white rounded-2xl shadow-sm border border-brand-border p-6 md:p-10 space-y-8">
+    <!-- 首頁橫幅 Header -->
+    <header class="hero-bg py-20 px-6 flex justify-center items-center shadow-inner">
+        <div class="text-center max-w-3xl">
+            <h1 class="text-3xl md:text-5xl font-bold text-white drop-shadow-md mb-6 tracking-wider">
+                生活藝術 秋天的手工課
+            </h1>
+            <div class="text-white/90 text-sm md:text-base drop-shadow-sm leading-relaxed space-y-2">
+                <p>在安農溪畔的五芒星星共學園</p>
+                <p>用雙手一針一線，為孩子與自己編織或縫製美好的秋日回憶</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要內容區塊 -->
+    <main class="max-w-6xl mx-auto px-6 py-12 space-y-12 flex-1 w-full">
         
-        <!-- 引言詩意段落 -->
-        <div class="space-y-4 text-brand-text leading-relaxed text-sm md:text-base border-l-4 border-[#fca13f] pl-4 bg-[#fff9f2] py-4 rounded-r-xl">
-            <p>秋風吹過，葉子開始變換顏色。</p>
-            <p>陽光不再那麼炙熱，空氣裡多了一份安靜與收斂。</p>
-            <p class="font-bold text-[#fca13f]">秋天，是一個適合「慢下來」的季節。</p>
-            <p>我們邀請爸爸媽媽，暫時放下忙碌，坐下來，用雙手：</p>
-            <ul class="list-disc list-inside space-y-1 text-brand-light pl-2">
-                <li>一針一線地縫，</li>
-                <li>一圈一圈地編，</li>
-                <li>讓柔軟的線材，在手中慢慢變成一個孩子可以遊戲、可以陪伴的小玩具。</li>
-            </ul>
-            <p class="pt-2">我們邀請資深的幼兒園老師，分享她在手作裡的樂趣，也有簡單的歌謠。歡迎爸爸媽媽一起來安農溪畔的五芒星星共學園，爲孩子編織或縫製美好的回憶。</p>
-        </div>
-
-        <!-- 課程資訊 Grid -->
-        <div class="grid md:grid-cols-2 gap-6">
-            <!-- 左側：時間、地點、費用 -->
-            <div class="bg-[#fcfcfc] p-6 rounded-xl border border-brand-border space-y-4">
-                <h3 class="font-bold text-brand-accent text-lg border-b pb-2 flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-[#fca13f]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    課程基本資訊
-                </h3>
-                <ul class="space-y-3 text-sm text-brand-text">
-                    <li><strong class="text-brand-accent">時間：</strong>10/8, 10/15, 10/22（三週一個系列，上午 9:00-10:30）</li>
-                    <li><strong class="text-brand-accent">地點：</strong>宜蘭縣三星鄉安農九路560號（五芒星星共學園）</li>
-                    <li><strong class="text-brand-accent">手作內容：</strong>童玩 + 手工三角形小沙包 + 1個裝沙包的束口袋（需要合購買水晶）</li>
-                    <li><strong class="text-brand-accent">費用：</strong>一個單元三週 900 元 + 材料費 200 元，共 <span class="text-[#fca13f] font-bold">1,100 元</span></li>
-                    <li><strong class="text-brand-accent">人數：</strong>10 人（3 人開班）</li>
-                </ul>
+        <!-- 課程引言理念 -->
+        <section class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-brand-border space-y-6">
+            <div class="text-center max-w-2xl mx-auto">
+                <span class="text-brand-accent text-xs font-bold tracking-widest uppercase">Autumn Handwork</span>
+                <h2 class="text-2xl md:text-3xl font-bold text-brand-green mt-1 mb-3">秋天，是一個適合「慢下來」的季節</h2>
+                <div class="w-12 h-1 bg-brand-accent mx-auto rounded-full"></div>
             </div>
-
-            <!-- 右側：準備事項與貼心提醒 -->
-            <div class="bg-[#fcfcfc] p-6 rounded-xl border border-brand-border space-y-4">
-                <h3 class="font-bold text-brand-accent text-lg border-b pb-2 flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-[#fca13f]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                    </svg>
-                    準備與注意事項
-                </h3>
-                <ul class="space-y-3 text-sm text-brand-text">
-                    <li><strong class="text-brand-accent">自備工具：</strong>請準備長尺、針、線、剪刀、筆。<br><span class="text-xs text-brand-light">（若無自己的針線剪刀可帶來，老師這裡也有預備可以借用）</span></li>
-                    <li><strong class="text-brand-accent">茶水提醒：</strong>協會有提供園區花草茶，但請記得自備個人水壺或水杯。</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- 老師簡歷區塊 -->
-        <div class="bg-[#eaf2e3]/40 p-6 rounded-xl border border-[#557b3e]/20 flex flex-col md:flex-row items-center gap-6">
-            <div class="flex-1 space-y-2">
-                <h3 class="font-bold text-[#557b3e] text-lg flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                    </svg>
-                    手作老師簡歷：素慧老師
-                </h3>
-                <p class="text-sm text-brand-text leading-relaxed">
-                    我是素慧老師，從事幼教工作 36 年。從小對於手作就特別感興趣，讀書時家政手作課特別吸引我，幼教科系也讓我接觸到更多手作機會。在華德福幼兒園裡，跟孩子一起手作一直是一件特別快樂美好的事。自身也喜歡鑽研新的手作，並樂於跟朋友分享。
+            
+            <div class="space-y-4 text-brand-light text-base md:text-lg leading-relaxed text-center max-w-2xl mx-auto">
+                <p>秋風吹過，葉子開始變換顏色。</p>
+                <p>陽光不再那麼炙熱，空氣裡多了一份安靜與收斂。</p>
+                <p class="pt-2 font-medium text-brand-text">
+                    我們邀請爸爸媽媽，暫時放下忙碌，坐下來，用雙手一針一線地縫，一圈一圈地編，讓柔軟的線材，在手中慢慢變成一個孩子可以遊戲、可以陪伴的小玩具。
+                </p>
+                <p class="text-brand-accent font-medium pt-2">
+                    我們邀請資深的幼兒園老師，分享她在手作裡的樂趣，也有簡單的歌謠。歡迎爸爸媽媽一起來安農溪畔的五芒星星共學園！
                 </p>
             </div>
-        </div>
+        </section>
 
-        <!-- 報名按鈕（可自行代入報名表連結） -->
-        <div class="text-center pt-2">
-            <a href="craft-register.html" class="inline-block bg-[#fca13f] text-white px-8 py-3 rounded-xl font-bold hover:bg-[#e08e2e] transition-all shadow-md">
-                點此填寫秋季手工課報名表
-            </a>
-        </div>
+        <!-- 招生與課程資訊卡片 -->
+        <section class="space-y-6">
+            <h2 class="text-2xl font-bold text-brand-text border-l-4 border-brand-green pl-3">課程資訊</h2>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-xl border border-brand-border shadow-sm">
+                    <div class="text-brand-accent font-bold text-xs tracking-wider uppercase mb-1">Time & Schedule</div>
+                    <h3 class="text-lg font-bold mb-2">⭐ 上課時間</h3>
+                    <p class="text-brand-light text-sm leading-relaxed">
+                        10/8, 10/15, 10/22<br>
+                        <span class="text-xs text-brand-accent font-medium">（三週一個系列，上午 9:00 - 10:30）</span>
+                    </p>
+                </div>
 
-    </div>
-</section>
+                <div class="bg-white p-6 md:p-8 rounded-xl border border-brand-border shadow-sm md:col-span-2 flex flex-col justify-between">
+                    <div>
+                        <div class="text-brand-accent font-bold text-xs tracking-wider uppercase mb-1">Details & Fee</div>
+                        <h3 class="text-lg font-bold mb-2">⭐ 地點與費用說明</h3>
+                        <p class="text-brand-light text-sm leading-relaxed mb-2">
+                            <strong>地點：</strong>宜蘭縣三星鄉安農九路 560 號（五芒星星共學園）
+                        </p>
+                        <p class="text-brand-light text-sm leading-relaxed mb-2">
+                            <strong>費用：</strong>一個單元三週 900 元 + 材料費 200 元，共 <strong>1100 元</strong>
+                        </p>
+                        <p class="text-brand-light text-sm leading-relaxed">
+                            <strong>人數限制：</strong>10 人（3 人開班）
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 手作內容與準備事項 -->
+            <div class="grid md:grid-cols-2 gap-6 pt-2">
+                <div class="bg-white p-8 rounded-2xl border-2 border-brand-accent/30 shadow-sm">
+                    <h3 class="text-xl font-bold text-brand-accent mb-3">🧶 手作內容</h3>
+                    <p class="text-brand-text text-sm leading-relaxed mb-4">
+                        童玩 + 手工三角形小沙包 + 1個裝沙包的束口袋。<br>
+                        <span class="text-xs text-brand-light">（需要合購買水晶）</span>
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl border-2 border-brand-green/30 shadow-sm">
+                    <h3 class="text-xl font-bold text-brand-green mb-3">🎒 準備與溫馨提醒</h3>
+                    <ul class="list-disc list-inside text-sm text-brand-light space-y-1.5">
+                        <li>請準備：長尺、針線、剪刀、筆。</li>
+                        <li>若您有自己的針、線、剪刀可帶來；老師這裡也有預備，可借用給參與者。</li>
+                        <li>協會有提供園區花草茶，但<strong>需要自備水壺或水杯</strong>。</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 師資介紹 -->
+        <section id="teachers" class="space-y-6">
+            <div class="text-center">
+                <h2 class="text-2xl md:text-3xl font-bold text-brand-text mb-1">手作老師 ( Faculty )</h2>
+                <p class="text-sm text-brand-light">在手作中找回專注與平靜</p>
+            </div>
+
+            <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-brand-border flex flex-col md:flex-row gap-6 items-start">
+                <div class="w-24 h-24 bg-brand-bg rounded-full flex items-center justify-center text-brand-light shrink-0 mx-auto md:mx-0 border-2 border-brand-accent/30">
+                    <span class="font-bold text-lg">素慧 老師</span>
+                </div>
+                <div class="space-y-3 flex-1">
+                    <h3 class="text-xl font-bold text-brand-accent text-center md:text-left">素慧 老師</h3>
+                    <p class="text-xs md:text-sm italic text-brand-light bg-brand-bg p-3 rounded-lg">
+                        「從小對於手作就特別感興趣，在華德福幼兒園裡，跟孩子一起手作也是特別快樂美好的一件事。」
+                    </p>
+                    <div class="text-xs md:text-sm text-brand-light space-y-2">
+                        <h4 class="font-bold text-brand-text">專業背景與經歷</h4>
+                        <p class="leading-relaxed">
+                            從事幼教工作 36 年。求學時期家政手作課與幼教科系接觸了更多手作機會。在華德福幼兒園的多年教學中，深感手作帶給孩子與自己的美好連結。自身非常喜歡鑽研新的手作，也樂於與朋友分享這份手作的喜悅。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 預約報名卡片 -->
+        <section id="contact" class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-brand-border text-center space-y-6">
+            <h3 class="text-2xl font-bold text-brand-text">邀您一起來安農溪畔享受秋日手作時光</h3>
+            <p class="text-brand-light text-sm max-w-xl mx-auto leading-relaxed">
+                名額有限（10人滿額，3人開班），歡迎填寫表單完成報名。
+            </p>
+            <div class="pt-2 flex flex-wrap justify-center gap-4">
+                <a href="craft-register.html" class="inline-block bg-brand-accent text-white text-sm md:text-base px-8 py-3.5 rounded-full font-bold hover:opacity-90 transition-all shadow-md">
+                    線上報名
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 頁尾 Footer -->
+    <footer class="bg-brand-text text-white/80 py-8 px-6 text-center text-xs space-y-2 border-t border-brand-border mt-12">
+        <p class="font-medium text-white">社團法人台灣華德福親子共學協會</p>
+        <p>五芒星星親子共學園</p>
+        <p>地址：宜蘭縣三星鄉安農九路 560號</p>
+        <p class="pt-2 text-white/50">© 台灣華德福親子共學協會 All Rights Reserved.</p>
+    </footer>
+
+    <!-- 行動選單開關 JS -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const line1 = document.getElementById('line1');
+        const line2 = document.getElementById('line2');
+        const line3 = document.getElementById('line3');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+            if (mobileMenu.classList.contains('open')) {
+                line1.style.transform = 'translateY(7px) rotate(45deg)';
+                line2.style.opacity = '0';
+                line3.style.transform = 'translateY(-7px) rotate(-45deg)';
+            } else {
+                line1.style.transform = 'none';
+                line2.style.opacity = '1';
+                line3.style.transform = 'none';
+            }
+        });
+
+        const menuLinks = mobileMenu.querySelectorAll('a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                line1.style.transform = 'none';
+                line2.style.opacity = '1';
+                line3.style.transform = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
