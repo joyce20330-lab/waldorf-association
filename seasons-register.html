@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>四季營隊 - 線上報名</title>
+    <title>四季營隊 - 秋季假期線上報名</title>
     <style>
         body { font-family: "Microsoft JhengHei", "PingFang TC", sans-serif; background-color: #fdfaf5; padding: 40px 20px; color: #333; line-height: 1.6; }
         .container { max-width: 680px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); }
@@ -71,17 +71,12 @@
         }
         .submit-btn:hover { background-color: #c26325; }
 
-        .action-btn {
+        .back-btn {
             display: flex; align-items: center; justify-content: center; background-color: transparent; 
             color: #8A7B6F; border: 1.5px solid #8A7B6F; border-radius: 6px; padding: 14px; 
             text-decoration: none; flex: 1; font-size: 1em; font-weight: bold; text-align: center; min-width: 100px;
         }
-        .action-btn:hover { background-color: #8A7B6F; color: white; }
-        
-        .line-btn {
-            background-color: #06c755; color: white; border: 1.5px solid #06c755;
-        }
-        .line-btn:hover { background-color: #05b14c; color: white; }
+        .back-btn:hover { background-color: #8A7B6F; color: white; }
     </style>
 </head>
 <body>
@@ -109,7 +104,6 @@
                     <option value="">請選擇</option>
                     <option value="男">男</option>
                     <option value="女">女</option>
-                    <option value="其他">其他</option>
                 </select>
             </div>
 
@@ -240,14 +234,13 @@
             <input type="hidden" id="agreedStatus" name="agreedStatus" value="已同意">
 
             <div class="btn-group">
-                <a href="https://line.me/ti/p/~solomon8544" target="_blank" class="action-btn line-btn">加入丁旋老師的LINE</a>
+                <a href="seasons.html" class="back-btn">返回營隊介紹</a>
                 <button type="submit" class="submit-btn">送出報名</button>
             </div>
         </form>
     </div>
 
 <script>
-    // 請替換為您的 Google Apps Script 部署網址
     const backendUrl = "https://script.google.com/macros/s/AKfycbysETb0T4AMM4vXJ1Lu4yGzAEqkeSomAd31W0NYjUd9fb_7kB6AOH8434bSGjP-FZ4Tlg/exec";
 
     const memberTypeSelect = document.getElementById('memberType');
