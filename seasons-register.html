@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>四季營隊 - 線上報名</title>
+    <style>
+        body { font-family: "Microsoft JhengHei", "PingFang TC", sans-serif; background-color: #fdfaf5; padding: 40px 20px; color: #333; line-height: 1.6; }
+        .container { max-width: 680px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); }
+        
+        h1 { color: #5d4e43; text-align: center; margin-bottom: 25px; font-size: 1.6em; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: bold; color: #5d4e43; }
+        
+        input[type="text"], input[type="tel"], input[type="email"], input[type="date"], select { 
+            width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; font-size: 1em;
+            font-family: inherit;
+        }
+
+        .camp-info-box {
+            background: #fdfbf7;
+            border: 1px solid #e2d9cd;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+        }
+
+        .fee-display-box {
+            margin-top: 20px;
+            padding: 16px 20px;
+            background-color: rgba(217, 119, 70, 0.08); 
+            border-left: 5px solid #d97746; 
+            border-radius: 6px;
+            font-weight: bold;
+            color: #5d4e43;
+            font-size: 1.05em;
+        }
+        .fee-amount { 
+            color: #d97746; 
+            font-size: 1.4em; 
+            margin: 0 4px;
+            text-decoration: underline;
+        }
+        .fee-breakdown { font-size: 0.85em; color: #8A7B6F; margin-top: 4px; font-weight: normal; }
+
+        .notice-section {
+            background-color: rgba(91, 130, 102, 0.05); 
+            border: 1px dashed #5b8266; 
+            padding: 22px;
+            border-radius: 10px;
+            margin-top: 30px;
+            margin-bottom: 25px;
+        }
+        .notice-title { font-size: 1.15em; font-weight: bold; color: #5b8266; margin-bottom: 12px; }
+        .notice-content p { font-size: 0.9em; line-height: 1.6; margin: 0 0 10px 0; color: #555; }
+        
+        .agree-group {
+            display: flex;
+            align-items: flex-start;
+            margin-top: 15px;
+            padding-top: 12px;
+            border-top: 1px dashed rgba(91, 130, 102, 0.3);
+        }
+        .agree-group input[type="checkbox"] { width: 18px; height: 18px; cursor: pointer; margin-right: 10px; margin-top: 3px; flex-shrink: 0; }
+        .agree-label { display: inline; font-size: 0.95em; color: #d97746; font-weight: bold; cursor: pointer; }
+
+        .btn-group { display: flex; gap: 12px; margin-top: 25px; flex-wrap: wrap; }
+        .submit-btn { 
+            background-color: #d97746; color: white; padding: 14px; border: none; border-radius: 6px; 
+            cursor: pointer; flex: 2; font-size: 1.15em; font-weight: bold; transition: background-color 0.2s; min-width: 140px;
+        }
+        .submit-btn:hover { background-color: #c26325; }
+
+        .action-btn {
+            display: flex; align-items: center; justify-content: center; background-color: transparent; 
+            color: #8A7B6F; border: 1.5px solid #8A7B6F; border-radius: 6px; padding: 14px; 
+            text-decoration: none; flex: 1; font-size: 1em; font-weight: bold; text-align: center; min-width: 100px;
+        }
+        .action-btn:hover { background-color: #8A7B6F; color: white; }
+        
+        .line-btn {
+            background-color: #06c755; color: white; border: 1.5px solid #06c755;
+        }
+        .line-btn:hover { background-color: #05b14c; color: white; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>四季營隊 - 秋季假期線上報名</h1>
+
+        <div class="camp-info-box">
+            <p style="margin:0 0 8px 0; font-weight:bold; color:#5d4e43;">🌲 梯次資訊：10/27 - 10/30（四天）</p>
+            <p style="margin:0; font-size:0.9em; color:#666;">時間：08:30 - 15:30｜地點：宜蘭縣三星鄉安農九路560號｜<strong>招收名額：最多 6 人</strong></p>
+        </div>
+
+        <form id="registrationForm">
+            
+            <input type="hidden" id="registrationTime" name="registrationTime">
+
+            <!-- 學員（孩童）基本資料 -->
+            <div class="form-group">
+                <label for="studentName">學員姓名（孩童）</label>
+                <input type="text" id="studentName" name="studentName" placeholder="請填寫中文全名" required>
+            </div>
+
+            <div class="form-group">
+                <label for="gender">性別</label>
+                <select id="gender" name="gender" required>
+                    <option value="">請選擇</option>
+                    <option value="男">男</option>
+                    <option value="女">女</option>
+                    <option value="其他">其他</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="birthday">生日</label>
+                <input type="date" id="birthday" name="birthday" required>
+            </div>
+
+            <div class="form-group">
+                <label for="healthCondition">健康狀況 / 食物過敏源</label>
+                <input type="text" id="healthCondition" name="healthCondition" placeholder="如：無、對特定食物過敏、氣喘等（若無請填無）" required>
+            </div>
+
+            <div class="form-group">
+                <label for="grade">孩子年級（目前就讀或即將升學）</label>
+                <select id="grade" name="grade" required>
+                    <option value="">請選擇</option>
+                    <option value="國小一年級">國小一年級</option>
+                    <option value="國小二年級">國小二年級</option>
+                    <option value="國小三年級">國小三年級</option>
+                    <option value="國小四年級">國小四年級</option>
+                </select>
+            </div>
+
+            <!-- 報名身分與費用試算 -->
+            <div class="form-group">
+                <label for="memberType">報名身分與收費方案</label>
+                <select id="memberType" name="memberType" required>
+                    <option value="general_single">一般學童（單人方案）：$6,600 元</option>
+                    <option value="general_family">一般家庭（親子 1大1小）：$12,200 元</option>
+                    <option value="discount_single">優惠方案（單人）：$5,500 元（適用共學/會員/舊生等）</option>
+                    <option value="discount_family">優惠方案（親子 1大1小）：$10,000 元（適用共學/會員/舊生等）</option>
+                </select>
+                <p style="font-size: 0.85em; color: #8A7B6F; margin-top: 6px;">
+                    ✨ 優惠對象包含：曾為四季營隊學童、台灣華德福親子共學協會會員家庭、五芒星星親子共學園家庭、丁旋老師星禾課後照顧成員。
+                </p>
+            </div>
+
+            <!-- 費用即時試算區 -->
+            <div class="fee-display-box">
+                預估應繳總費用：NT$ <span id="feeAmountDisplay" class="fee-amount">6,600</span> 元
+                <div id="feeBreakdown" class="fee-breakdown">一般學童（單人方案）</div>
+            </div>
+            <input type="hidden" id="calculatedFee" name="calculatedFee" value="6600">
+
+            <!-- 家長/聯絡人資訊 -->
+            <div class="form-group" style="margin-top: 25px;">
+                <label for="parentName">家長姓名</label>
+                <input type="text" id="parentName" name="parentName" placeholder="請填寫家長全名" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="parentTel">聯絡電話</label>
+                <input type="tel" id="parentTel" name="parentTel" placeholder="如：0981276790" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">電子信箱</label>
+                <input type="email" id="email" name="email" placeholder="接收確認信與行前通知" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="line">LINE ID</label>
+                <input type="text" id="line" name="line" placeholder="方便對帳與課前聯繫" required>
+            </div>
+
+            <div class="form-group">
+                <label for="infoSource">訊息來源</label>
+                <input type="text" id="infoSource" name="infoSource" placeholder="如：臉書粉專、OO朋友介紹等">
+            </div>
+
+            <div class="form-group">
+                <label for="communityAndLocation">來自社群及居住地</label>
+                <input type="text" id="communityAndLocation" name="communityAndLocation" placeholder="如：OO華德福共學家庭等">
+            </div>
+
+            <div class="form-group">
+                <label for="userMessage">想說的話 / 其他需求</label>
+                <input type="text" id="userMessage" name="userMessage" placeholder="有任何需要老師特別注意的事項嗎？（無則免填）">
+            </div>
+
+            <!-- 匯款後五碼 -->
+            <div class="form-group">
+                <label for="transferCode">匯款帳號後五碼</label>
+                <input type="text" id="transferCode" name="transferCode" placeholder="請填寫郵局帳號後五碼，並主動私訊官方LINE對帳喔！" required>
+            </div>    
+
+            <!-- 提醒事項與同意規範 -->
+            <div class="notice-section">
+                <div class="notice-title">🌻 收費標準、退費規範與注意事項</div>
+                <div class="notice-content">
+                    <p><strong>• 招生對象：</strong> 國小一到四年級學童（最多 6 人）</p>
+                    <p><strong>• 課程時間：</strong> 08:30 - 15:30（07/07-07/11，共五天）</p>
+                    <p><strong>• 上課地點：</strong> 宜蘭縣三星鄉安農九路560號</p>
+                    <p><strong>• 費用包含：</strong> 含食材、藝術材料、旅遊平安險</p>
+                    <p><strong>• 匯款帳號：</strong> 戶名: 丁旋<br>郵局 (700)<br>帳號: 1112571264892</p>
+                    <p><strong>• 退費標準：</strong><br>
+                    報名後因個人因素不克參加活動需辦理退費者，請先加入 <a href="https://lin.ee/ZEibS6w" target="_blank" style="color: #06c755; font-weight: bold;">LINE@ 官方帳號</a> 告知，以確認收到該學員取消報名申請退費之日期為退費計算節點。<br>
+                    開課四星期前(含)，應退還報名總費用80%。<br>
+                    開課兩星期前(含)，應退還報名總費用50%。<br>
+                    開課前５日(含)與開課後，所收取之報名總費用得全數不予退還。<br>
+                    若遇天災等不可抗力因素造成活動無法舉行時，將另行通知。<br>
+                    退費金額將匯入指定之銀行（郵局）帳號，匯款之手續費亦由申請人負擔。</p>
+
+                    <p><strong>• 個人資料保護：</strong><br>
+                    承辦本次活動，向您取得之個人資料包含姓名、電話及電子郵件等，目的用於活動聯繫通知以及相關作業之處理與日後相關活動信息之發送。</p>
+                    
+                    <div class="agree-group" style="margin-top: 5px; margin-bottom: 15px; border-top: none; padding-top: 0;">
+                        <input type="checkbox" id="agreePrivacy" name="agreePrivacy" value="我理解並同意" required>
+                        <label for="agreePrivacy" class="agree-label" style="color: #444; font-weight: bold;">我理解並同意個人資料保護條款</label>
+                    </div>
+
+                    <p><strong>• 肖像權：</strong><br>
+                    課程中所拍攝之個人及團體影像，將提供於文宣品、粉專及活動紀錄中使用。</p>
+                    
+                    <div class="agree-group" style="margin-top: 5px; border-top: none; padding-top: 0;">
+                        <input type="checkbox" id="agreePortrait" name="agreePortrait" value="我理解並同意" required>
+                        <label for="agreePortrait" class="agree-label" style="color: #444; font-weight: bold;">我理解並同意肖像權授權</label>
+                    </div>
+                </div>
+                
+                <div class="agree-group">
+                    <input type="checkbox" id="agreeNotice" name="agreeNotice" value="已詳細閱讀並同意" required>
+                    <label for="agreeNotice" class="agree-label">我已詳細閱讀並同意上述收費標準、退費規範與注意事項 *</label>
+                </div>
+            </div>
+
+            <input type="hidden" id="agreedStatus" name="agreedStatus" value="已同意">
+
+            <div class="btn-group">
+                <a href="https://lin.ee/ZEibS6w" target="_blank" class="action-btn line-btn">加入 LINE@</a>
+                <button type="submit" class="submit-btn">送出報名</button>
+            </div>
+        </form>
+    </div>
+
+<script>
+    // 請替換為您的 Google Apps Script 部署網址
+    const backendUrl = "您的Google_Apps_Script_網址";
+
+    const memberTypeSelect = document.getElementById('memberType');
+    const feeDisplay = document.getElementById('feeAmountDisplay');
+    const feeBreakdown = document.getElementById('feeBreakdown');
+    const feeHiddenInput = document.getElementById('calculatedFee');
+    const regForm = document.getElementById('registrationForm');
+
+    const pricingMap = {
+        'general_single': { price: 6600, text: '一般學童（單人方案）' },
+        'general_family': { price: 12200, text: '一般家庭（親子 1大1小）' },
+        'discount_single': { price: 5500, text: '優惠方案（單人）' },
+        'discount_family': { price: 10000, text: '優惠方案（親子 1大1小）' }
+    };
+
+    memberTypeSelect.addEventListener('change', updateFee);
+
+    function updateFee() {
+        const selectedVal = memberTypeSelect.value;
+        const currentPlan = pricingMap[selectedVal];
+        if (currentPlan) {
+            feeDisplay.textContent = currentPlan.price.toLocaleString();
+            feeHiddenInput.value = currentPlan.price;
+            feeBreakdown.textContent = currentPlan.text;
+        }
+    }
+
+    regForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const agreePrivacy = document.getElementById('agreePrivacy');
+        const agreePortrait = document.getElementById('agreePortrait');
+        const agreeNotice = document.getElementById('agreeNotice');
+
+        if (!agreePrivacy.checked || !agreePortrait.checked || !agreeNotice.checked) {
+            alert('請確認已勾選同意個人資料保護條款、肖像權授權以及相關注意事項！');
+            return;
+        }
+
+        const submitBtn = document.querySelector('.submit-btn');
+        submitBtn.disabled = true;
+        submitBtn.textContent = '資料傳輸中，請稍候...';
+
+        const now = new Date();
+        const timeString = now.getFullYear() + '/' + 
+                           String(now.getMonth() + 1).padStart(2, '0') + '/' + 
+                           String(now.getDate()).padStart(2, '0') + ' ' + 
+                           String(now.getHours()).padStart(2, '0') + ':' + 
+                           String(now.getMinutes()).padStart(2, '0') + ':' + 
+                           String(now.getSeconds()).padStart(2, '0');
+        document.getElementById('registrationTime').value = timeString;
+
+        const payload = {
+            registrationTime: timeString,
+            studentName: document.getElementById('studentName').value,
+            gender: document.getElementById('gender').value,
+            birthday: document.getElementById('birthday').value,
+            healthCondition: document.getElementById('healthCondition').value,
+            grade: document.getElementById('grade').value,
+            memberType: memberTypeSelect.options[memberTypeSelect.selectedIndex].text,
+            calculatedFee: feeHiddenInput.value,
+            parentName: document.getElementById('parentName').value,
+            parentTel: document.getElementById('parentTel').value,
+            email: document.getElementById('email').value,
+            line: document.getElementById('line').value,
+            infoSource: document.getElementById('infoSource').value || '無',
+            communityAndLocation: document.getElementById('communityAndLocation').value || '無',
+            userMessage: document.getElementById('userMessage').value || '無',
+            transferCode: document.getElementById('transferCode').value,
+            agreedStatus: '已同意規範'
+        };
+
+        fetch(backendUrl, {
+            method: 'POST',
+            body: new URLSearchParams(payload)
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert('🎉 報名成功！系統已收到您的報名資料，請記得完成匯款以利對帳。');
+            location.reload(); 
+        })
+        .catch(error => {
+            alert('報名資料已送出！如有對帳疑問歡迎隨時透過 LINE 聯繫。');
+            location.reload();
+        });
+    });
+</script>
+</body>
+</html>
