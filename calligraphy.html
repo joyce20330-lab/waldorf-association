@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>媛芊老師的書法課：字源故事與濕水彩篆書 - 五芒星星親子共學 - 社團法人台灣華德福親子共學協會</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: '#fcf9f2',
+                            text: '#5d4e43',
+                            accent: '#d97746',
+                            green: '#5b8266',
+                            border: '#e5e0dc',
+                            light: '#8A7B6F'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Helvetica Neue"', 'Arial', '"Microsoft JhengHei"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { -webkit-font-smoothing: antialiased; }
+        .hero-bg { background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.45)), url('彩虹底圖.jfif') center/cover no-repeat; }
+        #mobile-menu { transition: all 0.3s ease-in-out; max-height: 0; overflow: hidden; opacity: 0; }
+        #mobile-menu.open { max-height: 400px; opacity: 1; padding-top: 1rem; padding-bottom: 1rem; }
+    </style>
+</head>
+<body class="bg-brand-bg text-brand-text min-h-screen flex flex-col font-sans">
+    
+    <!-- 導覽列 -->
+    <nav class="flex justify-between items-center px-6 md:px-[8%] py-5 border-b border-brand-border bg-brand-bg sticky top-0 z-50 shadow-sm">
+        <div class="font-medium text-lg tracking-wide text-brand-text hover:text-brand-accent transition-colors">
+            <a href="index.html">社團法人台灣華德福親子共學協會</a>
+        </div>
+
+        <div class="hidden md:flex gap-8 items-center">
+            <a href="https://taiwanwaldorf.com/" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">首頁</a>
+            <a href="news.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">最新消息</a>
+            <a href="about.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">協會緣起</a>
+            <a href="services.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">服務項目</a>
+            <a href="events.html" class="text-sm font-medium text-brand-accent transition-colors">活動報名</a>
+            <a href="contact.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">聯絡我們</a>
+        </div>
+
+        <button id="menu-btn" class="md:hidden flex flex-col gap-[5px] p-2 focus:outline-none" aria-label="Toggle Menu">
+            <span id="line1" class="w-6 h-[2px] bg-brand-text block transition-transform duration-300 origin-center"></span>
+            <span id="line2" class="w-6 h-[2px] bg-brand-text block transition-opacity duration-300"></span>
+            <span id="line3" class="w-6 h-[2px] bg-brand-text block transition-transform duration-300 origin-center"></span>
+        </button>
+    </nav>
+
+    <!-- 手機版選單 -->
+    <div id="mobile-menu" class="md:hidden bg-brand-bg border-b border-brand-border absolute w-full z-40 top-[73px] shadow-lg flex flex-col items-center gap-4">
+        <a href="https://taiwanwaldorf.com/" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">首頁</a>
+        <a href="news.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">最新消息</a>
+        <a href="about.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">協會緣起</a>
+        <a href="services.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">服務項目</a>
+        <a href="events.html" class="w-full text-center py-2 text-brand-accent font-medium">活動報名</a>
+        <a href="contact.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">聯絡我們</a>
+    </div>
+
+    <!-- 首頁橫幅 Header -->
+    <header class="hero-bg py-24 px-6 flex justify-center items-center shadow-inner">
+        <div class="text-center max-w-3xl">
+            <h1 class="text-3xl md:text-5xl font-bold text-white drop-shadow-md mb-4 tracking-wider">
+                書畫課
+            </h1>
+            <div class="text-white/95 text-sm md:text-base drop-shadow-sm leading-relaxed space-y-1">
+                <p>從甲骨文、金文到小篆，在濕水彩與筆墨間畫字，找回書寫最初的悸動</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要內容區塊 -->
+    <main class="max-w-6xl mx-auto px-6 py-12 space-y-12 flex-1 w-full">
+        
+        <!-- 課程引言理念 -->
+        <section class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-brand-border space-y-8">
+            <div class="text-center max-w-2xl mx-auto">
+                <span class="text-brand-accent text-xs font-bold tracking-widest uppercase">Calligraphy & Wet-on-Wet Watercolor</span>
+                <h2 class="text-2xl md:text-3xl font-bold text-brand-green mt-1 mb-3">與字相遇的藝術旅程</h2>
+                <div class="w-12 h-1 bg-brand-accent mx-auto rounded-full"></div>
+            </div>
+            
+            <!-- 詩意段落 -->
+            <div class="bg-brand-bg/60 p-6 md:p-8 rounded-xl border border-brand-border/60 max-w-3xl mx-auto text-brand-text text-center italic space-y-3 leading-relaxed text-base md:text-lg">
+                <p>每個字的背後，都藏著一段遠方的來路，<br>像火光落在骨上——甲骨的刻痕，仍在低聲說話。</p>
+                <p>每個字也都有自己的生命：<br>從刀刻的棱角，走到筆鋒的呼吸；<br>從古老的形，長出今日的意。</p>
+                <p class="pt-2 font-normal not-italic">
+                    在這堂藝術性的書畫課裡，<br>老師以「畫字」的方式，帶你聽字的故事、看字的形變，<br>讓我們在日常的一撇一捺間，真實地與字相遇——<br>看見自己與字之間的牽引，<br>找回書寫最初的悸動與感動。
+                </p>
+            </div>
+
+            <!-- 課程特色照片展示區 (搭配 image.png 與 image_4.png) -->
+            <div class="grid md:grid-cols-2 gap-6 my-6">
+                <div class="overflow-hidden rounded-xl shadow-md border border-brand-border group">
+                    <img src="image.png" alt="學員專注於篆書字體書寫" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
+                    <p class="p-3 text-center text-xs text-brand-light bg-brand-bg">學員專注落筆，在水彩渲染間感受字的姿態</p>
+                </div>
+                <div class="overflow-hidden rounded-xl shadow-md border border-brand-border group">
+                    <img src="image_4.png" alt="媛芊老師指導學員書法" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
+                    <p class="p-3 text-center text-xs text-brand-light bg-brand-bg">老師細心引導，陪伴大家一筆一劃與字對話</p>
+                </div>
+            </div>
+
+            <div class="space-y-4 text-brand-light text-base md:text-lg leading-relaxed max-w-3xl mx-auto pt-2">
+                <p>
+                    媛芊老師的書畫課，從甲骨文、金文到小篆，帶你回到文字最初的誕生現場。每堂課老師都會說一段字源小故事：這個字原本長什麼樣子？為什麼這樣寫？它一路走來變成今天的模樣，背後藏著哪些生活與想像——總讓人聽得心神嚮往，忍不住想知道更多。
+                </p>
+                <p>
+                    更特別的是，老師以「濕水彩 × 篆書字形」引導書寫：不是只用黑墨臨帖，而是讓水與顏料在紙上流動，用色彩的濃淡、含水量與筆觸的停走轉折，去感受字的骨架、氣息與姿態——像在畫字，也像在和字一起呼吸。
+                </p>
+                <p class="text-brand-accent font-medium pt-2">
+                    課程有清楚的起承轉合，建議盡量全程出席，讓每一次練習與累積都連成完整的路徑，最後你會帶走的不只是作品，還有與文字更深的相遇。
+                </p>
+            </div>
+        </section>
+
+        <!-- 招生與課程資訊卡片 -->
+        <section class="space-y-6">
+            <h2 class="text-2xl font-bold text-brand-text border-l-4 border-brand-green pl-3">課程資訊</h2>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- 1. 上課時間 -->
+                <div class="bg-white p-6 rounded-xl border border-brand-border shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="text-brand-accent font-bold text-xs tracking-wider uppercase mb-1">Time & Schedule</div>
+                        <h3 class="text-lg font-bold mb-2">⭐ 上課時間</h3>
+                        <p class="text-brand-light text-sm leading-relaxed">
+                            每周四早上 09:00 - 11:00<br>
+                            <span class="text-xs text-brand-accent font-medium">（建議全程出席，讓每次練習連成完整路徑）</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 2. 上課地點 -->
+                <div class="bg-white p-6 rounded-xl border border-brand-border shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="text-brand-accent font-bold text-xs tracking-wider uppercase mb-1">Location</div>
+                        <h3 class="text-lg font-bold mb-2">⭐ 上課地點</h3>
+                        <p class="text-brand-light text-sm leading-relaxed">
+                            五芒星星親子共學園<br>
+                            <span class="text-xs">宜蘭縣三星鄉安農九路 560 號</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 3. 洽詢方式 -->
+                <div class="bg-white p-6 rounded-xl border border-brand-border shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="text-brand-accent font-bold text-xs tracking-wider uppercase mb-1">Enrollment & Contact</div>
+                        <h3 class="text-lg font-bold mb-2">⭐ 報名方式</h3>
+                        <p class="text-brand-light text-sm leading-relaxed">
+                            歡迎私訊官方 LINE 帳號了解更多課程詳情與報名資訊。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 師資介紹 -->
+        <section id="teachers" class="space-y-6">
+            <div class="text-center">
+                <h2 class="text-2xl md:text-3xl font-bold text-brand-text mb-1">老師介紹 ( Faculty )</h2>
+                <p class="text-sm text-brand-light">書畫課程帶領人</p>
+            </div>
+
+            <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-brand-border flex flex-col md:flex-row gap-8 items-center md:items-start">
+                <!-- 老師照片 (image_2.png) -->
+                <div class="w-48 h-48 md:w-56 md:h-56 overflow-hidden rounded-2xl shadow-md border-2 border-brand-accent/30 shrink-0 mx-auto">
+                    <img src="image_2.png" alt="黃媛芊老師" class="w-full h-full object-cover">
+                </div>
+                
+                <div class="space-y-3 flex-1 text-center md:text-left">
+                    <h3 class="text-2xl font-bold text-brand-accent">黃媛芊 老師</h3>
+                    <p class="text-xs md:text-sm text-brand-light">1963年生, 新竹客家人。靚好文創小學堂負責人。</p>
+                    
+                    <div class="text-xs md:text-sm text-brand-light space-y-2 pt-2 text-left">
+                        <h4 class="font-bold text-brand-text">相關經歷</h4>
+                        <ul class="list-disc list-inside space-y-1.5 leading-relaxed">
+                            <li>2003年曾任宜蘭社區大學篆刻教師。</li>
+                            <li>2004年始擔任華德福書法水墨畫篆刻教師至今。</li>
+                            <li>2011-2018年期間多次去中國大陸華德福相關學校分享書法、水墨畫課程。</li>
+                            <li>曾在奈良、大阪、巴黎、廣州、台北、竹北、潮州、羅東及冬山舉辦書法、水墨畫、篆刻展。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 預約報名卡片 -->
+        <section id="contact" class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-brand-border text-center space-y-6">
+            <h3 class="text-2xl font-bold text-brand-text">邀您一起來安農溪畔感受漢字的生命流動</h3>
+            <p class="text-brand-light text-sm max-w-xl mx-auto leading-relaxed">
+                每周四早上 09:00-11:00，歡迎私訊官方 LINE 帳號了解更多。
+            </p>
+            <div class="pt-2 flex flex-wrap justify-center gap-4">
+                <a href="https://lin.ee/ZEibS6w" target="_blank" rel="noopener noreferrer" class="inline-block bg-brand-green text-white text-sm md:text-base px-8 py-3.5 rounded-full font-bold hover:opacity-90 transition-all shadow-md">
+                    私訊官方 LINE 帳號
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 頁尾 Footer -->
+    <footer class="bg-brand-text text-white/80 py-8 px-6 text-center text-xs space-y-2 border-t border-brand-border mt-12">
+        <p class="font-medium text-white">社團法人台灣華德福親子共學協會</p>
+        <p>五芒星星親子共學園</p>
+        <p>地址：宜蘭縣三星鄉安農九路 560號</p>
+        <p class="pt-2 text-white/50">© 台灣華德福親子共學協會 All Rights Reserved.</p>
+    </footer>
+
+    <!-- 行動選單開關 JS -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const line1 = document.getElementById('line1');
+        const line2 = document.getElementById('line2');
+        const line3 = document.getElementById('line3');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+            if (mobileMenu.classList.contains('open')) {
+                line1.style.transform = 'translateY(7px) rotate(45deg)';
+                line2.style.opacity = '0';
+                line3.style.transform = 'translateY(-7px) rotate(-45deg)';
+            } else {
+                line1.style.transform = 'none';
+                line2.style.opacity = '1';
+                line3.style.transform = 'none';
+            }
+        });
+
+        const menuLinks = mobileMenu.querySelectorAll('a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                line1.style.transform = 'none';
+                line2.style.opacity = '1';
+                line3.style.transform = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
