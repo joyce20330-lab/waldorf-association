@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星星的智慧 - 社團法人台灣華德福親子共學協會</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: '#fcf9f2',
+                            text: '#5d4e43',
+                            accent: '#d97746',
+                            green: '#5b8266',
+                            border: '#e5e0dc',
+                            light: '#8A7B6F'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Helvetica Neue"', 'Arial', '"Microsoft JhengHei"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { -webkit-font-smoothing: antialiased; }
+        .hero-bg { background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), url('彩虹底圖.jfif') center/cover no-repeat; }
+        #mobile-menu { transition: all 0.3s ease-in-out; max-height: 0; overflow: hidden; opacity: 0; }
+        #mobile-menu.open { max-height: 400px; opacity: 1; padding-top: 1rem; padding-bottom: 1rem; }
+    </style>
+</head>
+<body class="bg-brand-bg text-brand-text min-h-screen flex flex-col font-sans">
+    
+    <!-- 導覽列 -->
+    <nav class="flex justify-between items-center px-6 md:px-[8%] py-5 border-b border-brand-border bg-brand-bg sticky top-0 z-50 shadow-sm">
+        <div class="font-medium text-lg tracking-wide text-brand-text hover:text-brand-accent transition-colors">
+            <a href="index.html">社團法人台灣華德福親子共學協會</a>
+        </div>
+
+        <div class="hidden md:flex gap-8 items-center">
+            <a href="https://taiwanwaldorf.com/" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">首頁</a>
+            <a href="news.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">最新消息</a>
+            <a href="about.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">協會緣起</a>
+            <a href="services.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">服務項目</a>
+            <a href="events.html" class="text-sm font-medium text-brand-accent font-bold transition-colors">活動報名</a>
+            <a href="contact.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">聯絡我們</a>
+        </div>
+
+        <button id="menu-btn" class="md:hidden flex flex-col gap-[5px] p-2 focus:outline-none" aria-label="Toggle Menu">
+            <span id="line1" class="w-6 h-[2px] bg-brand-text block transition-transform duration-300 origin-center"></span>
+            <span id="line2" class="w-6 h-[2px] bg-brand-text block transition-opacity duration-300"></span>
+            <span id="line3" class="w-6 h-[2px] bg-brand-text block transition-transform duration-300 origin-center"></span>
+        </button>
+    </nav>
+
+    <!-- 手機版選單 -->
+    <div id="mobile-menu" class="md:hidden bg-brand-bg border-b border-brand-border absolute w-full z-40 top-[73px] shadow-lg flex flex-col items-center gap-4">
+        <a href="https://taiwanwaldorf.com/" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">首頁</a>
+        <a href="news.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">最新消息</a>
+        <a href="about.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">協會緣起</a>
+        <a href="services.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">服務項目</a>
+        <a href="events.html" class="w-full text-center py-2 text-brand-accent font-bold">活動報名</a>
+        <a href="contact.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">聯絡我們</a>
+    </div>
+
+
+<!-- 首頁橫幅 Header -->
+<header class="hero-bg py-24 px-6 flex justify-center items-center shadow-inner">
+    <div class="text-center max-w-4xl space-y-4">
+        <h1 class="text-2xl md:text-4xl font-bold text-white drop-shadow-md tracking-wider">
+            星星的智慧
+        </h1>
+        <p class="text-lg md:text-xl font-medium text-white/95 drop-shadow">
+            生命循環：活出宇宙的奧秘 —— 承接如戲劇般跌宕起伏的自我發展
+        </p>
+    </div>
+</header>
+
+<!-- 主要內容區塊 -->
+<main class="max-w-6xl mx-auto px-6 py-12 space-y-12 flex-1 w-full">
+    
+    <!-- 引言區塊 -->
+    <section class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-brand-border space-y-6">
+        <blockquote class="border-l-4 border-brand-accent pl-4 italic text-brand-light text-sm md:text-base space-y-2">
+            <p>The stars are the expression of love in the cosmic ether … To see a star means to feel a caress that has been prompted by love … To gaze at the stars is to become aware of the love proceeding from divine spiritual beings.</p>
+            <p class="text-xs text-brand-text/70">— Rudolf Steiner, Karmic Relationships, Vol. 7, Lecture 2, June 1924</p>
+        </blockquote>
+        <p class="text-brand-text text-sm md:text-base leading-relaxed">
+            星辰是在宇宙乙太中愛的表達……看一顆星，意味著感覺到一種撫觸，這撫觸源自於愛……凝視星辰，則是去意識那源於神聖靈性存有之愛。<br>
+            <span class="text-xs text-brand-light">——魯道夫·史代納，業力關係，第七卷第二講，1924年6月8日</span>
+        </p>
+    </section>
+
+    <!-- 1. 關於課程 -->
+    <section class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-brand-border space-y-6">
+        <div class="space-y-3">
+            <h2 class="text-2xl md:text-3xl font-bold text-brand-green flex items-center gap-2">
+                <span>🌿</span> 關於課程：在星空與生命史中「認識自己」
+            </h2>
+            <div class="w-12 h-1 bg-brand-accent rounded-full"></div>
+        </div>
+        
+        <div class="text-brand-light text-base leading-relaxed space-y-4">
+            <p>
+                我們將展開一段旅程，體驗在生命各個不同階段的心魂道路。對現代人來說，這是一段探索千變萬化且充滿謎題和挑戰的世界之旅程。在科技日新月異、唯物主義盛行的時代，「認識自己」對現代人類來說是一個獨特的挑戰；然而，「認識自己」是一種持續的努力，它強烈地表明了我們人類不斷尋求更深層次理解的努力。
+            </p>
+            <p>
+                真正「認識自己」的旅程，首先，我們必須先向外探索，帶著興趣去探索世界的各個維度；甚至到達星星和行星的領域，在那裡，我們可以透過驚奇去體驗到一種令人驚豔的親密感，喚醒我們生命中的意義和目的。在這裡，我們必須開放心胸去工作，並伴隨我們的觀察，透過這種方式，我們才能在觀察世界時，真正喚醒自己。
+            </p>
+            <p>
+                反之亦然，透過向內在凝視，我們開始理解人類如何揭示外在世界的真實本質，甚至揭示自然界的基石。在內在生命中，我們也能感受到必須透過實踐，才能欣賞豐盛的社會關係以及和世界的相遇。當我們開始認識自己時，我們就能覺醒於世界。
+            </p>
+            <p class="font-medium text-brand-text pt-2">
+                以魯道夫·史代納（Rudolf Steiner）的人智學與星智學為基底，結合生命史的梳理、動人的星星故事，以及《治療教育讀書會》等核心文本，我們將一同在如戲劇般跌宕起伏的人生中，透過星智學的智慧找回內在的定錨與力量。
+            </p>
+        </div>
+    </section>
+
+    <!-- 4. 講師介紹 -->
+    <section id="teachers" class="space-y-6">
+        <div class="text-center">
+            <h2 class="text-2xl md:text-3xl font-bold text-brand-text mb-1">講師簡介</h2>
+            <p class="text-sm text-brand-light">帶領您深入星智學與生命史的國際專業師資</p>
+        </div>
+
+        <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-brand-border flex flex-col md:flex-row gap-8 items-center md:items-start">
+            <div class="w-32 h-32 md:w-40 md:h-40 bg-brand-bg rounded-2xl overflow-hidden shadow-inner flex items-center justify-center shrink-0 border-2 border-brand-accent/30">
+                <img src="Alan老師.jpg" alt="Alan Thewless 老師" class="w-full h-full object-cover">
+            </div>
+            <div class="space-y-4 flex-1 text-center md:text-left">
+                <h3 class="text-2xl font-bold text-brand-accent">Alan Thewless</h3>
+                <p class="text-sm text-brand-light leading-relaxed">
+                    出生於英國，2002年移居美國。將教育視為是一種療癒性的藝術而深入其中，並在近30年的時間裡，一直擔任華德福教師和特殊教育的老師。在美國完成人智學取向心理學（心智學）和音樂治療的學習。
+                </p>
+                <p class="text-sm text-brand-light leading-relaxed">
+                    30多年來，一直在研讀星智學，並定期在國際上就星智學和教育撰寫文章、並開設課程和舉辦講座。自2016年以來，每年編撰《聖夜日誌》，為聖誕節期的十二個夜晚提供沉思和紀錄的徑途。同時是一位里拉琴製琴師，並身兼莎士比亞信託委員會的專案檔案管理人，目前亦擔任人智學心理學協會的兼職教師。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. 適合這樣的你 -->
+    <section class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-brand-border space-y-6">
+        <h2 class="text-2xl font-bold text-brand-text border-l-4 border-brand-green pl-3">適合這樣的你</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-brand-bg p-6 rounded-xl border border-brand-border/60 space-y-2">
+                <span class="text-2xl">✨</span>
+                <h3 class="font-bold text-brand-accent">探索宇宙觀</h3>
+                <p class="text-sm text-brand-light leading-relaxed">對人智學、星智學、生命史和華德福教育背後的宇宙觀有興趣的夥伴。</p>
+            </div>
+            <div class="bg-brand-bg p-6 rounded-xl border border-brand-border/60 space-y-2">
+                <span class="text-2xl">🌱</span>
+                <h3 class="font-bold text-brand-accent">尋求內在支持</h3>
+                <p class="text-sm text-brand-light leading-relaxed">渴望在生活中尋找自然、溫柔、可持續之內在支持力量的你。</p>
+            </div>
+            <div class="bg-brand-bg p-6 rounded-xl border border-brand-border/60 space-y-2">
+                <span class="text-2xl">💛</span>
+                <h3 class="font-bold text-brand-accent">陪伴與助人者</h3>
+                <p class="text-sm text-brand-light leading-relaxed">陪伴孩子或從事助人工作、教育工作，希望拓展生命視野的同行者。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. 核心主題與文本脈絡 -->
+    <section class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-brand-border space-y-6">
+        <h2 class="text-2xl font-bold text-brand-text border-l-4 border-brand-green pl-3">核心主題與文本脈絡</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-brand-bg p-6 rounded-xl border border-brand-border/60 space-y-2">
+                <h3 class="font-bold text-brand-accent text-lg">⭐ 星智學帶狀課程</h3>
+                <p class="text-sm text-brand-light leading-relaxed">探索星體運行、人類身心靈發展，以及生命各階段的心魂道路。</p>
+            </div>
+            <div class="bg-brand-bg p-6 rounded-xl border border-brand-border/60 space-y-2">
+                <h3 class="font-bold text-brand-accent text-lg">🌟 星星的故事</h3>
+                <p class="text-sm text-brand-light leading-relaxed">透過神話與星空敘事，喚醒心魂深處的記憶與理解。</p>
+            </div>
+            <div class="bg-brand-bg p-6 rounded-xl border border-brand-border/60 space-y-2">
+                <h3 class="font-bold text-brand-accent text-lg">📚 《治療教育讀書會》</h3>
+                <p class="text-sm text-brand-light leading-relaxed">深入宏觀的宇宙智慧，落實在微觀的陪伴與療癒之中。</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- 6. 招生資訊三卡片（地點、費用、優惠） -->
+    <section class="space-y-6">
+        <h2 class="text-2xl font-bold text-brand-text border-l-4 border-brand-green pl-3">報名與場地資訊</h2>
+        
+        <div class="grid md:grid-cols-3 gap-6 items-stretch">
+            <!-- 卡片 1：上課地點 -->
+            <div class="bg-white p-6 rounded-xl border border-brand-border shadow-sm flex flex-col justify-between space-y-4">
+                <div class="space-y-4">
+                    <div>
+                        <div class="text-brand-accent font-bold text-xs tracking-wider uppercase mb-1">Location</div>
+                        <h3 class="text-xl font-bold text-brand-text mb-3">⭐ 上課地點</h3>
+                    </div>
+                    <div class="space-y-2 text-sm text-brand-light leading-relaxed">
+                        <p class="font-bold text-brand-text text-base">五芒星星親子共學園區大教室</p>
+                        <p class="text-sm text-brand-light">宜蘭縣三星鄉安農九路 560 號</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 卡片 2：活動費用 -->
+            <div class="bg-white p-6 rounded-xl border border-brand-border shadow-sm flex flex-col justify-between space-y-4">
+                <div class="space-y-4">
+                    <div>
+                        <div class="text-brand-accent font-bold text-xs tracking-wider uppercase mb-1">Tuition</div>
+                        <h3 class="text-xl font-bold text-brand-text mb-3">⭐ 費用與方案</h3>
+                    </div>
+                    <div class="space-y-2 text-sm text-brand-light leading-relaxed">
+                        <p><span class="font-bold text-brand-text">收費方式：</span>詳見報名表，各單堂／系列課程費用有所不同。</p>
+                        <p><span class="font-bold text-brand-text">身分優惠：</span>符合優惠身分者完成報名並繳費者享有身分優惠。</p>
+                        <p><span class="font-bold text-brand-text">早鳥優惠：</span>於規定日期前完成報名並繳費者享有早鳥優惠。</p>
+                        <p><span class="font-bold text-brand-text">雙重優惠：</span>同時符合優惠身分且於早鳥期限內繳費者，可享雙重疊加優惠！。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 卡片 3：優惠身分 -->
+            <div class="bg-white p-6 rounded-xl border border-brand-border shadow-sm flex flex-col justify-between space-y-4">
+                <div class="space-y-4">
+                    <div>
+                        <div class="text-brand-accent font-bold text-xs tracking-wider uppercase mb-1">Discounts</div>
+                        <h3 class="text-xl font-bold text-brand-text mb-3">⭐ 優惠身分</h3>
+                    </div>
+                    <div class="bg-brand-bg p-3.5 rounded-xl border border-brand-border/60 space-y-2">
+                        <p class="text-xs font-bold text-brand-text">適用對象：</p>
+                        <ul class="text-xs text-brand-light list-disc pl-4 space-y-1 leading-relaxed">
+                            <li>本協會會員</li>
+                            <li>現任五芒星星親子共學家長</li>
+                            <li>本協會主辦之治療教育讀書會成員</li>
+                            <li>去年星智學宜蘭工作坊成員</li>
+                        </ul>
+                    </div>
+                    <p class="text-xs text-brand-accent font-medium pt-1">
+                        💕 <strong>早鳥加優惠價：</strong>同時符合優惠身分且於早鳥期限內繳費者，可享雙重疊加優惠！
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- 8. 活動寫真（先前工作坊照片與講師照片呈現） -->
+    <section id="gallery" class="bg-white p-8 rounded-2xl shadow-sm border border-brand-border space-y-6">
+        <div class="text-center">
+            <h2 class="text-2xl font-bold text-brand-text mb-1">活動寫真</h2>
+            <p class="text-sm text-brand-light">工作坊與讀書會點滴記錄</p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <div class="aspect-video bg-brand-bg rounded-xl border border-brand-border overflow-hidden shadow-sm">
+                <img src="星星的故事.jpg" alt="Alan老師工作坊" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+            </div>
+            <div class="aspect-video bg-brand-bg rounded-xl border border-brand-border overflow-hidden shadow-sm">
+                <img src="獅子座.jpg" alt="工作坊花絮" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+            </div>
+            <div class="aspect-video bg-brand-bg rounded-xl border border-brand-border overflow-hidden shadow-sm">
+                <img src="雙子座.jpg" alt="共學園區" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+            </div>
+        </div>
+    </section>
+<!-- 5. 課程日程與安排 -->
+    <section class="bg-white p-8 rounded-2xl shadow-sm border border-brand-border space-y-6">
+        <div class="text-center max-w-2xl mx-auto space-y-2">
+            <h2 class="text-2xl font-bold text-brand-text">2026 年度課程日程與資訊</h2>
+<p class="text-xs text-brand-light bg-brand-bg p-3 rounded-lg border border-brand-border/60 leading-relaxed">
+    💡 <strong>貼心提醒：</strong>本課程約每年開設 1 至 2 次，確切時段依老師每年度抵台時間而定。<br>
+    課程皆附有中文翻譯，並可提供課程錄影回看。
+</p>
+        </div>
+
+        <div class="max-w-xl mx-auto space-y-3">
+            <div class="flex flex-col sm:flex-row sm:items-center p-4 bg-brand-bg rounded-xl border border-brand-border/60 gap-2 sm:gap-6 hover:border-brand-accent/40 transition-colors">
+                <div class="font-bold text-brand-accent text-sm sm:w-48 shrink-0 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-brand-accent"></span>
+                    12/05（五）、12/06（六）
+                </div>
+                <div class="text-sm text-brand-text font-medium pl-4 sm:pl-0">星智學帶狀課程工作坊</div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row sm:items-center p-4 bg-brand-bg rounded-xl border border-brand-border/60 gap-2 sm:gap-6 hover:border-brand-accent/40 transition-colors">
+                <div class="font-bold text-brand-accent text-sm sm:w-48 shrink-0 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-brand-accent"></span>
+                    12/08（一）
+                </div>
+                <div class="text-sm text-brand-text font-medium pl-4 sm:pl-0">星星的故事</div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row sm:items-center p-4 bg-brand-bg rounded-xl border border-brand-border/60 gap-2 sm:gap-6 hover:border-brand-accent/40 transition-colors">
+                <div class="font-bold text-brand-accent text-sm sm:w-48 shrink-0 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-brand-accent"></span>
+                    12/09（二）
+                </div>
+                <div class="text-sm text-brand-text font-medium pl-4 sm:pl-0">治療教育讀書會</div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row sm:items-center p-4 bg-brand-bg rounded-xl border border-brand-border/60 gap-2 sm:gap-6 hover:border-brand-accent/40 transition-colors">
+                <div class="font-bold text-brand-accent text-sm sm:w-48 shrink-0 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-brand-accent"></span>
+                    12/10（三）
+                </div>
+                <div class="text-sm text-brand-text font-medium pl-4 sm:pl-0">十二聖夜</div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row sm:items-center p-4 bg-brand-bg rounded-xl border border-brand-border/60 gap-2 sm:gap-6 hover:border-brand-accent/40 transition-colors">
+                <div class="font-bold text-brand-accent text-sm sm:w-48 shrink-0 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-brand-accent"></span>
+                    12/12（五）、12/13（六）
+                </div>
+                <div class="text-sm text-brand-text font-medium pl-4 sm:pl-0">帕西法爾</div>
+            </div>
+        </div>
+
+        <div class="text-center pt-2">
+            <p class="text-xs text-brand-light font-medium">追蹤最新消息：當期開課資訊與詳細日程公布後，將同步開放線上報名。誠摯邀請關注我們的最新動態，以免錯過難得的相遇。</p>
+        </div>
+    </section>
+
+
+    <!-- 9. 行動呼籲與諮詢 CTA 區塊 -->
+    <section class="pt-4 flex flex-col items-center text-center space-y-4">
+        <p class="text-sm md:text-base text-brand-light">
+            對課程內容有任何疑問，或想了解更多詳情？歡迎隨時與我們聯繫交流
+        </p>
+        
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
+            <!-- LINE 官方諮詢按鈕 -->
+            <a href="[https://lin.ee/ZEibS6w](https://lin.ee/ZEibS6w)" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#06C755] hover:bg-[#05b04b] text-white text-base md:text-lg px-8 py-3.5 rounded-full font-bold transition-all shadow-md hover:shadow-lg">
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                    <path d="M24 10.304c0-5.369-5.383-9.738-12-9.738-6.616 0-12 4.369-12 9.738 0 4.814 4.269 8.846 10.019 9.608.391.084.922.258 1.057.592.121.303.079.778.039 1.085l-.171 1.027c-.053.303-.242 1.186 1.039.647 1.281-.54 6.911-4.069 9.428-6.967 1.739-1.907 2.589-3.843 2.589-5.292z"/>
+                </svg>
+                LINE 官方諮詢
+            </a>
+
+            <!-- 立即報名按鈕 -->
+            <a href="alan-register.html" 
+               class="w-full sm:w-auto inline-block bg-[#D97736] hover:bg-[#C26325] text-white text-base md:text-lg px-8 py-3.5 rounded-full font-bold transition-all shadow-md hover:shadow-lg">
+                立即線上報名
+            </a>
+        </div>
+    </section>
+
+</main>
+
+<!-- 頁尾 Footer -->
+<footer class="bg-brand-text text-white/80 py-8 px-6 text-center text-xs space-y-2 border-t border-brand-border mt-12">
+    <p class="font-medium text-white">社團法人台灣華德福親子共學協會</p>
+    <p>五芒星星親子共學園</p>
+    <p>地址：宜蘭縣三星鄉安農九路 560 號</p>
+    <p class="pt-2 text-white/50">© 台灣華德福親子共學協會 All Rights Reserved.</p>
+</footer>
+
+<!-- 行動選單開關 JS -->
+<script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const line1 = document.getElementById('line1');
+    const line2 = document.getElementById('line2');
+    const line3 = document.getElementById('line3');
+
+    menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('open');
+        if (mobileMenu.classList.contains('open')) {
+            line1.style.transform = 'translateY(7px) rotate(45deg)';
+            line2.style.opacity = '0';
+            line3.style.transform = 'translateY(-7px) rotate(-45deg)';
+        } else {
+            line1.style.transform = 'none';
+            line2.style.opacity = '1';
+            line3.style.transform = 'none';
+        }
+    });
+
+    const menuLinks = mobileMenu.querySelectorAll('a');
+    menuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            line1.style.transform = 'none';
+            line2.style.opacity = '1';
+            line3.style.transform = 'none';
+        });
+    });
+</script>
+
+```
