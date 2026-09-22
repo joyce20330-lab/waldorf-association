@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>療育團隊 - 社團法人台灣華德福親子共學協會</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: '#fcf9f2',
+                            text: '#5d4e43',
+                            accent: '#d97746',
+                            green: '#5b8266',
+                            border: '#e5e0dc',
+                            light: '#8A7B6F'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Helvetica Neue"', 'Arial', '"Microsoft JhengHei"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { -webkit-font-smoothing: antialiased; }
+        .hero-bg { background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), url('彩虹底圖.jfif') center/cover no-repeat; }
+        #mobile-menu { transition: all 0.3s ease-in-out; max-height: 0; overflow: hidden; opacity: 0; }
+        #mobile-menu.open { max-height: 400px; opacity: 1; padding-top: 1rem; padding-bottom: 1rem; }
+    </style>
+</head>
+<body class="bg-brand-bg text-brand-text min-h-screen flex flex-col font-sans">
+    
+    <!-- 導覽列 -->
+    <nav class="flex justify-between items-center px-6 md:px-[8%] py-5 border-b border-brand-border bg-brand-bg sticky top-0 z-50 shadow-sm">
+        <div class="font-medium text-lg tracking-wide text-brand-text hover:text-brand-accent transition-colors">
+            <a href="index.html">社團法人台灣華德福親子共學協會</a>
+        </div>
+
+        <div class="hidden md:flex gap-8 items-center">
+            <a href="https://taiwanwaldorf.com/" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">首頁</a>
+            <a href="news.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">最新消息</a>
+            <a href="about.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">協會緣起</a>
+            <a href="services.html" class="text-sm font-medium text-brand-accent font-bold transition-colors">服務項目</a>
+            <a href="events.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">活動報名</a>
+            <a href="contact.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">聯絡我們</a>
+        </div>
+
+        <button id="menu-btn" class="md:hidden flex flex-col gap-[5px] p-2 focus:outline-none" aria-label="Toggle Menu">
+            <span id="line1" class="w-6 h-[2px] bg-brand-text block transition-transform duration-300 origin-center"></span>
+            <span id="line2" class="w-6 h-[2px] bg-brand-text block transition-opacity duration-300"></span>
+            <span id="line3" class="w-6 h-[2px] bg-brand-text block transition-transform duration-300 origin-center"></span>
+        </button>
+    </nav>
+
+    <!-- 手機版選單 -->
+    <div id="mobile-menu" class="md:hidden bg-brand-bg border-b border-brand-border absolute w-full z-40 top-[73px] shadow-lg flex flex-col items-center gap-4">
+        <a href="https://taiwanwaldorf.com/" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">首頁</a>
+        <a href="news.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">最新消息</a>
+        <a href="about.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">協會緣起</a>
+        <a href="services.html" class="w-full text-center py-2 text-brand-accent font-bold">服務項目</a>
+        <a href="events.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">活動報名</a>
+        <a href="contact.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">聯絡我們</a>
+    </div>
+
+    <!-- 首頁橫幅 Header -->
+    <header class="hero-bg py-24 px-6 flex justify-center items-center shadow-inner">
+        <div class="text-center max-w-4xl space-y-4">
+            <h1 class="text-2xl md:text-4xl font-bold text-white drop-shadow-md tracking-wider">
+                療育團隊
+            </h1>
+            <p class="text-lg md:text-xl font-medium text-white/95 drop-shadow">
+                帶著深層的承載、理解與轉化力量，看見孩子發展的結節，陪伴受挫的身心走向重生
+            </p>
+        </div>
+    </header>
+
+    <!-- 主要內容區塊 -->
+    <main class="max-w-6xl mx-auto px-6 py-12 space-y-12 flex-1 w-full">
+        
+        <!-- 1. 緣起與理念區塊 -->
+        <section class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-brand-border space-y-8">
+            <div class="space-y-3">
+                <h2 class="text-2xl md:text-3xl font-bold text-brand-green flex items-center gap-2">
+                    <span>🌿</span> 從自然中，看見成長的療育力
+                </h2>
+                <div class="w-12 h-1 bg-brand-accent rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-brand-bg p-6 rounded-xl border border-brand-border/60 space-y-3">
+                    <h3 class="font-bold text-brand-accent text-lg flex items-center gap-2">
+                        <span>🌱</span> 【緣起：一段自然啟發的旅程】
+                    </h3>
+                    <p class="text-sm text-brand-light leading-relaxed">
+                        2013 年，曉霓老師於美國加州全戶外華德福幼兒園實習，親見大自然如何療癒孩子、激發免疫力與生命力。受《失落山林的孩子》啟發，決心將這份自然教育的種子帶回台灣。
+                    </p>
+                </div>
+
+                <div class="bg-brand-bg p-6 rounded-xl border border-brand-border/60 space-y-3">
+                    <h3 class="font-bold text-brand-accent text-lg flex items-center gap-2">
+                        <span>🏡</span> 【耕耘：社群的力量】
+                    </h3>
+                    <p class="text-sm text-brand-light leading-relaxed">
+                        2020 年，我們共同創立了協會。從柚子園到安農溪畔，我們致力於營造四季更迭的學習環境，透過照顧土地、季節節慶與農作手作，與家長孩子共築生活的節奏。
+                    </p>
+                </div>
+            </div>
+
+            <blockquote class="border-l-4 border-brand-accent pl-4 italic text-brand-light text-sm md:text-base space-y-2 bg-brand-bg/50 p-4 rounded-r-xl">
+                <p class="font-medium text-brand-text">「我們不僅是共學園，更是支持身心靈成長的溫暖後盾。」</p>
+                <p class="text-xs text-brand-accent font-bold tracking-wider">~共學．共享．共好．共有~</p>
+            </blockquote>
+        </section>
+
+        <!-- 2. 家長常見問答 (Q&A) 區塊 -->
+        <section class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-brand-border space-y-8">
+            <div class="space-y-3 text-center md:text-left">
+                <h2 class="text-2xl md:text-3xl font-bold text-brand-green flex items-center gap-2">
+                    <span>💡</span> 常見問答：我們如何陪伴孩子與家庭？
+                </h2>
+                <div class="w-12 h-1 bg-brand-accent rounded-full mx-auto md:mx-0"></div>
+            </div>
+
+            <div class="space-y-6">
+                <!-- Q1 -->
+                <div class="bg-brand-bg p-6 rounded-xl border border-brand-border/60 space-y-3">
+                    <h3 class="font-bold text-brand-text text-base md:text-lg flex items-start gap-2">
+                        <span class="text-brand-accent">Q1：</span> 
+                        <span>當我覺得孩子在學習或生活上卡關了，我們第一步可以怎麼開始？</span>
+                    </h3>
+                    <div class="text-sm text-brand-light leading-relaxed pl-6 space-y-2">
+                        <p>面對孩子的狀況，家長往往是最辛苦、也最孤單的。我們建議的第一步是預約 <strong class="text-brand-text">「治療教育諮詢與陪伴」</strong> 或 <strong class="text-brand-text">「輔正教育諮詢與陪伴」</strong>。</p>
+                        <ul class="list-disc pl-4 space-y-1 text-xs md:text-sm">
+                            <li>如果孩子主要是特定學習、專注力、感官統合或節奏上遇到卡關，<strong>輔正教育諮詢</strong>能提供具體、針對性的支持。</li>
+                            <li>如果孩子的身心發展、情緒或整體狀態需要更深層的陪伴，<strong>治療教育諮詢</strong>則會從全人、長遠的眼光來和您一起看見孩子的需求。</li>
+                        </ul>
+                        <p class="text-xs text-brand-accent pt-1">在這裡，您不需要獨自摸索，我們會先聽聽您的擔憂，陪您釐清孩子現階段最需要的支持是什麼。</p>
+                    </div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="bg-brand-bg p-6 rounded-xl border border-brand-border/60 space-y-3">
+                    <h3 class="font-bold text-brand-text text-base md:text-lg flex items-start gap-2">
+                        <span class="text-brand-accent">Q2：</span> 
+                        <span>老師或我們發現孩子狀況比較複雜，團隊是如何一起幫忙孩子的？</span>
+                    </h3>
+                    <p class="text-sm text-brand-light leading-relaxed pl-6">
+                        當孩子的狀況需要更立體、多面向的解讀時，我們的<strong class="text-brand-text">「療育團隊」</strong>就會集結。這是一支跨領域的專業團隊，成員涵蓋輔正教育、藝術治療、親子共學、課後照顧與人智醫學校醫。我們不只看見孩子的行為，更看見他們發展過程中的「結節」與內在需求，為受挫的身心尋找溫柔的解方。
+                    </p>
+                </div>
+
+                <!-- Q3 -->
+                <div class="bg-brand-bg p-6 rounded-xl border border-brand-border/60 space-y-3">
+                    <h3 class="font-bold text-brand-text text-base md:text-lg flex items-start gap-2">
+                        <span class="text-brand-accent">Q3：</span> 
+                        <span>什麼是「兒童研討（含兒童觀察）」？這對孩子或家長有什麼幫助？</span>
+                    </h3>
+                    <p class="text-sm text-brand-light leading-relaxed pl-6">
+                        這是人智學教育中非常珍貴的一種支持方式。當孩子在學校或家中遇到長期無法突破的困境時，團隊會透過一段時間的<strong class="text-brand-text">「兒童觀察」</strong>，並召開<strong class="text-brand-text">「兒童研討」</strong>會議。陪伴孩子的老師、治療師與專業夥伴會聚在一起，放下批判、純粹而深刻地去「閱讀」這個孩子。透過集體智慧的交織，我們常能看見孩子行為背後隱藏的訊息與天賦，進而為孩子找到一條最適合他的轉化與陪伴之路。
+                    </p>
+                </div>
+
+                <!-- Q4 -->
+                <div class="bg-brand-bg p-6 rounded-xl border border-brand-border/60 space-y-3">
+                    <h3 class="font-bold text-brand-text text-base md:text-lg flex items-start gap-2">
+                        <span class="text-brand-accent">Q4：</span> 
+                        <span>請問協會的服務中，也有結合醫療或醫師的專業觀點嗎？</span>
+                    </h3>
+                    <p class="text-sm text-brand-light leading-relaxed pl-6">
+                        有的。在孩子的發展歷程中，身體的節奏與生理狀況往往與心理、學習息息相關。我們提供<strong class="text-brand-text">「校醫諮詢」</strong>服務，將人智醫學的觀點帶入支持系統中。當家長對孩子的體質、睡眠、生長節奏或健康有疑慮時，校醫能從宏觀、身心靈整合的角度給予專業的評估與建議，與教育支持相輔相成。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 療育團隊成員介紹 -->
+        <section id="teachers" class="space-y-6">
+            <div class="text-center space-y-1">
+                <h2 class="text-2xl md:text-3xl font-bold text-brand-text">我們的療育支持團隊</h2>
+                <p class="text-sm text-brand-light">陪伴孩子與家庭走過每段成長與轉化的專業夥伴</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- 陳曉霓老師 -->
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-brand-border space-y-4">
+                    <div class="flex items-center gap-4 border-b border-brand-border/60 pb-4">
+                        <div class="w-16 h-16 bg-brand-bg rounded-full overflow-hidden shadow-inner flex items-center justify-center shrink-0 border-2 border-brand-accent/30 font-bold text-brand-accent">
+                            曉霓
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-brand-accent">陳曉霓 老師</h3>
+                            <p class="text-xs text-brand-light">輔正教育 / 親職教養諮詢</p>
+                        </div>
+                    </div>
+                    <div class="space-y-3 text-sm text-brand-light">
+                        <div>
+                            <p class="font-bold text-brand-text text-xs mb-1 uppercase tracking-wider">現任</p>
+                            <p class="text-xs leading-relaxed">社團法人台灣華德福親子共學 理事｜五芒星星親子共學園 協同帶領老師｜親職教養諮詢 / 治療教育讀書會 帶領人｜Extra Lesson支持教育輔正教育老師｜華德福輔正教育 講師</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-brand-text text-xs mb-1 uppercase tracking-wider">專業背景</p>
+                            <p class="text-xs leading-relaxed">創辦人暨理事長（2020-2026）｜宜蘭慈心華德福幼兒園六年主帶經驗｜台灣四年制治療教育與社會治療學程認證｜美國 Rudolf Steiner College 支持教育輔正教育學程認證、華德福幼教師資培訓認證｜空間動力 (Spatial Dynamics) 一階課程結業</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 張荷月老師 -->
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-brand-border space-y-4">
+                    <div class="flex items-center gap-4 border-b border-brand-border/60 pb-4">
+                        <div class="w-16 h-16 bg-brand-bg rounded-full overflow-hidden shadow-inner flex items-center justify-center shrink-0 border-2 border-brand-accent/30 font-bold text-brand-accent">
+                            荷月
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-brand-accent">張荷月 老師</h3>
+                            <p class="text-xs text-brand-light">藝術治療 / 空間設計</p>
+                        </div>
+                    </div>
+                    <div class="space-y-3 text-sm text-brand-light">
+                        <div>
+                            <p class="font-bold text-brand-text text-xs mb-1 uppercase tracking-wider">現任</p>
+                            <p class="text-xs leading-relaxed">社團法人台灣華德福親子共學協會 創辦人暨常務理事｜五芒星星親子共學園 藝術老師｜若為自由有限公司 藝術總監｜治療教育讀書會 藝術帶領人｜華德福藝術課程 講師｜兒童藝術療育與深度陪伴者｜日月荷堂工作室 創辦人暨負責人</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-brand-text text-xs mb-1 uppercase tracking-wider">專業背景</p>
+                            <p class="text-xs leading-relaxed">台灣四年制治療教育與社會治療學程認證｜臺灣華德福教育師資養成課程結業｜空間動力 (Spatial Dynamics) 一階課程｜人智學藝術治療課程、台灣星智學帶狀課程 研修中</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 丁旋老師 -->
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-brand-border space-y-4">
+                    <div class="flex items-center gap-4 border-b border-brand-border/60 pb-4">
+                        <div class="w-16 h-16 bg-brand-bg rounded-full overflow-hidden shadow-inner flex items-center justify-center shrink-0 border-2 border-brand-accent/30 font-bold text-brand-accent">
+                            丁旋
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-brand-accent">丁旋 老師</h3>
+                            <p class="text-xs text-brand-light">親子共學 / 課後生活工坊</p>
+                        </div>
+                    </div>
+                    <div class="space-y-3 text-sm text-brand-light">
+                        <div>
+                            <p class="font-bold text-brand-text text-xs mb-1 uppercase tracking-wider">現任</p>
+                            <p class="text-xs leading-relaxed">社團法人台灣華德福親子共學 常務理事｜五芒星星親子共學園 帶領老師｜星禾課後照顧老師</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-brand-text text-xs mb-1 uppercase tracking-wider">專業背景</p>
+                            <p class="text-xs leading-relaxed">宜蘭慈心華德福幼兒園14年教學經驗｜居家到府保母｜臺灣華德福教育師資養成課程認證｜國際學士後人智醫學培訓 (IPMT) 五年結業｜台灣四年制治療教育與社會治療學程、生命史課程、人智學、星智學帶狀課程 研修中</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 志懋醫師 -->
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-brand-border space-y-4">
+                    <div class="flex items-center gap-4 border-b border-brand-border/60 pb-4">
+                        <div class="w-16 h-16 bg-brand-bg rounded-full overflow-hidden shadow-inner flex items-center justify-center shrink-0 border-2 border-brand-accent/30 font-bold text-brand-accent">
+                            志懋
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-brand-accent">志懋 醫師</h3>
+                            <p class="text-xs text-brand-light">人智醫學校醫諮詢</p>
+                        </div>
+                    </div>
+                    <div class="space-y-3 text-sm text-brand-light">
+                        <div>
+                            <p class="font-bold text-brand-text text-xs mb-1 uppercase tracking-wider">現任</p>
+                            <p class="text-xs leading-relaxed">療育團隊 校醫</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-brand-text text-xs mb-1 uppercase tracking-wider">專業角色</p>
+                            <p class="text-xs leading-relaxed">將人智醫學觀點帶入教育與陪伴系統，從宏觀、身心靈整合的角度，為孩子與家長提供生長節奏與健康評估諮詢。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. 行動呼籲與諮詢 CTA 區塊 -->
+        <section class="pt-6 flex flex-col items-center text-center space-y-4 bg-white p-8 rounded-2xl shadow-sm border border-brand-border">
+            <h3 class="text-xl font-bold text-brand-text">準備好為孩子跨出第一步了嗎？</h3>
+            <p class="text-sm md:text-base text-brand-light max-w-xl">
+                我們隨時在這裡，陪您和孩子一起看見發展的結節，找回安定的節奏與力量。
+            </p>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto pt-2">
+                <!-- LINE 官方諮詢按鈕 -->
+                <a href="https://lin.ee/ZEibS6w" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#06C755] hover:bg-[#05b04b] text-white text-base md:text-lg px-8 py-3.5 rounded-full font-bold transition-all shadow-md hover:shadow-lg">
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                        <path d="M24 10.304c0-5.369-5.383-9.738-12-9.738-6.616 0-12 4.369-12 9.738 0 4.814 4.269 8.846 10.019 9.608.391.084.922.258 1.057.592.121.303.079.778.039 1.085l-.171 1.027c-.053.303-.242 1.186 1.039.647 1.281-.54 6.911-4.069 9.428-6.967 1.739-1.907 2.589-3.843 2.589-5.292z"/>
+                    </svg>
+                    LINE 官方諮詢
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 頁尾 Footer -->
+    <footer class="bg-brand-text text-white/80 py-8 px-6 text-center text-xs space-y-2 border-t border-brand-border mt-12">
+        <p class="font-medium text-white">社團法人台灣華德福親子共學協會</p>
+        <p>五芒星星親子共學園</p>
+        <p>地址：宜蘭縣三星鄉安農九路 560 號</p>
+        <p class="pt-2 text-white/50">© 台灣華德福親子共學協會 All Rights Reserved.</p>
+    </footer>
+
+    <!-- 行動選單開關 JS -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const line1 = document.getElementById('line1');
+        const line2 = document.getElementById('line2');
+        const line3 = document.getElementById('line3');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+            if (mobileMenu.classList.contains('open')) {
+                line1.style.transform = 'translateY(7px) rotate(45deg)';
+                line2.style.opacity = '0';
+                line3.style.transform = 'translateY(-7px) rotate(-45deg)';
+            } else {
+                line1.style.transform = 'none';
+                line2.style.opacity = '1';
+                line3.style.transform = 'none';
+            }
+        });
+
+        const menuLinks = mobileMenu.querySelectorAll('a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                line1.style.transform = 'none';
+                line2.style.opacity = '1';
+                line3.style.transform = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
