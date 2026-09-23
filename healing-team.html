@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>療育團隊 - 社團法人台灣華德福親子共學協會</title>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>療育團隊與諮詢服務    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -75,7 +73,7 @@
                 療育團隊
             </h1>
             <p class="text-lg md:text-xl font-medium text-white/95 drop-shadow">
-                帶著深層的承載、理解與轉化力量，看見孩子發展的結節，陪伴受挫的身心走向重生
+                帶著深層的承載、理解與轉化力量，看見孩子發展的結節，陪伴身心靈走向重生
             </p>
         </div>
     </header>
@@ -118,6 +116,62 @@
             </blockquote>
         </section>
 
+        <!-- 新增：三大核心諮詢服務導覽卡片區塊 -->
+        <section class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-brand-border space-y-6">
+            <div class="space-y-3 text-center md:text-left">
+                <h2 class="text-2xl md:text-3xl font-bold text-brand-green flex items-center gap-2">
+                    <span>🧭</span> 選擇適合您的諮詢服務
+                </h2>
+                <div class="w-12 h-1 bg-brand-accent rounded-full mx-auto md:mx-0"></div>
+                <p class="text-sm text-brand-light">針對不同的需求與卡關狀態，我們提供三個核心諮詢與陪伴方向：</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 pt-2">
+                <!-- 服務 1 -->
+                <div class="bg-brand-bg p-6 rounded-xl border border-brand-border/60 flex flex-col justify-between space-y-4">
+                    <div class="space-y-3">
+                        <span class="text-2xl">👨‍👩‍👧‍👦</span>
+                        <h3 class="font-bold text-brand-text text-lg">親子關係諮詢與陪伴</h3>
+                        <p class="text-xs text-brand-light leading-relaxed">
+                            結合治療教育、輔正教育、護理師、華德福教育與藝術治療等多領域視角，共同評估親子互動狀況，給予具體建議並提供必要的轉介支持。
+                        </p>
+                    </div>
+                    <!-- 若有獨立網頁可填入 href="family-consultation.html" -->
+                    <a href="family-consultation.html" class="inline-block text-center bg-brand-accent hover:bg-brand-accent/90 text-white text-xs font-bold py-2 px-4 rounded-lg transition-colors">
+                        了解詳情
+                    </a>
+                </div>
+
+                <!-- 服務 2 -->
+                <div class="bg-brand-bg p-6 rounded-xl border border-brand-border/60 flex flex-col justify-between space-y-4">
+                    <div class="space-y-3">
+                        <span class="text-2xl">🌿</span>
+                        <h3 class="font-bold text-brand-text text-lg">治療教育諮詢與陪伴</h3>
+                        <p class="text-xs text-brand-light leading-relaxed">
+                            從全人、長遠眼光照顧孩子的心魂，看見生命內在的完美計畫。評估後可進一步參與五芒星星戶外共學的長期陪伴。
+                        </p>
+                    </div>
+                    <a href="curative-education.html" class="inline-block text-center bg-brand-accent hover:bg-brand-accent/90 text-white text-xs font-bold py-2 px-4 rounded-lg transition-colors">
+                        了解詳情
+                    </a>
+                </div>
+
+                <!-- 服務 3 -->
+                <div class="bg-brand-bg p-6 rounded-xl border border-brand-border/60 flex flex-col justify-between space-y-4">
+                    <div class="space-y-3">
+                        <span class="text-2xl">✏️</span>
+                        <h3 class="font-bold text-brand-text text-lg">輔正教育諮詢與陪伴</h3>
+                        <p class="text-xs text-brand-light leading-relaxed">
+                            針對特定學習、專注力、感官統合或節奏卡關，從身體發展基礎出發，提供 Extra Lesson 評估與一對一陪伴。
+                        </p>
+                    </div>
+                    <a href="extra-lesson.html" class="inline-block text-center bg-brand-accent hover:bg-brand-accent/90 text-white text-xs font-bold py-2 px-4 rounded-lg transition-colors">
+                        了解詳情
+                    </a>
+                </div>
+            </div>
+        </section>
+
         <!-- 2. 家長常見問答 (Q&A) 區塊 -->
         <section class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-brand-border space-y-8">
             <div class="space-y-3 text-center md:text-left">
@@ -128,7 +182,7 @@
             </div>
 
             <div class="space-y-6">
-<!-- Q1 -->
+                <!-- Q1 -->
                 <div class="bg-brand-bg p-6 rounded-xl border border-brand-border/60 space-y-3">
                     <h3 class="font-bold text-brand-text text-base md:text-lg flex items-start gap-2">
                         <span class="text-brand-accent">Q1：</span> 
@@ -136,20 +190,12 @@
                     </h3>
                     <div class="text-sm text-brand-light leading-relaxed pl-6 space-y-2">
                         <p>
-                            面對孩子的狀況，家長往往是最辛苦、也最孤單的。我們建議的第一步是預約 
-                            <a href="curative-education.html" class="text-brand-accent font-bold hover:underline">「治療教育諮詢與陪伴」</a> 
-                            或 
-                            <a href="extra-lesson.html" class="text-brand-accent font-bold hover:underline">「輔正教育諮詢與陪伴」</a>。
+                            面對孩子的狀況，家長往往是最辛苦、也最孤單的。我們建議的第一步是預約：
                         </p>
                         <ul class="list-disc pl-4 space-y-1 text-xs md:text-sm">
-                            <li>如果孩子主要是特定學習、專注力、感官統合或節奏上遇到卡關，
-                                <a href="extra-lesson.html" class="font-bold text-brand-text hover:text-brand-accent hover:underline"><strong>輔正教育諮詢</strong></a>
-                                能提供具體、針對性的支持。
-                            </li>
-                            <li>如果孩子的身心發展、情緒或整體狀態需要更深層的陪伴，
-                                <a href="curative-education.html" class="font-bold text-brand-text hover:text-brand-accent hover:underline"><strong>治療教育諮詢</strong></a>
-                                則會從全人、長遠的眼光來和您一起看見孩子的需求。
-                            </li>
+                            <li>若想全面了解親子互動與跨領域專業評估，可預約 <a href="family-consultation.html" class="text-brand-accent font-bold hover:underline"><strong>「親子關係諮詢與陪伴」</strong></a>。</li>
+                            <li>若孩子身心發展、情緒或整體狀態需要深層心魂照顧，可預約 <a href="curative-education.html" class="text-brand-accent font-bold hover:underline"><strong>「治療教育諮詢與陪伴」</strong></a>。</li>
+                            <li>若孩子在特定學習、專注力、感官統合或節奏上遇到卡關，可預約 <a href="extra-lesson.html" class="text-brand-accent font-bold hover:underline"><strong>「輔正教育諮詢與陪伴」</strong></a>。</li>
                         </ul>
                         <p class="text-xs text-brand-accent pt-1">在這裡，您不需要獨自摸索，我們會先聽聽您的擔憂，陪您釐清孩子現階段最需要的支持是什麼。</p>
                     </div>
@@ -162,7 +208,7 @@
                         <span>老師或我們發現孩子狀況比較複雜，團隊是如何一起幫忙孩子的？</span>
                     </h3>
                     <p class="text-sm text-brand-light leading-relaxed pl-6">
-                        當孩子的狀況需要更立體、多面向的解讀時，我們的<strong class="text-brand-text">「療育團隊」</strong>就會集結。這是一支跨領域的專業團隊，成員涵蓋輔正教育、藝術治療、親子共學、課後照顧與人智醫學校醫。我們不只看見孩子的行為，更看見他們發展過程中的「結節」與內在需求，為受挫的身心尋找溫柔的解方。
+                        當孩子的狀況需要更立體、多面向的解讀時，我們的<strong class="text-brand-text">「療育團隊」</strong>就會集結。這是一支跨領域的專業團隊，成員涵蓋輔正教育、藝術治療、護理師、華德福老師與人智醫學校醫。我們不只看見孩子的行為，更看見他們發展過程中的「結節」與內在需求，為受挫的身心尋找溫柔的解方。
                     </p>
                 </div>
 
@@ -170,11 +216,20 @@
                 <div class="bg-brand-bg p-6 rounded-xl border border-brand-border/60 space-y-3">
                     <h3 class="font-bold text-brand-text text-base md:text-lg flex items-start gap-2">
                         <span class="text-brand-accent">Q3：</span> 
-                        <span>什麼是「兒童研討（含兒童觀察）」？這對孩子或家長有什麼幫助？</span>
+                        <span>當孩子在成長或親子互動中遇到困境時，團隊如何協助我們？</span>
                     </h3>
-                    <p class="text-sm text-brand-light leading-relaxed pl-6">
-                        這是人智學教育中非常珍貴的一種支持方式。當孩子在學校或家中遇到長期無法突破的困境時，團隊會透過一段時間的<strong class="text-brand-text">「兒童觀察」</strong>，並召開<strong class="text-brand-text">「兒童研討」</strong>會議。陪伴孩子的老師、治療師與專業夥伴會聚在一起，放下批判、純粹而深刻地去「閱讀」這個孩子。透過集體智慧的交織，我們常能看見孩子行為背後隱藏的訊息與天賦，進而為孩子找到一條最適合他的轉化與陪伴之路。
-                    </p>
+                    <div class="text-sm text-brand-light leading-relaxed pl-6 space-y-3">
+                        <p>
+                            我們提供<strong class="text-brand-text">「親子關係諮詢與陪伴」</strong>服務。團隊結合了治療教育老師、輔正教育老師、護理師、華德福老師與藝術治療老師的專業視角，共同來評估親子的實際狀況與需求，給予溫暖且具體的建議；若評估有進一步的專業需求，我們也會協助轉介給合適的專業人員。
+                        </p>
+                        <p>
+                            為了給予家庭更穩健的長遠支持，我們目前也正逐步推動以下發展計畫：
+                        </p>
+                        <ul class="list-disc pl-4 space-y-1 text-xs md:text-sm">
+                            <li><strong>短程發展：</strong>以輔正教育為主的兒童評估，並同步發展醫學兒研的資源。</li>
+                            <li><strong>中程發展：</strong>逐步建立醫學兒研的協會團隊，深化整體的支持網絡。</li>
+                        </ul>
+                    </div>
                 </div>
 
                 <!-- Q4 -->
