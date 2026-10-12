@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>生活藝術 秋天的手工課 - 線上報名</title>
+    <title>生活藝術 秋天的星星 - 線上報名</title>
     <style>
         body { font-family: "Microsoft JhengHei", "PingFang TC", sans-serif; background-color: #fdfaf5; padding: 40px 20px; color: #333; line-height: 1.6; }
         .container { max-width: 680px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); }
@@ -17,6 +17,38 @@
             font-family: inherit;
         }
 
+        /* 複選方框群組樣式 */
+        .checkbox-group {
+            display: grid;
+            gap: 10px;
+            background-color: #fcf9f2;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e5e0dc;
+        }
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-size: 0.95em;
+            color: #5d4e43;
+            font-weight: 500;
+        }
+        .checkbox-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            margin-right: 10px;
+            accent-color: #d97746;
+        }
+        .select-all-box {
+            border-bottom: 1px dashed #d3c8be;
+            padding-bottom: 10px;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #d97746;
+        }
+
         .fee-display-box {
             margin-top: 20px;
             padding: 16px 20px;
@@ -26,12 +58,6 @@
             font-weight: bold;
             color: #5d4e43;
             font-size: 1.05em;
-        }
-        .fee-amount { 
-            color: #d97746; 
-            font-size: 1.4em; 
-            margin: 0 4px;
-            text-decoration: underline;
         }
         .fee-breakdown { font-size: 0.85em; color: #8A7B6F; margin-top: 4px; font-weight: normal; }
 
@@ -73,7 +99,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>生活藝術 秋天的手工課 - 線上報名</h1>
+        <h1>生活藝術 秋天的星星 - 線上報名</h1>
 
         <form id="registrationForm">
             
@@ -94,55 +120,48 @@
             
             <div class="form-group">
                 <label for="line">LINE ID</label>
-                <input type="text" id="line" name="line" placeholder="請私訊官方帳號，方便對帳與課前聯繫" required>
+                <input type="text" id="line" name="line" placeholder="請私訊官方帳號，方便課前聯繫" required>
+            </div>
+
+            <!-- 報名場次複選區 -->
+            <div class="form-group">
+                <label>報名場次選擇（可複選）</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-item select-all-box">
+                        <input type="checkbox" id="selectAll"> ⭐ 【一鍵全參與】勾選全部四場次
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="session" value="10/15 星期四上午主題課" data-type="morning"> 10/15 (四) 上午主題課（含材料包 50元）
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="session" value="10/15 星期四下午興趣班" data-type="afternoon"> 10/15 (四) 下午興趣班（自備材料）
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="session" value="10/22 星期四上午主題課" data-type="morning"> 10/22 (四) 上午主題課（含材料包 50元）
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="session" value="10/22 星期四下午興趣班" data-type="afternoon"> 10/22 (四) 下午興趣班（自備材料）
+                    </label>
+                </div>
             </div>
 
             <!-- 費用即時試算區 -->
             <div class="form-group">
                 <div class="fee-display-box">
-                    應繳總費用：NT$ <span id="feeAmountDisplay" class="fee-amount">1,100</span> 元
-                    <div id="feeBreakdown" class="fee-breakdown">包含秋季手工課三週單元 (NT$ 900) ＋ 材料費 (NT$ 200)</div>
+                    <span id="feeDescriptionDisplay">請勾選上方欲參加的場次</span>
+                    <div id="feeBreakdown" class="fee-breakdown">現場繳費（依勾選場次計算：場地費每場 200 元 ＋ 講師費隨喜 ＋ 主題課材料包每份 50 元）</div>
                 </div>
-                <input type="hidden" id="calculatedFee" name="calculatedFee" value="1100">
-            </div>
-
-            <!-- 匯款後五碼 -->
-            <div class="form-group">
-                <label for="transferCode">匯款帳號後五碼</label>
-                <input type="text" id="transferCode" name="transferCode" placeholder="請填寫匯款後五碼" required>
-            </div>    
-
-            <!-- 收據開立 -->
-            <div class="form-group">
-                <label for="receiptOption">收據開立需求</label>
-                <select id="receiptOption" name="receiptOption" required>
-                    <option value="">請選擇</option>
-                    <option value="我需要開收據，現場領取">我需要開收據，現場領取</option>
-                    <option value="我不需要開收據">我不需要開收據</option>
-                </select>
             </div>
 
             <!-- 提醒事項與同意規範 -->
             <div class="notice-section">
-                <div class="notice-title">🌻 收費標準、退費規範與注意事項</div>
+                <div class="notice-title">🌻 課程說明、注意事項與規範</div>
                 <div class="notice-content">
-                    <p><strong>• 課程名稱：</strong> 生活藝術~秋天的手工課</p>
-                    <p><strong>• 課程時間：</strong> 10/8, 10/15, 10/22 (三週一個系列，上午 9:00 - 10:30)</p>
+                    <p><strong>• 課程名稱：</strong> 生活藝術~秋天的星星</p>
+                    <p><strong>• 課程日期：</strong> 10/15、10/22（星期四）</p>
                     <p><strong>• 上課地點：</strong> 宜蘭縣三星鄉安農九路560號（五芒星星共學園）</p>
-                    <p><strong>• 收費方式：</strong> 一個單元三週是 900 元 + 材料費 200 元，共 1100 元</p>
-                    <p><strong>• 收費時間：</strong> 填寫報名表單時請同時匯款以利完成報名動作</p>
-                    <p><strong>• 匯款帳號：</strong> 請主動私訊官方帳號進行對帳<br>
-                        銀行：合作金庫銀行 (代碼 006)<br>
-                        分行：北羅東分行<br>
-                        帳號：5414717275974
-                    </p>
-                    <p><strong>• 退費標準：</strong><br>
-                    報名後因個人因素不克參加活動需辦理退費者，請先加入LINE官方帳號告知，以確認收到該學員取消報名申請退費之日期為退費計算節點。<br>
-                    開課四星期前(含) , 應退還報名總費用80%。<br>
-                    開課兩星期前(含) , 應退還報名總費用50%。<br>
-                    開課前５日 (含) 與開課後，所收取之報名總費用得全數不予退還。<br>
-                    若遇天災等不可抗力因素造成活動無法舉行時，將另行通知。<br>
-                    退費金額將匯入指定之銀行（郵局）帳號，匯款之手續費亦由申請人負擔。</p>
+                    <p><strong>• 費用說明：</strong> 採現場繳費（場地費每場 200元、講師費隨喜；上午主題課材料包 50元／份）</p>
+                    <p><strong>• 注意事項：</strong> 請自備 3～4號鉤針與水壺或水杯。</p>
 
                     <p><strong>• 個人資料保護：</strong><br>
                     承辦本次活動，向您取得之個人資料包含姓名, 電話及電子郵件等，目的用於活動聯繫通知以及相關作業之處理與日後相關活動信息之發送。<br>
@@ -164,7 +183,7 @@
                 
                 <div class="agree-group">
                     <input type="checkbox" id="agreeNotice" name="agreeNotice" value="已詳細閱讀並同意" required>
-                    <label for="agreeNotice" class="agree-label">我已詳細閱讀並同意上述收費標準、退費規範與注意事項 *</label>
+                    <label for="agreeNotice" class="agree-label">我已詳細閱讀並同意上述課程內容與注意事項 *</label>
                 </div>
             </div>
 
@@ -178,17 +197,71 @@
     <script>
         const backendUrl = "https://script.google.com/macros/s/AKfycbyccc2R722T6sFq1uG1CbKO209vVRC_1EeeJy_52Ln--dL-nccPY6McMAA0bP2gF4sI/exec";
         const regForm = document.getElementById('registrationForm');
+        const sessionCheckboxes = document.querySelectorAll('input[name="session"]');
+        const selectAllCheckbox = document.getElementById('selectAll');
+        const feeDescriptionDisplay = document.getElementById('feeDescriptionDisplay');
+
+        // 一鍵全選功能
+        selectAllCheckbox.addEventListener('change', function() {
+            sessionCheckboxes.forEach(cb => {
+                cb.checked = selectAllCheckbox.checked;
+            });
+            updateFeeDescription();
+        });
+
+        // 監聽個別選項變動
+        sessionCheckboxes.forEach(cb => {
+            cb.addEventListener('change', function() {
+                const allChecked = Array.from(sessionCheckboxes).every(item => item.checked);
+                selectAllCheckbox.checked = allChecked;
+                updateFeeDescription();
+            });
+        });
+
+        // 動態計算與更新費用說明
+        function updateFeeDescription() {
+            const checkedSessions = document.querySelectorAll('input[name="session"]:checked');
+            if (checkedSessions.length === 0) {
+                feeDescriptionDisplay.innerHTML = '請勾選上方欲參加的場次';
+                return;
+            }
+
+            let morningCount = 0;
+            let afternoonCount = 0;
+            checkedSessions.forEach(cb => {
+                if (cb.dataset.type === 'morning') morningCount++;
+                if (cb.dataset.type === 'afternoon') afternoonCount++;
+            });
+
+            let totalSessions = checkedSessions.length;
+            let totalRoomFee = totalSessions * 200;
+            let totalMaterialFee = morningCount * 50;
+
+            let desc = `現場繳費：共勾選 ${totalSessions} 場次（場地費共 ${totalRoomFee} 元`;
+            if (morningCount > 0) {
+                desc += ` ＋ 上午主題課材料包 ${morningCount} 份共 ${totalMaterialFee} 元`;
+            }
+            desc += ` ＋ 講師費隨喜）`;
+
+            feeDescriptionDisplay.innerHTML = desc;
+        }
 
         // 送出表單
         regForm.addEventListener('submit', function(e) {
             e.preventDefault();
+
+            const checkedSessions = document.querySelectorAll('input[name="session"]:checked');
+            if (checkedSessions.length === 0) {
+                alert('請至少勾選一個報名場次！');
+                return;
+            }
 
             const agreePrivacy = document.getElementById('agreePrivacy');
             const agreePortrait = document.getElementById('agreePortrait');
             const agreeNotice = document.getElementById('agreeNotice');
 
             if (!agreePrivacy.checked || !agreePortrait.checked || !agreeNotice.checked) {
-                alert('請確認已勾選同意個人資料保護條款、肖像權授權以及退費注意事項！');
+                alert('請確認已勾選同意個人資料保護條款、肖像權授權以及注意事項！');
                 return;
             }
 
@@ -196,15 +269,15 @@
             submitBtn.disabled = true;
             submitBtn.textContent = '資料傳輸中，請稍候...';
 
+            // 收集所有勾選的場次名稱
+            const selectedSessionValues = Array.from(checkedSessions).map(cb => cb.value).join('、');
+
             const payload = {
                 studentName: document.getElementById('studentName').value,
                 parentTel: document.getElementById('parentTel').value,
                 email: document.getElementById('email').value,
                 line: document.getElementById('line').value,
-                courseName: "生活藝術~秋天的手工課",
-                calculatedFee: document.getElementById('calculatedFee').value,
-                transferCode: document.getElementById('transferCode').value,
-                receiptOption: document.getElementById('receiptOption').value,
+                courseName: "生活藝術~秋天的星星 (" + selectedSessionValues + ")",
                 agreePrivacy: agreePrivacy.value,
                 agreePortrait: agreePortrait.value,
                 agreeNotice: agreeNotice.value
@@ -217,7 +290,7 @@
             .then(response => response.json())
             .then(data => {
                 if (data.result === 'success') {
-                    alert('🎉 報名成功！系統已收到您的報名資料，請記得完成匯款以利對帳。');
+                    alert('🎉 報名成功！系統已收到您的報名資料，期待與您相見。');
                     location.reload(); 
                 } else {
                     alert(data.message || '報名資料已送出！如需確認請直接透過 LINE 官方帳號與我們聯繫。');
@@ -226,7 +299,7 @@
                 }
             })
             .catch(error => {
-                alert('報名送出完成！如有對帳疑問歡迎隨時透過 LINE 聯繫。');
+                alert('報名送出完成！如有疑問歡迎隨時透過 LINE 聯繫。');
                 submitBtn.disabled = false;
                 submitBtn.textContent = '送出報名';
             });
