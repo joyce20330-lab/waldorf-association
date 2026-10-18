@@ -18,23 +18,44 @@
         }
 
         /* 課程與訂餐列表 */
-        .session-list { display: flex; flex-direction: column; gap: 10px; }
+        .session-list { display: flex; flex-direction: column; gap: 12px; }
         .session-item {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px 16px;
+            flex-direction: column;
+            padding: 14px 16px;
             background: #fdfbf7;
             border: 1px solid #e2d9cd;
             border-radius: 8px;
             transition: all 0.2s;
+            gap: 10px;
         }
         .session-item:hover { border-color: #d97746; background: #fffdfa; }
-        .session-item.disabled { background: #f5f5f5; border-color: #e5e5e5; color: #999; cursor: not-allowed; }
         
-        .session-main { display: flex; align-items: center; gap: 10px; flex: 1; cursor: pointer; }
-        .session-main input[type="checkbox"] { width: 18px; height: 18px; cursor: pointer; }
+        .session-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
         
+        .session-main { display: flex; align-items: flex-start; gap: 10px; flex: 1; cursor: pointer; }
+        .session-main input[type="checkbox"] { width: 18px; height: 18px; cursor: pointer; margin-top: 3px; }
+        
+        .session-info { display: flex; flex-direction: column; }
+        .session-time { font-size: 0.85em; color: #8A7B6F; margin-top: 2px; font-weight: normal; }
+
+        /* 該課程對應的午餐分天區塊 */
+        .lunch-sub-options {
+            display: none;
+            padding-top: 10px;
+            border-top: 1px dashed #e2d9cd;
+            margin-top: 2px;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .session-item.active .lunch-sub-options {
+            display: flex;
+        }
+
         .lunch-option {
             display: flex;
             align-items: center;
@@ -42,14 +63,14 @@
             font-size: 0.85em;
             color: #5b8266;
             background: #eef5f0;
-            padding: 4px 10px;
+            padding: 5px 12px;
             border-radius: 20px;
             border: 1px solid #c9e2d0;
             cursor: pointer;
             user-select: none;
         }
         .lunch-option input[type="checkbox"] { width: 15px; height: 15px; cursor: pointer; }
-        .lunch-option.disabled { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
+        .lunch-option:hover { background: #e3f0e6; }
 
         .discount-badge {
             display: inline-block;
@@ -146,7 +167,7 @@
             <div class="form-group">
                 <label for="memberType">報名身分類別</label>
                 <select id="memberType" name="memberType" required>
-                    <option value="general">一般學員（適用各課程定價）</option>
+                    <option value="general">一般學員（適用各課程定價；11/11前報名同享優惠價）</option>
                     <option value="member">優惠身分（本協會會員／現任五芒星星親子共學家長／本協會主辦之秋季治療教育讀書會成員／今年夏季星智學宜蘭工作坊成員）</option>
                 </select>
             </div>
@@ -155,57 +176,107 @@
             <div class="form-group">
                 <label>選擇報名課程與午餐需求 *</label>
                 <p style="font-size: 0.85em; color: #8A7B6F; margin-top: -4px; margin-bottom: 10px;">
-                    ✨ 系統會依您選擇的項目與身分別自動計算最優惠總價！午餐每餐 NT$ 250（自由加購）。
+                    ✨ 勾選課程後，下方即會展開該課程對應的午餐加訂選項（每餐 NT$ 250）。
                 </p>
 
                 <div class="session-list">
 
-                    <!-- 課程 1 -->
+                    <!-- 課程 1：星智學 (兩天) -->
                     <div class="session-item">
-                        <label class="session-main">
-                            <input type="checkbox" class="session-cb" value="12/05-12/06 星智學帶狀課程工作坊" data-price-gen="6000" data-price-mem="5600" data-title="星智學帶狀課程工作坊">
-                            <span><strong>12/05（五）、12/06（六）星智學帶狀課程工作坊</strong> <span class="discount-badge">開放報名中</span></span>
-                        </label>
-                        <label class="lunch-option disabled">
-                            <input type="checkbox" class="lunch-cb" value="12/05-12/06 午餐" disabled>
-                            <span>加訂午餐 (+$250)</span>
-                        </label>
+                        <div class="session-row">
+                            <label class="session-main">
+                                <input type="checkbox" class="session-cb" value="12/05-12/06 星智學帶狀課程工作坊" data-price-gen="6000" data-price-mem="5600" data-title="星智學帶狀課程工作坊">
+                                <div class="session-info">
+                                    <span><strong>12/05（五）、12/06（六）星智學帶狀課程工作坊</strong> <span class="discount-badge">開放報名中</span></span>
+                                    <span class="session-time">時間：09:00 - 16:30</span>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="lunch-sub-options">
+                            <span style="font-size: 0.8em; color: #8A7B6F; font-weight: bold; align-self: center; margin-right: 4px;">加訂午餐：</span>
+                            <label class="lunch-option">
+                                <input type="checkbox" class="lunch-cb" value="12/05 午餐"> 12/05（五）午餐 (+$250)
+                            </label>
+                            <label class="lunch-option">
+                                <input type="checkbox" class="lunch-cb" value="12/06 午餐"> 12/06（六）午餐 (+$250)
+                            </label>
+                        </div>
                     </div>
 
-                    <!-- 課程 2 -->
+                    <!-- 課程 2：星星的故事 (單天) -->
                     <div class="session-item">
-                        <label class="session-main">
-                            <input type="checkbox" class="session-cb" value="12/08 星星的故事" data-price-gen="3300" data-price-mem="3000" data-title="星星的故事">
-                            <span><strong>12/08（一）星星的故事</strong> <span class="discount-badge">開放報名中</span></span>
-                        </label>
+                        <div class="session-row">
+                            <label class="session-main">
+                                <input type="checkbox" class="session-cb" value="12/08 星星的故事" data-price-gen="3300" data-price-mem="3000" data-title="星星的故事">
+                                <div class="session-info">
+                                    <span><strong>12/08（一）星星的故事</strong> <span class="discount-badge">開放報名中</span></span>
+                                    <span class="session-time">時間：09:00 - 16:30</span>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="lunch-sub-options">
+                            <span style="font-size: 0.8em; color: #8A7B6F; font-weight: bold; align-self: center; margin-right: 4px;">加訂午餐：</span>
+                            <label class="lunch-option">
+                                <input type="checkbox" class="lunch-cb" value="12/08 午餐"> 12/08（一）午餐 (+$250)
+                            </label>
+                        </div>
                     </div>
 
-                    <!-- 課程 3 -->
+                    <!-- 課程 3：治療教育讀書會 (單天，不協助訂餐) -->
                     <div class="session-item">
-                        <label class="session-main">
-                            <input type="checkbox" class="session-cb" value="12/09 治療教育讀書會" data-price-gen="770" data-price-mem="660" data-title="治療教育讀書會">
-                            <span><strong>12/09（二）治療教育讀書會</strong> <span class="discount-badge">開放報名中</span></span>
-                        </label>
+                        <div class="session-row">
+                            <label class="session-main">
+                                <input type="checkbox" class="session-cb" value="12/09 治療教育讀書會" data-price-gen="770" data-price-mem="660" data-title="治療教育讀書會">
+                                <div class="session-info">
+                                    <span><strong>12/09（二）治療教育讀書會</strong> <span class="discount-badge">開放報名中</span></span>
+                                    <span class="session-time">時間：09:00 - 11:00</span>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="lunch-sub-options" style="font-size: 0.85em; color: #999; padding-top: 6px;">
+                            <span>💡 此場次當天不協助訂餐</span>
+                        </div>
                     </div>
 
-                    <!-- 課程 4 -->
+                    <!-- 課程 4：十二聖夜 (單天) -->
                     <div class="session-item">
-                        <label class="session-main">
-                            <input type="checkbox" class="session-cb" value="12/10 十二聖夜" data-price-gen="3300" data-price-mem="3000" data-title="十二聖夜">
-                            <span><strong>12/10（三）十二聖夜</strong> <span class="discount-badge">開放報名中</span></span>
-                        </label>
+                        <div class="session-row">
+                            <label class="session-main">
+                                <input type="checkbox" class="session-cb" value="12/10 十二聖夜" data-price-gen="3300" data-price-mem="3000" data-title="十二聖夜">
+                                <div class="session-info">
+                                    <span><strong>12/10（三）十二聖夜</strong> <span class="discount-badge">開放報名中</span></span>
+                                    <span class="session-time">時間：09:00 - 16:30</span>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="lunch-sub-options">
+                            <span style="font-size: 0.8em; color: #8A7B6F; font-weight: bold; align-self: center; margin-right: 4px;">加訂午餐：</span>
+                            <label class="lunch-option">
+                                <input type="checkbox" class="lunch-cb" value="12/10 午餐"> 12/10（三）午餐 (+$250)
+                            </label>
+                        </div>
                     </div>
 
-                    <!-- 課程 5 -->
+                    <!-- 課程 5：帕西法爾 (兩天) -->
                     <div class="session-item">
-                        <label class="session-main">
-                            <input type="checkbox" class="session-cb" value="12/12-12/13 帕西法爾" data-price-gen="5800" data-price-mem="5500" data-title="帕西法爾">
-                            <span><strong>12/12（五）、12/13（六）帕西法爾</strong> <span class="discount-badge">開放報名中</span></span>
-                        </label>
-                        <label class="lunch-option disabled">
-                            <input type="checkbox" class="lunch-cb" value="12/12-12/13 午餐" disabled>
-                            <span>加訂午餐 (+$250)</span>
-                        </label>
+                        <div class="session-row">
+                            <label class="session-main">
+                                <input type="checkbox" class="session-cb" value="12/12-12/13 帕西法爾" data-price-gen="5800" data-price-mem="5500" data-title="帕西法爾">
+                                <div class="session-info">
+                                    <span><strong>12/12（五）、12/13（六）帕西法爾</strong> <span class="discount-badge">開放報名中</span></span>
+                                    <span class="session-time">時間：09:00 - 16:30</span>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="lunch-sub-options">
+                            <span style="font-size: 0.8em; color: #8A7B6F; font-weight: bold; align-self: center; margin-right: 4px;">加訂午餐：</span>
+                            <label class="lunch-option">
+                                <input type="checkbox" class="lunch-cb" value="12/12 午餐"> 12/12（五）午餐 (+$250)
+                            </label>
+                            <label class="lunch-option">
+                                <input type="checkbox" class="lunch-cb" value="12/13 午餐"> 12/13（六）午餐 (+$250)
+                            </label>
+                        </div>
                     </div>
 
                 </div>
@@ -242,29 +313,44 @@
 
             <!-- 提醒事項與同意規範 -->
             <div class="notice-section">
-                <div class="notice-title">🌻 收費標準、組合優惠與注意事項</div>
+                <div class="notice-title">🌻 收費標準、退費規範與注意事項</div>
                 <div class="notice-content">
-                    <p><strong>• 課程清單與定價／優惠價：</strong><br>
-                    1. 12/05-06 星智學帶狀課程工作坊：定價 $6,000 / 優惠價 $5,600<br>
-                    2. 12/08 星星的故事：定價 $3,300 / 優惠價 $3,000<br>
-                    3. 12/09 治療教育讀書會：定價 $770 / 優惠價 $660<br>
-                    4. 12/10 十二聖夜：定價 $3,300 / 優惠價 $3,000<br>
-                    5. 12/12-13 帕西法爾：定價 $5,800 / 優惠價 $5,500</p>
+                    <p><strong>• 課程清單、時間與定價／優惠價：</strong><br>
+                    1. 12/05-06 星智學帶狀課程工作坊 (09:00-16:30)：定價 $6,000 / 優惠價 $5,600<br>
+                    2. 12/08 星星的故事 (09:00-16:30)：定價 $3,300 / 優惠價 $3,000<br>
+                    3. 12/09 治療教育讀書會 (09:00-11:00)：定價 $770 / 優惠價 $660（當天不協助訂餐）<br>
+                    4. 12/10 十二聖夜 (09:00-16:30)：定價 $3,300 / 優惠價 $3,000<br>
+                    5. 12/12-13 帕西法爾 (09:00-16:30)：定價 $5,800 / 優惠價 $5,500</p>
 
                     <p><strong>• 組合優惠說明：</strong><br>
                     - 「星智學」＋「帕西法爾」：優惠價總計 $11,000<br>
-                    - 「十二聖夜」＋「讀書會」＋「星星的故事」：優惠價總計 $6,800</p>
+                    - 「十二聖夜」＋「讀書會」＋「星星的故事」：優惠價總計 $6,600</p>
 
-                    <p><strong>• 優惠身分資格：</strong><br>
-                    本協會會員／現任五芒星星親子共學家長／本協會主辦之秋季治療教育讀書會成員／今年夏季星智學宜蘭工作坊成員。</p>
+                    <p><strong>• 優惠資格說明：</strong><br>
+                    凡於 <strong>11/11 前</strong> 完成報名者（含一般學員），或符合優惠身分（本協會會員／現任五芒星星親子共學家長／本協會主辦之秋季治療教育讀書會成員／今年夏季星智學宜蘭工作坊成員），皆可享有上方之優惠價！</p>
 
                     <p><strong>• 匯款帳號：</strong><br>
-                    戶名: 張荷月<br>國泰世華(銀行代碼013) 宜蘭分行<br>帳號: 126-50-617086-2</p>
+                    戶名: 張荷月<br>國泰世華(銀行代碼013) 宜蘭分行<br>帳號: 126-50-617086-2<br>
+                    💡匯款後請加入 <a href="https://lin.ee/ZEibS6w" target="_blank" style="color: #5b8266; font-weight: bold; text-decoration: underline;">LINE官方帳號</a> 主動告知末五碼，以利工作人員對帳。</p>
+
+                    <p><strong>• 退費標準：</strong><br>
+                    - 報名後因個人因素不克參加活動需辦理退費者，請先加入 <a href="https://lin.ee/ZEibS6w" target="_blank" style="color: #5b8266; font-weight: bold; text-decoration: underline;">LINE官方帳號</a> 告知，以確認收到該學員取消報名申請退費之日期為退費計算節點。<br>
+                    - 開課四星期前(含)，應退還報名總費用80%。<br>
+                    - 開課兩星期前(含)，應退還報名總費用50%。<br>
+                    - 開課前５日(含)與開課後，所收取之報名總費用得全數不予退還。<br>
+                    - 若遇天災等不可抗力因素造成活動無法舉行時，將另行通知。<br>
+                    - 退費金額將匯入指定之銀行（郵局）帳號，匯款之手續費亦由申請人負擔。</p>
+
+                    <p><strong>• 個人資料保護：</strong><br>
+                    承辦本次活動，向您取得之個人資料包含姓名, 電話及電子郵件等，目的用於活動聯繫通知以及相關作業之處理與日後相關活動信息之發送。</p>
 
                     <div class="agree-group" style="margin-top: 5px; margin-bottom: 15px; border-top: none; padding-top: 0;">
                         <input type="checkbox" id="agreePrivacy" name="agreePrivacy" value="我理解並同意" required>
                         <label for="agreePrivacy" class="agree-label" style="color: #444; font-weight: bold;">我理解並同意個人資料保護條款</label>
                     </div>
+
+                    <p><strong>• 肖像權：</strong><br>
+                    課程中所拍攝之個人及團體影像，將提供於文宣品、粉專及活動紀錄中使用。</p>
 
                     <div class="agree-group" style="margin-top: 5px; border-top: none; padding-top: 0;">
                         <input type="checkbox" id="agreePortrait" name="agreePortrait" value="我理解並同意" required>
@@ -274,7 +360,7 @@
                 
                 <div class="agree-group">
                     <input type="checkbox" id="agreeNotice" name="agreeNotice" value="已詳細閱讀並同意" required>
-                    <label for="agreeNotice" class="agree-label">我已詳細閱讀並同意上述收費標準與注意事項 *</label>
+                    <label for="agreeNotice" class="agree-label">我已詳細閱讀並同意上述收費標準、退費規範與注意事項 *</label>
                 </div>
             </div>
 
@@ -286,7 +372,7 @@
     </div>
 
 <script>
-    const backendUrl = "https://script.google.com/macros/s/AKfycbwrKSi4CY04WaGtOWFXDFSPRRgbcJanxxgjGEJcW19jU_t2iU3q1nU68Bh1Ps7hlkqblA/exec";
+    const backendUrl = "https://script.google.com/macros/s/AKfycbyMLIEw96G1WI8pXw-cQ0JWAF-Q5xEg7pV0HJaEOnIUM4-5HtLgaf9zwrqxA2dkbDxz8w/exec";
 
     const memberTypeSelect = document.getElementById('memberType');
     const sessionCbs = document.querySelectorAll('.session-cb');
@@ -297,22 +383,16 @@
 
     const LUNCH_PRICE = 250;
 
-    // 監聽課程勾選與連動午餐按鈕
+    // 監聽課程勾選：切換 active 樣式（用來展開下方午餐選項）並重新計算費用
     sessionCbs.forEach(cb => {
         cb.addEventListener('change', function() {
-            const parentItem = cb.closest('.session-item');
-            const lunchOption = parentItem.querySelector('.lunch-option');
-            const lunchCb = parentItem.querySelector('.lunch-cb');
-
-            if (lunchOption && lunchCb) {
-                if (cb.checked) {
-                    lunchOption.classList.remove('disabled');
-                    lunchCb.disabled = false;
-                } else {
-                    lunchOption.classList.add('disabled');
-                    lunchCb.disabled = true;
-                    lunchCb.checked = false;
-                }
+            const item = cb.closest('.session-item');
+            if (cb.checked) {
+                item.classList.add('active');
+            } else {
+                item.classList.remove('active');
+                // 若取消勾選課程，同時清空該課程底下的午餐勾選
+                item.querySelectorAll('.lunch-cb').forEach(lcb => lcb.checked = false);
             }
             calculateTotal();
         });
@@ -326,6 +406,12 @@
 
     function calculateTotal() {
         const isMember = memberTypeSelect.value === 'member';
+        const today = new Date();
+        const deadline = new Date('2026-11-11T23:59:59');
+        const isBeforeDeadline = today <= deadline;
+        
+        const applyDiscount = isMember || isBeforeDeadline;
+
         const selectedSessions = Array.from(document.querySelectorAll('.session-cb:checked'));
         const selectedLunches = Array.from(document.querySelectorAll('.lunch-cb:checked'));
 
@@ -343,28 +429,27 @@
 
         let accountedSessions = [...sessionValues];
 
-        // 組合 1：星智學 + 帕西法爾 = 11,000 (無論身分皆適用或享優惠)
+        // 組合 1：星智學 + 帕西法爾 = 11,000
         if (hasA && hasB) {
             courseFee += 11000;
-            discountDesc.push('✨ 套用「星智學＋帕西法爾」優惠價 $11,000');
+            discountDesc.push('✨ 套用〈星智學＋帕西法爾〉優惠價 $11,000');
             accountedSessions = accountedSessions.filter(s => s !== '星智學帶狀課程工作坊' && s !== '帕西法爾');
         }
 
-        // 組合 2：十二聖夜 + 讀書會 + 星星的故事 = 6,800
+        // 組合 2：十二聖夜 + 讀書會 + 星星的故事 = 6,600
         if (hasC && hasD && hasE) {
-            // 確保這三堂同時存在才套用
             if (accountedSessions.includes('十二聖夜') && accountedSessions.includes('治療教育讀書會') && accountedSessions.includes('星星的故事')) {
-                courseFee += 6800;
-                discountDesc.push('✨ 套用「十二聖夜＋讀書會＋星星的故事」優惠價 $6,800');
+                courseFee += 6600;
+                discountDesc.push('✨ 套用〈十二聖夜＋讀書會＋星星的故事〉優惠價 $6,600');
                 accountedSessions = accountedSessions.filter(s => s !== '十二聖夜' && s !== '治療教育讀書會' && s !== '星星的故事');
             }
         }
 
-        // 剩下未被組合包涵的單堂課程，依身分別計算
+        // 剩下未被組合包涵的單堂課程，依優惠資格計算
         accountedSessions.forEach(title => {
             const cb = Array.from(sessionCbs).find(item => item.dataset.title === title);
             if (cb) {
-                const price = isMember ? parseInt(cb.dataset.priceMem) : parseInt(cb.dataset.priceGen);
+                const price = applyDiscount ? parseInt(cb.dataset.priceMem) : parseInt(cb.dataset.priceGen);
                 courseFee += price;
             }
         });
@@ -409,15 +494,8 @@
         submitBtn.textContent = '資料傳輸中，請稍候...';
 
         const cleanSessions = checkedSessionCbs.map(cb => cb.value.trim());
-
-        const cleanLunches = [];
-        checkedSessionCbs.forEach(cb => {
-            const parent = cb.closest('.session-item');
-            const lunchInput = parent ? parent.querySelector('.lunch-cb') : null;
-            if (lunchInput && lunchInput.checked) {
-                cleanLunches.push(lunchInput.value.trim());
-            }
-        });
+        const checkedLunchCbs = Array.from(document.querySelectorAll('.lunch-cb:checked'));
+        const cleanLunches = checkedLunchCbs.map(lcb => lcb.value.trim());
 
         const payload = {
             studentName: document.getElementById('studentName').value,
