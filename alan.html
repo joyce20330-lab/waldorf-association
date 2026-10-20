@@ -1,3 +1,29 @@
+這主要是因為我們在 CSS 中使用了 `object-cover` 這個屬性。它的作用是強行把照片填滿固定的長寬比例（例如 `aspect-video` 橫向 16:9），當照片本身的尺寸或比例與容器不合時，多出來的邊緣就會被「卡掉（裁切）」。
+
+如果您希望**完整呈現照片原本的樣子、不要被裁切掉任何部分**，我們有兩種最常見且實用的解決方式：
+
+---
+
+### 方法一：改用 `object-contain`（推薦：照片完整呈現，上下或左右會留白）
+
+把照片的 CSS 屬性從 `object-cover` 改成 `object-contain`。這樣做的話，照片會以完整的比例縮放塞進框框裡，絕不裁切；如果比例不合，空白處會自動補上您設定的底色（例如米色背景 `#fcf9f2`）。
+
+**修改方式：**
+只要把程式碼中活動寫真區塊（以及講師大頭照區塊）的 `object-cover` 全部換成 `object-contain` 即可。
+
+---
+
+### 方法二：拿掉固定比例限制，讓照片呈現原始長寬
+
+如果您希望每一張直向、橫向、或是不同大小的照片都「原汁原味」完整顯示、高度隨照片自然延展，可以把外層容器的 `aspect-video` 拿掉，改用單純的圖片自適應高度。
+
+---
+
+### 💡 建議的修正後完整程式碼（採用【方法一：`object-contain`】）
+
+以下我幫您將活動寫真區塊與講師大頭照的圖片樣式調整為 `object-contain`，並加上了溫潤的底色，這樣照片就**絕對不會再被卡掉**，而且看起來乾淨整齊：
+
+```html
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
@@ -128,8 +154,9 @@
             </div>
 
             <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-brand-border flex flex-col md:flex-row gap-8 items-center md:items-start">
-                <div class="w-32 h-32 md:w-40 md:h-40 bg-brand-bg rounded-2xl overflow-hidden shadow-inner flex items-center justify-center shrink-0 border-2 border-brand-accent/30">
-                    <img src="Alan老師.jpg" alt="Alan Thewless 老師" class="w-full h-full object-cover">
+                <!-- 這裡將 object-cover 改為 object-contain，並加上背景色避免裁切變形[cite: 1] -->
+                <div class="w-32 h-32 md:w-40 md:h-40 bg-[#f4eee6] rounded-2xl overflow-hidden shadow-inner flex items-center justify-center shrink-0 border-2 border-brand-accent/30 p-1">
+                    <img src="Alan老師.jpg" alt="Alan Thewless 老師" class="w-full h-full object-contain">
                 </div>
                 <div class="space-y-4 flex-1 text-center md:text-left">
                     <h3 class="text-2xl font-bold text-brand-accent">Alan Thewless</h3>
@@ -243,42 +270,42 @@
             </div>
         </section>
 
-        <!-- 8. 活動寫真（擴充為 10 張照片，檔名為 alan-1 到 alan-10） -->
+        <!-- 8. 活動寫真（已改為 object-contain，照片絕不被卡掉） -->
         <section id="gallery" class="bg-white p-8 rounded-2xl shadow-sm border border-brand-border space-y-6">
             <div class="text-center">
                 <h2 class="text-2xl font-bold text-brand-text mb-1">活動寫真</h2>
                 <p class="text-sm text-brand-light">工作坊與讀書會點滴記錄</p>
             </div>
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                <div class="aspect-video bg-brand-bg rounded-xl border border-brand-border overflow-hidden shadow-sm">
-                    <img src="alan-1.jpg" alt="活動花絮 1" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                <div class="aspect-video bg-[#f4eee6] rounded-xl border border-brand-border overflow-hidden shadow-sm flex items-center justify-center p-1">
+                    <img src="alan-1.jpg" alt="活動花絮 1" class="w-full h-full object-contain hover:scale-105 transition-transform duration-300">
                 </div>
-                <div class="aspect-video bg-brand-bg rounded-xl border border-brand-border overflow-hidden shadow-sm">
-                    <img src="alan-2.jpg" alt="活動花絮 2" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                <div class="aspect-video bg-[#f4eee6] rounded-xl border border-brand-border overflow-hidden shadow-sm flex items-center justify-center p-1">
+                    <img src="alan-2.jpg" alt="活動花絮 2" class="w-full h-full object-contain hover:scale-105 transition-transform duration-300">
                 </div>
-                <div class="aspect-video bg-brand-bg rounded-xl border border-brand-border overflow-hidden shadow-sm">
-                    <img src="alan-3.jpg" alt="活動花絮 3" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                <div class="aspect-video bg-[#f4eee6] rounded-xl border border-brand-border overflow-hidden shadow-sm flex items-center justify-center p-1">
+                    <img src="alan-3.jpg" alt="活動花絮 3" class="w-full h-full object-contain hover:scale-105 transition-transform duration-300">
                 </div>
-                <div class="aspect-video bg-brand-bg rounded-xl border border-brand-border overflow-hidden shadow-sm">
-                    <img src="alan-4.jpg" alt="活動花絮 4" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                <div class="aspect-video bg-[#f4eee6] rounded-xl border border-brand-border overflow-hidden shadow-sm flex items-center justify-center p-1">
+                    <img src="alan-4.jpg" alt="活動花絮 4" class="w-full h-full object-contain hover:scale-105 transition-transform duration-300">
                 </div>
-                <div class="aspect-video bg-brand-bg rounded-xl border border-brand-border overflow-hidden shadow-sm">
-                    <img src="alan-5.jpg" alt="活動花絮 5" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                <div class="aspect-video bg-[#f4eee6] rounded-xl border border-brand-border overflow-hidden shadow-sm flex items-center justify-center p-1">
+                    <img src="alan-5.jpg" alt="活動花絮 5" class="w-full h-full object-contain hover:scale-105 transition-transform duration-300">
                 </div>
-                <div class="aspect-video bg-brand-bg rounded-xl border border-brand-border overflow-hidden shadow-sm">
-                    <img src="alan-6.jpg" alt="活動花絮 6" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                <div class="aspect-video bg-[#f4eee6] rounded-xl border border-brand-border overflow-hidden shadow-sm flex items-center justify-center p-1">
+                    <img src="alan-6.jpg" alt="活動花絮 6" class="w-full h-full object-contain hover:scale-105 transition-transform duration-300">
                 </div>
-                <div class="aspect-video bg-brand-bg rounded-xl border border-brand-border overflow-hidden shadow-sm">
-                    <img src="alan-7.jpg" alt="活動花絮 7" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                <div class="aspect-video bg-[#f4eee6] rounded-xl border border-brand-border overflow-hidden shadow-sm flex items-center justify-center p-1">
+                    <img src="alan-7.jpg" alt="活動花絮 7" class="w-full h-full object-contain hover:scale-105 transition-transform duration-300">
                 </div>
-                <div class="aspect-video bg-brand-bg rounded-xl border border-brand-border overflow-hidden shadow-sm">
-                    <img src="alan-8.jpg" alt="活動花絮 8" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                <div class="aspect-video bg-[#f4eee6] rounded-xl border border-brand-border overflow-hidden shadow-sm flex items-center justify-center p-1">
+                    <img src="alan-8.jpg" alt="活動花絮 8" class="w-full h-full object-contain hover:scale-105 transition-transform duration-300">
                 </div>
-                <div class="aspect-video bg-brand-bg rounded-xl border border-brand-border overflow-hidden shadow-sm">
-                    <img src="alan-9.jpg" alt="活動花絮 9" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                <div class="aspect-video bg-[#f4eee6] rounded-xl border border-brand-border overflow-hidden shadow-sm flex items-center justify-center p-1">
+                    <img src="alan-9.jpg" alt="活動花絮 9" class="w-full h-full object-contain hover:scale-105 transition-transform duration-300">
                 </div>
-                <div class="aspect-video bg-brand-bg rounded-xl border border-brand-border overflow-hidden shadow-sm col-span-2 sm:col-span-1">
-                    <img src="alan-10.jpg" alt="活動花絮 10" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                <div class="aspect-video bg-[#f4eee6] rounded-xl border border-brand-border overflow-hidden shadow-sm flex items-center justify-center p-1 col-span-2 sm:col-span-1">
+                    <img src="alan-10.jpg" alt="活動花絮 10" class="w-full h-full object-contain hover:scale-105 transition-transform duration-300">
                 </div>
             </div>
         </section>
@@ -517,3 +544,5 @@
     </script>
 </body>
 </html>
+
+```
