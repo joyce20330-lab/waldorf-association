@@ -72,17 +72,6 @@
         .lunch-option input[type="checkbox"] { width: 15px; height: 15px; cursor: pointer; }
         .lunch-option:hover { background: #e3f0e6; }
 
-        .discount-badge {
-            display: inline-block;
-            background: #d97746;
-            color: white;
-            font-size: 0.75em;
-            padding: 2px 8px;
-            border-radius: 10px;
-            margin-left: 6px;
-            font-weight: normal;
-        }
-
         .fee-display-box {
             margin-top: 20px;
             padding: 16px 20px;
@@ -112,6 +101,50 @@
         .notice-title { font-size: 1.15em; font-weight: bold; color: #5b8266; margin-bottom: 12px; }
         .notice-content p { font-size: 0.9em; line-height: 1.6; margin: 0 0 10px 0; color: #555; }
         
+        /* 響應式價格表格樣式 */
+        .pricing-table-container {
+            width: 100%;
+            overflow-x: auto;
+            margin: 12px 0 16px 0;
+            border: 1px solid #e2d9cd;
+            border-radius: 8px;
+            background: #fff;
+        }
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88em;
+            text-align: left;
+        }
+        .pricing-table th {
+            background-color: #f5efe6;
+            color: #5d4e43;
+            padding: 10px 12px;
+            font-weight: bold;
+            border-bottom: 1px solid #e2d9cd;
+            white-space: nowrap;
+        }
+        .pricing-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #f2ece4;
+            color: #555;
+            vertical-align: middle;
+        }
+        .pricing-table tr:last-child td {
+            border-bottom: none;
+        }
+        .pricing-table tr:hover {
+            background-color: #fdfbf7;
+        }
+        .price-orig {
+            color: #555;
+            font-size: 0.9em;
+        }
+        .price-promo {
+            color: #d97746;
+            font-weight: bold;
+        }
+
         .agree-group {
             display: flex;
             align-items: flex-start;
@@ -187,7 +220,7 @@
                             <label class="session-main">
                                 <input type="checkbox" class="session-cb" value="12/05-12/06 星智學帶狀課程工作坊" data-price-gen="6000" data-price-mem="5600" data-title="星智學帶狀課程工作坊">
                                 <div class="session-info">
-                                    <span><strong>12/05（六）、12/06（日）星智學帶狀課程工作坊</strong> <span class="discount-badge">開放報名中</span></span>
+                                    <span><strong>12/05（六）、12/06（日）星智學帶狀課程工作坊</strong></span>
                                     <span class="session-time">時間：09:00 - 16:30</span>
                                 </div>
                             </label>
@@ -209,7 +242,7 @@
                             <label class="session-main">
                                 <input type="checkbox" class="session-cb" value="12/08 十二聖夜" data-price-gen="3300" data-price-mem="3000" data-title="十二聖夜">
                                 <div class="session-info">
-                                    <span><strong>12/08（二）十二聖夜</strong> <span class="discount-badge">開放報名中</span></span>
+                                    <span><strong>12/08（二）十二聖夜</strong></span>
                                     <span class="session-time">時間：09:00 - 16:30</span>
                                 </div>
                             </label>
@@ -228,7 +261,7 @@
                             <label class="session-main">
                                 <input type="checkbox" class="session-cb" value="12/09 治療教育讀書會" data-price-gen="770" data-price-mem="660" data-title="治療教育讀書會">
                                 <div class="session-info">
-                                    <span><strong>12/09（三）治療教育讀書會-第五講，多硫與多鐵的體質；感官虛弱與狂躁的體質</strong> <span class="discount-badge">開放報名中</span></span>
+                                    <span><strong>12/09（三）治療教育讀書會-第五講，多硫與多鐵的體質；感官虛弱與狂躁的體質</strong></span>
                                     <span class="session-time">時間：09:00 - 11:00</span>
                                 </div>
                             </label>
@@ -244,7 +277,7 @@
                             <label class="session-main">
                                 <input type="checkbox" class="session-cb" value="12/10 星星的故事" data-price-gen="3300" data-price-mem="3000" data-title="星星的故事">
                                 <div class="session-info">
-                                    <span><strong>12/10（四）星星的故事</strong> <span class="discount-badge">開放報名中</span></span>
+                                    <span><strong>12/10（四）星星的故事</strong></span>
                                     <span class="session-time">時間：09:00 - 16:30</span>
                                 </div>
                             </label>
@@ -263,7 +296,7 @@
                             <label class="session-main">
                                 <input type="checkbox" class="session-cb" value="12/12-12/13 帕西法爾" data-price-gen="5800" data-price-mem="5500" data-title="帕西法爾">
                                 <div class="session-info">
-                                    <span><strong>12/12（六）、12/13（日）帕西法爾</strong> <span class="discount-badge">開放報名中</span></span>
+                                    <span><strong>12/12（六）、12/13（日）帕西法爾</strong></span>
                                     <span class="session-time">時間：09:00 - 16:30</span>
                                 </div>
                             </label>
@@ -315,12 +348,53 @@
             <div class="notice-section">
                 <div class="notice-title">🌻 收費標準、退費規範與注意事項</div>
                 <div class="notice-content">
-                    <p><strong>• 課程清單、時間與定價／優惠價：</strong><br>
-                    1. 12/05-06 星智學帶狀課程工作坊 (09:00-16:30)：定價 $6,000 / 優惠價 $5,600<br>
-                    2. 12/08 十二聖夜 (09:00-16:30)：定價 $3,300 / 優惠價 $3,000<br>
-                    3. 12/09 治療教育讀書會 (09:00-11:00)：定價 $770 / 優惠價 $660（當天不協助訂餐）<br>
-                    4. 12/10 星星的故事 (09:00-16:30)：定價 $3,300 / 優惠價 $3,000<br>
-                    5. 12/12-13 帕西法爾 (09:00-16:30)：定價 $5,800 / 優惠價 $5,500</p>
+                    <p><strong>• 課程清單、時間與定價／優惠價：</strong></p>
+                    
+                    <!-- 響應式表格 -->
+                    <div class="pricing-table-container">
+                        <table class="pricing-table">
+                            <thead>
+                                <tr>
+                                    <th>課程名稱</th>
+                                    <th>時間</th>
+                                    <th>定價</th>
+                                    <th>優惠價</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>1. 星智學帶狀課程工作坊</strong></td>
+                                    <td>12/05-06 (09:00-16:30)</td>
+                                    <td><span class="price-orig">$6,000</span></td>
+                                    <td><span class="price-promo">$5,600</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>2. 十二聖夜</strong></td>
+                                    <td>12/08 (09:00-16:30)</td>
+                                    <td><span class="price-orig">$3,300</span></td>
+                                    <td><span class="price-promo">$3,000</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>3. 治療教育讀書會</strong><br><span style="font-size:0.8em; color:#8A7B6F;">（當天不協助訂餐）</span></td>
+                                    <td>12/09 (09:00-11:00)</td>
+                                    <td><span class="price-orig">$770</span></td>
+                                    <td><span class="price-promo">$660</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>4. 星星的故事</strong></td>
+                                    <td>12/10 (09:00-16:30)</td>
+                                    <td><span class="price-orig">$3,300</span></td>
+                                    <td><span class="price-promo">$3,000</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>5. 帕西法爾</strong></td>
+                                    <td>12/12-13 (09:00-16:30)</td>
+                                    <td><span class="price-orig">$5,800</span></td>
+                                    <td><span class="price-promo">$5,500</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
                     <p><strong>• 組合優惠說明：</strong><br>
                     - 「星智學」＋「帕西法爾」：優惠價總計 $11,000<br>
