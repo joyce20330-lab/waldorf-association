@@ -180,7 +180,7 @@
                 <input type="text" id="healthCondition" name="healthCondition" placeholder="如：蠶豆症、心臟病、食物過敏等；若無請填「無」" required>
             </div>
 
-            <!-- 選擇堂數與日期 (支援全報與單堂選擇) -->
+            <!-- 選擇堂數與日期 -->
             <div class="form-group">
                 <label>選擇報名堂數與日期</label>
                 <div class="checkbox-group">
@@ -251,7 +251,7 @@
                     <p><strong>• 共學地點：</strong> 宜蘭縣三星鄉安農九路560號</p>
                     <p><strong>• 收費方式：</strong> 單堂報名每堂 $550 元；全期報名9堂並於開學第一周繳費，享優惠價共 $4,500（手工材料另計）。</p>
                     <p><strong>• 收費時間：</strong> 開學第一周繳納費用。</p>
-                    <p><strong>• 注意事項：</strong> 完成報名手續及面談即可參與親子共學課；因人員預先精簡配置，恕無請假退費以及補課方案，懇請見諒。
+                    <p><strong>• 注意事項：</strong> 完成報名手續及面談即可參與親子共學課；因人員預先精簡配置，恕無請假退費以及補課方案，懇請見諒。</p>
                     <p><strong>• 準備物品：</strong> 請為孩子自備水果點心；園區現場亦會貼心準備當令香草花草茶，供大家溫暖享用。</p>
                     <p><strong>• 獨享禮遇：</strong> 五芒星星親子共學幼幼班家庭參與本協會辦理課程和工作坊皆有優惠，節慶活動免費。</p>
                 </div>
@@ -314,7 +314,6 @@
         });
 
         // 2. 勾選連動與費用計算
-        // (A) 點擊「全報」
         selectAllCb.addEventListener('change', function() {
             dateCbs.forEach(cb => {
                 if (!cb.disabled) {
@@ -324,7 +323,6 @@
             calculateFee();
         });
 
-        // (B) 點擊「單堂」
         dateCbs.forEach(cb => {
             cb.addEventListener('change', function() {
                 const availableCbs = Array.from(dateCbs).filter(c => !c.disabled);
@@ -334,18 +332,14 @@
             });
         });
 
-        // (C) 計算學費（已修正支援全報 4,500 元優惠價）
         function calculateFee() {
             let totalFee = 0;
-
-            // 如果勾選了「全報」或全部未額滿的單堂都被選取，直接套用優惠價 4500
             const availableCbs = Array.from(dateCbs).filter(c => !c.disabled);
             const allAvailableChecked = availableCbs.length > 0 && availableCbs.every(c => c.checked);
 
             if (selectAllCb.checked || allAvailableChecked) {
                 totalFee = 4500;
             } else {
-                // 否則依勾選的單堂數計算（每堂 550 元）
                 let selectedCount = 0;
                 dateCbs.forEach(cb => {
                     if (cb.checked) selectedCount++;
@@ -363,7 +357,7 @@
 
             let selectedSessions = [];
             if (selectAllCb.checked) {
-                selectedSessions.push("秋季全9堂包套");
+                selectedSessions.push("冬季全9堂包套");
             } else {
                 dateCbs.forEach(cb => {
                     if (cb.checked) selectedSessions.push(cb.value);
