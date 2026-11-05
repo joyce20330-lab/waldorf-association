@@ -125,28 +125,22 @@
 
             <!-- 報名場次複選區 -->
             <div class="form-group">
-                <label>報名場次選擇（可複選）</label>
+                <label>報名場次選擇（下午統一 13:30 開始，可複選）</label>
                 <div class="checkbox-group">
                     <label class="checkbox-item select-all-box">
-                        <input type="checkbox" id="selectAll"> ⭐ 【一鍵全參與】勾選全部六場次
+                        <input type="checkbox" id="selectAll"> ⭐ 【一鍵全參與】勾選全部四場次
                     </label>
                     <label class="checkbox-item">
-                        <input type="checkbox" name="session" value="11/12 星期四上午主題課" data-type="morning"> 11/12 (四) 上午主題課（材料包 50元）
+                        <input type="checkbox" name="session" value="11/12 (四) 下午：鉤針星星與進階聖誕樹、濕氈杯墊"> 11/12 (四) 下午：鉤針星星與進階聖誕樹、濕氈杯墊
                     </label>
                     <label class="checkbox-item">
-                        <input type="checkbox" name="session" value="11/12 星期四下午興趣班" data-type="afternoon"> 11/12 (四) 下午興趣班（自備材料）
+                        <input type="checkbox" name="session" value="11/19 (四) 下午：天使鈎織、濕氈Q版兔子寶寶"> 11/19 (四) 下午：天使鈎織、濕氈Q版兔子寶寶
                     </label>
                     <label class="checkbox-item">
-                        <input type="checkbox" name="session" value="11/19 星期四上午主題課" data-type="morning"> 11/19 (四) 上午主題課（材料包 50元）
+                        <input type="checkbox" name="session" value="11/26 (四) 下午：天使鈎織、縫製寶寶娃娃"> 11/26 (四) 下午：天使鈎織、縫製寶寶娃娃
                     </label>
                     <label class="checkbox-item">
-                        <input type="checkbox" name="session" value="11/19 星期四下午興趣班" data-type="afternoon"> 11/19 (四) 下午興趣班（自備材料）
-                    </label>
-                    <label class="checkbox-item">
-                        <input type="checkbox" name="session" value="11/26 星期四上午主題課" data-type="morning"> 11/26 (四) 上午主題課（材料包 50元）
-                    </label>
-                    <label class="checkbox-item">
-                        <input type="checkbox" name="session" value="11/26 星期四下午興趣班" data-type="afternoon"> 11/26 (四) 下午興趣班（自備材料）
+                        <input type="checkbox" name="session" value="12/03 (四) 下午：娃娃天使鈎織、縫製寶寶娃娃"> 12/03 (四) 下午：娃娃天使鈎織、縫製寶寶娃娃
                     </label>
                 </div>
             </div>
@@ -155,7 +149,7 @@
             <div class="form-group">
                 <div class="fee-display-box">
                     <span id="feeDescriptionDisplay">請勾選上方欲參加的場次</span>
-                    <div id="feeBreakdown" class="fee-breakdown">現場繳費（依勾選場次計算：場地費每場 200 元 ＋ 講師費隨喜 ＋ 主題課材料包每份 50 元）</div>
+                    <div id="feeBreakdown" class="fee-breakdown">現場繳費（場地費每場 200 元 ＋ 講師費隨喜 ＋ 材料包另計）</div>
                 </div>
             </div>
 
@@ -164,9 +158,10 @@
                 <div class="notice-title">🌻 課程說明、注意事項與規範</div>
                 <div class="notice-content">
                     <p><strong>• 課程名稱：</strong> 生活藝術~冬天的手作</p>
-                    <p><strong>• 課程日期：</strong> 11/12、11/19、11/26（星期四）</p>
+                    <p><strong>• 上課時間：</strong> 星期四下午 13:30 開始</p>
+                    <p><strong>• 課程日期：</strong> 11/12、11/19、11/26、12/3（星期四）</p>
                     <p><strong>• 上課地點：</strong> 宜蘭縣三星鄉安農九路560號（五芒星星共學園）</p>
-                    <p><strong>• 費用說明：</strong> 採現場繳費（場地費每場 200元、講師費隨喜；上午主題課材料包 50元／份）</p>
+                    <p><strong>• 費用說明：</strong> 採現場繳費（場地費每場 200元、講師費隨喜；材料包一個品項 50元）</p>
                     <p><strong>• 注意事項：</strong> 請自備 3～4號鉤針與水壺或水杯。</p>
 
                     <p><strong>• 個人資料保護：</strong><br>
@@ -232,23 +227,10 @@
                 return;
             }
 
-            let morningCount = 0;
-            let afternoonCount = 0;
-            checkedSessions.forEach(cb => {
-                if (cb.dataset.type === 'morning') morningCount++;
-                if (cb.dataset.type === 'afternoon') afternoonCount++;
-            });
-
             let totalSessions = checkedSessions.length;
             let totalRoomFee = totalSessions * 200;
-            let totalMaterialFee = morningCount * 50;
 
-            let desc = `現場繳費：共勾選 ${totalSessions} 場次（場地費共 ${totalRoomFee} 元`;
-            if (morningCount > 0) {
-                desc += ` ＋ 上午主題課材料包 ${morningCount} 份共 ${totalMaterialFee} 元`;
-            }
-            desc += ` ＋ 講師費隨喜）`;
-
+            let desc = `現場繳費：共勾選 ${totalSessions} 場次（場地費共 ${totalRoomFee} 元 ＋ 講師費隨喜 ＋ 材料包品項另計）`;
             feeDescriptionDisplay.innerHTML = desc;
         }
 
