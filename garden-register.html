@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 冬季燭光花園 - 線上報名</title>
+    <style>
+        body { font-family: "Microsoft JhengHei", "PingFang TC", sans-serif; background-color: #fdfaf5; padding: 40px 20px; color: #333; line-height: 1.6; }
+        .container { max-width: 680px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); }
+        
+        h1 { color: #5d4e43; text-align: center; margin-bottom: 8px; font-size: 1.6em; }
+        .subtitle { text-align: center; color: #d97746; font-size: 0.95em; font-weight: bold; margin-bottom: 25px; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: bold; color: #5d4e43; font-size: 0.95em; }
+        
+        input[type="text"], input[type="tel"], input[type="email"], input[type="number"], select { 
+            width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; font-size: 1em;
+            font-family: inherit;
+        }
+
+        .radio-group, .select-group {
+            display: grid;
+            gap: 10px;
+            background-color: #fcf9f2;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e5e0dc;
+        }
+        .radio-item {
+            display: flex;
+            align-items: flex-start;
+            cursor: pointer;
+            font-size: 0.95em;
+            color: #5d4e43;
+            font-weight: 500;
+        }
+        .radio-item input[type="radio"], .radio-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            margin-right: 10px;
+            margin-top: 3px;
+            accent-color: #d97746;
+            flex-shrink: 0;
+        }
+
+        .highlight-badge {
+            display: inline-block;
+            background-color: #5b8266;
+            color: white;
+            font-size: 0.75em;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: 6px;
+        }
+
+        .fee-display-box {
+            margin-top: 15px;
+            padding: 16px 20px;
+            background-color: rgba(217, 119, 70, 0.08); 
+            border-left: 5px solid #d97746; 
+            border-radius: 6px;
+            font-weight: bold;
+            color: #5d4e43;
+            font-size: 1.05em;
+        }
+        .fee-breakdown { font-size: 0.85em; color: #8A7B6F; margin-top: 6px; font-weight: normal; line-height: 1.5; }
+
+        .notice-section {
+            background-color: rgba(91, 130, 102, 0.05); 
+            border: 1px dashed #5b8266; 
+            padding: 22px;
+            border-radius: 10px;
+            margin-top: 30px;
+            margin-bottom: 25px;
+        }
+        .notice-title { font-size: 1.15em; font-weight: bold; color: #5b8266; margin-bottom: 12px; }
+        .notice-content p { font-size: 0.9em; line-height: 1.6; margin: 0 0 10px 0; color: #555; }
+        
+        .agree-group {
+            display: flex;
+            align-items: flex-start;
+            margin-top: 15px;
+            padding-top: 12px;
+            border-top: 1px dashed rgba(91, 130, 102, 0.3);
+        }
+        .agree-group input[type="checkbox"] { width: 18px; height: 18px; cursor: pointer; margin-right: 10px; margin-top: 3px; flex-shrink: 0; }
+        .agree-label { display: inline; font-size: 0.95em; color: #d97746; font-weight: bold; cursor: pointer; }
+
+        .btn-group { display: flex; gap: 15px; margin-top: 25px; }
+        .submit-btn { 
+            background-color: #d97746; color: white; padding: 14px; border: none; border-radius: 6px; 
+            cursor: pointer; flex: 2; font-size: 1.15em; font-weight: bold; transition: background-color 0.2s; 
+        }
+        .submit-btn:hover { background-color: #c26325; }
+
+        .back-btn {
+            display: flex; align-items: center; justify-content: center; background-color: transparent; 
+            color: #8A7B6F; border: 1.5px solid #8A7B6F; border-radius: 6px; padding: 14px; 
+            text-decoration: none; flex: 1; font-size: 1.05em; font-weight: bold; text-align: center;
+        }
+        .back-btn:hover { background-color: #8A7B6F; color: white; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>2026 冬季燭光花園 - 線上報名</h1>
+        <div class="subtitle">走入螺旋・點亮心光・摘星祈願｜報名截止：12/13（日）</div>
+
+        <form id="registrationForm">
+            
+            <!-- 聯絡基本資料 -->
+            <div class="form-group">
+                <label for="contactName">報名代表 / 家長姓名 *</label>
+                <input type="text" id="contactName" name="contactName" placeholder="請填寫中文全名" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="parentTel">聯絡電話 *</label>
+                <input type="tel" id="parentTel" name="parentTel" placeholder="如：0912345678" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">電子信箱 *</label>
+                <input type="email" id="email" name="email" placeholder="接收活動確認信與行前通知" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="line">LINE ID *</label>
+                <input type="text" id="line" name="line" placeholder="便於行前重要通知與即時聯繫" required>
+            </div>
+
+            <!-- 場次選擇 -->
+            <div class="form-group">
+                <label>參加場次選擇 *</label>
+                <div class="radio-group">
+                    <label class="radio-item">
+                        <input type="radio" name="session" value="第一場：五芒星星親子共學家庭專場 (16:00~17:30)" required>
+                        <div>
+                            <strong>第一場：五芒星星親子共學家庭專場</strong><br>
+                            <span style="font-size: 0.85em; color: #8A7B6F;">時間：16:00 ~ 17:30（15:50 開始報到）</span>
+                        </div>
+                    </label>
+                    <label class="radio-item">
+                        <input type="radio" name="session" value="第二場：社群朋友場 (18:00~19:00)">
+                        <div>
+                            <strong>第二場：社群朋友場</strong><br>
+                            <span style="font-size: 0.85em; color: #8A7B6F;">時間：18:00 ~ 19:00（17:50 開始報到，先到先領號碼牌）</span><br>
+                            <span style="font-size: 0.8em; color: #5b8266; font-weight: bold;">🌱 有 3 歲或 3 歲以下幼兒家庭可優先入場</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- 身分類別選擇 -->
+            <div class="form-group">
+                <label for="identityType">報名身分類別 *</label>
+                <select id="identityType" name="identityType" required>
+                    <option value="" disabled selected>請選擇您的身分</option>
+                    <option value="starFamily">五芒星星親子共學家庭（孩子本人及父母免費）</option>
+                    <option value="member">社團法人台灣華德福親子共學協會會員（會員本人免費）</option>
+                    <option value="general">非會員 / 社群朋友（每人 300 元）</option>
+                </select>
+            </div>
+
+            <!-- 人數詳細填寫 -->
+            <div class="form-group">
+                <div class="select-group">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div>
+                            <label for="freeCount" id="freeCountLabel">免費入場人數</label>
+                            <input type="number" id="freeCount" name="freeCount" min="0" value="0" readonly style="background-color: #eee;">
+                        </div>
+                        <div>
+                            <label for="paidCount" id="paidCountLabel">需付費人數（每人300元）</label>
+                            <input type="number" id="paidCount" name="paidCount" min="0" value="1">
+                        </div>
+                    </div>
+                    <div style="font-size: 0.85em; color: #8A7B6F;" id="identityHint">
+                        請先選擇身分類別以帶入計費規則。
+                    </div>
+                </div>
+            </div>
+
+            <!-- 是否加購摘許願星星 -->
+            <div class="form-group">
+                <label>摘藤圈許願星星工本費（自由選擇加購，每份 200 元）</label>
+                <div class="select-group">
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <span>加購摘星星份數：</span>
+                        <input type="number" id="starCount" name="starCount" min="0" value="0" style="width: 120px;">
+                    </div>
+                    <span style="font-size: 0.82em; color: #8A7B6F;">
+                        走完螺旋後憑摘星牌至藍貨櫃許願並摘下星星。無加購者亦可全程參與燭光螺旋並領取手沾蜂蠟蘋果蠟燭。
+                    </span>
+                </div>
+            </div>
+
+            <!-- 幼兒備註 -->
+            <div class="form-group">
+                <label for="toddlerInfo">同行幼兒年齡備註（選填）</label>
+                <input type="text" id="toddlerInfo" name="toddlerInfo" placeholder="若有3歲或以下幼兒請填寫，以便現場安排優先入場">
+            </div>
+
+            <!-- 費用試算區 -->
+            <div class="form-group">
+                <div class="fee-display-box">
+                    <span id="feeDescriptionDisplay">預估應繳金額：0 元</span>
+                    <div id="feeBreakdown" class="fee-breakdown">
+                        ※ 請於活動當日現場服務台報到時，備妥剛好的金額繳交。
+                    </div>
+                </div>
+            </div>
+
+            <!-- 注意事項與說明 -->
+            <div class="notice-section">
+                <div class="notice-title">🕯️ 活動說明、注意事項與規範</div>
+                <div class="notice-content">
+                    <p><strong>• 活動時間：</strong> 2026 年 12 月 19 日（星期六）</p>
+                    <p><strong>• 活動地點：</strong> 五芒星星親子共學園（宜蘭縣三星鄉安農九路 560 號）</p>
+                    <p><strong>• 靜謐氛圍維護：</strong> 現場需要大家一同維護靜謐的氛圍，若孩子音量過大，請家長輕聲提醒。讓我們一起在靜謐中回到自己，好好跟自己對話，給孩子前行的勇氣。</p>
+                    <p><strong>• 號碼牌與幼兒禮讓：</strong> 社群朋友場次將以家庭或同行友人為單位發放號碼牌，一次安排 2-3 個家庭進入，感謝禮讓 3 歲以下幼兒家庭優先入場。</p>
+                    <p><strong>• 溫暖祝福：</strong> 走完花園後，每人均可在服務台領取一組「手沾蜂蠟蘋果蠟燭」帶回家，將燭光的溫暖延續至日常生活。</p>
+                    <p><strong>• 新園區護持隨喜：</strong> 共學園區歷經搬遷，在新園區重新落地生根，建設仍非常需要社群夥伴的共同守護。現場備有隨喜募款箱與捐款收據（可供申報綜合所得稅列舉扣除），感謝一同共好！</p>
+                    <p><strong>• 報名截止：</strong> 12 月 13 日（星期日）截止。</p>
+
+                    <p><strong>• 個人資料保護：</strong><br>
+                    本次活動所取得之個人資料，僅供主辦單位進行活動聯繫、通知及行前作業使用，並恪遵個資法妥善保護。</p>
+                    
+                    <div class="agree-group" style="margin-top: 5px; margin-bottom: 15px; border-top: none; padding-top: 0;">
+                        <input type="checkbox" id="agreePrivacy" name="agreePrivacy" value="我理解並同意" required>
+                        <label for="agreePrivacy" class="agree-label" style="color: #444; font-weight: bold;">我理解並同意個人資料保護條款 *</label>
+                    </div>
+
+                    <p><strong>• 肖像權授權：</strong><br>
+                    活動中所拍攝之個人及活動影像，將提供於文宣品、官方平台及活動回顧紀錄中使用。</p>
+                    
+                    <div class="agree-group" style="margin-top: 5px; border-top: none; padding-top: 0;">
+                        <input type="checkbox" id="agreePortrait" name="agreePortrait" value="我理解並同意" required>
+                        <label for="agreePortrait" class="agree-label" style="color: #444; font-weight: bold;">我理解並同意活動紀錄肖像權授權 *</label>
+                    </div>
+                </div>
+                
+                <div class="agree-group">
+                    <input type="checkbox" id="agreeNotice" name="agreeNotice" value="已詳細閱讀並同意" required>
+                    <label for="agreeNotice" class="agree-label">我已詳細閱讀並同意上述活動內容、收費與靜謐守則 *</label>
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <a href="winter-garden.html" class="back-btn">返回介紹</a>
+                <button type="submit" class="submit-btn">送出報名</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const backendUrl = "https://script.google.com/macros/s/AKfycbyccc2R722T6sFq1uG1CbKO209vVRC_1EeeJy_52Ln--dL-nccPY6McMAA0bP2gF4sI/exec";
+        const regForm = document.getElementById('registrationForm');
+        const identityType = document.getElementById('identityType');
+        const freeCount = document.getElementById('freeCount');
+        const paidCount = document.getElementById('paidCount');
+        const starCount = document.getElementById('starCount');
+        const identityHint = document.getElementById('identityHint');
+        const feeDescriptionDisplay = document.getElementById('feeDescriptionDisplay');
+        const feeBreakdown = document.getElementById('feeBreakdown');
+
+        // 身分切換事件
+        identityType.addEventListener('change', function() {
+            const val = this.value;
+            if (val === 'starFamily') {
+                freeCount.value = 3; // 預設孩子本人加父母
+                paidCount.value = 0; // 手足或親友
+                identityHint.innerHTML = "💡 <strong>五芒星星共學家庭：</strong>孩子本人及父母免費；其餘手足或親友每人 300 元。";
+            } else if (val === 'member') {
+                freeCount.value = 1; // 會員本人
+                paidCount.value = 0; // 同行同行親友
+                identityHint.innerHTML = "💡 <strong>協會會員：</strong>會員本人免費；同行親友每人 300 元。";
+            } else if (val === 'general') {
+                freeCount.value = 0;
+                paidCount.value = 1; // 至少1人
+                identityHint.innerHTML = "💡 <strong>非會員/社群朋友：</strong>入場每人 300 元。";
+            }
+            calculateFee();
+        });
+
+        // 人數或星星變動時重新試算
+        paidCount.addEventListener('input', calculateFee);
+        starCount.addEventListener('input', calculateFee);
+
+        function calculateFee() {
+            const paidNum = parseInt(paidCount.value, 10) || 0;
+            const starNum = parseInt(starCount.value, 10) || 0;
+            const admissionFee = paidNum * 300;
+            const starFee = starNum * 200;
+            const total = admissionFee + starFee;
+
+            feeDescriptionDisplay.innerHTML = `現場應繳總額：${total} 元`;
+            feeBreakdown.innerHTML = `入場付費人數 ${paidNum} 人（${admissionFee} 元）＋ 摘星 ${starNum} 份（${starFee} 元）。<br>※ 現場繳費請自備剛好數額，報到完成即可領取號碼牌。`;
+        }
+
+        // 送出表單
+        regForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const selectedSession = document.querySelector('input[name="session"]:checked');
+            if (!selectedSession) {
+                alert('請選擇您欲參加的活動場次！');
+                return;
+            }
+
+            if (!identityType.value) {
+                alert('請選擇您的報名身分類別！');
+                return;
+            }
+
+            const agreePrivacy = document.getElementById('agreePrivacy');
+            const agreePortrait = document.getElementById('agreePortrait');
+            const agreeNotice = document.getElementById('agreeNotice');
+
+            if (!agreePrivacy.checked || !agreePortrait.checked || !agreeNotice.checked) {
+                alert('請確認已勾選同意個資保護條款、肖像權授權以及活動規範！');
+                return;
+            }
+
+            const submitBtn = document.querySelector('.submit-btn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = '資料傳輸中，請稍候...';
+
+            const paidNum = parseInt(paidCount.value, 10) || 0;
+            const freeNum = parseInt(freeCount.value, 10) || 0;
+            const starNum = parseInt(starCount.value, 10) || 0;
+            const totalFee = (paidNum * 300) + (starNum * 200);
+
+            const identityText = identityType.options[identityType.selectedIndex].text;
+            const sessionVal = selectedSession.value;
+            const toddlerVal = document.getElementById('toddlerInfo').value.trim();
+
+            const courseDetailSummary = `2026冬季燭光花園 [${sessionVal}] - 身分:${identityText} | 免費:${freeNum}人, 付費:${paidNum}人, 摘星:${starNum}份 | 預估金額:${totalFee}元${toddlerVal ? ` | 幼兒備註:${toddlerVal}` : ''}`;
+
+            const payload = {
+                studentName: document.getElementById('contactName').value,
+                parentTel: document.getElementById('parentTel').value,
+                email: document.getElementById('email').value,
+                line: document.getElementById('line').value,
+                courseName: courseDetailSummary,
+                agreePrivacy: agreePrivacy.value,
+                agreePortrait: agreePortrait.value,
+                agreeNotice: agreeNotice.value
+            };
+
+            fetch(backendUrl, {
+                method: 'POST',
+                body: new URLSearchParams(payload)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.result === 'success') {
+                    alert('🎉 報名成功！系統已收到您的報名資料，期待與您在燭光花園相見。');
+                    location.reload(); 
+                } else {
+                    alert(data.message || '報名資料已送出！若需確認細節請直接透過 LINE 官方帳號與我們聯繫。');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = '送出報名';
+                }
+            })
+            .catch(error => {
+                alert('報名資料已送出！如需確認請隨時透過 LINE 官方帳號與我們聯繫。');
+                submitBtn.disabled = false;
+                submitBtn.textContent = '送出報名';
+            });
+        });
+    </script>
+</body>
+</html>
