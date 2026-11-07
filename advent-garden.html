@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>冬季燭光花園 - 社團法人台灣華德福親子共學協會</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: '#fcf9f2',
+                            text: '#5d4e43',
+                            accent: '#d97746',
+                            green: '#5b8266',
+                            border: '#e5e0dc',
+                            light: '#8A7B6F'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Helvetica Neue"', 'Arial', '"Microsoft JhengHei"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { -webkit-font-smoothing: antialiased; }
+        .hero-bg { background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), url('彩虹底圖.jfif') center/cover no-repeat; }
+        #mobile-menu { transition: all 0.3s ease-in-out; max-height: 0; overflow: hidden; opacity: 0; }
+        #mobile-menu.open { max-height: 400px; opacity: 1; padding-top: 1rem; padding-bottom: 1rem; }
+    </style>
+</head>
+<body class="bg-brand-bg text-brand-text min-h-screen flex flex-col font-sans">
+    
+    <!-- 導覽列 -->
+    <nav class="flex justify-between items-center px-6 md:px-[8%] py-5 border-b border-brand-border bg-brand-bg sticky top-0 z-50 shadow-sm">
+        <div class="font-medium text-lg tracking-wide text-brand-text hover:text-brand-accent transition-colors">
+            <a href="index.html">社團法人台灣華德福親子共學協會</a>
+        </div>
+
+        <div class="hidden md:flex gap-8 items-center">
+            <a href="https://taiwanwaldorf.com/" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">首頁</a>
+            <a href="news.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">最新消息</a>
+            <a href="about.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">協會緣起</a>
+            <a href="services.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">服務項目</a>
+            <a href="events.html" class="text-sm font-medium text-brand-accent font-bold transition-colors">活動報名</a>
+            <a href="contact.html" class="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors">聯絡我們</a>
+        </div>
+
+        <button id="menu-btn" class="md:hidden flex flex-col gap-[5px] p-2 focus:outline-none" aria-label="Toggle Menu">
+            <span id="line1" class="w-6 h-[2px] bg-brand-text block transition-transform duration-300 origin-center"></span>
+            <span id="line2" class="w-6 h-[2px] bg-brand-text block transition-opacity duration-300"></span>
+            <span id="line3" class="w-6 h-[2px] bg-brand-text block transition-transform duration-300 origin-center"></span>
+        </button>
+    </nav>
+
+    <!-- 手機版選單 -->
+    <div id="mobile-menu" class="md:hidden bg-brand-bg border-b border-brand-border absolute w-full z-40 top-[73px] shadow-lg flex flex-col items-center gap-4">
+        <a href="https://taiwanwaldorf.com/" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">首頁</a>
+        <a href="news.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">最新消息</a>
+        <a href="about.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">協會緣起</a>
+        <a href="services.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">服務項目</a>
+        <a href="events.html" class="w-full text-center py-2 text-brand-accent font-bold">活動報名</a>
+        <a href="contact.html" class="w-full text-center py-2 text-brand-text hover:text-brand-accent font-medium">聯絡我們</a>
+    </div>
+
+    <!-- 首頁橫幅 Header -->
+    <header class="hero-bg py-24 px-6 flex justify-center items-center shadow-inner">
+        <div class="text-center max-w-4xl space-y-4">
+            <h1 class="text-2xl md:text-4xl font-bold text-white drop-shadow-md tracking-wider">
+                冬季燭光花園
+            </h1>
+            <p class="text-lg md:text-xl font-medium text-white/95 drop-shadow">
+                在最深的夜裡，讓光悄悄誕生<br class="hidden sm:inline">走入青苔與蘋果燭光的螺旋，在靜謐中找回向光前行的力量
+            </p>
+        </div>
+    </header>
+
+    <!-- 主要內容區塊 -->
+    <main class="max-w-5xl mx-auto px-6 py-12 space-y-12 flex-1 w-full">
+        
+        <!-- 給待降節的詩（雙版本對照/並列卡片） -->
+        <section class="space-y-6">
+            <div class="text-center space-y-2">
+                <span class="text-brand-accent font-bold text-xs tracking-wider uppercase">Advent Verses</span>
+                <h2 class="text-2xl md:text-3xl font-bold text-brand-text">給待降節的詩</h2>
+                <div class="w-12 h-1 bg-brand-accent rounded-full mx-auto mt-2"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 items-stretch">
+                <!-- 詩篇版本一 -->
+                <div class="bg-white p-7 md:p-8 rounded-2xl shadow-sm border border-brand-border space-y-4 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-2 mb-4 pb-2 border-b border-brand-border/60">
+                            <span class="text-amber-500 text-lg">🕯️</span>
+                            <h3 class="font-bold text-brand-text text-lg">待降節的沉思</h3>
+                        </div>
+                        <div class="text-brand-text text-sm md:text-base leading-loose space-y-3 font-serif">
+                            <p>在最深的夜裡，光悄悄誕生，<br>像一顆種子，在看不見的土壤裡發芽。<br>意識在那裡慢慢甦醒，<br>摸索著昨日與明日的邊界，<br>隨著這一點光，星光一一被點燃。</p>
+                            <p>於是人學會停下來等待，<br>在靜默裡收拾散落一地的思緒，<br>把急促的呼吸，交給較慢的節奏，<br>像冬天的樹，把葉子還給大地，<br>在枯寂中，為春天保留力量。</p>
+                            <p>就在這樣的時刻，<br>光在人的心裡重新誕生，<br>外在的黑暗，仍舊落在窗外，<br>卻因這一點點由內而生的亮，<br>慢慢變得透明、可親。</p>
+                            <p>我們一同站在這一刻：<br>等待，準備，也悄悄地轉化。<br>不必大聲宣告什麼，<br>只要讓心像清晨未被打擾的湖面，<br>靜靜映出那剛剛升起的光——<br><strong class="font-medium text-brand-accent">世界就在這裡，再一次被更新。</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 詩篇版本二：給小小孩 -->
+                <div class="bg-[#faf6ee] p-7 md:p-8 rounded-2xl shadow-sm border border-amber-200/80 space-y-4 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-2 mb-4 pb-2 border-b border-amber-200/60">
+                            <span class="text-amber-500 text-lg">🌟</span>
+                            <h3 class="font-bold text-brand-accent text-lg">給小小孩們的版本</h3>
+                        </div>
+                        <div class="text-brand-text text-sm md:text-base leading-loose space-y-3 font-serif">
+                            <p>在很黑、很黑的夜裡，<br>一小點光醒過來，<br>像種子在土裡伸伸腰，<br>偷偷把自己亮起來。</p>
+                            <p>小小的心也慢慢醒來，<br>睜開眼睛看一看：<br>昨天跟誰說晚安，<br>明天要跟誰說早。</p>
+                            <p>天上亮起一顆星，<br>又一顆，又一顆，<br>好像對著我們說：<br>「不怕黑，我在這裡。」</p>
+                            <p>我們輕輕停下腳步，<br>小聲一點，再小聲一點，<br>把急急的呼吸放慢，<br>聽聽心裡咚咚的鼓。</p>
+                            <p>像冬天光禿禿的樹，<br>把葉子交給大地，<br>安安靜靜站在那裡，<br>等著春天來抱一抱。</p>
+                            <p>就在這安靜的時候，<br>一盞小燈在心裡亮起來，<br>外面的夜還是黑黑的，<br><strong class="font-medium text-brand-accent">你這裡，已經有光了。</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 活動意涵與摘星邀請 -->
+        <section class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-brand-border space-y-6 leading-relaxed">
+            <div class="space-y-3">
+                <h2 class="text-2xl md:text-3xl font-bold text-brand-green flex items-center gap-2">
+                    走入螺旋：喚醒內在的虔敬與清明
+                </h2>
+                <div class="w-12 h-1 bg-brand-accent rounded-full"></div>
+            </div>
+            
+            <div class="text-brand-text text-base leading-relaxed space-y-4">
+                <p>
+                    十二月又悄然來臨了，待降節也隱約開始在我們身體的節奏中悄然醒來。<br>每年的這個時候我們內在想尋找自我的想望，又更清明了起來。
+                </p>
+                <p>
+                    特別是在這紛雜的現世，靛藍時代的晦暗不明，<br>更可以藉由燭光花園走螺旋的儀式感，讓孩子及我們內在的虔敬感再度被喚醒。
+                </p>
+                <div class="p-5 bg-amber-50/60 rounded-xl border border-amber-200/70 text-brand-text">
+                    <p class="font-medium text-brand-accent mb-1 flex items-center gap-1.5">
+                        <span>✨</span> 今年的特別邀請：摘下許願星星
+                    </p>
+                    <p class="text-sm md:text-base leading-relaxed text-brand-light">
+                        今年的冬季燭光花園，五芒星星有個特別的想法與邀請：<br>在燭光花園之後，與孩子們一起摘下許願星星，將心中的光透過星星轉化，為深沉的冬夜帶來指引的方向。
+                    </p>
+                </div>
+            </div>
+
+            <!-- 溫馨小提醒提示盒 -->
+            <div class="bg-brand-bg p-5 rounded-xl border-l-4 border-brand-green flex items-start gap-3">
+                <span class="text-brand-green text-xl shrink-0 mt-0.5">🕊️</span>
+                <div class="text-sm md:text-base text-brand-text leading-relaxed">
+                    <strong class="font-bold text-brand-green">溫馨小提醒：</strong><br>
+                    現場需要大家一同維護靜謐的氛圍，若孩子音量過大，請家長輕聲提醒。<br>讓我們一起安靜地回到自己！好好跟自己對話！也讓孩子的入世之路有燭光相伴，在靜謐中找到前行的勇氣！
+                </div>
+            </div>
+        </section>
+
+        <!-- 活動時間與場次安排 -->
+        <section class="space-y-6">
+            <h2 class="text-2xl font-bold text-brand-text border-l-4 border-brand-green pl-3">活動場次與時間</h2>
+            
+            <div class="p-6 bg-white rounded-2xl border border-brand-border shadow-sm space-y-4">
+                <div class="flex items-center gap-2 text-brand-accent font-bold text-lg pb-3 border-b border-brand-border/60">
+                    <span>📅</span> 2026 年 12 月 19 日（星期六）
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-5 pt-2">
+                    <!-- 第一場 -->
+                    <div class="bg-brand-bg p-5 rounded-xl border border-brand-border/80 space-y-2">
+                        <span class="inline-block px-2.5 py-0.5 rounded text-xs font-bold bg-brand-green text-white">第一場</span>
+                        <h3 class="text-lg font-bold text-brand-text">五芒星星親子共學家庭專場</h3>
+                        <p class="text-base font-semibold text-brand-accent">16:00 ～ 17:30</p>
+                        <p class="text-xs text-brand-light">（15:50 開始報到）</p>
+                    </div>
+
+                    <!-- 第二場 -->
+                    <div class="bg-brand-bg p-5 rounded-xl border border-brand-border/80 space-y-2">
+                        <span class="inline-block px-2.5 py-0.5 rounded text-xs font-bold bg-brand-accent text-white">第二場</span>
+                        <h3 class="text-lg font-bold text-brand-text">社群朋友場</h3>
+                        <p class="text-base font-semibold text-brand-accent">18:00 ～ 19:00</p>
+                        <p class="text-xs text-brand-light">（17:50 開始報到）</p>
+                        <p class="text-xs text-brand-light leading-relaxed pt-1">
+                            以家庭或個人為單位領取號碼牌依序入場。一次安排 2-3 個家庭進入。<br>
+                            <span class="text-brand-green font-medium">若有 3 歲以下孩童可優先入場，感謝一起守護幼兒的睡眠節奏。</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="text-xs text-brand-light bg-amber-50/50 p-3.5 rounded-lg border border-amber-200/50 space-y-1">
+                    <p>💡 <strong>時間備註：</strong>實際開始時間將會依據報名人數微調，請以活動前的「行前通知」為準。</p>
+                    <p>📍 <strong>活動地點：</strong>五芒星星親子共學園（宜蘭縣三星鄉安農九路 560 號）</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 入場費用與方案 -->
+        <section class="space-y-6">
+            <h2 class="text-2xl font-bold text-brand-text border-l-4 border-brand-green pl-3">入場費用與說明</h2>
+
+            <div class="grid md:grid-cols-3 gap-6 items-stretch">
+                <!-- 方案 1 -->
+                <div class="bg-white p-6 rounded-xl border border-brand-border shadow-sm flex flex-col justify-between space-y-4">
+                    <div class="space-y-3">
+                        <div class="text-brand-accent font-bold text-xs tracking-wider uppercase">Plan A</div>
+                        <h3 class="text-lg font-bold text-brand-text">五芒星星共學家庭</h3>
+                        <div class="space-y-2 text-sm text-brand-light leading-relaxed">
+                            <p class="text-base font-bold text-brand-green">孩子本人及父母免費</p>
+                            <p>• 手足另計：每人 <strong>300 元</strong></p>
+                            <p>• 摘藤圈許願星星：工本費 <strong>200 元</strong>（自由加購參與）</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 方案 2 -->
+                <div class="bg-white p-6 rounded-xl border border-brand-border shadow-sm flex flex-col justify-between space-y-4">
+                    <div class="space-y-3">
+                        <div class="text-brand-accent font-bold text-xs tracking-wider uppercase">Plan B</div>
+                        <h3 class="text-lg font-bold text-brand-text">社團法人台灣華德福親子共學協會會員</h3>
+                        <div class="space-y-2 text-sm text-brand-light leading-relaxed">
+                            <p class="text-base font-bold text-brand-green">會員本人入場免費</p>
+                            <p>• 摘藤圈許願星星：工本費 <strong>200 元</strong>（自由加購參與）</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 方案 3 -->
+                <div class="bg-white p-6 rounded-xl border border-brand-border shadow-sm flex flex-col justify-between space-y-4">
+                    <div class="space-y-3">
+                        <div class="text-brand-accent font-bold text-xs tracking-wider uppercase">Plan C</div>
+                        <h3 class="text-lg font-bold text-brand-text">非會員 / 社群朋友</h3>
+                        <div class="space-y-2 text-sm text-brand-light leading-relaxed">
+                            <p class="text-base font-bold text-brand-green">入場每人 <strong>300 元</strong></p>
+                            <p class="text-xs text-brand-light">以家庭或同行友人為單位入場</p>
+                            <p>• 摘藤圈許願星星：工本費 <strong>200 元</strong>（自由加購參與）</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 報到與祝福禮物說明 -->
+            <div class="bg-white p-6 rounded-xl border border-brand-border shadow-sm space-y-3 text-sm text-brand-text leading-relaxed">
+                <p class="flex items-start gap-2">
+                    <span class="text-brand-accent font-bold">🪙</span>
+                    <span><strong>現場繳費提醒：</strong>煩請準備數目剛好的金額，於服務台報到並繳交費用。走完螺旋後有領取「摘星星牌」的朋友，可至<strong>藍貨櫃</strong>許願和摘星星。</span>
+                </p>
+                <p class="flex items-start gap-2">
+                    <span class="text-amber-500 font-bold">🕯️</span>
+                    <span><strong>祝福帶回家：</strong>活動後每人可以在服務台領取一組<strong>手沾蜂蠟蘋果蠟燭</strong>帶回家，將燭光的溫暖延續到家中。</span>
+                </p>
+            </div>
+        </section>
+
+        <!-- 園區重建與隨喜捐款 -->
+        <section class="bg-[#f5f1ea] p-8 md:p-10 rounded-2xl border border-brand-border space-y-4 text-brand-text">
+            <div class="flex items-center gap-2">
+                <span class="text-2xl">🌱</span>
+                <h2 class="text-xl md:text-2xl font-bold text-brand-text">攜手灌溉：新園區重建與支持</h2>
+            </div>
+            <p class="text-sm md:text-base leading-relaxed text-brand-light">
+                共學園區在過往歷經搬遷，在新園區重新落地生根，一切建設捲土重來。<br>過程得到來自社群夥伴不同形式的大力協助與支持，目前仍舊非常需要持續的陪伴與挹注。
+            </p>
+            <p class="text-sm md:text-base leading-relaxed font-medium text-brand-text">
+                「養育一個孩子需要一個村莊的力量」，讓我們一起協力為下一代、也為自己更好的未來共同努力！
+            </p>
+            <div class="p-4 bg-white/80 rounded-xl border border-brand-border/80 text-xs md:text-sm text-brand-light">
+                現場備有隨喜募款箱與<strong>捐款收據（可供申報綜合所得稅列舉扣除）</strong>，衷心感謝您的每一份溫暖力量，<br>協助協會為社群開展更多服務，朝向共好理想前進。
+            </div>
+        </section>
+
+        <!-- 活動寫真（3張照片分享） -->
+        <section id="gallery" class="bg-white p-8 rounded-2xl shadow-sm border border-brand-border space-y-6">
+            <div class="text-center">
+                <h2 class="text-2xl font-bold text-brand-text mb-1">花園寫真</h2>
+                <p class="text-sm text-brand-light">走入螺旋花園的溫暖與靜謐回憶</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- 照片 1 -->
+                <div class="space-y-2">
+                    <div class="aspect-4/3 bg-[#f4eee6] rounded-xl border border-brand-border overflow-hidden shadow-sm flex items-center justify-center p-1">
+                        <img src="garden-1.jpg" alt="燭光螺旋花園 1" class="w-full h-full object-contain hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <p class="text-xs text-center text-brand-light">青翠的常青枝葉與靜謐螺旋</p>
+                </div>
+
+                <!-- 照片 2 -->
+                <div class="space-y-2">
+                    <div class="aspect-4/3 bg-[#f4eee6] rounded-xl border border-brand-border overflow-hidden shadow-sm flex items-center justify-center p-1">
+                        <img src="garden-2.jpg" alt="燭光螺旋花園 2" class="w-full h-full object-contain hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <p class="text-xs text-center text-brand-light">在冬夜中點燃的蘋果蜂蠟燭光</p>
+                </div>
+
+                <!-- 照片 3 -->
+                <div class="space-y-2">
+                    <div class="aspect-4/3 bg-[#f4eee6] rounded-xl border border-brand-border overflow-hidden shadow-sm flex items-center justify-center p-1">
+                        <img src="garden-3.jpg" alt="燭光螺旋花園 3" class="w-full h-full object-contain hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <p class="text-xs text-center text-brand-light">孩子專注虔敬的步履與心光</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 行動呼籲與報名 CTA 區塊 -->
+        <section class="pt-4 flex flex-col items-center text-center space-y-4">
+            <div class="inline-block px-4 py-1.5 rounded-full bg-amber-100 border border-amber-300 text-amber-800 text-sm font-bold">
+                報名截止日期：12 月 13 日（星期日）
+            </div>
+            <p class="text-sm md:text-base text-brand-light">
+                名額有限，若有任何疑問或想了解細節，歡迎隨時與我們聯繫交流
+            </p>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
+                <!-- LINE 官方諮詢按鈕 -->
+                <a href="https://lin.ee/ZEibS6w" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#06C755] hover:bg-[#05b04b] text-white text-base md:text-lg px-8 py-3.5 rounded-full font-bold transition-all shadow-md hover:shadow-lg">
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                        <path d="M24 10.304c0-5.369-5.383-9.738-12-9.738-6.616 0-12 4.369-12 9.738 0 4.814 4.269 8.846 10.019 9.608.391.084.922.258 1.057.592.121.303.079.778.039 1.085l-.171 1.027c-.053.303-.242 1.186 1.039.647 1.281-.54 6.911-4.069 9.428-6.967 1.739-1.907 2.589-3.843 2.589-5.292z"/>
+                    </svg>
+                    LINE 官方諮詢
+                </a>
+
+                <!-- 立即報名按鈕 -->
+                <a href="garden-register.html" 
+                   class="w-full sm:w-auto inline-block bg-[#D97736] hover:bg-[#C26325] text-white text-base md:text-lg px-8 py-3.5 rounded-full font-bold transition-all shadow-md hover:shadow-lg">
+                    立即線上報名
+                </a>
+            </div>
+            
+            <div class="text-xs text-brand-light/80 pt-2 space-y-1">
+                <p>主辦單位：社團法人台灣華德福親子共學協會、五芒星星親子共學園</p>
+                <p>協辦單位：若為自由有限公司</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 頁尾 Footer -->
+    <footer class="bg-brand-text text-white/80 py-8 px-6 text-center text-xs space-y-2 border-t border-brand-border mt-12">
+        <p class="font-medium text-white">社團法人台灣華德福親子共學協會 ＆ 五芒星星親子共學園</p>
+        <p>協辦單位：若為自由有限公司</p>
+        <p>地點：宜蘭縣三星鄉安農九路 560 號</p>
+        <p class="pt-2 text-white/50">© 台灣華德福親子共學協會 All Rights Reserved.</p>
+    </footer>
+
+    <!-- 行動選單 JS -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const line1 = document.getElementById('line1');
+        const line2 = document.getElementById('line2');
+        const line3 = document.getElementById('line3');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+            if (mobileMenu.classList.contains('open')) {
+                line1.style.transform = 'translateY(7px) rotate(45deg)';
+                line2.style.opacity = '0';
+                line3.style.transform = 'translateY(-7px) rotate(-45deg)';
+            } else {
+                line1.style.transform = 'none';
+                line2.style.opacity = '1';
+                line3.style.transform = 'none';
+            }
+        });
+
+        const menuLinks = mobileMenu.querySelectorAll('a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                line1.style.transform = 'none';
+                line2.style.opacity = '1';
+                line3.style.transform = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
