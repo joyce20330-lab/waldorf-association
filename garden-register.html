@@ -146,7 +146,7 @@
                         <div>
                             <strong>第二場：社群朋友場</strong><br>
                             <span style="font-size: 0.85em; color: #8A7B6F;">時間：18:00 ~ 19:00（17:50 開始報到，先到先領號碼牌）</span><br>
-                            <span style="font-size: 0.8em; color: #5b8266; font-weight: bold;">🌱 有 3 歲或 3 歲以下幼兒家庭可優先入場</span>
+                            <span style="font-size: 0.8em; color: #5b8266; font-weight: bold;">🌱 有 3 歲以下幼兒家庭可優先入場</span>
                         </div>
                     </label>
                 </div>
@@ -248,7 +248,7 @@
             </div>
 
             <div class="btn-group">
-                <a href="winter-garden.html" class="back-btn">返回介紹</a>
+                <a href="advent-garden.html" class="back-btn">返回介紹</a>
                 <button type="submit" class="submit-btn">送出報名</button>
             </div>
         </form>
@@ -336,17 +336,22 @@
             const sessionVal = selectedSession.value;
             const toddlerVal = document.getElementById('toddlerInfo').value.trim();
 
-            const courseDetailSummary = `2026冬季燭光花園 [${sessionVal}] - 身分:${identityText} | 免費:${freeNum}人, 付費:${paidNum}人, 摘星:${starNum}份 | 預估金額:${totalFee}元${toddlerVal ? ` | 幼兒備註:${toddlerVal}` : ''}`;
-
+            // 獨立拆解每個欄位打包傳送至後端
             const payload = {
                 studentName: document.getElementById('contactName').value,
                 parentTel: document.getElementById('parentTel').value,
                 email: document.getElementById('email').value,
                 line: document.getElementById('line').value,
-                courseName: courseDetailSummary,
-                agreePrivacy: agreePrivacy.value,
-                agreePortrait: agreePortrait.value,
-                agreeNotice: agreeNotice.value
+                session: sessionVal,               // 參加場次（F欄）
+                identityType: identityText,         // 報名身分（G欄）
+                freeCount: freeNum,                // 免費入場人數（H欄）
+                paidCount: paidNum,                // 需付費人數（I欄）
+                starCount: starNum,                // 摘藤圈許願星星購買數（J欄）
+                totalFee: totalFee,                // 現場應繳總額 / 活動費用（K欄）
+                toddlerInfo: toddlerVal,           // 同行幼兒年齡備註（L欄）
+                agreePrivacy: agreePrivacy.value,  // 同意個資保護（M欄）
+                agreePortrait: agreePortrait.value,// 同意肖像權（N欄）
+                agreeNotice: agreeNotice.value     // 同意活動規範（O欄）
             };
 
             fetch(backendUrl, {
