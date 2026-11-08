@@ -25,34 +25,6 @@
             margin-bottom: 20px;
         }
 
-        .check-card-group {
-            display: grid;
-            gap: 12px;
-        }
-        .check-card {
-            display: flex;
-            align-items: flex-start;
-            padding: 14px 16px;
-            border: 1.5px solid #e2d9cd;
-            border-radius: 8px;
-            background: #fff;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .check-card:hover {
-            border-color: #d97746;
-            background-color: #fdfaf5;
-        }
-        .check-card input[type="checkbox"] {
-            margin-top: 4px;
-            margin-right: 12px;
-            accent-color: #d97746;
-            width: 18px;
-            height: 18px;
-            flex-shrink: 0;
-            cursor: pointer;
-        }
-
         .discount-hint-box {
             background-color: #fcf9f2;
             border-radius: 8px;
@@ -66,6 +38,21 @@
             margin: 6px 0 0 18px;
             padding: 0;
             line-height: 1.7;
+        }
+
+        .partner-box {
+            background-color: #fcf9f2;
+            border: 1.5px solid #d97746;
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 15px;
+            display: none;
+        }
+        .partner-box-title {
+            color: #d97746;
+            font-weight: bold;
+            font-size: 0.95em;
+            margin-bottom: 12px;
         }
 
         .fee-display-box {
@@ -127,12 +114,6 @@
             border-radius: 8px;
             border: 1px solid #e5e0dc;
         }
-        .ext-section-title {
-            font-size: 0.92em;
-            font-weight: bold;
-            color: #5d4e43;
-            margin: 10px 0 6px 0;
-        }
     </style>
 </head>
 <body>
@@ -140,35 +121,34 @@
         <h1>四季營隊 - 2027冬季假期線上報名</h1>
 
         <div class="camp-info-box">
-            <p style="margin:0 0 8px 0; font-weight:bold; color:#5d4e43;">🌲 2027 冬季假期梯次資訊（可複選報名）</p>
-            <p style="margin:0 0 4px 0; font-size:0.92em; color:#5d4e43;">• <strong>第一梯次：</strong> 2027/1/18 - 1/22（五天全日營）</p>
-            <p style="margin:0 0 8px 0; font-size:0.92em; color:#5d4e43;">• <strong>第二梯次：</strong> 2027/1/22 - 1/25（四天三夜，含 1/22、1/23 宿營）</p>
-            <p style="margin:0; font-size:0.88em; color:#666;">地點：宜蘭縣三星鄉安農九路560號｜<strong>名額：每梯次上限 10 人</strong></p>
+            <p style="margin:0 0 6px 0; font-weight:bold; color:#5d4e43; font-size:1.05em;">🌲 2027 冬季假期梯次資訊</p>
+            <p style="margin:0 0 4px 0; font-size:0.92em; color:#5d4e43;">• <strong>活動日期：</strong> 2027/1/18（一） - 1/22（五）共五天全日營</p>
+            <p style="margin:0 0 4px 0; font-size:0.92em; color:#5d4e43;">• <strong>活動時間：</strong> 09:00 - 16:00（可協助課後延托至 17:30，每次 200 元）</p>
+            <p style="margin:0; font-size:0.88em; color:#666;">• <strong>活動地點：</strong> 宜蘭縣三星鄉安農九路560號｜<strong>招生名額：上限 10 人</strong></p>
         </div>
 
         <form id="registrationForm">
             
             <input type="hidden" id="registrationTime" name="registrationTime">
+            <input type="hidden" name="campSession" value="第一梯次：2027/1/18 - 1/22 (五天全日營)">
 
-            <!-- 梯次選擇（可複選） -->
+            <!-- 報名方案與費用選擇 -->
             <div class="form-group">
-                <label>選擇報名梯次（可複選） *</label>
-                <div class="check-card-group">
-                    <label class="check-card">
-                        <input type="checkbox" name="campSession" value="第一梯次：1/18-1/22 (五天全日營)" class="session-checkbox" checked>
-                        <div>
-                            <strong style="color: #5d4e43;">第一梯次：1/18 (一) - 1/22 (五)</strong><br>
-                            <span style="font-size: 0.88em; color: #8A7B6F;">五天全日營（09:00 - 16:00）</span>
-                        </div>
-                    </label>
+                <label for="planType">報名收費方案 *</label>
+                <select id="planType" name="planType" required>
+                    <option value="new_student">新生報名：$6,500 元</option>
+                    <option value="group_two">兩人團報：$12,000 元（平均每人 $6,000）</option>
+                    <option value="discount_single">專屬優惠價：$6,000 元（符合特定資格身分）</option>
+                </select>
 
-                    <label class="check-card">
-                        <input type="checkbox" name="campSession" value="第二梯次：1/22-1/25 (四天三夜，含宿營)" class="session-checkbox">
-                        <div>
-                            <strong style="color: #5d4e43;">第二梯次：1/22 (五) - 1/25 (一)</strong><br>
-                            <span style="font-size: 0.88em; color: #8A7B6F;">四天三夜特別場（含 1/22、1/23 兩晚宿營）</span>
-                        </div>
-                    </label>
+                <div class="discount-hint-box">
+                    <strong>🌱 專屬優惠價（$6,000 元）適用對象：</strong>
+                    <ul>
+                        <li>春季營隊學員</li>
+                        <li>社團法人台灣華德福親子共學協會會員家庭</li>
+                        <li>五芒星星親子共學園家庭</li>
+                        <li>丁旋老師星禾課後照顧成員</li>
+                    </ul>
                 </div>
             </div>
 
@@ -208,79 +188,64 @@
                 </select>
             </div>
 
-            <!-- 報名身分與收費方案（含一般與優惠價） -->
-            <div class="form-group">
-                <label for="planType">報名身分與收費方案（每梯次單價） *</label>
-                <select id="planType" name="planType" required>
-                    <optgroup label="一般身分">
-                        <option value="general_single">一般身分－單人報名：$6,000 元 / 梯</option>
-                        <option value="general_family">一般身分－親子報名（1大1小）：$11,220 元 / 梯</option>
-                    </optgroup>
-                    <optgroup label="優惠身分">
-                        <option value="discount_single">優惠身分－單人優惠價：$5,000 元 / 梯</option>
-                        <option value="discount_family">優惠身分－親子優惠價（1大1小）：$9,900 元 / 梯</option>
-                    </optgroup>
-                </select>
+            <!-- 兩人團報展開的第二位學員填寫區 -->
+            <div id="partnerBox" class="partner-box">
+                <div class="partner-box-title">👥 兩人團報：請填寫第二位同行學員資料</div>
+                
+                <div class="form-group">
+                    <label for="partnerName">第二位學員姓名 *</label>
+                    <input type="text" id="partnerName" name="partnerName" placeholder="請填寫中文全名">
+                </div>
 
-                <div class="discount-hint-box">
-                    <strong>🌱 優惠身分適用對象：</strong>
-                    <ul>
-                        <li>春季營隊學員</li>
-                        <li>社團法人台灣華德福親子共學協會會員家庭</li>
-                        <li>五芒星星親子共學園家庭</li>
-                        <li>丁旋老師星禾課後照顧成員</li>
-                    </ul>
+                <div class="form-group">
+                    <label for="partnerGender">第二位學員性別</label>
+                    <select id="partnerGender" name="partnerGender">
+                        <option value="">請選擇</option>
+                        <option value="男">男</option>
+                        <option value="女">女</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="partnerBirthday">第二位學員生日</label>
+                    <input type="date" id="partnerBirthday" name="partnerBirthday">
+                </div>
+
+                <div class="form-group">
+                    <label for="partnerHealth">第二位學員健康狀況 / 過敏源</label>
+                    <input type="text" id="partnerHealth" name="partnerHealth" placeholder="若無請填無">
                 </div>
             </div>
 
-            <!-- 課後延托服務選擇 (依勾選的梯次動態顯示) -->
-            <div class="form-group ext-container" id="extContainer">
+            <!-- 課後延托服務選擇 -->
+            <div class="form-group ext-container">
                 <label style="color: #d97746; margin-bottom: 6px;">⏰ 課後延托服務（16:00 - 17:30，每次 200 元）</label>
-                <p style="font-size: 0.85em; color: #666; margin-bottom: 12px;">每日活動於 16:00 告一段落，若需托育至 17:30 可自由勾選（1/22 與 1/23 宿營期間無延托）：</p>
-                
-                <!-- 第一梯次延托選項 (1/18 ~ 1/21) -->
-                <div id="extBlock1">
-                    <div class="ext-section-title">第一梯次延托日（1/18 - 1/22）：</div>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px;">
-                        <label style="display:flex; align-items:center; gap:6px; font-size:0.9em; cursor:pointer;">
-                            <input type="checkbox" name="extensionDays" value="1/18" class="ext-checkbox"> 1/18 (一) 16:00-17:30 (+$200)
-                        </label>
-                        <label style="display:flex; align-items:center; gap:6px; font-size:0.9em; cursor:pointer;">
-                            <input type="checkbox" name="extensionDays" value="1/19" class="ext-checkbox"> 1/19 (二) 16:00-17:30 (+$200)
-                        </label>
-                        <label style="display:flex; align-items:center; gap:6px; font-size:0.9em; cursor:pointer;">
-                            <input type="checkbox" name="extensionDays" value="1/20" class="ext-checkbox"> 1/20 (三) 16:00-17:30 (+$200)
-                        </label>
-                        <label style="display:flex; align-items:center; gap:6px; font-size:0.9em; cursor:pointer;">
-                            <input type="checkbox" name="extensionDays" value="1/21" class="ext-checkbox"> 1/21 (四) 16:00-17:30 (+$200)
-                        </label>
-                    </div>
-                </div>
-
-                <!-- 第二梯次延托選項 (1/24 ~ 1/25，排除 1/22 與 1/23 宿營) -->
-                <div id="extBlock2" style="display: none; margin-top: 12px;">
-                    <div class="ext-section-title">第二梯次延托日（1/22 - 1/25）：</div>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px;">
-                        <label style="display:flex; align-items:center; gap:6px; font-size:0.9em; cursor:pointer;">
-                            <input type="checkbox" name="extensionDays" value="1/24" class="ext-checkbox"> 1/24 (日) 16:00-17:30 (+$200)
-                        </label>
-                        <label style="display:flex; align-items:center; gap:6px; font-size:0.9em; cursor:pointer;">
-                            <input type="checkbox" name="extensionDays" value="1/25" class="ext-checkbox"> 1/25 (一) 16:00-17:30 (+$200)
-                        </label>
-                    </div>
-                </div>
-
-                <div id="noSessionHint" style="display: none; font-size: 0.88em; color: #d97746; margin-top: 6px;">
-                    ※ 請先勾選上方梯次以顯示對應的延托選項。
+                <p style="font-size: 0.85em; color: #666; margin-bottom: 12px;">每日活動於 16:00 告一段落，若需要托育至 17:30 可自由勾選：</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px;">
+                    <label style="display:flex; align-items:center; gap:6px; font-size:0.9em; cursor:pointer;">
+                        <input type="checkbox" name="extensionDays" value="1/18" class="ext-checkbox"> 1/18 (一) 16:00-17:30 (+$200)
+                    </label>
+                    <label style="display:flex; align-items:center; gap:6px; font-size:0.9em; cursor:pointer;">
+                        <input type="checkbox" name="extensionDays" value="1/19" class="ext-checkbox"> 1/19 (二) 16:00-17:30 (+$200)
+                    </label>
+                    <label style="display:flex; align-items:center; gap:6px; font-size:0.9em; cursor:pointer;">
+                        <input type="checkbox" name="extensionDays" value="1/20" class="ext-checkbox"> 1/20 (三) 16:00-17:30 (+$200)
+                    </label>
+                    <label style="display:flex; align-items:center; gap:6px; font-size:0.9em; cursor:pointer;">
+                        <input type="checkbox" name="extensionDays" value="1/21" class="ext-checkbox"> 1/21 (四) 16:00-17:30 (+$200)
+                    </label>
+                    <label style="display:flex; align-items:center; gap:6px; font-size:0.9em; cursor:pointer;">
+                        <input type="checkbox" name="extensionDays" value="1/21" class="ext-checkbox"> 1/22 (五) 16:00-17:30 (+$200)
+                    </label>
                 </div>
             </div>
 
             <!-- 費用即時試算區 -->
             <div class="fee-display-box">
-                預估應繳總費用：NT$ <span id="feeAmountDisplay" class="fee-amount">6,000</span> 元
-                <div id="feeBreakdown" class="fee-breakdown">已選 1 個梯次</div>
+                預估應繳總費用：NT$ <span id="feeAmountDisplay" class="fee-amount">6,500</span> 元
+                <div id="feeBreakdown" class="fee-breakdown">新生報名 $6,500 元</div>
             </div>
-            <input type="hidden" id="calculatedFee" name="calculatedFee" value="6000">
+            <input type="hidden" id="calculatedFee" name="calculatedFee" value="6500">
 
             <!-- 家長/聯絡人資訊 -->
             <div class="form-group" style="margin-top: 25px;">
@@ -328,13 +293,14 @@
             <div class="notice-section">
                 <div class="notice-title">🌻 收費標準、退費規範與注意事項</div>
                 <div class="notice-content">
-                    <p><strong>• 招生對象：</strong> 國小一到四年級學童（每梯次最多 10 人）</p>
-                    <p><strong>• 費用說明：</strong> 含食材、藝術材料、園區場地保險</p>
-                    <p><strong>• ✨ 特別師資：</strong> 學童達 5 人以上將特別邀約承訓(洋蔥)老師共同帶領（依活動與人數彈性安排）</p>
-                    <p><strong>• 梯次時間：</strong><br>
-                    - 第一梯次：2027/1/18 - 1/22（09:00 - 16:00，共五天全日營）<br>
-                    - 第二梯次：2027/1/22 - 1/25（四天三夜，含 1/22、1/23 宿營）</p>
-                    <p><strong>• 延托服務：</strong> 每次 200 元（16:00 - 17:30），1/22 與 1/23 宿營期間不提供延托服務。</p>
+                    <p><strong>• 招生對象：</strong> 國小一到四年級學童（上限 10 人）</p>
+                    <p><strong>• 收費方案：</strong><br>
+                    - 新生單人報名：NT$ 6,500 元<br>
+                    - 兩人團報優惠：NT$ 12,000 元（平均每人 $6,000 元）<br>
+                    - 專屬優惠價：NT$ 6,000 元（春秋季營隊舊生、協會會員、共學園家庭、星禾課後照顧成員）</p>
+                    <p><strong>• 費用包含：</strong> 含食材、藝術材料、園區場地保險</p>
+                    <p><strong>• 活動時間：</strong> 2027/1/18（一） - 1/22（五）09:00 - 16:00</p>
+                    <p><strong>• 延托服務：</strong> 每次 200 元（16:00 - 17:30）</p>
                     <p><strong>• 上課地點：</strong> 宜蘭縣三星鄉安農九路560號</p>
                     <p><strong>• 匯款帳號：</strong> 戶名: 丁旋<br>郵局 (700)<br>帳號: 1112571264892</p>
                     <p><strong>• 退費標準：</strong><br>
@@ -380,94 +346,51 @@
 <script>
     const backendUrl = "https://script.google.com/macros/s/AKfycbysETb0T4AMM4vXJ1Lu4yGzAEqkeSomAd31W0NYjUd9fb_7kB6AOH8434bSGjP-FZ4Tlg/exec";
 
-    const sessionCheckboxes = document.querySelectorAll('.session-checkbox');
     const planTypeSelect = document.getElementById('planType');
-    const extBlock1 = document.getElementById('extBlock1');
-    const extBlock2 = document.getElementById('extBlock2');
-    const noSessionHint = document.getElementById('noSessionHint');
+    const partnerBox = document.getElementById('partnerBox');
+    const partnerNameInput = document.getElementById('partnerName');
     const feeDisplay = document.getElementById('feeAmountDisplay');
     const feeBreakdown = document.getElementById('feeBreakdown');
     const feeHiddenInput = document.getElementById('calculatedFee');
     const regForm = document.getElementById('registrationForm');
+    const extCheckboxes = document.querySelectorAll('.ext-checkbox');
 
-    // 價目表對應
     const pricingMap = {
-        'general_single': { price: 6000, name: '一般身分－單人' },
-        'general_family': { price: 11220, name: '一般身分－親子(1大1小)' },
-        'discount_single': { price: 5000, name: '優惠身分－單人' },
-        'discount_family': { price: 9900, name: '優惠身分－親子(1大1小)' }
+        'new_student': { price: 6500, name: '新生單人報名' },
+        'group_two': { price: 12000, name: '兩人團報優惠' },
+        'discount_single': { price: 6000, name: '專屬優惠方案' }
     };
 
-    // 監聽梯次複選勾選
-    sessionCheckboxes.forEach(cb => {
-        cb.addEventListener('change', function() {
-            syncExtensionBlocks();
-            updateFee();
-        });
+    // 監聽方案切換
+    planTypeSelect.addEventListener('change', function() {
+        if (this.value === 'group_two') {
+            partnerBox.style.display = 'block';
+            partnerNameInput.required = true;
+        } else {
+            partnerBox.style.display = 'none';
+            partnerNameInput.required = false;
+        }
+        updateFee();
     });
 
-    // 監聽收費方案變動
-    planTypeSelect.addEventListener('change', updateFee);
-
     // 監聽延托勾選
-    document.querySelectorAll('.ext-checkbox').forEach(cb => {
+    extCheckboxes.forEach(cb => {
         cb.addEventListener('change', updateFee);
     });
 
-    // 梯次聯動延托區塊顯示/隱藏
-    function syncExtensionBlocks() {
-        let hasT1 = false;
-        let hasT2 = false;
-
-        sessionCheckboxes.forEach(cb => {
-            if (cb.checked) {
-                if (cb.value.includes('第一梯次')) hasT1 = true;
-                if (cb.value.includes('第二梯次')) hasT2 = true;
-            }
-        });
-
-        // 梯次未被勾選時，清空該梯次的延托勾選
-        if (!hasT1) {
-            extBlock1.querySelectorAll('.ext-checkbox').forEach(c => c.checked = false);
-        }
-        if (!hasT2) {
-            extBlock2.querySelectorAll('.ext-checkbox').forEach(c => c.checked = false);
-        }
-
-        extBlock1.style.display = hasT1 ? 'block' : 'none';
-        extBlock2.style.display = hasT2 ? 'block' : 'none';
-        noSessionHint.style.display = (!hasT1 && !hasT2) ? 'block' : 'none';
-    }
-
-    // 計算總費用與摘要說明
     function updateFee() {
-        let selectedSessions = [];
-        sessionCheckboxes.forEach(cb => {
-            if (cb.checked) selectedSessions.push(cb.value);
-        });
+        const planKey = planTypeSelect.value;
+        const currentPlan = pricingMap[planKey] || { price: 6500, name: '新生報名' };
+        let baseFee = currentPlan.price;
 
-        let sessionCount = selectedSessions.length;
-        const currentPlanKey = planTypeSelect.value;
-        const planInfo = pricingMap[currentPlanKey] || { price: 6000, name: '單人' };
-        
-        // 營隊費用 = 單價 × 所選梯次數
-        let baseFee = sessionCount * planInfo.price;
-
-        // 計算目前可見區塊中的延托勾選
         let extCount = 0;
         let extDays = [];
-        if (extBlock1.style.display !== 'none') {
-            extBlock1.querySelectorAll('.ext-checkbox:checked').forEach(c => {
+        extCheckboxes.forEach(cb => {
+            if (cb.checked) {
                 extCount++;
-                extDays.push(c.value);
-            });
-        }
-        if (extBlock2.style.display !== 'none') {
-            extBlock2.querySelectorAll('.ext-checkbox:checked').forEach(c => {
-                extCount++;
-                extDays.push(c.value);
-            });
-        }
+                extDays.push(cb.value);
+            }
+        });
 
         let extFee = extCount * 200;
         let total = baseFee + extFee;
@@ -475,35 +398,18 @@
         feeDisplay.textContent = total.toLocaleString();
         feeHiddenInput.value = total;
 
-        if (sessionCount === 0) {
-            feeBreakdown.textContent = "請至少勾選一個梯次以計算費用";
-        } else {
-            let breakdownText = `${planInfo.name} $${planInfo.price.toLocaleString()} × ${sessionCount} 梯次 = $${baseFee.toLocaleString()} 元`;
-            if (extCount > 0) {
-                breakdownText += ` ＋ 延托 ${extCount} 次 (${extDays.join(', ')}) 共 +$${extFee} 元`;
-            }
-            feeBreakdown.textContent = breakdownText;
+        let breakdownText = `${currentPlan.name} $${baseFee.toLocaleString()} 元`;
+        if (extCount > 0) {
+            breakdownText += ` ＋ 延托 ${extCount} 次 (${extDays.join(', ')}) 共 +$${extFee} 元`;
         }
+        feeBreakdown.textContent = breakdownText;
     }
 
-    // 初始化狀態
-    syncExtensionBlocks();
     updateFee();
 
     // 送出表單
     regForm.addEventListener('submit', function(e) {
         e.preventDefault();
-
-        // 檢查是否至少勾選一個梯次
-        let selectedSessions = [];
-        sessionCheckboxes.forEach(cb => {
-            if (cb.checked) selectedSessions.push(cb.value);
-        });
-
-        if (selectedSessions.length === 0) {
-            alert('請至少勾選一個您欲參加的營隊梯次！');
-            return;
-        }
 
         const agreePrivacy = document.getElementById('agreePrivacy');
         const agreePortrait = document.getElementById('agreePortrait');
@@ -527,27 +433,38 @@
                            String(now.getSeconds()).padStart(2, '0');
         document.getElementById('registrationTime').value = timeString;
 
-        // 收集所有已選延托日
         let selectedExtDays = [];
-        if (extBlock1.style.display !== 'none') {
-            extBlock1.querySelectorAll('.ext-checkbox:checked').forEach(c => selectedExtDays.push(c.value));
-        }
-        if (extBlock2.style.display !== 'none') {
-            extBlock2.querySelectorAll('.ext-checkbox:checked').forEach(c => selectedExtDays.push(c.value));
+        extCheckboxes.forEach(cb => {
+            if (cb.checked) selectedExtDays.push(cb.value);
+        });
+
+        // 整理學員姓名（若是兩人團報則將第二位一同標註）
+        let primaryStudent = document.getElementById('studentName').value.trim();
+        let fullStudentInfo = primaryStudent;
+        let partnerNote = "";
+
+        if (planTypeSelect.value === 'group_two') {
+            const pName = partnerNameInput.value.trim();
+            const pGender = document.getElementById('partnerGender').value;
+            const pBirthday = document.getElementById('partnerBirthday').value;
+            const pHealth = document.getElementById('partnerHealth').value.trim();
+            
+            fullStudentInfo = `${primaryStudent} 與 ${pName}（兩人團報）`;
+            partnerNote = ` [第2位學員: ${pName}, 性別:${pGender || '未填'}, 生日:${pBirthday || '未填'}, 狀況:${pHealth || '無'}]`;
         }
 
-        const sessionsText = selectedSessions.join(' + ');
         const planSelectedText = planTypeSelect.options[planTypeSelect.selectedIndex].text;
+        const userMsg = (document.getElementById('userMessage').value || '無') + partnerNote;
 
         const payload = {
             registrationTime: timeString,
-            campSession: sessionsText,
-            studentName: document.getElementById('studentName').value,
+            campSession: "第一梯次：2027/1/18 - 1/22 (五天全日營)",
+            studentName: fullStudentInfo,
             gender: document.getElementById('gender').value,
             birthday: document.getElementById('birthday').value,
             healthCondition: document.getElementById('healthCondition').value,
             grade: document.getElementById('grade').value,
-            memberType: `${sessionsText} | 方案：${planSelectedText}`,
+            memberType: planSelectedText,
             extensionService: selectedExtDays.length > 0 ? selectedExtDays.join(', ') : '無',
             calculatedFee: feeHiddenInput.value,
             parentName: document.getElementById('parentName').value,
@@ -556,7 +473,7 @@
             line: document.getElementById('line').value,
             infoSource: document.getElementById('infoSource').value || '無',
             communityAndLocation: document.getElementById('communityAndLocation').value || '無',
-            userMessage: document.getElementById('userMessage').value || '無',
+            userMessage: userMsg,
             transferCode: document.getElementById('transferCode').value,
             agreedStatus: '已同意規範'
         };
