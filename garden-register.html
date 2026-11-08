@@ -100,6 +100,30 @@
             text-decoration: none; flex: 1; font-size: 1.05em; font-weight: bold; text-align: center;
         }
         .back-btn:hover { background-color: #8A7B6F; color: white; }
+
+        /* 第二場報到梯次動態區塊樣式 */
+        .checkin-subbox {
+            display: none;
+            margin-top: 12px;
+            padding: 14px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            border: 1.5px solid #d97746;
+            box-shadow: 0 2px 6px rgba(217, 119, 70, 0.08);
+        }
+        .checkin-slot-label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-size: 0.92em;
+            color: #5d4e43;
+            font-weight: bold;
+            margin: 6px 0;
+        }
+        .checkin-slot-label input[type="radio"] {
+            margin-top: 0;
+            margin-right: 8px;
+        }
     </style>
 </head>
 <body>
@@ -134,19 +158,37 @@
             <div class="form-group">
                 <label>參加場次選擇 *</label>
                 <div class="radio-group">
+                    <!-- 第一場 -->
                     <label class="radio-item">
-                        <input type="radio" name="session" value="第一場：五芒星星親子共學家庭專場 (16:00~17:30)" required>
+                        <input type="radio" name="sessionMain" value="第一場：五芒星星親子共學家庭專場 (16:00~17:30，15:50 報到)" required>
                         <div>
                             <strong>第一場：五芒星星親子共學家庭專場</strong><br>
-                            <span style="font-size: 0.85em; color: #8A7B6F;">時間：16:00 ~ 17:30（15:50 開始報到）</span>
+                            <span style="font-size: 0.85em; color: #8A7B6F;">時間：16:00 ~ 17:30（15:50 報到）</span>
                         </div>
                     </label>
+
+                    <!-- 第二場 -->
                     <label class="radio-item">
-                        <input type="radio" name="session" value="第二場：社群朋友場 (18:00~19:00)">
-                        <div>
+                        <input type="radio" name="sessionMain" value="第二場：社群朋友場 (18:00~19:00)">
+                        <div style="width: 100%;">
                             <strong>第二場：社群朋友場</strong><br>
-                            <span style="font-size: 0.85em; color: #8A7B6F;">時間：18:00 ~ 19:00（17:50 開始報到，先到先領號碼牌）</span><br>
+                            <span style="font-size: 0.85em; color: #8A7B6F;">時間：18:00 ~ 19:00（18:10 截止報到）</span><br>
                             <span style="font-size: 0.8em; color: #5b8266; font-weight: bold;">🌱 有 3 歲以下幼兒家庭可優先入場</span>
+
+                            <!-- 第二場動態展開報到梯次 -->
+                            <div id="checkInTimeBox" class="checkin-subbox">
+                                <div style="font-size: 0.88em; font-weight: bold; color: #d97746; margin-bottom: 8px;">
+                                    ⏰ 請選擇預計報到時間（為維護儀式靜謐，敬請準時）：
+                                </div>
+                                <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                                    <label class="checkin-slot-label">
+                                        <input type="radio" name="checkInSlot" value="17:50 報到" checked> 17:50 報到
+                                    </label>
+                                    <label class="checkin-slot-label">
+                                        <input type="radio" name="checkInSlot" value="18:10 報到（最後截止）"> 18:10 報到（最後截止）
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </label>
                 </div>
@@ -184,14 +226,14 @@
 
             <!-- 是否加購摘許願星星 -->
             <div class="form-group">
-                <label>摘藤圈許願星星工本費（自由選擇加購，每份 200 元）</label>
+                <label>摘藤圈許願星星工本費（自由選擇，每份 200 元）</label>
                 <div class="select-group">
                     <div style="display: flex; align-items: center; justify-content: space-between;">
-                        <span>加購摘星星份數：</span>
+                        <span>摘星星份數：</span>
                         <input type="number" id="starCount" name="starCount" min="0" value="0" style="width: 120px;">
                     </div>
                     <span style="font-size: 0.82em; color: #8A7B6F;">
-                        走完螺旋後憑摘星牌至藍貨櫃許願並摘下星星。無加購者亦可全程參與燭光螺旋並領取手沾蜂蠟蘋果蠟燭。
+                        走完螺旋後憑摘星牌可進行許願並摘下星星。無加購者亦可全程參與燭光螺旋並領取手沾蜂蠟蘋果蠟燭。
                     </span>
                 </div>
             </div>
@@ -264,6 +306,19 @@
         const identityHint = document.getElementById('identityHint');
         const feeDescriptionDisplay = document.getElementById('feeDescriptionDisplay');
         const feeBreakdown = document.getElementById('feeBreakdown');
+        const checkInTimeBox = document.getElementById('checkInTimeBox');
+        const sessionMainRadios = document.querySelectorAll('input[name="sessionMain"]');
+
+        // 場次切換事件：選第二場時動態展開報到時間細選框
+        sessionMainRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.value.includes('第二場')) {
+                    checkInTimeBox.style.display = 'block';
+                } else {
+                    checkInTimeBox.style.display = 'none';
+                }
+            });
+        });
 
         // 身分切換事件
         identityType.addEventListener('change', function() {
@@ -274,7 +329,7 @@
                 identityHint.innerHTML = "💡 <strong>五芒星星共學家庭：</strong>孩子本人及父母免費；其餘手足或親友每人 300 元。";
             } else if (val === 'member') {
                 freeCount.value = 1; // 會員本人
-                paidCount.value = 0; // 同行同行親友
+                paidCount.value = 0; // 同行親友
                 identityHint.innerHTML = "💡 <strong>協會會員：</strong>會員本人免費；同行親友每人 300 元。";
             } else if (val === 'general') {
                 freeCount.value = 0;
@@ -303,8 +358,8 @@
         regForm.addEventListener('submit', function(e) {
             e.preventDefault();
 
-            const selectedSession = document.querySelector('input[name="session"]:checked');
-            if (!selectedSession) {
+            const selectedSessionMain = document.querySelector('input[name="sessionMain"]:checked');
+            if (!selectedSessionMain) {
                 alert('請選擇您欲參加的活動場次！');
                 return;
             }
@@ -333,10 +388,17 @@
             const totalFee = (paidNum * 300) + (starNum * 200);
 
             const identityText = identityType.options[identityType.selectedIndex].text;
-            const sessionVal = selectedSession.value;
             const toddlerVal = document.getElementById('toddlerInfo').value.trim();
 
-            // 獨立拆解每個欄位打包傳送至後端
+            // 組合場次字串：若是第二場，自動附加勾選的報到梯次
+            let sessionVal = selectedSessionMain.value;
+            if (sessionVal.includes('第二場')) {
+                const selectedSlot = document.querySelector('input[name="checkInSlot"]:checked');
+                const slotText = selectedSlot ? selectedSlot.value : '17:50 報到';
+                sessionVal = `第二場：社群朋友場 (18:00~19:00) [${slotText}]`;
+            }
+
+            // 打包傳送至後端（欄位完全對齊既有 GAS 接收參數）
             const payload = {
                 studentName: document.getElementById('contactName').value,
                 parentTel: document.getElementById('parentTel').value,
