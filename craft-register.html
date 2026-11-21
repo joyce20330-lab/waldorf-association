@@ -28,17 +28,20 @@
         }
         .checkbox-item {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             cursor: pointer;
             font-size: 0.95em;
             color: #5d4e43;
             font-weight: 500;
+            line-height: 1.5;
         }
         .checkbox-item input[type="checkbox"] {
             width: 18px;
             height: 18px;
             cursor: pointer;
             margin-right: 10px;
+            margin-top: 3px;
+            flex-shrink: 0;
             accent-color: #d97746;
         }
         .select-all-box {
@@ -128,19 +131,34 @@
                 <label>報名場次選擇（下午統一 13:30 開始，可複選）</label>
                 <div class="checkbox-group">
                     <label class="checkbox-item select-all-box">
-                        <input type="checkbox" id="selectAll"> ⭐ 【一鍵全參與】勾選全部四場次
+                        <input type="checkbox" id="selectAll"> ⭐ 【一鍵全參與】勾選全部九場次
                     </label>
                     <label class="checkbox-item">
-                        <input type="checkbox" name="session" value="11/12 (四) 下午：鉤針星星與進階聖誕樹、濕氈杯墊"> 11/12 (四) 下午：鉤針星星與進階聖誕樹、濕氈杯墊
+                        <input type="checkbox" name="session" value="11/12 (四) 下午：初學者：鉤針星星、進階者：鉤織聖誕樹、濕氈杯墊"> 11/12 (四) 下午：初學者：鉤針星星、進階者：鉤織聖誕樹、濕氈杯墊
                     </label>
                     <label class="checkbox-item">
-                        <input type="checkbox" name="session" value="11/19 (四) 下午：天使鈎織、濕氈Q版兔子寶寶"> 11/19 (四) 下午：天使鈎織、濕氈Q版兔子寶寶
+                        <input type="checkbox" name="session" value="11/19 (四) 下午：初學者：鉤針星星/星星杯墊、進階者：鉤織天使、濕氈 Q版兔子寶寶"> 11/19 (四) 下午：初學者：鉤針星星/星星杯墊、進階者：鉤織天使、濕氈 Q版兔子寶寶
                     </label>
                     <label class="checkbox-item">
-                        <input type="checkbox" name="session" value="11/26 (四) 下午：天使鈎織、縫製寶寶娃娃"> 11/26 (四) 下午：天使鈎織、縫製寶寶娃娃
+                        <input type="checkbox" name="session" value="11/26 (四) 下午：初學者：鉤針星星杯墊、進階者：鉤織聖誕球、打棒針瑪麗亞和約瑟夫"> 11/26 (四) 下午：初學者：鉤針星星杯墊、進階者：鉤織聖誕球、打棒針瑪麗亞和約瑟夫
                     </label>
                     <label class="checkbox-item">
-                        <input type="checkbox" name="session" value="12/03 (四) 下午：娃娃天使鈎織、縫製寶寶娃娃"> 12/03 (四) 下午：娃娃天使鈎織、縫製寶寶娃娃
+                        <input type="checkbox" name="session" value="12/03 (四) 下午：初學者：鉤針聖誕樹吊飾、進階者：鉤織聖誕球、打棒針瑪麗亞和約瑟夫"> 12/03 (四) 下午：初學者：鉤針聖誕樹吊飾、進階者：鉤織聖誕球、打棒針瑪麗亞和約瑟夫
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="session" value="12/17 (四) 下午：打棒針編織球和母雞、濕氈羊毛氈小物"> 12/17 (四) 下午：打棒針編織球和母雞、濕氈羊毛氈小物
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="session" value="12/24 (四) 下午：課程主題規劃中，敬請期待"> 12/24 (四) 下午：課程主題規劃中，敬請期待
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="session" value="12/31 (四) 下午：課程主題規劃中，敬請期待"> 12/31 (四) 下午：課程主題規劃中，敬請期待
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="session" value="2027/01/07 (四) 下午：課程主題規劃中，敬請期待"> 2027/01/07 (四) 下午：課程主題規劃中，敬請期待
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="session" value="2027/01/14 (四) 下午：課程主題規劃中，敬請期待"> 2027/01/14 (四) 下午：課程主題規劃中，敬請期待
                     </label>
                 </div>
             </div>
@@ -158,8 +176,8 @@
                 <div class="notice-title">🌻 課程說明、注意事項與規範</div>
                 <div class="notice-content">
                     <p><strong>• 課程名稱：</strong> 生活藝術~冬天的手作</p>
-                    <p><strong>• 上課時間：</strong> 星期四下午 13:30 開始</p>
-                    <p><strong>• 課程日期：</strong> 11/12、11/19、11/26、12/3（星期四）</p>
+                    <p><strong>• 上課時間：</strong> 星期四 13:30 - 16:00</p>
+                    <p><strong>• 課程日期：</strong> 11/12、11/19、11/26、12/3、12/17、12/24、12/31、2027/1/7、2027/1/14</p>
                     <p><strong>• 上課地點：</strong> 宜蘭縣三星鄉安農九路560號（五芒星星共學園）</p>
                     <p><strong>• 費用說明：</strong> 採現場繳費（場地費每場 200元、講師費隨喜；材料包一個品項 50元）</p>
                     <p><strong>• 注意事項：</strong> 請自備 3～4號鉤針與水壺或水杯。</p>
